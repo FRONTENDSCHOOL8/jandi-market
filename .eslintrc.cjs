@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: 'eslint:recommended',
+  extends: ['airbnb-base', 'prettier'],
   overrides: [
     {
       env: {
@@ -30,4 +30,12 @@ module.exports = {
     // 블록의 중첩 횟수 제어하기
     'max-depth': ['error', { max: 2 }],
   },
+  'import/no-extraneous-dependencies': [
+    'error',
+    {
+      devDependencies: false,
+      optionalDependencies: false,
+      peerDependencies: false,
+    },
+  ],
 };
