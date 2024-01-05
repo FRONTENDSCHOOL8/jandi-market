@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>잔디 - 잔디마켓 장바구니추가 모달창</title>
+
+    <meta
+      name="description"
+      content="Better Life for All. 건강한 식재료부터 믿을 수 있는 뷰티, 라이프스타일 상품까지. 나와 내 가족이 사고 싶은 상품을 판매합니다. 내일 아침 문 앞에서 만나요!"
+    />
+    <meta
+      name="keywords"
+      content="다이어트, 식단, 닭가슴살, 요리, 치아바타, 레시피, 상차림, 다이어트음식, 이유식, 건강이유식, 뷰티, 화장품"
+    />
+    <meta name="author" content="F4" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="잔디 - 잔디마켓/뷰티잔디" />
+    <meta property="og:title" content="잔디 - 잔디마켓/뷰티잔디" />
+    <meta
+      property="og:description"
+      content="Better Life for All. 건강한 식재료부터 믿을 수 있는 뷰티, 라이프스타일 상품까지. 나와 내 가족이 사고 싶은 상품을 판매합니다. 내일 아침 문 앞에서 만나요!"
+    />
+
+    <!-- <meta property="og:image" content="이미지 URL" /> -->
+    <!-- <meta property="og:url" content="웹페이지 URL" /> -->
+    <link rel="stylesheet" href="/src/styles/tailwind.css" />
+    <link
+      rel="preload"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    
+    <div class="min-h-screen flex jusrify-center items-center bg-amber-700 br-">
+    
+      <dialog id="addCart" class="w-396pxr bg-white block px-6 py-5 rounded-2xl shadow-[0_8px_36px_0_rgba(0,0,0,0.2)]">
+        <div class="add_option">
+          <strong class="option_name font-normal">
+            <span class="product_brand">[풀무원]</span>
+            <span class="product_name">탱탱쫄면 (4개입)</span>
+          </strong>
+          <div class="option_price">
+            <span class="product_price">4,980</span>
+            <span>원</span>
+          </div>
+          <div class="option_count">
+            <span class="item_count">1</span>
+            <button type="button" class="number_btn minus">-
+              <span class="sr-only">감소</span>
+            </button>
+            <button type="button" class="number_btn plus">+
+              <span class="sr-only">증가</span>
+            </button>
+          </div>      
+        </div>
+        
+        <div class="option_amount">
+          <span>합계</span>
+          <div class="option_sum">
+            <span>4,980</span>
+            <span>원</span>
+          </div>
+          <span class="before:content-['적립'] before:bg-accent-yllow before:text-white">구매 시 5원 적립</span>
+        </div>
+        
+        
+        <ul class="add_cart_menu">
+          <li><button value="cancel">취소</button></li>
+          <li><button id="addBtn">장바구니 담기</button></li>
+        </ul>
+      </dialog>
+    
+    
+    </div>
+    
+    
+    
+    
+    <footer></footer>
+  </body>
+</html>
