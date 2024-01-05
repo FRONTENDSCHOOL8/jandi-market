@@ -40,28 +40,30 @@
     
     <div class="min-h-screen flex jusrify-center items-center bg-amber-700 br-">
     
-      <dialog id="addCart" class="w-396pxr bg-white block px-6 py-5 rounded-2xl shadow-[0_8px_36px_0_rgba(0,0,0,0.2)]">
-        <div class="add_option">
-          <strong class="option_name font-normal">
+      <dialog id="addCart" class="w-396pxr bg-white block px-6 py-5 rounded-2xl shadow-[0_8px_36px_0_rgba(0,0,0,0.2)] flex flex-col flex">
+        <div class="add_option bg-slate-300">
+          <div class="option_name font-normal">
             <span class="product_brand">[풀무원]</span>
             <span class="product_name">탱탱쫄면 (4개입)</span>
-          </strong>
-          <div class="option_price">
-            <span class="product_price">4,980</span>
-            <span>원</span>
           </div>
-          <div class="option_count">
-            <span class="item_count">1</span>
-            <button type="button" class="number_btn minus">-
-              <span class="sr-only">감소</span>
-            </button>
-            <button type="button" class="number_btn plus">+
-              <span class="sr-only">증가</span>
-            </button>
-          </div>      
+          <div class="option_price">
+            <div>
+              <span class="product_price">4,980</span>
+              <span>원</span>
+            </div>
+            <div class="option_count">
+              <span class="item_count">1</span>
+              <button type="button" class="number_btn minus">-
+                <span class="sr-only">감소</span>
+              </button>
+              <button type="button" class="number_btn plus">+
+                <span class="sr-only">증가</span>
+              </button>
+            </div>
+          </div>    
         </div>
         
-        <div class="option_amount">
+        <div class="option_amount bg-slate-300">
           <span>합계</span>
           <div class="option_sum">
             <span>4,980</span>
@@ -71,7 +73,7 @@
         </div>
         
         
-        <ul class="add_cart_menu">
+        <ul class="add_cart_menu bg-slate-300">
           <li><button value="cancel">취소</button></li>
           <li><button id="addBtn">장바구니 담기</button></li>
         </ul>
