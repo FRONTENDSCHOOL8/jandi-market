@@ -18,7 +18,7 @@ export default {
         white: '#ffffff',
         secondary: '#BD76FF',
         primary: '#5F0080',
-        content: '333333',
+        content: '#333333',
         'gray-50': '#F9F9F9',
         'gray-100': '#E1E1E1',
         'gray-200': ' #C4C4C4',
@@ -39,7 +39,7 @@ export default {
         'blue-800': ' #002966',
         'blue-900': ' #001433',
         'info-error': '#F03F40',
-        'accent-yllow': '#FA622F',
+        'accent-yellow': '#FA622F',
       },
       spacing: {
         ...pxToRemFunc(0, 1000),
