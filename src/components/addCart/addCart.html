@@ -38,55 +38,61 @@
   </head>
   <body>
     
-    <div class="min-h-screen flex jusrify-center items-center bg-amber-700 br-">
+    <div class="min-h-screen flex jusrify-center items-center bg-amber-700">
     
-      <dialog id="addCart" class="w-396pxr bg-white px-6 py-5 rounded-2xl shadow-[0_8px_36px_0_rgba(0,0,0,0.2)] flex flex-col gap-7">
-        <div class="add_option bg-slate-300">
-          <div class="option_name font-normal mb-3">
+      
+      
+      
+      <!-- addCart component -->      
+      <dialog id="addCart" class="w-356pxr box-content bg-white px-5 py-6 rounded-2xl shadow-[0_8px_36px_0_rgba(0,0,0,0.2)] flex flex-col gap-7">
+        <div class="add_option">
+          <div class="option_name font-normal mb-3 text-content">
             <span class="product_brand">[풀무원]</span>
             <span class="product_name">탱탱쫄면 (4개입)</span>
           </div>
-          <div class="option_price flex justify-between">
-            <div>
+          <div class="option_price flex justify-between items-center">
+            <div class="font-bold">
               <span class="product_price">4,980</span>
               <span>원</span>
             </div>
-            <div class="option_count">
-              <span class="item_count">1</span>
-              <button type="button" class="number_btn minus">-
+            <div class="option_count flex justify-between items-center w-84pxr h-30pxr box-content bg-white border border-solid border-gray-200">
+              <button type="button" class="minus w-30pxr h-30pxr" style="background-image: url(/input/Disabled=true.svg);">
                 <span class="sr-only">감소</span>
               </button>
-              <button type="button" class="number_btn plus">+
+              <span class="item_count">1</span>
+              <button type="button"  class="plus w-30pxr h-30pxr" style="background-image: url(/input/Disabled=false-1.svg);">
                 <span class="sr-only">증가</span>
               </button>
             </div>
-          </div>    
+          </div>
         </div>
         
-        <div class="option_amount bg-slate-300">
-          <div class="flex justify-between mb-1">
+        <div class="option_amount flex flex-col items-end gap-1">
+          <div class="w-full flex justify-between items-end">
             <span>합계</span>
-            <div class="option_sum">
+            <div class="option_sum font-bold text-heading-xl">
               <span>4,980</span>
               <span>원</span>
             </div>
           </div>
-          <span class="before:content-['적립'] before:bg-accent-yllow before:text-white">구매 시 5원 적립</span>
+          <div class="reward">
+            <span class="bg-accent-yllow px-2 text-white text-label-small rounded-[1px]">적립</span>
+            <span class="ml-3" >구매 시 5원 적립</span>
+          </div>
         </div>
         
         
-        <ul class="add_cart_menu bg-slate-300 flex gap-2">
-          <li><button value="cancel">취소</button></li>
-          <li><button id="addBtn">장바구니 담기</button></li>
+        <ul class="add_cart_menu flex gap-2 font-semibold">
+          <li class="w-full"><button type="button" value="cancel" class="w-full h-54pxr text-content rounded border border-gray-400">취소</button></li>
+          <li class="w-full"><button type="button" id="addBtn" class="w-full h-54pxr text-white bg-primary rounded">장바구니 담기</button></li>
         </ul>
       </dialog>
+      <!-- addCart component -->
+      
+      
     
-    
+      
+      
     </div>
-    
-    
-    
-    
-    <footer></footer>
   </body>
 </html>
