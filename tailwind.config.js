@@ -48,6 +48,7 @@ export default {
         ...pxToRemFunc(0, 1000),
       },
       fontSize: {
+        ...pxToRemFunc(0, 1000),
         // base size: heading---medium (16px) */
         'heading-medium': '1rem',
         'heading-large': '1.33rem',
