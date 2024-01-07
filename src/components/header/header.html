@@ -39,10 +39,9 @@
   </head>
   <body>
     <header id="header">
-      <div class="flex w-full top_banner bg-primary">
-        <div
-          class="text-white w-[65.625rem] flex_center mx-auto py-1 leading-4"
-        >
+      <!-- Top Banner -->
+      <div class="flex top_banner bg-primary">
+        <div class="text-white w-[1050px] mx-auto flex_center py-1">
           <span class="font-light w-[63rem] text-center"
             >지금 가입하고 인기상품 <strong class="font-medium">100원</strong>에
             받아가세요!</span
@@ -56,16 +55,98 @@
           </button>
         </div>
       </div>
-      <div class="header_box w1050 my-2">
+
+      <div class="header_box w-[1050px] mx-auto my-3">
+        <!-- Header-Top -->
         <ul class="relative flex justify-end">
-          <li class=""><a href="#">회원가입</a></li>
-          <li class="line">
-            <a href="#">로그인</a>
+          <li class="text-primary">
+            <a class="text-14pxr" href="#">회원가입</a>
           </li>
           <li class="line">
-            <a href="#">고객센터</a>
+            <a class="text-14pxr" href="#">로그인</a>
+          </li>
+          <li class="line">
+            <a class="text-14pxr" href="#"
+              >고객센터
+              <img
+                src="/icon/down_header.png"
+                alt="드롭다운"
+                aria-hidden="true"
+              />
+            </a>
           </li>
         </ul>
+
+        <!-- Header-Middle -->
+        <div class="flex justify-between items-center self-stretch mt-7">
+          <!-- Middle-left -->
+          <div class="flex items-center gap-3">
+            <h2 class="w-82pxr h-42pxr">
+              <img src="/jandi_logo.svg" alt="잔디마켓" />
+            </h2>
+            <a class="text-heading-large font-semibold text-primary" href=""
+              >잔디마켓</a
+            >
+            <div
+              class="before:content-['|'] before:w-1pxr before:text-gray-200"
+            ></div>
+            <a
+              class="text-heading-large font-semibold text-gray-400 relative"
+              href=""
+              >잔디뷰티
+              <svg
+                class="absolute top-[-3px] right-[-13px]"
+                role="img"
+                width="7"
+                height="7"
+                viewBox="0 0 7 7"
+              >
+                <use href="/icon/new.svg#new 1" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Middle-Center -->
+          <div
+            class="flex w-400pxr py-3 px-5 justify-between items-center rounded-md border border-primary"
+          >
+            <input
+              class="outline-none tracking-tight"
+              type="text"
+              placeholder="검색어를 입력해주세요"
+            />
+            <button type="button">
+              <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+                <use href="/icon/_sprite.svg#Search" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Middle-Right -->
+          <ul class="flex items-center gap-5">
+            <li>
+              <button>
+                <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+                  <use href="/icon/_sprite.svg#Location" />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button>
+                <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+                  <use href="/icon/_sprite.svg#Heart" />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button>
+                <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+                  <use href="/icon/_sprite.svg#Cart_header" />
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
   </body>
