@@ -21,9 +21,6 @@
       'Segoe UI Symbol',
       sans-serif;
   }
-<<<<<<< HEAD
-}
-=======
 }
 
 /* footer cs_inquiry부분 버튼 스타일  */
@@ -38,4 +35,3 @@
 .sns_icon {
   @apply block w-full h-full bg-[url('/icon/sns_icon.png')] bg-cover;
 }
->>>>>>> develop
