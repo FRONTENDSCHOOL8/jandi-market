@@ -23,6 +23,9 @@
   }
 }
 
+.flex_center {
+  @apply flex justify-center items-center;
+}
 /* footer cs_inquiry부분 버튼 스타일  */
 .inquiry_btn {
   @apply block h-10 leading-10 text-center border border-gray-200 border-solid w-140pxr;
