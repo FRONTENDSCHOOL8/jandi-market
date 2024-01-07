@@ -53,7 +53,7 @@ export default {
         'heading-large': '1.33rem',
         'heading-xl': '1.78rem',
         'heading-xxl': '2.37rem',
-        'heading-xxxl': '3.16re',
+        'heading-xxxl': '3.16rem',
         'label-small': '0.75rem',
         'label-medium': '1rem',
         'label-large': '1.33rem',
