@@ -1,0 +1,7 @@
+.line {
+  @apply before:content-['|'] before:mx-4 before:w-1pxr before:text-gray-200;
+}
+
+.banner_hidden {
+  @apply h-0;
+}
