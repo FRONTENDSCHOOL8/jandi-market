@@ -22,6 +22,18 @@
       sans-serif;
   }
 }
+/* footer cs_inquiry부분 버튼 스타일  */
+.inquiry_btn {
+  @apply block h-10 leading-10 text-center border border-gray-200 border-solid w-140pxr;
+}
+
+.w1050 {
+  @apply w-[1050px] my-0 mx-auto;
+}
+
+.sns_icon {
+  @apply block w-full h-full bg-[url('/icon/sns_icon.png')] bg-cover;
+}
 
 .tab {
   @apply py-15pxr border-gray-300 border bg-gray-50 w-full font-semibold;
