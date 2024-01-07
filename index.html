@@ -30,14 +30,86 @@
     <!-- <meta property="og:url" content="웹페이지 URL" /> -->
     <link rel="stylesheet" href="/src/styles/tailwind.css" />
     <link
-      rel="stylesheet"
+      rel="preload"
       as="style"
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="./main.js" type="module"></script>
   </head>
-  <body>
-    <footer></footer>
+  <body class="size-full flex flex-col justify-center items-center">
+    <!-- Slider main container -->
+    <div class="swiper w-[1920px] h-370pxr">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide size-full flex justify-center items-center">
+          <img
+            class="w-full object-cover"
+            src="./src/assets/banner05.png"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide size-full flex justify-center items-center">
+          <img
+            class="w-full object-cover"
+            src="./src/assets/banner02.png"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide size-full flex justify-center items-center">
+          <img
+            class="w-full object-cover"
+            src="./src/assets/banner03.png"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide size-full flex justify-center items-center">
+          <img
+            class="w-full object-cover"
+            src="./src/assets/banner01.png"
+            alt=""
+          />
+        </div>
+        ...
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev after:hidden bg-[/]"></div>
+      <div class="swiper-button-next after:hidden"></div>
+    </div>
+
+    <section
+      class="border-4 w-[1050px] h-608pxr flex flex-col items-start py-40pxr gap-28pxr box-content"
+    >
+      <div
+        class="flex flex-col justify-center items-center w-[1042px] h-563pxr p-4pxr"
+      >
+        <h2 class="text-[28.43px] font-bold">이 상품 어때요?</h2>
+      </div>
+      <div class="w-[1050px] h-516pxr">
+        <ul class="list-none flex w-full justify-between items-start">
+          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
+            1
+          </li>
+          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
+            2
+          </li>
+          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
+            3
+          </li>
+          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
+            4
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <a class="block w-[1050px] h-139pxr my-40pxr" href="#">
+      <img class="w-full" src="/src/assets/banner03.png" alt="" />
+    </a>
   </body>
 </html>
