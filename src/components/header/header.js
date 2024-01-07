@@ -8,6 +8,9 @@ const closeBanner = (e) => {
   if (closeButton) {
     topBanner.style.transform = 'translateY(-100%)';
     topBanner.style.transition = 'transform .3s ease-out';
+    topBanner.addEventListener('transitionend', () => {
+      topBanner.style.display = 'none';
+    });
   }
 };
 
