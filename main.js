@@ -6,10 +6,16 @@ const swiper = new Swiper('.swiper', {
   pagination: {
     el: '.swiper-pagination',
   },
-
+  loop: true,
+  autoplay: {
+    delay: 3000,
+  },
   // Navigation arrows
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
+  },
+  keyboard: {
+    enabled: true,
   },
 });

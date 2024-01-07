@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
+  html {
     font-family:
       'Pretendard Variable',
       Pretendard,
@@ -20,6 +20,5 @@
       'Segoe UI Emoji',
       'Segoe UI Symbol',
       sans-serif;
-    src: "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css";
   }
 }
