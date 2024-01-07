@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- 상품명 받아오기 -->
+    <title>잔디 - 잔디마켓</title>
+
+    <meta
+      name="description"
+      content="Better Life for All. 건강한 식재료부터 믿을 수 있는 뷰티, 라이프스타일 상품까지. 나와 내 가족이 사고 싶은 상품을 판매합니다. 내일 아침 문 앞에서 만나요!"
+    />
+    <meta
+      name="keywords"
+      content="다이어트, 식단, 닭가슴살, 요리, 치아바타, 레시피, 상차림, 다이어트음식, 이유식, 건강이유식, 뷰티, 화장품"
+    />
+    <meta name="author" content="F4" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="잔디 - 잔디마켓/뷰티잔디" />
+    <meta property="og:title" content="잔디 - 잔디마켓/뷰티잔디" />
+    <meta
+      property="og:description"
+      content="Better Life for All. 건강한 식재료부터 믿을 수 있는 뷰티, 라이프스타일 상품까지. 나와 내 가족이 사고 싶은 상품을 판매합니다. 내일 아침 문 앞에서 만나요!"
+    />
+
+    <!-- <meta property="og:image" content="이미지 URL" /> -->
+    <!-- <meta property="og:url" content="웹페이지 URL" /> -->
+    <link rel="stylesheet" href="/src/styles/tailwind.css" />
+    <link
+      rel="preload"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <header id="header"></header>
+
+    <!-- Container -->
+    <main class="mt-12">
+      <h1 class="sr-only">상품 디테일 페이지</h1>
+      <!-- product_info -->
+      <section class="w-[1050px] mx-auto my-0">
+        <h2 class="sr-only">상품 요약 정보</h2>
+        <div class="w-[1050px] flex items-start justify-between">
+          <!-- product_image -->
+          <img src="https://via.placeholder.com/400x514" alt="상품명" />
+          <!-- product_detail -->
+          <article class="text-label-small">
+            <div class="mb-5 flex flex-col gap-4">
+              <span class="text-heading-large font-bold leading-[140%]"
+                >샛별배송</span
+              >
+              <!-- product_header -->
+              <div class="flex flex-col gap-2">
+                <h2 class="text-label-xl font-semibold">상품명</h2>
+                <p class="text-paragraph-medium text-gray-400">상품요약설명</p>
+              </div>
+              <!-- price -->
+              <div>
+                <!-- discount -->
+                <strong class="text-label-xl font-semibold">
+                  <span class="text-red-500">25%</span>
+                  <span>14,900</span>
+                  <span class="font-bold text-heading-medium">원</span>
+                </strong>
+                <!-- regular price -->
+                <p class="text-heading-medium text-gray-400 font-semibold">
+                  <s>19,900원</s>
+                </p>
+              </div>
+              <!-- region -->
+              <!-- <p>원산지 : ${국산}</p> -->
+              <!-- point -->
+              <p class="font-semibold text-primary text-label-medium">
+                로그인 후, 적립 혜택이 제공됩니다.
+              </p>
+            </div>
+            <!-- info -->
+            <div class="border-y border-gray-200">
+              <dl
+                class="w-560pxr divide-y divide-gray-200 text-gray-500 font-semibold"
+              >
+                <div class="flex py-4">
+                  <dt class="min-w-32">배송</dt>
+                  <dd>
+                    <p>샛별배송</p>
+                    <p class="text-gray-400">
+                      23시 전 주문 시 내일 아침 7시 전 도착
+                    </p>
+                    <p class="text-gray-400">
+                      (대구 부산 울산 샛별배송 운영시;간 별도 확인)
+                    </p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">판매자</dt>
+                  <dd>
+                    <p>칼리</p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">포장타입</dt>
+                  <dd>
+                    <p>상온 (종이포장)</p>
+                    <p class="text-gray-400">
+                      택배배송은 에코 포장이 스티로폼으로 대체됩니다.
+                    </p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">판매단위</dt>
+                  <dd>
+                    <p>1봉</p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">중량/용량</dt>
+                  <dd>
+                    <p>123g*4봉</p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">원산지</dt>
+                  <dd>
+                    <p>상세페이지 별도표기</p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">알레르기정보</dt>
+                  <dd class="font-normal">
+                    <p>-대두, 밀, 쇠고기 함유</p>
+                    <p>
+                      - 계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우,
+                      복숭아, 토마토, 아황산류, 호두, 잣, 닭고기, 오징어,
+                      조개류(굴, 전복, 홍합 포함)를 사용한 제품과 같은
+                      제조시설에서 제조
+                    </p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">상품선택</dt>
+                  <dd class="border border-gray-200 p-3 w-432pxr">
+                    <p class="mb-3">[강남면옥] 소갈비찜</p>
+                    <div class="flex justify-between items-end">
+                      <!-- 수량버튼 -->
+                      <div
+                        class="flex items-center gap-2 border border-gray-200"
+                      >
+                        <button>
+                          <img
+                            src="/public/input/minus-disabled.svg"
+                            alt="수량 감소"
+                            class="cursor-pointer"
+                          />
+                        </button>
+                        <span>1</span>
+                        <button>
+                          <img
+                            src="/public/input/plus.svg"
+                            alt="수량 증가"
+                            class="cursor-pointer"
+                          />
+                        </button>
+                      </div>
+                      <span class="text-content">29,800원</span>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="my-7 flex flex-col gap-2 items-end">
+              <p class="text-heading-medium flex items-center font-semibold">
+                총 상품 금액 :
+                <strong class="pl-17pxr text-label-xl">29,800</strong>
+                <span class="pl-1 font-bold">원</span>
+              </p>
+              <p class="flex gap-1.5 items-center">
+                <span
+                  class="border-accent-yellow py-1 px-2 bg-accent-yellow rounded-xl text-white"
+                >
+                  적립
+                </span>
+                <span class="text-label-medium">로그인 후, 적립 혜택 제공</span>
+              </p>
+            </div>
+
+            <!-- heart, cart -->
+            <div class="flex gap-3 items-start">
+              <button>
+                <svg
+                  class="inline border border-gray-100 rounded-s p-2.5 h-14 w-14 text-gray-100 cursor-pointer"
+                  aria-hidden="true"
+                >
+                  <use href="/public/icon/_sprite.svg#Heart"></use>
+                </svg>
+              </button>
+              <button>
+                <svg
+                  class="inline border border-gray-100 rounded-s p-2.5 h-14 w-14 text-gray-100 cursor-pointer"
+                  aria-hidden="true"
+                >
+                  <use href="/public/icon/_sprite.svg#Bell"></use>
+                </svg>
+              </button>
+              <button
+                class="text-white font-semibold bg-primary flex justify-center items-center rounded h-54pxr w-424pxr text-label-medium"
+              >
+                장바구니 담기
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- 상세정보 탭 -->
+      <section></section>
+      <!-- 후기 -->
+      <section></section>
+      <!-- 문의 -->
+      <section></section>
+    </main>
+
+    <footer id="footer"></footer>
+  </body>
+</html>
