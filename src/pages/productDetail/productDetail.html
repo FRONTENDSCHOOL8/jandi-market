@@ -36,6 +36,7 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="module" src="./productDetail.js"></script>
   </head>
   <body>
     <header id="header"></header>
@@ -44,7 +45,7 @@
     <main class="mt-12">
       <h1 class="sr-only">상품 디테일 페이지</h1>
       <!-- product_info -->
-      <section class="w-[1050px] mx-auto my-0">
+      <section class="w-[1050px] mx-auto mt-0 mb-12">
         <h2 class="sr-only">상품 요약 정보</h2>
         <div class="w-[1050px] flex items-start justify-between">
           <!-- product_image -->
@@ -155,15 +156,15 @@
                           <img
                             src="/public/input/minus-disabled.svg"
                             alt="수량 감소"
-                            class="cursor-pointer"
+                            class="cursor-pointer quantity_decrease"
                           />
                         </button>
-                        <span>1</span>
+                        <span class="product_quantity">1</span>
                         <button>
                           <img
                             src="/public/input/plus.svg"
                             alt="수량 증가"
-                            class="cursor-pointer"
+                            class="cursor-pointer quantity_increase"
                           />
                         </button>
                       </div>
@@ -177,7 +178,9 @@
             <div class="my-7 flex flex-col gap-2 items-end">
               <p class="text-heading-medium flex items-center font-semibold">
                 총 상품 금액 :
-                <strong class="pl-17pxr text-label-xl">29,800</strong>
+                <strong class="total_price pl-17pxr text-label-xl"
+                  >29,800</strong
+                >
                 <span class="pl-1 font-bold">원</span>
               </p>
               <p class="flex gap-1.5 items-center">
@@ -192,21 +195,23 @@
 
             <!-- heart, cart -->
             <div class="flex gap-3 items-start">
-              <button>
+              <button class="wish_list" data-wish="false">
                 <svg
-                  class="inline border border-gray-100 rounded-s p-2.5 h-14 w-14 text-gray-100 cursor-pointer"
+                  class="icon_heart inline border border-gray-100 rounded-s p-2.5 h-14 w-14 text-gray-100 cursor-pointer"
                   aria-hidden="true"
                 >
                   <use href="/public/icon/_sprite.svg#Heart"></use>
                 </svg>
+                <p class="sr-only">찜하기</p>
               </button>
-              <button>
+              <button disabled>
                 <svg
-                  class="inline border border-gray-100 rounded-s p-2.5 h-14 w-14 text-gray-100 cursor-pointer"
+                  class="inline border border-gray-100 rounded-s p-2.5 h-14 w-14 text-gray-100 cursor-no-drop"
                   aria-hidden="true"
                 >
                   <use href="/public/icon/_sprite.svg#Bell"></use>
                 </svg>
+                <p class="sr-only">재입고 알림 신청</p>
               </button>
               <button
                 class="text-white font-semibold bg-primary flex justify-center items-center rounded h-54pxr w-424pxr text-label-medium"
@@ -217,12 +222,38 @@
           </article>
         </div>
       </section>
-      <!-- 상세정보 탭 -->
-      <section></section>
+
+      <!-- 네비게이션 탭 -->
+      <div class="tabs flex justify-between w-[1050px] mx-auto mb-10">
+        <button class="tab is_active_tab" data-target="section_description">
+          상품설명
+        </button>
+        <button class="tab" data-target="section_details">상세정보</button>
+        <button class="tab" data-target="section_reviews">후기 ( 0 )</button>
+        <button class="tab" data-target="section_inquiry">문의</button>
+      </div>
+
+      <section
+        id="section_description"
+        class="w-[1050px] mt-0 mx-auto flex flex-col gap-24 mb-24"
+      >
+        <h2 class="sr-only">상품설명</h2>
+      </section>
+
+      <!-- 상세정보 -->
+      <section id="section_details" class="w-[1050px] my-0 mx-auto">
+        <h2 class="sr-only">상세정보</h2>
+      </section>
+
       <!-- 후기 -->
-      <section></section>
+      <section id="section_reviews" class="w-[1050px] my-0 mx-auto">
+        <h2 class="sr-only">상품후기</h2>
+      </section>
+
       <!-- 문의 -->
-      <section></section>
+      <section id="section_inquiry" class="w-[1050px] my-0 mx-auto">
+        <h2 class="sr-only">문의</h2>
+      </section>
     </main>
 
     <footer id="footer"></footer>
