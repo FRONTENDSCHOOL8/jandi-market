@@ -22,3 +22,7 @@
       sans-serif;
   }
 }
+
+.flex_center {
+  @apply flex justify-center items-center;
+}
