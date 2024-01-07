@@ -103,10 +103,41 @@
                       <span class="before_discount line-through text-[12px] text-gray-200 font-normal ml-1">5,600원</span>
                     </div>
                     <button class="product_delete">
+                      <span class="sr-only">목록 삭제하기</span>
                       <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30" >
                         <use href="/icon/_sprite.svg#Cancel"/>
                       </svg>
+                    </button>
+                  </li>
+                  <li>
+                    <fieldset class="item_select">
+                      <input type="checkbox" id="itemSelect"/>
+                      <label for="itemSelect" >목록 선택</label>
+                    </fieldset>
+                    <a href="#">
+                      <img src="https://via.placeholder.com/60x78" alt="풀무원 탱탱쫄면 (4개입)" />
+                    </a>
+                    <a href="#">
+                      <span>[풀무원] 탱탱쫄면 (4개입)</span>
+                    </a>
+                    <div class="option_count flex justify-between items-center w-84pxr h-30pxr box-content bg-white border border-solid border-gray-200">
+                      <button type="button" class="minus w-30pxr h-30pxr" style="background-image: url(/input/minus-disabled.svg);">
+                        <span class="sr-only">감소</span>
+                      </button>
+                      <span class="item_count">1</span>
+                      <button type="button"  class="plus w-30pxr h-30pxr" style="background-image: url(/input/plus.svg);">
+                        <span class="sr-only">증가</span>
+                      </button>
+                    </div>
+                    <div class="product_price font-bold">
+                      <span class="after_discount">4,980원</span>
+                      <span class="before_discount line-through text-[12px] text-gray-200 font-normal ml-1">5,600원</span>
+                    </div>
+                    <button class="product_delete">
                       <span class="sr-only">목록 삭제하기</span>
+                      <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30" >
+                        <use href="/icon/_sprite.svg#Cancel"/>
+                      </svg>
                     </button>
                   </li>
                 </ul>
@@ -151,10 +182,10 @@
                       <span class="before_discount line-through text-[12px] text-gray-200 font-normal ml-1">5,600원</span>
                     </div>
                     <button class="product_delete">
+                      <span class="sr-only">목록 삭제하기</span>
                       <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30" >
                         <use href="/icon/_sprite.svg#Cancel"/>
                       </svg>
-                      <span class="sr-only">목록 삭제하기</span>
                     </button>
                   </li>
                 </ul>
@@ -199,10 +230,10 @@
                       <span class="before_discount line-through text-[12px] text-gray-200 font-normal ml-1">5,600원</span>
                     </div>
                     <button class="product_delete">
+                      <span class="sr-only">목록 삭제하기</span>
                       <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30" >
                         <use href="/icon/_sprite.svg#Cancel"/>
                       </svg>
-                      <span class="sr-only">목록 삭제하기</span>
                     </button>
                   </li>
                 </ul>
@@ -226,7 +257,7 @@
         
         <!-- cart_side_area -->
         <!-- non-member -->
-        <aside class="cart_side_area">
+        <!-- <aside class="cart_side_area">
           <div class="cart_side">
             <div class="side_info">
               <div class="sum_price">
@@ -243,7 +274,9 @@
               </div>
               <div class="final_amount">
                 <span>결제예정금액</span>
-                <span>42,800 <span>원</span></span>
+                <div class="option_sum font-bold text-heading-xl">
+                  <span>4,980 <span>원</span></span>
+                </div>
               </div>
               <div class="reward text-label-small flex">
                 <span class="bg-accent-yellow px-2 text-white rounded-[1px]">적립</span>
@@ -256,6 +289,60 @@
             <ul>
               <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block before:bg-gray-500 before:rounded-full before:align-top before:mt-3">[주문완료] 상태일 경우에만 주문 취소 가능합니다.</li>
               <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block before:bg-gray-500 before:rounded-full before:align-top before:mt-3">[마이컬리 > 주문내역 상세페이지] 에서 직접 취소하실 수 있습니다.</li>
+            </ul>
+          </div>
+        </aside> -->
+        
+        
+        <!-- cart_side_area -->
+        <!-- member -->
+        <aside class="cart_side_area">
+          <div class="cart_side">
+            <div class="delivery_info">
+              <h3>
+                <svg role="img" class="delivery-icon" width="40" height="40" viewBox="0 0 40 40">
+                  <use href="/icon/_sprite.svg#Location"/>
+                </svg>
+                배송지
+              </h3>
+              <p>서울 중랑구 면목로 42길 11 (행운빌딩) 603호</p>
+              <span>샛별배송</span>
+              <button>배송지 변경</button>
+            </div>
+            <div class="side_info">
+              <h5 class="sr-only">결제금액</h5>
+              <div class="sum_price">
+                <span>상품금액</span>
+                <span>52,800 <span>원</span></span>
+              </div>
+              <div class="discount_minus_price">
+                <span>상품할인금액</span>
+                <span>-10,000 <span>원</span></span>
+              </div>
+              <div class="delivery_fee">
+                <span>배송비</span>
+                <span>0 <span>원</span></span>
+              </div>
+              <div class="final_amount">
+                <span>결제예정금액</span>
+                <div class="option_sum font-bold text-heading-xl">
+                  <span>4,980 <span>원</span></span>
+                </div>
+              </div>
+              <div class="reward text-label-small flex">
+                <span class="bg-accent-yellow px-2 text-white rounded-[1px]">적립</span>
+                <span class="ml-2" >구매 시 5원 적립</span>
+              </div>
+            </div>
+            <button class="order">
+              <a href="#">주문하기</a>
+            </button>
+            <ul>
+              <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block before:bg-gray-500 before:rounded-full before:align-top before:mt-3">쿠폰/적립금은 주문서에서 사용 가능합니다.</li>
+              <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block before:bg-gray-500 before:rounded-full before:align-top before:mt-3">[주문완료] 상태일 경우에만 주문 취소 가능합니다.</li>
+              <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block before:bg-gray-500 before:rounded-full before:align-top before:mt-3">[마이컬리 > 주문내역 상세페이지] 에서 직접 취소하실 수 있습니다.</li>
+              <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block before:bg-gray-500 before:rounded-full before:align-top before:mt-3">쿠폰, 적립금 사용 금액을 제외한 실 결제 금액 기준으로 최종 산정됩니다.</li>
+              <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block before:bg-gray-500 before:rounded-full before:align-top before:mt-3">상품별로 적립금 지급 기준이 다를 수 있습니다. (상품 상세 페이지에서 확인 가능합니다)</li>
             </ul>
           </div>
         </aside>
