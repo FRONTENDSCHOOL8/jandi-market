@@ -1,0 +1,7 @@
+.inquiry_btn {
+  @apply block h-10 leading-10 text-center border border-gray-200 border-solid w-140pxr;
+}
+
+.sns_icon {
+  @apply block w-full h-full bg-[url('/icon/sns_icon.png')] bg-cover;
+}
