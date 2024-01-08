@@ -38,78 +38,262 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script src="./main.js" type="module"></script>
   </head>
-  <body class="size-full flex flex-col justify-center items-center">
-    <!-- Slider main container -->
-    <div class="swiper w-[1920px] h-370pxr">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide size-full flex justify-center items-center">
-          <img
-            class="w-full object-cover"
-            src="./src/assets/banner05.png"
-            alt=""
-          />
+  <body>
+    <main class="flex flex-col items-center justify-center size-full">
+      <!-- Slider main container -->
+      <div class="swiper-container swiper w-[1920px] h-370pxr">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="flex items-center justify-center swiper-slide size-full">
+            <img
+              class="object-cover w-full"
+              src="./public/banner/banner05.png"
+              alt=""
+            />
+          </div>
+          <div class="flex items-center justify-center swiper-slide size-full">
+            <img
+              class="object-cover w-full"
+              src="./public/banner/banner02.png"
+              alt=""
+            />
+          </div>
+          <div class="flex items-center justify-center swiper-slide size-full">
+            <img
+              class="object-cover w-full"
+              src="./public/banner/banner03.png"
+              alt=""
+            />
+          </div>
+          <div class="flex items-center justify-center swiper-slide size-full">
+            <img
+              class="object-cover w-full"
+              src="./public/banner/banner01.png"
+              alt=""
+            />
+          </div>
+          ...
         </div>
-        <div class="swiper-slide size-full flex justify-center items-center">
-          <img
-            class="w-full object-cover"
-            src="./src/assets/banner02.png"
-            alt=""
-          />
-        </div>
-        <div class="swiper-slide size-full flex justify-center items-center">
-          <img
-            class="w-full object-cover"
-            src="./src/assets/banner03.png"
-            alt=""
-          />
-        </div>
-        <div class="swiper-slide size-full flex justify-center items-center">
-          <img
-            class="w-full object-cover"
-            src="./src/assets/banner01.png"
-            alt=""
-          />
-        </div>
-        ...
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev after:hidden bg-[/]"></div>
+        <div class="swiper-button-next after:hidden"></div>
       </div>
-      <!-- If we need pagination -->
-      <div class="swiper-pagination"></div>
 
-      <!-- If we need navigation buttons -->
-      <div class="swiper-button-prev after:hidden bg-[/]"></div>
-      <div class="swiper-button-next after:hidden"></div>
-    </div>
-
-    <section
-      class="border-4 w-[1050px] h-608pxr flex flex-col items-start py-40pxr gap-28pxr box-content"
-    >
-      <div
-        class="flex flex-col justify-center items-center w-[1042px] h-563pxr p-4pxr"
+      <section
+        class="w-[1050px] h-608pxr flex flex-col items-start py-40pxr gap-28pxr box-content"
       >
-        <h2 class="text-[28.43px] font-bold">이 상품 어때요?</h2>
-      </div>
-      <div class="w-[1050px] h-516pxr">
-        <ul class="list-none flex w-full justify-between items-start">
-          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
-            1
-          </li>
-          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
-            2
-          </li>
-          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
-            3
-          </li>
-          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
-            4
-          </li>
-        </ul>
-      </div>
-    </section>
+        <div
+          class="flex flex-col justify-center items-center w-[1042px] h-563pxr p-4pxr"
+        >
+          <h2 class="text-[28.43px] font-bold">이 상품 어때요?</h2>
+        </div>
+        <div class="swiper-container swiper2 w-[1050px] h-516pxr">
+          <ul
+            class="flex items-start justify-between w-full list-none swiper-wrapper"
+          >
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="상품디테일">
+                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="./public/banner/add cart button.png" alt="" />
+              </button>
+              <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+                >사장님도 포기한 맛</span
+              >
+              <h3 class="font-bold text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
 
-    <a class="block w-[1050px] h-139pxr my-40pxr" href="#">
-      <img class="w-full" src="/src/assets/banner03.png" alt="" />
-    </a>
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="상품디테일">
+                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="./public/banner/add cart button.png" alt="" />
+              </button>
+              <h3 class="font-normal text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="상품디테일">
+                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="./public/banner/add cart button.png" alt="" />
+              </button>
+              <h3 class="font-normal text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="상품디테일">
+                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="./public/banner/add cart button.png" alt="" />
+              </button>
+              <h3 class="font-normal text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="상품디테일">
+                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="./public/banner/add cart button.png" alt="" />
+              </button>
+              <h3 class="font-normal text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="상품디테일">
+                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="./public/banner/add cart button.png" alt="" />
+              </button>
+              <h3 class="font-normal text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="상품디테일">
+                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="./public/banner/add cart button.png" alt="" />
+              </button>
+              <h3 class="font-normal text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="상품디테일">
+                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="./public/banner/add cart button.png" alt="" />
+              </button>
+              <h3 class="font-normal text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+          </ul>
+          <!-- If we need pagination -->
+          <div class="swiper2-pagination"></div>
+
+          <!-- If we need navigation buttons -->
+          <div class="swiper-button-prev after:hidden bg-[/]"></div>
+          <div class="swiper-button-next after:hidden"></div>
+        </div>
+      </section>
+
+      <a class="block w-[1050px] h-139pxr my-40pxr" href="#">
+        <img src="./public/banner/line-banner 1.png" alt="" />
+      </a>
+    </main>
   </body>
 </html>
