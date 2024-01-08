@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<div class="header_box w-[1050px] mx-auto mt-3 pb-4">
+<div class="header_box w-[1050px] mx-auto mt-3">
   <!-- Header-Top -->
   <ul class="relative flex justify-end">
     <li class="text-primary">
@@ -25,10 +25,7 @@
       <a class="text-14pxr" href="#">로그인</a>
     </li>
     <li class="line">
-      <a class="text-14pxr" href="#"
-        >고객센터
-        <img src="/icon/down_header.png" alt="드롭다운" aria-hidden="true" />
-      </a>
+      <a class="text-14pxr cs" href="#">고객센터</a>
     </li>
   </ul>
 
@@ -102,13 +99,15 @@
   </div>
 
   <!-- Header-Bottom -->
-  <div class="relative flex items-center justify-between w-full pt-6 h-56pxr">
+</div>
+<div class="relative flex items-center justify-center w-full pt-6 z_index">
+  <div class="w-[1050px] flex justify-between items-center h-56pxr">
     <!-- Bottom-left -->
-    <div id="menu_list_box">
+    <div id="menu_list_box" class="h-full">
       <button
         type="button"
         id="menu_button"
-        class="flex items-center h-full gap-3"
+        class="flex items-center h-full gap-3 hover:text-primary"
       >
         <svg role="button" width="16" height="14" viewBox="0 0 16 14">
           <use href="/icon/_sprite.svg#Hamburger" />
@@ -116,7 +115,7 @@
         카테고리
       </button>
       <ul
-        class="absolute bg-white border menu_hidden top-9 w-247pxr"
+        class="absolute bg-white border menu_hidden top-20 w-247pxr"
         id="menu_list"
       >
         <li class="focus_menu">
@@ -341,7 +340,6 @@
         </li>
       </ul>
     </div>
-
     <!-- Bottom-center -->
     <ul class="flex ml-24">
       <li class="product_nav"><a href="#">신상품</a></li>
@@ -353,7 +351,6 @@
         <a href="#">특가/혜택</a>
       </li>
     </ul>
-
     <!-- Bottom-right -->
     <a
       class="px-2 py-1 text-sm font-normal text-gray-500 border border-gray-300 rounded-xl"

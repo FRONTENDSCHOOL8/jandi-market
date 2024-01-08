@@ -7,7 +7,7 @@
 }
 
 .product_nav {
-  @apply flex justify-center w-150pxr text-center leading-5 hover:cursor-pointer hover:underline hover:text-primary;
+  @apply flex justify-center leading-5 text-center w-150pxr hover:cursor-pointer hover:underline hover:text-primary;
 }
 
 .menu_hidden {
@@ -16,4 +16,16 @@
 
 .focus_menu {
   @apply w-full px-3 py-2 hover:bg-gray-50 hover:text-primary;
+}
+
+.z_index {
+  z-index: 99999999;
+}
+
+.cs::after {
+  content: url('/icon/down_header.png');
+  width: 0.5rem;
+  height: 0.3125rem;
+  margin-left: 0.3125rem;
+  margin-bottom: 0.3125rem;
 }
