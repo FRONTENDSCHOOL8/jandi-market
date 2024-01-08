@@ -185,7 +185,7 @@
               </p>
               <p class="flex gap-1.5 items-center">
                 <span
-                  class="border-accent-yellow py-1 px-2 bg-accent-yellow rounded-xl text-white"
+                  class="border-accent-yellow px-2 bg-accent-yellow text-white"
                 >
                   적립
                 </span>
@@ -224,13 +224,13 @@
       </section>
 
       <!-- 네비게이션 탭 -->
-      <div class="tabs flex justify-between w-[1050px] mx-auto mb-10">
-        <button class="tab is_active_tab" data-target="section_description">
-          상품설명
-        </button>
-        <button class="tab" data-target="section_details">상세정보</button>
-        <button class="tab" data-target="section_reviews">후기 ( 0 )</button>
-        <button class="tab" data-target="section_inquiry">문의</button>
+      <div
+        class="tabs flex justify-between w-[1050px] mx-auto mb-10 mt-0 sticky top-0"
+      >
+        <a class="tab is_active_tab" href="#section_description">상품설명</a>
+        <a class="tab" href="#section_details">상세정보</a>
+        <a class="tab" href="#section_reviews">후기 ( 0 )</a>
+        <a class="tab" href="#section_inquiry">문의</a>
       </div>
 
       <section
@@ -283,7 +283,7 @@
       </section>
 
       <!-- 상세정보 -->
-      <section id="section_details" class="w-[1050px] my-0 mx-auto">
+      <section id="section_details" class="w1050">
         <h2 class="sr-only">상세정보</h2>
 
         <img
@@ -379,13 +379,279 @@
       </section>
 
       <!-- 후기 -->
-      <section id="section_reviews" class="w-[1050px] my-0 mx-auto">
-        <h2 class="sr-only">상품후기</h2>
+      <section id="section_reviews" class="w1050 flex flex-col gap-14">
+        <div class="flex justify-between">
+          <div>
+            <h2 class="text-heading-xl font-bold leading-[140%] pb-6">
+              상품후기
+            </h2>
+            <p class="text-content">글후기 50원 적립금 혜택이 있어요.</p>
+            <ul
+              class="list-disc text-label-small font-semibold text-gray-500 ml-5"
+            >
+              <li>
+                퍼플, 더퍼플은 2배 적립 (100원) / 주간 베스트 후기로 선정 시
+              </li>
+              <li>
+                5,000원 추가 적립 후기 작성은 배송완료일로부터 30일 이내
+                가능합니다.
+              </li>
+              <li>
+                작성하신 후기는 확인 후 적립금이 지급됩니다. (영업일 기준 평균
+                1~2일 소요)
+              </li>
+            </ul>
+          </div>
+          <button class="bg-primary text-white w-155pxr h-44pxr rounded">
+            후기 작성하기
+          </button>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <div class="flex justify-between font-semibold">
+            <span class="text-content text-label-small">총 2개</span>
+            <div class="flex items-center gap-2">
+              <button class="text-content">추천순</button>
+              <span class="bg-gray-300 w-1pxr h-10pxr"></span>
+              <button class="text-gray-300">최근 등록순</button>
+            </div>
+          </div>
+
+          <div class="border-t border-t-black">
+            <div class="border-b border-b-gray-100 px-1 py-5">
+              <div
+                class="flex gap-2 text-label-medium font-semibold items-center cursor-pointer"
+              >
+                <span
+                  class="px-2 bg-gray-100 rounded-[1px] text-label-small font-semibold text-content"
+                  >공지</span
+                >금주의 베스트 후기 안내
+              </div>
+            </div>
+            <div class="border-b border-b-gray-100 px-1 py-5">
+              <div
+                class="flex gap-2 text-label-medium font-semibold items-center cursor-pointer"
+              >
+                <span
+                  class="px-2 bg-gray-100 rounded-[1px] text-label-small font-semibold text-content"
+                  >공지</span
+                >상품 후기 적립금 정책 안내
+              </div>
+            </div>
+            <div class="border-b border-b-gray-100 flex gap-82pxr p-5">
+              <div
+                class="py-17pxr text-left text-gray-400 font-semibold text-label-small align-top"
+              >
+                김*진
+              </div>
+              <div
+                class="py-17pxr text-left text-paragraph-small flex flex-col gap-5"
+              >
+                <h4 class="text-gray-400 font-semibold">
+                  [풀무원] 탱탱쫄면(4개입)
+                </h4>
+                <p class="leading-[160%]">
+                  너무 맛있어여~<br />
+                  면이 쫄깃하고 양념도 짱맛나요!!
+                </p>
+                <p class="text-gray-400 font-semibold">2022.11.10</p>
+              </div>
+            </div>
+            <div class="border-b border-b-gray-100 flex gap-82pxr p-5">
+              <div
+                class="py-17pxr text-left text-gray-400 font-semibold text-label-small align-top"
+              >
+                김*진
+              </div>
+              <div
+                class="py-17pxr text-left text-paragraph-small flex flex-col gap-5"
+              >
+                <h4 class="text-gray-400 font-semibold">
+                  [풀무원] 탱탱쫄면(4개입)
+                </h4>
+                <p class="leading-[160%]">
+                  너무 맛있어여~<br />
+                  면이 쫄깃하고 양념도 짱맛나요!!
+                </p>
+                <p class="text-gray-400 font-semibold">2022.11.10</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 mx-auto">
+            <button
+              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
+              data-arrow=""
+            >
+              <svg
+                class="text-gray-100 cursor-pointer"
+                width="36"
+                height="36"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+              >
+                <use href="/public/icon/_sprite.svg#Left"></use>
+              </svg>
+              <span class="sr-only">이전 페이지</span>
+            </button>
+            <button
+              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
+              data-arrow=""
+            >
+              <svg
+                class="cursor-pointer text-gray-500"
+                width="36"
+                height="36"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+              >
+                <use href="/public/icon/_sprite.svg#Right"></use>
+              </svg>
+              <span class="sr-only">다음 페이지</span>
+            </button>
+          </div>
+        </div>
       </section>
 
       <!-- 문의 -->
-      <section id="section_inquiry" class="w-[1050px] my-0 mx-auto">
-        <h2 class="sr-only">문의</h2>
+      <section id="section_inquiry" class="w1050">
+        <div class="flex flex-col gap-4">
+          <div class="flex justify-between mt-72pxr">
+            <div>
+              <h2 class="text-heading-xl font-bold leading-[140%] pb-6">
+                상품문의
+              </h2>
+              <ul
+                class="list-disc text-label-small font-semibold text-gray-500 ml-5"
+              >
+                <li>
+                  상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과
+                  다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.
+                </li>
+                <li>
+                  배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리
+                  내 1:1 문의에 남겨주세요.
+                </li>
+              </ul>
+            </div>
+            <button class="bg-primary text-white w-155pxr h-44pxr rounded">
+              문의하기
+            </button>
+          </div>
+
+          <!-- 테이블 시작 -->
+          <div class="border-t-2 border-t-black">
+            <header class="border-b border-b-black flex justify-between">
+              <h2 class="py-17pxr w-742pxr font-semibold text-center">제목</h2>
+              <h3 class="py-17pxr w-100pxr font-semibold text-center">
+                작성자
+              </h3>
+              <h3 class="py-17pxr w-100pxr font-semibold text-center">
+                작성일
+              </h3>
+              <h3 class="py-17pxr w-100pxr font-semibold text-center">
+                답변상태
+              </h3>
+            </header>
+            <!-- 공지 -->
+            <div class="border-b border-b-gray-100 font-semibold flex">
+              <div
+                class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+              >
+                <span
+                  class="px-2 text-label-small text-content bg-gray-100 rounded-[1px]"
+                >
+                  공지
+                </span>
+                판매(일시)중단 제품 안내 (22.11.10 업데이트)
+              </div>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                칼리
+              </div>
+              <time
+                datetime="2017.02.01"
+                class="text-gray-400 text-center py-17pxr w-100pxr"
+              >
+                2017.02.01
+              </time>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">-</div>
+            </div>
+            <!-- 유저글 -->
+            <div class="border-b border-b-gray-100 font-semibold flex">
+              <div
+                class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+              >
+                팩이 터져서 왔어요
+              </div>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                김*식
+              </div>
+              <time
+                datetime="2022.11.11"
+                class="text-gray-400 text-center py-17pxr w-100pxr"
+              >
+                2022.11.11
+              </time>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                답변대기
+              </div>
+            </div>
+            <!-- 비밀글 -->
+            <div class="border-b border-b-gray-100 font-semibold flex">
+              <div
+                class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+              >
+                비밀글입니다.
+              </div>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                김*식
+              </div>
+              <time
+                datetime="2022.11.11"
+                class="text-gray-400 text-center py-17pxr w-100pxr"
+              >
+                2022.11.11
+              </time>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                답변대기
+              </div>
+            </div>
+          </div>
+
+          <!-- 버튼 -->
+          <div class="flex items-start gap-4 mx-auto">
+            <button
+              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
+              data-arrow=""
+            >
+              <svg
+                class="text-gray-100 cursor-pointer"
+                width="36"
+                height="36"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+              >
+                <use href="/public/icon/_sprite.svg#Left"></use>
+              </svg>
+              <span class="sr-only">이전 페이지</span>
+            </button>
+            <button
+              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
+              data-arrow=""
+            >
+              <svg
+                class="cursor-pointer text-gray-500"
+                width="36"
+                height="36"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+              >
+                <use href="/public/icon/_sprite.svg#Right"></use>
+              </svg>
+              <span class="sr-only">다음 페이지</span>
+            </button>
+          </div>
+        </div>
       </section>
     </main>
 

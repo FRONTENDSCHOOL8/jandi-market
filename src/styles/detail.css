@@ -2,5 +2,5 @@
   @apply py-15pxr border-gray-300 border bg-gray-50 w-full font-semibold;
 }
 .is_active_tab {
-  @apply bg-white border-gray-100 border-b-0 text-primary;
+  @apply bg-white border-gray-100 border-b border-b-white text-primary;
 }
