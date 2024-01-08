@@ -11,7 +11,7 @@ fetch('/src/components/header/header.html')
   });
 
 // footer.html 파일을 가져와서 footer 요소에 삽입
-fetch('/components/footer.html')
+fetch('/src/components/footer/footer.html')
   .then((response) => response.text())
   .then(async (html) => {
     const footerElement = document.querySelector('#footer');
