@@ -53,25 +53,25 @@
           <img src="https://via.placeholder.com/400x514" alt="상품명" />
           <!-- product_detail -->
           <article class="text-label-small">
-            <div class="mb-5 flex flex-col gap-4">
-              <span class="text-heading-large font-bold leading-[140%]"
+            <div class="mb-5 flex_column gap-4">
+              <span class="text-heading-large font-bold leading_140"
                 >샛별배송</span
               >
               <!-- product_header -->
-              <div class="flex flex-col gap-2">
+              <div class="flex_column gap-2">
                 <h2 class="text-label-xl font-semibold">상품명</h2>
                 <p class="text-paragraph-medium text-gray-400">상품요약설명</p>
               </div>
               <!-- price -->
-              <div>
+              <div class="font-semibold">
                 <!-- discount -->
-                <strong class="text-label-xl font-semibold">
+                <strong class="text-label-xl">
                   <span class="text-red-500">25%</span>
                   <span>14,900</span>
                   <span class="font-bold text-heading-medium">원</span>
                 </strong>
                 <!-- regular price -->
-                <p class="text-heading-medium text-gray-400 font-semibold">
+                <p class="text-heading-medium text-gray-400">
                   <s>19,900원</s>
                 </p>
               </div>
@@ -87,7 +87,7 @@
               <dl
                 class="w-560pxr divide-y divide-gray-200 text-gray-500 font-semibold"
               >
-                <div class="flex py-4">
+                <div class="info_flex">
                   <dt class="min-w-32">배송</dt>
                   <dd>
                     <p>샛별배송</p>
@@ -99,13 +99,13 @@
                     </p>
                   </dd>
                 </div>
-                <div class="flex py-4">
+                <div class="info_flex">
                   <dt class="min-w-32">판매자</dt>
                   <dd>
                     <p>칼리</p>
                   </dd>
                 </div>
-                <div class="flex py-4">
+                <div class="info_flex">
                   <dt class="min-w-32">포장타입</dt>
                   <dd>
                     <p>상온 (종이포장)</p>
@@ -114,25 +114,25 @@
                     </p>
                   </dd>
                 </div>
-                <div class="flex py-4">
+                <div class="info_flex">
                   <dt class="min-w-32">판매단위</dt>
                   <dd>
                     <p>1봉</p>
                   </dd>
                 </div>
-                <div class="flex py-4">
+                <div class="info_flex">
                   <dt class="min-w-32">중량/용량</dt>
                   <dd>
                     <p>123g*4봉</p>
                   </dd>
                 </div>
-                <div class="flex py-4">
+                <div class="info_flex">
                   <dt class="min-w-32">원산지</dt>
                   <dd>
                     <p>상세페이지 별도표기</p>
                   </dd>
                 </div>
-                <div class="flex py-4">
+                <div class="info_flex">
                   <dt class="min-w-32">알레르기정보</dt>
                   <dd class="font-normal">
                     <p>-대두, 밀, 쇠고기 함유</p>
@@ -144,7 +144,7 @@
                     </p>
                   </dd>
                 </div>
-                <div class="flex py-4">
+                <div class="info_flex">
                   <dt class="min-w-32">상품선택</dt>
                   <dd class="border border-gray-200 p-3 w-432pxr">
                     <p class="mb-3">[강남면옥] 소갈비찜</p>
@@ -176,7 +176,7 @@
               </dl>
             </div>
 
-            <div class="my-7 flex flex-col gap-2 items-end">
+            <div class="my-7 flex_column gap-2 items-end">
               <p class="text-heading-medium flex items-center font-semibold">
                 총 상품 금액 :
                 <strong class="total_price pl-17pxr text-label-xl"
@@ -198,7 +198,7 @@
             <div class="flex gap-3 items-start">
               <button class="wish_list" data-wish="false">
                 <svg
-                  class="icon_heart inline border border-gray-100 rounded-s p-2.5 h-14 w-14 text-gray-100 cursor-pointer"
+                  class="icon_heart icon_box_gray h-14 w-14 text-gray-100 cursor-pointer"
                   aria-hidden="true"
                 >
                   <use href="/public/icon/_sprite.svg#Heart"></use>
@@ -207,7 +207,7 @@
               </button>
               <button disabled>
                 <svg
-                  class="inline border border-gray-100 rounded-s p-2.5 h-14 w-14 text-gray-100 cursor-no-drop"
+                  class="icon_box_gray h-14 w-14 text-gray-100 cursor-no-drop"
                   aria-hidden="true"
                 >
                   <use href="/public/icon/_sprite.svg#Bell"></use>
@@ -215,7 +215,7 @@
                 <span class="sr-only">재입고 알림 신청</span>
               </button>
               <button
-                class="text-white font-semibold bg-primary flex justify-center items-center rounded h-54pxr w-424pxr text-label-medium"
+                class="button_normal h-54pxr w-424pxr font-semibold text-label-medium"
               >
                 장바구니 담기
               </button>
@@ -238,7 +238,7 @@
 
       <section
         id="section_description"
-        class="w-[1050px] mt-0 mx-auto flex flex-col gap-24 mb-24"
+        class="w-[1050px] mt-0 mx-auto flex_column gap-24 mb-24"
       >
         <h2 class="sr-only">상품설명</h2>
         <div>
@@ -252,12 +252,12 @@
             <p class="text-label-xl font-semibold">
               튀기지 않아 부담 없는 매콤함
             </p>
-            <h3 class="text-heading-xxxl font-bold leading-[140%]">
+            <h3 class="text-heading-xxxl font-bold leading_140">
               [풀무원] 탱탱쫄면
             </h3>
           </div>
           <p
-            class="pt-7 flex items-start self-stretch border-t border-t-gray-100 leading-[160%]"
+            class="pt-7 flex items-start self-stretch border-t border-t-gray-100 leading_160"
           >
             쫄면의 진가는 매콤새콤한 양념과 탱탱한 면발에서 찾을 수 있지요.
             풀무원은 이 맛을 더 부담 없이 즐길 수 있도록 튀기지 않고 만든
@@ -270,10 +270,10 @@
         </div>
 
         <!-- karly's Check Point -->
-        <div class="flex flex-col gap-68pxr">
+        <div class="flex_column gap-68pxr">
           <div class="flex items-center gap-4">
             <div class="flex-grow h-px bg-gray-100"></div>
-            <h3 class="text-heading-xxxl font-bold leading-[140%]">
+            <h3 class="text-heading-xxxl font-bold leading_140">
               Karly`s Check Point
             </h3>
             <div class="flex-grow h-px bg-gray-100"></div>
@@ -296,19 +296,17 @@
 
         <!-- why karly -->
         <article
-          class="border-t border-t-gray-100 pt-72pxr pb-84pxr flex flex-col gap-35pxr items-center"
+          class="border-t border-t-gray-100 pt-72pxr pb-84pxr flex_column gap-35pxr items-center"
         >
-          <h3 class="text-heading-xl font-bold leading-[140%]">WHY KARLY</h3>
+          <h3 class="text-heading-xl font-bold leading_140">WHY KARLY</h3>
 
-          <div class="flex flex-col">
+          <div class="flex_column">
             <div class="flex justify-center">
-              <article class="mt-14 w-[315px] flex flex-col gap-8 items-center">
-                <svg class="h-10 w-10" aria-hidden="true">
+              <article class="why_article">
+                <svg class="why_article_img_size" aria-hidden="true">
                   <use href="/public/icon/_sprite.svg#Committee"></use>
                 </svg>
-                <h4 class="text-primary text-label-large font-semibold">
-                  깐깐한 상품위원회
-                </h4>
+                <h4 class="why_article_title">깐깐한 상품위원회</h4>
                 <p class="text-center">
                   나와 내 가족이 먹고 쓸 상품을 고르는<br />
                   마음으로 매주 상품을 직접 먹어보고,<br />
@@ -316,13 +314,11 @@
                   기준을 통과한 상품만을 판매합니다.
                 </p>
               </article>
-              <article class="mt-14 w-[315px] flex flex-col gap-8 items-center">
-                <svg class="h-10 w-10" aria-hidden="true">
+              <article class="why_article">
+                <svg class="why_article_img_size" aria-hidden="true">
                   <use href="/public/icon/_sprite.svg#Different"></use>
                 </svg>
-                <h4 class="text-primary text-label-large font-semibold">
-                  차별화된 Karly Only 상품
-                </h4>
+                <h4 class="why_article_title">차별화된 Karly Only 상품</h4>
                 <p class="text-center">
                   전국 각지와 해외의 훌륭한 생산자가<br />
                   믿고 선택하는 파트너, 마켓칼리.<br />
@@ -330,13 +326,11 @@
                   Karly Only 상품을 믿고 만나보세요.
                 </p>
               </article>
-              <article class="mt-14 w-[315px] flex flex-col gap-8 items-center">
-                <svg class="h-10 w-10" aria-hidden="true">
+              <article class="why_article">
+                <svg class="why_article_img_size" aria-hidden="true">
                   <use href="/public/icon/_sprite.svg#Delivery"></use>
                 </svg>
-                <h4 class="text-primary text-label-large font-semibold">
-                  신선한 풀콜드체인 배송
-                </h4>
+                <h4 class="why_article_title">신선한 풀콜드체인 배송</h4>
                 <p class="text-center">
                   온라인 업계 최초로 산지에서 문 앞까지<br />
                   상온, 냉장, 냉동 상품을 분리 포장 후<br />
@@ -346,11 +340,11 @@
               </article>
             </div>
             <div class="flex justify-center gap-4">
-              <article class="mt-14 w-[315px] flex flex-col gap-8 items-center">
-                <svg class="h-10 w-10" aria-hidden="true">
+              <article class="why_article">
+                <svg class="why_article_img_size" aria-hidden="true">
                   <use href="/public/icon/_sprite.svg#Price"></use>
                 </svg>
-                <h4 class="text-primary text-label-large font-semibold">
+                <h4 class="why_article_title">
                   고객, 생산자를 위한 최선의 가격
                 </h4>
                 <p class="text-center">
@@ -361,11 +355,11 @@
                   정기 조정합니다.
                 </p>
               </article>
-              <article class="mt-14 w-[315px] flex flex-col gap-8 items-center">
-                <svg class="h-10 w-10" aria-hidden="true">
+              <article class="why_article">
+                <svg class="why_article_img_size" aria-hidden="true">
                   <use href="/public/icon/_sprite.svg#Enviroment"></use>
                 </svg>
-                <h4 class="text-primary text-label-large font-semibold">
+                <h4 class="why_article_title">
                   환경을 생각하는 지속 가능한 유통
                 </h4>
                 <p class="text-center">
@@ -382,12 +376,10 @@
       </section>
 
       <!-- 후기 -->
-      <section id="section_reviews" class="w1050 flex flex-col gap-14">
+      <section id="section_reviews" class="w1050 flex_column gap-14">
         <div class="flex justify-between">
           <div>
-            <h2 class="text-heading-xl font-bold leading-[140%] pb-6">
-              상품후기
-            </h2>
+            <h2 class="text-heading-xl font-bold leading_140 pb-6">상품후기</h2>
             <p class="text-content">글후기 50원 적립금 혜택이 있어요.</p>
             <ul
               class="list-disc text-label-small font-semibold text-gray-500 ml-5"
@@ -405,12 +397,10 @@
               </li>
             </ul>
           </div>
-          <button class="bg-primary text-white w-155pxr h-44pxr rounded">
-            후기 작성하기
-          </button>
+          <button class="button_normal w-155pxr h-44pxr">후기 작성하기</button>
         </div>
 
-        <div class="flex flex-col gap-4">
+        <div class="flex_column gap-4">
           <div class="flex justify-between font-semibold">
             <span class="text-content text-label-small">총 2개</span>
             <div class="flex items-center gap-2">
@@ -424,16 +414,13 @@
           <div class="border-t border-t-black">
             <!-- 공지 -->
             <div>
-              <h2 class="review_title py-17pxr px-5 border-b border-b-gray-100">
+              <h2 class="review_title review_table_subject">
                 <button
-                  class="review_toggle flex gap-2 text-label-medium font-semibold items-center cursor-pointer"
+                  class="review_toggle review_table_subject_toggle"
                   aria-expanded="false"
                   aria-controls="review_content"
                 >
-                  <span
-                    class="px-2 bg-gray-100 rounded-[1px] text-label-small font-semibold text-content"
-                    >공지</span
-                  >금주의 베스트 후기 안내
+                  <span class="notice_badge">공지</span>금주의 베스트 후기 안내
                 </button>
               </h2>
               <div
@@ -478,14 +465,10 @@
             </div>
 
             <div>
-              <h2 class="review_title py-17pxr px-5 border-b border-b-gray-100">
-                <button
-                  class="review_toggle flex gap-2 text-label-medium font-semibold items-center cursor-pointer"
-                >
-                  <span
-                    class="px-2 bg-gray-100 rounded-[1px] text-label-small font-semibold text-content"
-                    >공지</span
-                  >상품 후기 적립금 정책 안내
+              <h2 class="review_title review_table_subject">
+                <button class="review_toggle review_table_subject_toggle">
+                  <span class="notice_badge">공지</span>상품 후기 적립금 정책
+                  안내
                 </button>
               </h2>
               <div
@@ -530,7 +513,7 @@
 
             <!-- 글없을때 -->
             <!-- <div
-              class="border-b border-b-gray-100 flex flex-col p-5 gap-5 items-center"
+              class="border-b border-b-gray-100 flex_column p-5 gap-5 items-center"
             >
               <svg
                 class="text-gray-100"
@@ -543,41 +526,26 @@
               <p>따뜻한 첫 후기를 기다리고 있어요.</p>
             </div> -->
             <!-- 후기글 -->
-            <div class="border-b border-b-gray-100 flex gap-82pxr p-5">
-              <div
-                class="py-17pxr text-left text-gray-400 font-semibold text-label-small flex items-top gap-2"
-              >
-                <span
-                  class="bg-secondary rounded-[1px] px-2 text-white border border-secondary self-start"
-                  >베스트</span
-                >
-                <span
-                  class="text-primary rounded-[1px] px-2 border border-primary self-start"
-                  >퍼플</span
-                >
+            <div class="review_user_post_structure">
+              <div class="review_member">
+                <span class="best_badge">베스트</span>
+                <span class="purple_badge">퍼플</span>
                 <span class="self-start">김*진</span>
               </div>
-              <div
-                class="py-17pxr text-left text-paragraph-small flex flex-col gap-5"
-              >
-                <h4 class="text-gray-400 font-semibold">
-                  [풀무원] 탱탱쫄면(4개입)
-                </h4>
-                <p class="leading-[160%]">
+              <div class="review_user_post_contents">
+                <h4 class="text_gray_semibold">[풀무원] 탱탱쫄면(4개입)</h4>
+                <p class="leading_160">
                   너무 맛있어여~<br />
                   면이 쫄깃하고 양념도 짱맛나요!!
                 </p>
-                <p class="text-gray-400 font-semibold">2022.11.10</p>
+                <p class="text_gray_semibold">2022.11.10</p>
               </div>
             </div>
           </div>
           <!-- /게시글 -->
 
           <div class="flex items-start gap-4 mx-auto">
-            <button
-              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
-              data-arrow=""
-            >
+            <button class="w-14 h-14 icon_box_gray" data-arrow="">
               <svg
                 class="text-gray-100 cursor-pointer"
                 width="36"
@@ -589,10 +557,7 @@
               </svg>
               <span class="sr-only">이전 페이지</span>
             </button>
-            <button
-              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
-              data-arrow=""
-            >
+            <button class="w-14 h-14 icon_box_gray" data-arrow="">
               <svg
                 class="cursor-pointer text-gray-500"
                 width="36"
@@ -610,10 +575,10 @@
 
       <!-- 문의 -->
       <section id="section_inquiry" class="w1050">
-        <div class="flex flex-col gap-4">
+        <div class="flex_column gap-4">
           <div class="flex justify-between mt-72pxr">
             <div>
-              <h2 class="text-heading-xl font-bold leading-[140%] pb-6">
+              <h2 class="text-heading-xl font-bold leading_140 pb-6">
                 상품문의
               </h2>
               <ul
@@ -629,101 +594,68 @@
                 </li>
               </ul>
             </div>
-            <button class="bg-primary text-white w-155pxr h-44pxr rounded">
-              문의하기
-            </button>
+            <button class="button_normal w-155pxr h-44pxr">문의하기</button>
           </div>
 
           <!-- 시작 -->
           <div class="border-t-2 border-t-black">
             <!-- title -->
             <header class="border-b border-b-black flex justify-between">
-              <h2 class="py-17pxr w-742pxr font-semibold text-center">제목</h2>
-              <h3 class="py-17pxr w-100pxr font-semibold text-center">
-                작성자
-              </h3>
-              <h3 class="py-17pxr w-100pxr font-semibold text-center">
-                작성일
-              </h3>
-              <h3 class="py-17pxr w-100pxr font-semibold text-center">
-                답변상태
-              </h3>
+              <h2 class="inquiry_table_group_title w-742pxr">제목</h2>
+              <h3 class="inquiry_table_group_title w-100pxr">작성자</h3>
+              <h3 class="inquiry_table_group_title w-100pxr">작성일</h3>
+              <h3 class="inquiry_table_group_title w-100pxr">답변상태</h3>
             </header>
 
             <!-- 문의글 -->
             <div>
               <div class="border-b border-b-gray-100 font-semibold flex">
-                <div
-                  class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
-                >
-                  <span
-                    class="px-2 text-label-small text-content bg-gray-100 rounded-[1px]"
-                  >
-                    공지
-                  </span>
+                <div class="inquiry_table_subject">
+                  <span class="notice_badge"> 공지 </span>
                   판매(일시)중단 제품 안내 (22.11.10 업데이트)
                 </div>
-                <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                  칼리
-                </div>
-                <time
-                  datetime="2017.02.01"
-                  class="text-gray-400 text-center py-17pxr w-100pxr"
-                >
+                <div class="table_width100">칼리</div>
+                <time datetime="2017.02.01" class="table_width100">
                   2017.02.01
                 </time>
-                <div class="text-gray-400 text-center py-17pxr w-100pxr">-</div>
+                <div class="table_width100">-</div>
               </div>
             </div>
+
             <!-- 유저글 -->
             <div>
               <!-- 제목 -->
               <div class="border-b border-b-gray-100 font-semibold flex">
-                <div
-                  class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
-                >
-                  팩이 터져서 왔어요
-                </div>
-                <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                  김*식
-                </div>
-                <time
-                  datetime="2022.11.11"
-                  class="text-gray-400 text-center py-17pxr w-100pxr"
-                >
+                <div class="inquiry_table_subject">팩이 터져서 왔어요</div>
+                <div class="table_width100">김*식</div>
+                <time datetime="2022.11.11" class="table_width100">
                   2022.11.11
                 </time>
-                <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                  답변대기
-                </div>
+                <div class="table_width100">답변대기</div>
               </div>
 
               <!-- 내용 -->
-              <div
-                class="p-5 bg-gray-50 border-b border-b-gray-100 flex flex-col gap-10 items-start"
-              >
+              <div class="inquiry_user_contents">
                 <!-- question -->
-                <div class="question flex gap-3 items-start self-stretch">
+                <div class="question inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
                       <use href="/public/icon/_sprite.svg#Question"></use>
                     </svg>
                   </span>
-                  <p class="text-label-small text-content font-semibold">
+                  <p class="inquiry_contents_question">
                     스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요<br />
                     환불 요청합니다.
                   </p>
                 </div>
                 <!-- answer -->
-                <div class="answer flex gap-3 items-start self-stretch">
+                <div class="answer inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
                       <use href="/public/icon/_sprite.svg#Answer"></use>
                     </svg>
                   </span>
-                  <div
-                    class="text-label-small font-semibold flex flex-col items-start gap-3"
-                  >
+                  <div class="inquiry_contents_answer">
                     <p class="text-content">
                       안녕하세요. 칼리입니다.<br />
                       믿고 찾아주신 상품에 불편을 드려 정말 죄송합니다.<br />
@@ -753,23 +685,12 @@
             <div>
               <!-- 제목 -->
               <div class="border-b border-b-gray-100 font-semibold flex">
-                <div
-                  class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
-                >
-                  팩이 터져서 왔어요2
-                </div>
-                <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                  김*식
-                </div>
-                <time
-                  datetime="2022.11.11"
-                  class="text-gray-400 text-center py-17pxr w-100pxr"
-                >
+                <div class="inquiry_table_subject">팩이 터져서 왔어요2</div>
+                <div class="table_width100">김*식</div>
+                <time datetime="2022.11.11" class="table_width100">
                   2022.11.11
                 </time>
-                <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                  답변대기
-                </div>
+                <div class="table_width100">답변대기</div>
               </div>
 
               <!-- 내용 -->
@@ -778,27 +699,25 @@
                 hidden
               >
                 <!-- question -->
-                <div class="question flex gap-3 items-start self-stretch">
+                <div class="question inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
                       <use href="/public/icon/_sprite.svg#Question"></use>
                     </svg>
                   </span>
-                  <p class="text-label-small text-content font-semibold">
+                  <p class="inquiry_contents_question">
                     스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요<br />
                     환불 요청합니다.
                   </p>
                 </div>
                 <!-- answer -->
-                <div class="answer flex gap-3 items-start self-stretch">
+                <div class="answer inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
                       <use href="/public/icon/_sprite.svg#Answer"></use>
                     </svg>
                   </span>
-                  <div
-                    class="text-label-small font-semibold flex flex-col items-start gap-3"
-                  >
+                  <div class="inquiry_contents_answer">
                     <p class="text-content">
                       안녕하세요. 칼리입니다.<br />
                       믿고 찾아주신 상품에 불편을 드려 정말 죄송합니다.<br />
@@ -827,9 +746,7 @@
             <!-- 비밀글 -->
             <div>
               <div class="border-b border-b-gray-100 font-semibold flex">
-                <div
-                  class="text-gray-400 px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
-                >
+                <div class="text-gray-400 inquiry_table_subject">
                   비밀글입니다.
                   <span>
                     <svg width="12" height="14" aria-hidden="true">
@@ -837,13 +754,8 @@
                     </svg>
                   </span>
                 </div>
-                <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                  김*식
-                </div>
-                <time
-                  datetime="2022.11.11"
-                  class="text-gray-400 text-center py-17pxr w-100pxr"
-                >
+                <div class="table_width100">김*식</div>
+                <time datetime="2022.11.11" class="table_width100">
                   2022.11.11
                 </time>
                 <!-- 답변완료 -->
@@ -856,10 +768,7 @@
 
           <!-- 버튼 -->
           <div class="flex items-start gap-4 mx-auto">
-            <button
-              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
-              data-arrow=""
-            >
+            <button class="w-14 h-14 icon_box_gray" data-arrow="">
               <svg
                 class="text-gray-100 cursor-pointer"
                 width="36"
@@ -871,10 +780,7 @@
               </svg>
               <span class="sr-only">이전 페이지</span>
             </button>
-            <button
-              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
-              data-arrow=""
-            >
+            <button class="w-14 h-14 icon_box_gray" data-arrow="">
               <svg
                 class="cursor-pointer text-gray-500"
                 width="36"
