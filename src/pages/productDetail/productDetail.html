@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- 상품명 받아오기 -->
+    <title>잔디 - 잔디마켓</title>
+
+    <meta
+      name="description"
+      content="Better Life for All. 건강한 식재료부터 믿을 수 있는 뷰티, 라이프스타일 상품까지. 나와 내 가족이 사고 싶은 상품을 판매합니다. 내일 아침 문 앞에서 만나요!"
+    />
+    <meta
+      name="keywords"
+      content="다이어트, 식단, 닭가슴살, 요리, 치아바타, 레시피, 상차림, 다이어트음식, 이유식, 건강이유식, 뷰티, 화장품"
+    />
+    <meta name="author" content="F4" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="잔디 - 잔디마켓/뷰티잔디" />
+    <meta property="og:title" content="잔디 - 잔디마켓/뷰티잔디" />
+    <meta
+      property="og:description"
+      content="Better Life for All. 건강한 식재료부터 믿을 수 있는 뷰티, 라이프스타일 상품까지. 나와 내 가족이 사고 싶은 상품을 판매합니다. 내일 아침 문 앞에서 만나요!"
+    />
+
+    <!-- <meta property="og:image" content="이미지 URL" /> -->
+    <!-- <meta property="og:url" content="웹페이지 URL" /> -->
+    <link rel="stylesheet" href="/src/styles/tailwind.css" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="module" src="./productDetail.js"></script>
+  </head>
+  <body>
+    <header id="header"></header>
+
+    <!-- Container -->
+    <main class="mt-12">
+      <h1 class="sr-only">상품 디테일 페이지</h1>
+      <!-- product_info -->
+      <section class="w-[1050px] mx-auto mt-0 mb-12">
+        <h2 class="sr-only">상품 요약 정보</h2>
+        <div class="w-[1050px] flex items-start justify-between">
+          <!-- product_image -->
+          <img src="https://via.placeholder.com/400x514" alt="상품명" />
+          <!-- product_detail -->
+          <article class="text-label-small">
+            <div class="mb-5 flex flex-col gap-4">
+              <span class="text-heading-large font-bold leading-[140%]"
+                >샛별배송</span
+              >
+              <!-- product_header -->
+              <div class="flex flex-col gap-2">
+                <h2 class="text-label-xl font-semibold">상품명</h2>
+                <p class="text-paragraph-medium text-gray-400">상품요약설명</p>
+              </div>
+              <!-- price -->
+              <div>
+                <!-- discount -->
+                <strong class="text-label-xl font-semibold">
+                  <span class="text-red-500">25%</span>
+                  <span>14,900</span>
+                  <span class="font-bold text-heading-medium">원</span>
+                </strong>
+                <!-- regular price -->
+                <p class="text-heading-medium text-gray-400 font-semibold">
+                  <s>19,900원</s>
+                </p>
+              </div>
+              <!-- region -->
+              <!-- <p>원산지 : ${국산}</p> -->
+              <!-- point -->
+              <p class="font-semibold text-primary text-label-medium">
+                로그인 후, 적립 혜택이 제공됩니다.
+              </p>
+            </div>
+            <!-- info -->
+            <div class="border-y border-gray-200">
+              <dl
+                class="w-560pxr divide-y divide-gray-200 text-gray-500 font-semibold"
+              >
+                <div class="flex py-4">
+                  <dt class="min-w-32">배송</dt>
+                  <dd>
+                    <p>샛별배송</p>
+                    <p class="text-gray-400">
+                      23시 전 주문 시 내일 아침 7시 전 도착
+                    </p>
+                    <p class="text-gray-400">
+                      (대구 부산 울산 샛별배송 운영시;간 별도 확인)
+                    </p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">판매자</dt>
+                  <dd>
+                    <p>칼리</p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">포장타입</dt>
+                  <dd>
+                    <p>상온 (종이포장)</p>
+                    <p class="text-gray-400">
+                      택배배송은 에코 포장이 스티로폼으로 대체됩니다.
+                    </p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">판매단위</dt>
+                  <dd>
+                    <p>1봉</p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">중량/용량</dt>
+                  <dd>
+                    <p>123g*4봉</p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">원산지</dt>
+                  <dd>
+                    <p>상세페이지 별도표기</p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">알레르기정보</dt>
+                  <dd class="font-normal">
+                    <p>-대두, 밀, 쇠고기 함유</p>
+                    <p>
+                      - 계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우,
+                      복숭아, 토마토, 아황산류, 호두, 잣, 닭고기, 오징어,
+                      조개류(굴, 전복, 홍합 포함)를 사용한 제품과 같은
+                      제조시설에서 제조
+                    </p>
+                  </dd>
+                </div>
+                <div class="flex py-4">
+                  <dt class="min-w-32">상품선택</dt>
+                  <dd class="border border-gray-200 p-3 w-432pxr">
+                    <p class="mb-3">[강남면옥] 소갈비찜</p>
+                    <div class="flex justify-between items-end">
+                      <!-- 수량버튼 -->
+                      <div
+                        class="flex items-center gap-2 border border-gray-200"
+                      >
+                        <button>
+                          <img
+                            src="/public/input/minus-disabled.svg"
+                            alt="수량 감소"
+                            class="cursor-pointer quantity_decrease"
+                          />
+                        </button>
+                        <span class="product_quantity">1</span>
+                        <button>
+                          <img
+                            src="/public/input/plus.svg"
+                            alt="수량 증가"
+                            class="cursor-pointer quantity_increase"
+                          />
+                        </button>
+                      </div>
+                      <span class="text-content">29,800원</span>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="my-7 flex flex-col gap-2 items-end">
+              <p class="text-heading-medium flex items-center font-semibold">
+                총 상품 금액 :
+                <strong class="total_price pl-17pxr text-label-xl"
+                  >29,800</strong
+                >
+                <span class="pl-1 font-bold">원</span>
+              </p>
+              <p class="flex gap-1.5 items-center">
+                <span
+                  class="border-accent-yellow px-2 bg-accent-yellow text-white"
+                >
+                  적립
+                </span>
+                <span class="text-label-medium">로그인 후, 적립 혜택 제공</span>
+              </p>
+            </div>
+
+            <!-- heart, cart -->
+            <div class="flex gap-3 items-start">
+              <button class="wish_list" data-wish="false">
+                <svg
+                  class="icon_heart inline border border-gray-100 rounded-s p-2.5 h-14 w-14 text-gray-100 cursor-pointer"
+                  aria-hidden="true"
+                >
+                  <use href="/public/icon/_sprite.svg#Heart"></use>
+                </svg>
+                <span class="sr-only">찜하기</span>
+              </button>
+              <button disabled>
+                <svg
+                  class="inline border border-gray-100 rounded-s p-2.5 h-14 w-14 text-gray-100 cursor-no-drop"
+                  aria-hidden="true"
+                >
+                  <use href="/public/icon/_sprite.svg#Bell"></use>
+                </svg>
+                <span class="sr-only">재입고 알림 신청</span>
+              </button>
+              <button
+                class="text-white font-semibold bg-primary flex justify-center items-center rounded h-54pxr w-424pxr text-label-medium"
+              >
+                장바구니 담기
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 네비게이션 탭 -->
+      <div
+        class="tabs flex justify-between w-[1050px] mx-auto mb-10 mt-0 sticky top-0"
+      >
+        <a class="tab is_active_tab" href="#section_description">상품설명</a>
+        <a class="tab" href="#section_details">상세정보</a>
+        <a class="tab" href="#section_reviews">후기 ( 0 )</a>
+        <a class="tab" href="#section_inquiry">문의</a>
+      </div>
+
+      <section
+        id="section_description"
+        class="w-[1050px] mt-0 mx-auto flex flex-col gap-24 mb-24"
+      >
+        <h2 class="sr-only">상품설명</h2>
+        <div>
+          <img
+            src="https://via.placeholder.com/1050x670"
+            alt="상품 디테일 이미지"
+          />
+
+          <!-- context -->
+          <div class="pt-76pxr pb-9 text-center">
+            <p class="text-label-xl font-semibold">
+              튀기지 않아 부담 없는 매콤함
+            </p>
+            <h3 class="text-heading-xxxl font-bold leading-[140%]">
+              [풀무원] 탱탱쫄면
+            </h3>
+          </div>
+          <p
+            class="pt-7 flex items-start self-stretch border-t border-t-gray-100 leading-[160%]"
+          >
+            쫄면의 진가는 매콤새콤한 양념과 탱탱한 면발에서 찾을 수 있지요.
+            풀무원은 이 맛을 더 부담 없이 즐길 수 있도록 튀기지 않고 만든
+            탱탱쫄면을 선보입니다. 밀가루와 감자 전분을 적절히 배합해 탄력이
+            좋고, 입에 넣었을 때는 찰지게 씹히죠. 고추장을 넣어 숙성한 비빔장은
+            자연스럽고 깊은 맛을 냅니다. 간단하게 조리해 마지막 한 가닥까지
+            탱탱한 식감을 즐겨보세요. 취향에 따라 다양한 고명을 올려 드셔도
+            좋아요.
+          </p>
+        </div>
+
+        <!-- karly's Check Point -->
+        <div class="flex flex-col gap-68pxr">
+          <div class="flex items-center gap-4">
+            <div class="flex-grow h-px bg-gray-100"></div>
+            <h3 class="text-heading-xxxl font-bold leading-[140%]">
+              Karly`s Check Point
+            </h3>
+            <div class="flex-grow h-px bg-gray-100"></div>
+          </div>
+          <img
+            src="https://via.placeholder.com/1010x283"
+            alt="karly's Check Point"
+          />
+        </div>
+      </section>
+
+      <!-- 상세정보 -->
+      <section id="section_details" class="w1050">
+        <h2 class="sr-only">상세정보</h2>
+
+        <img
+          src="https://via.placeholder.com/1050x1066"
+          alt="상품 상세 이미지"
+        />
+
+        <!-- why karly -->
+        <article
+          class="border-t border-t-gray-100 pt-72pxr pb-84pxr flex flex-col gap-35pxr items-center"
+        >
+          <h3 class="text-heading-xl font-bold leading-[140%]">WHY KARLY</h3>
+
+          <div class="flex flex-col">
+            <div class="flex justify-center">
+              <article class="mt-14 w-[315px] flex flex-col gap-8 items-center">
+                <svg class="h-10 w-10" aria-hidden="true">
+                  <use href="/public/icon/_sprite.svg#Committee"></use>
+                </svg>
+                <h4 class="text-primary text-label-large font-semibold">
+                  깐깐한 상품위원회
+                </h4>
+                <p class="text-center">
+                  나와 내 가족이 먹고 쓸 상품을 고르는<br />
+                  마음으로 매주 상품을 직접 먹어보고,<br />
+                  경험해보고 성분, 맛 안정성 등 다각도의<br />
+                  기준을 통과한 상품만을 판매합니다.
+                </p>
+              </article>
+              <article class="mt-14 w-[315px] flex flex-col gap-8 items-center">
+                <svg class="h-10 w-10" aria-hidden="true">
+                  <use href="/public/icon/_sprite.svg#Different"></use>
+                </svg>
+                <h4 class="text-primary text-label-large font-semibold">
+                  차별화된 Karly Only 상품
+                </h4>
+                <p class="text-center">
+                  전국 각지와 해외의 훌륭한 생산자가<br />
+                  믿고 선택하는 파트너, 마켓칼리.<br />
+                  3천여 개가 넘는 칼리 단독 브랜드, 스펙의<br />
+                  Karly Only 상품을 믿고 만나보세요.
+                </p>
+              </article>
+              <article class="mt-14 w-[315px] flex flex-col gap-8 items-center">
+                <svg class="h-10 w-10" aria-hidden="true">
+                  <use href="/public/icon/_sprite.svg#Delivery"></use>
+                </svg>
+                <h4 class="text-primary text-label-large font-semibold">
+                  신선한 풀콜드체인 배송
+                </h4>
+                <p class="text-center">
+                  온라인 업계 최초로 산지에서 문 앞까지<br />
+                  상온, 냉장, 냉동 상품을 분리 포장 후<br />
+                  최적의 온도를 유지하는 냉장 배송 시스템,<br />
+                  풀콜드체인으로 상품을 신선하게 전해드립니다.
+                </p>
+              </article>
+            </div>
+            <div class="flex justify-center gap-4">
+              <article class="mt-14 w-[315px] flex flex-col gap-8 items-center">
+                <svg class="h-10 w-10" aria-hidden="true">
+                  <use href="/public/icon/_sprite.svg#Price"></use>
+                </svg>
+                <h4 class="text-primary text-label-large font-semibold">
+                  고객, 생산자를 위한 최선의 가격
+                </h4>
+                <p class="text-center">
+                  매주 대형 마트와 주요 온라인 마트의 가격<br />
+                  변동 상황을 확인해 신선식품은 품질을<br />
+                  타협하지 않는 선에서 최선의 가격으로,<br />
+                  가공식품은 언제나 합리적인 가격으로<br />
+                  정기 조정합니다.
+                </p>
+              </article>
+              <article class="mt-14 w-[315px] flex flex-col gap-8 items-center">
+                <svg class="h-10 w-10" aria-hidden="true">
+                  <use href="/public/icon/_sprite.svg#Enviroment"></use>
+                </svg>
+                <h4 class="text-primary text-label-large font-semibold">
+                  환경을 생각하는 지속 가능한 유통
+                </h4>
+                <p class="text-center">
+                  친환경 포장재부터 생산자가 상품에만<br />
+                  집중할 수 있는 직매입 유통구조까지,<br />
+                  지속 가능한 유통을 고민하며 컬리를 있게<br />
+                  하는 모든 환경(생산자,커뮤니티,직원)이<br />
+                  더 나아질 수 있도록 노력합니다.
+                </p>
+              </article>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- 후기 -->
+      <section id="section_reviews" class="w1050 flex flex-col gap-14">
+        <div class="flex justify-between">
+          <div>
+            <h2 class="text-heading-xl font-bold leading-[140%] pb-6">
+              상품후기
+            </h2>
+            <p class="text-content">글후기 50원 적립금 혜택이 있어요.</p>
+            <ul
+              class="list-disc text-label-small font-semibold text-gray-500 ml-5"
+            >
+              <li>
+                퍼플, 더퍼플은 2배 적립 (100원) / 주간 베스트 후기로 선정 시
+              </li>
+              <li>
+                5,000원 추가 적립 후기 작성은 배송완료일로부터 30일 이내
+                가능합니다.
+              </li>
+              <li>
+                작성하신 후기는 확인 후 적립금이 지급됩니다. (영업일 기준 평균
+                1~2일 소요)
+              </li>
+            </ul>
+          </div>
+          <button class="bg-primary text-white w-155pxr h-44pxr rounded">
+            후기 작성하기
+          </button>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <div class="flex justify-between font-semibold">
+            <span class="text-content text-label-small">총 2개</span>
+            <div class="flex items-center gap-2">
+              <button class="text-content">추천순</button>
+              <span class="bg-gray-300 w-1pxr h-10pxr"></span>
+              <button class="text-gray-300">최근 등록순</button>
+            </div>
+          </div>
+
+          <div class="border-t border-t-black">
+            <div class="border-b border-b-gray-100 px-1 py-5">
+              <div
+                class="flex gap-2 text-label-medium font-semibold items-center cursor-pointer"
+              >
+                <span
+                  class="px-2 bg-gray-100 rounded-[1px] text-label-small font-semibold text-content"
+                  >공지</span
+                >금주의 베스트 후기 안내
+              </div>
+            </div>
+            <div class="border-b border-b-gray-100 px-1 py-5">
+              <div
+                class="flex gap-2 text-label-medium font-semibold items-center cursor-pointer"
+              >
+                <span
+                  class="px-2 bg-gray-100 rounded-[1px] text-label-small font-semibold text-content"
+                  >공지</span
+                >상품 후기 적립금 정책 안내
+              </div>
+            </div>
+            <div class="border-b border-b-gray-100 flex gap-82pxr p-5">
+              <div
+                class="py-17pxr text-left text-gray-400 font-semibold text-label-small align-top"
+              >
+                김*진
+              </div>
+              <div
+                class="py-17pxr text-left text-paragraph-small flex flex-col gap-5"
+              >
+                <h4 class="text-gray-400 font-semibold">
+                  [풀무원] 탱탱쫄면(4개입)
+                </h4>
+                <p class="leading-[160%]">
+                  너무 맛있어여~<br />
+                  면이 쫄깃하고 양념도 짱맛나요!!
+                </p>
+                <p class="text-gray-400 font-semibold">2022.11.10</p>
+              </div>
+            </div>
+            <div class="border-b border-b-gray-100 flex gap-82pxr p-5">
+              <div
+                class="py-17pxr text-left text-gray-400 font-semibold text-label-small align-top"
+              >
+                김*진
+              </div>
+              <div
+                class="py-17pxr text-left text-paragraph-small flex flex-col gap-5"
+              >
+                <h4 class="text-gray-400 font-semibold">
+                  [풀무원] 탱탱쫄면(4개입)
+                </h4>
+                <p class="leading-[160%]">
+                  너무 맛있어여~<br />
+                  면이 쫄깃하고 양념도 짱맛나요!!
+                </p>
+                <p class="text-gray-400 font-semibold">2022.11.10</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 mx-auto">
+            <button
+              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
+              data-arrow=""
+            >
+              <svg
+                class="text-gray-100 cursor-pointer"
+                width="36"
+                height="36"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+              >
+                <use href="/public/icon/_sprite.svg#Left"></use>
+              </svg>
+              <span class="sr-only">이전 페이지</span>
+            </button>
+            <button
+              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
+              data-arrow=""
+            >
+              <svg
+                class="cursor-pointer text-gray-500"
+                width="36"
+                height="36"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+              >
+                <use href="/public/icon/_sprite.svg#Right"></use>
+              </svg>
+              <span class="sr-only">다음 페이지</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 문의 -->
+      <section id="section_inquiry" class="w1050">
+        <div class="flex flex-col gap-4">
+          <div class="flex justify-between mt-72pxr">
+            <div>
+              <h2 class="text-heading-xl font-bold leading-[140%] pb-6">
+                상품문의
+              </h2>
+              <ul
+                class="list-disc text-label-small font-semibold text-gray-500 ml-5"
+              >
+                <li>
+                  상품에 대한 문의를 남기는 공간입니다. 해당 게시판의 성격과
+                  다른 글은 사전동의 없이 담당 게시판으로 이동될 수 있습니다.
+                </li>
+                <li>
+                  배송관련, 주문(취소/교환/환불)관련 문의 및 요청사항은 마이컬리
+                  내 1:1 문의에 남겨주세요.
+                </li>
+              </ul>
+            </div>
+            <button class="bg-primary text-white w-155pxr h-44pxr rounded">
+              문의하기
+            </button>
+          </div>
+
+          <!-- 테이블 시작 -->
+          <div class="border-t-2 border-t-black">
+            <header class="border-b border-b-black flex justify-between">
+              <h2 class="py-17pxr w-742pxr font-semibold text-center">제목</h2>
+              <h3 class="py-17pxr w-100pxr font-semibold text-center">
+                작성자
+              </h3>
+              <h3 class="py-17pxr w-100pxr font-semibold text-center">
+                작성일
+              </h3>
+              <h3 class="py-17pxr w-100pxr font-semibold text-center">
+                답변상태
+              </h3>
+            </header>
+            <!-- 공지 -->
+            <div class="border-b border-b-gray-100 font-semibold flex">
+              <div
+                class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+              >
+                <span
+                  class="px-2 text-label-small text-content bg-gray-100 rounded-[1px]"
+                >
+                  공지
+                </span>
+                판매(일시)중단 제품 안내 (22.11.10 업데이트)
+              </div>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                칼리
+              </div>
+              <time
+                datetime="2017.02.01"
+                class="text-gray-400 text-center py-17pxr w-100pxr"
+              >
+                2017.02.01
+              </time>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">-</div>
+            </div>
+            <!-- 유저글 -->
+            <div class="border-b border-b-gray-100 font-semibold flex">
+              <div
+                class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+              >
+                팩이 터져서 왔어요
+              </div>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                김*식
+              </div>
+              <time
+                datetime="2022.11.11"
+                class="text-gray-400 text-center py-17pxr w-100pxr"
+              >
+                2022.11.11
+              </time>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                답변대기
+              </div>
+            </div>
+            <!-- 비밀글 -->
+            <div class="border-b border-b-gray-100 font-semibold flex">
+              <div
+                class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+              >
+                비밀글입니다.
+              </div>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                김*식
+              </div>
+              <time
+                datetime="2022.11.11"
+                class="text-gray-400 text-center py-17pxr w-100pxr"
+              >
+                2022.11.11
+              </time>
+              <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                답변대기
+              </div>
+            </div>
+          </div>
+
+          <!-- 버튼 -->
+          <div class="flex items-start gap-4 mx-auto">
+            <button
+              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
+              data-arrow=""
+            >
+              <svg
+                class="text-gray-100 cursor-pointer"
+                width="36"
+                height="36"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+              >
+                <use href="/public/icon/_sprite.svg#Left"></use>
+              </svg>
+              <span class="sr-only">이전 페이지</span>
+            </button>
+            <button
+              class="w-14 h-14 border border-gray-100 rounded-s p-2.5"
+              data-arrow=""
+            >
+              <svg
+                class="cursor-pointer text-gray-500"
+                width="36"
+                height="36"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+              >
+                <use href="/public/icon/_sprite.svg#Right"></use>
+              </svg>
+              <span class="sr-only">다음 페이지</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer"></footer>
+  </body>
+</html>

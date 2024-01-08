@@ -7,4 +7,6 @@
 
 @import './font.css';
 @import './common.css';
+@import './header.css';
 @import './footer.css';
+@import './detail.css';
