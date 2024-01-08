@@ -37,37 +37,39 @@
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script src="./main.js" type="module"></script>
+    <script type="module" src="./src/js/include.js"></script>
   </head>
-  <body class="size-full flex flex-col justify-center items-center">
+  <body class="flex flex-col items-center justify-center size-full">
+    <header id="header"></header>
     <!-- Slider main container -->
     <div class="swiper w-[1920px] h-370pxr">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <!-- Slides -->
-        <div class="swiper-slide size-full flex justify-center items-center">
+        <div class="flex items-center justify-center swiper-slide size-full">
           <img
-            class="w-full object-cover"
+            class="object-cover w-full"
             src="./src/assets/banner05.png"
             alt=""
           />
         </div>
-        <div class="swiper-slide size-full flex justify-center items-center">
+        <div class="flex items-center justify-center swiper-slide size-full">
           <img
-            class="w-full object-cover"
+            class="object-cover w-full"
             src="./src/assets/banner02.png"
             alt=""
           />
         </div>
-        <div class="swiper-slide size-full flex justify-center items-center">
+        <div class="flex items-center justify-center swiper-slide size-full">
           <img
-            class="w-full object-cover"
+            class="object-cover w-full"
             src="./src/assets/banner03.png"
             alt=""
           />
         </div>
-        <div class="swiper-slide size-full flex justify-center items-center">
+        <div class="flex items-center justify-center swiper-slide size-full">
           <img
-            class="w-full object-cover"
+            class="object-cover w-full"
             src="./src/assets/banner01.png"
             alt=""
           />
@@ -91,17 +93,17 @@
         <h2 class="text-[28.43px] font-bold">이 상품 어때요?</h2>
       </div>
       <div class="w-[1050px] h-516pxr">
-        <ul class="list-none flex w-full justify-between items-start">
-          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
+        <ul class="flex items-start justify-between w-full list-none">
+          <li class="flex flex-col items-start border-4 w-249pxr h-516pxr">
             1
           </li>
-          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
+          <li class="flex flex-col items-start border-4 w-249pxr h-516pxr">
             2
           </li>
-          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
+          <li class="flex flex-col items-start border-4 w-249pxr h-516pxr">
             3
           </li>
-          <li class="border-4 w-249pxr h-516pxr flex flex-col items-start">
+          <li class="flex flex-col items-start border-4 w-249pxr h-516pxr">
             4
           </li>
         </ul>
@@ -111,5 +113,6 @@
     <a class="block w-[1050px] h-139pxr my-40pxr" href="#">
       <img class="w-full" src="/src/assets/banner03.png" alt="" />
     </a>
+    <footer id="footer"></footer>
   </body>
 </html>
