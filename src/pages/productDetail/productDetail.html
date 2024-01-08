@@ -427,6 +427,8 @@
               <h2 class="review_title py-17pxr px-5 border-b border-b-gray-100">
                 <button
                   class="review_toggle flex gap-2 text-label-medium font-semibold items-center cursor-pointer"
+                  aria-expanded="false"
+                  aria-controls="review_content"
                 >
                   <span
                     class="px-2 bg-gray-100 rounded-[1px] text-label-small font-semibold text-content"
@@ -435,8 +437,9 @@
                 </button>
               </h2>
               <div
+                id="review_content"
                 hidden
-                class="bg-gray-50 review_content p-5 border-b border-b-gray-100"
+                class="review_content bg-gray-50 p-5 border-b border-b-gray-100"
               >
                 [ 금주의 Best 후기 및 상품 후기 적립금 정책 변경 안내 ] <br />
                 고객님 안녕하세요. 컬리 입니다. 적립금 지급 정책을 안내드리니
@@ -540,7 +543,7 @@
               <p>따뜻한 첫 후기를 기다리고 있어요.</p>
             </div> -->
             <!-- 후기글 -->
-            <!-- <div class="border-b border-b-gray-100 flex gap-82pxr p-5">
+            <div class="border-b border-b-gray-100 flex gap-82pxr p-5">
               <div
                 class="py-17pxr text-left text-gray-400 font-semibold text-label-small flex items-top gap-2"
               >
@@ -566,7 +569,7 @@
                 </p>
                 <p class="text-gray-400 font-semibold">2022.11.10</p>
               </div>
-            </div> -->
+            </div>
           </div>
           <!-- /게시글 -->
 
@@ -631,8 +634,9 @@
             </button>
           </div>
 
-          <!-- 테이블 시작 -->
+          <!-- 시작 -->
           <div class="border-t-2 border-t-black">
+            <!-- title -->
             <header class="border-b border-b-black flex justify-between">
               <h2 class="py-17pxr w-742pxr font-semibold text-center">제목</h2>
               <h3 class="py-17pxr w-100pxr font-semibold text-center">
@@ -645,67 +649,207 @@
                 답변상태
               </h3>
             </header>
-            <!-- 공지 -->
-            <div class="border-b border-b-gray-100 font-semibold flex">
-              <div
-                class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
-              >
-                <span
-                  class="px-2 text-label-small text-content bg-gray-100 rounded-[1px]"
+
+            <!-- 문의글 -->
+            <div>
+              <div class="border-b border-b-gray-100 font-semibold flex">
+                <div
+                  class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
                 >
-                  공지
-                </span>
-                판매(일시)중단 제품 안내 (22.11.10 업데이트)
+                  <span
+                    class="px-2 text-label-small text-content bg-gray-100 rounded-[1px]"
+                  >
+                    공지
+                  </span>
+                  판매(일시)중단 제품 안내 (22.11.10 업데이트)
+                </div>
+                <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                  칼리
+                </div>
+                <time
+                  datetime="2017.02.01"
+                  class="text-gray-400 text-center py-17pxr w-100pxr"
+                >
+                  2017.02.01
+                </time>
+                <div class="text-gray-400 text-center py-17pxr w-100pxr">-</div>
               </div>
-              <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                칼리
-              </div>
-              <time
-                datetime="2017.02.01"
-                class="text-gray-400 text-center py-17pxr w-100pxr"
-              >
-                2017.02.01
-              </time>
-              <div class="text-gray-400 text-center py-17pxr w-100pxr">-</div>
             </div>
             <!-- 유저글 -->
-            <div class="border-b border-b-gray-100 font-semibold flex">
+            <div>
+              <!-- 제목 -->
+              <div class="border-b border-b-gray-100 font-semibold flex">
+                <div
+                  class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+                >
+                  팩이 터져서 왔어요
+                </div>
+                <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                  김*식
+                </div>
+                <time
+                  datetime="2022.11.11"
+                  class="text-gray-400 text-center py-17pxr w-100pxr"
+                >
+                  2022.11.11
+                </time>
+                <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                  답변대기
+                </div>
+              </div>
+
+              <!-- 내용 -->
               <div
-                class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+                class="p-5 bg-gray-50 border-b border-b-gray-100 flex flex-col gap-10 items-start"
               >
-                팩이 터져서 왔어요
-              </div>
-              <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                김*식
-              </div>
-              <time
-                datetime="2022.11.11"
-                class="text-gray-400 text-center py-17pxr w-100pxr"
-              >
-                2022.11.11
-              </time>
-              <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                답변대기
+                <!-- question -->
+                <div class="question flex gap-3 items-start self-stretch">
+                  <span>
+                    <svg width="24" height="24" aria-hidden="true">
+                      <use href="/public/icon/_sprite.svg#Question"></use>
+                    </svg>
+                  </span>
+                  <p class="text-label-small text-content font-semibold">
+                    스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요<br />
+                    환불 요청합니다.
+                  </p>
+                </div>
+                <!-- answer -->
+                <div class="answer flex gap-3 items-start self-stretch">
+                  <span>
+                    <svg width="24" height="24" aria-hidden="true">
+                      <use href="/public/icon/_sprite.svg#Answer"></use>
+                    </svg>
+                  </span>
+                  <div
+                    class="text-label-small font-semibold flex flex-col items-start gap-3"
+                  >
+                    <p class="text-content">
+                      안녕하세요. 칼리입니다.<br />
+                      믿고 찾아주신 상품에 불편을 드려 정말 죄송합니다.<br />
+                      <br />
+                      더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
+                      답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히
+                      죄송합니다.<br />
+                      <br />
+                      다행히도 고객님의 불편하셨던 사항은 고객행복센터를 통해
+                      안내 받으신 점 확인하였습니다.<br />
+                      <br />
+                      불편을 드려 정말 죄송할 따름이며, 고객님께 늘 신선하고
+                      최상의 상품을 불편 없이 전달드리기 위해 최선을 다하는
+                      칼리가 되겠습니다.<br />
+                      <br />
+                      칼리 드림.<br />
+                    </p>
+                    <time class="text-gray-400" dete-time="2022.11.11"
+                      >2022.11.11</time
+                    >
+                  </div>
+                </div>
               </div>
             </div>
-            <!-- 비밀글 -->
-            <div class="border-b border-b-gray-100 font-semibold flex">
+
+            <!-- 유저글 -->
+            <div>
+              <!-- 제목 -->
+              <div class="border-b border-b-gray-100 font-semibold flex">
+                <div
+                  class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+                >
+                  팩이 터져서 왔어요2
+                </div>
+                <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                  김*식
+                </div>
+                <time
+                  datetime="2022.11.11"
+                  class="text-gray-400 text-center py-17pxr w-100pxr"
+                >
+                  2022.11.11
+                </time>
+                <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                  답변대기
+                </div>
+              </div>
+
+              <!-- 내용 -->
               <div
-                class="px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+                class="p-5 bg-gray-50 border-b border-b-gray-100 flex-col gap-10 items-start"
+                hidden
               >
-                비밀글입니다.
+                <!-- question -->
+                <div class="question flex gap-3 items-start self-stretch">
+                  <span>
+                    <svg width="24" height="24" aria-hidden="true">
+                      <use href="/public/icon/_sprite.svg#Question"></use>
+                    </svg>
+                  </span>
+                  <p class="text-label-small text-content font-semibold">
+                    스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요<br />
+                    환불 요청합니다.
+                  </p>
+                </div>
+                <!-- answer -->
+                <div class="answer flex gap-3 items-start self-stretch">
+                  <span>
+                    <svg width="24" height="24" aria-hidden="true">
+                      <use href="/public/icon/_sprite.svg#Answer"></use>
+                    </svg>
+                  </span>
+                  <div
+                    class="text-label-small font-semibold flex flex-col items-start gap-3"
+                  >
+                    <p class="text-content">
+                      안녕하세요. 칼리입니다.<br />
+                      믿고 찾아주신 상품에 불편을 드려 정말 죄송합니다.<br />
+                      <br />
+                      더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
+                      답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히
+                      죄송합니다.<br />
+                      <br />
+                      다행히도 고객님의 불편하셨던 사항은 고객행복센터를 통해
+                      안내 받으신 점 확인하였습니다.<br />
+                      <br />
+                      불편을 드려 정말 죄송할 따름이며, 고객님께 늘 신선하고
+                      최상의 상품을 불편 없이 전달드리기 위해 최선을 다하는
+                      칼리가 되겠습니다.<br />
+                      <br />
+                      칼리 드림.<br />
+                    </p>
+                    <time class="text-gray-400" dete-time="2022.11.11"
+                      >2022.11.11</time
+                    >
+                  </div>
+                </div>
               </div>
-              <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                김*식
-              </div>
-              <time
-                datetime="2022.11.11"
-                class="text-gray-400 text-center py-17pxr w-100pxr"
-              >
-                2022.11.11
-              </time>
-              <div class="text-gray-400 text-center py-17pxr w-100pxr">
-                답변대기
+            </div>
+
+            <!-- 비밀글 -->
+            <div>
+              <div class="border-b border-b-gray-100 font-semibold flex">
+                <div
+                  class="text-gray-400 px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer"
+                >
+                  비밀글입니다.
+                  <span>
+                    <svg width="12" height="14" aria-hidden="true">
+                      <use href="/public/icon/_sprite.svg#Lock"></use>
+                    </svg>
+                  </span>
+                </div>
+                <div class="text-gray-400 text-center py-17pxr w-100pxr">
+                  김*식
+                </div>
+                <time
+                  datetime="2022.11.11"
+                  class="text-gray-400 text-center py-17pxr w-100pxr"
+                >
+                  2022.11.11
+                </time>
+                <!-- 답변완료 -->
+                <div class="text-primary text-center py-17pxr w-100pxr">
+                  답변완료
+                </div>
               </div>
             </div>
           </div>
