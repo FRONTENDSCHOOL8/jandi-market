@@ -4,6 +4,7 @@ fetch('/components/header.html')
   .then((html) => {
     const headerElement = document.querySelector('#header');
     headerElement.innerHTML = html;
+    return import('/src/components/header/header.js');
   })
   .catch((error) => {
     console.error(error);
@@ -15,6 +16,7 @@ fetch('/components/footer.html')
   .then(async (html) => {
     const footerElement = document.querySelector('#footer');
     footerElement.innerHTML = html;
+    return import('/src/components/footer/footer.js');
   })
   .catch((error) => {
     console.error(error);
