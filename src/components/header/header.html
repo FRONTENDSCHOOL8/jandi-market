@@ -20,10 +20,10 @@
     <!-- Header-Top -->
     <ul class="relative flex justify-end">
       <li class="text-primary">
-        <a class="text-14pxr" href="#">회원가입</a>
+        <a class="text-14pxr" href="/src/pages/register/">회원가입</a>
       </li>
       <li class="line">
-        <a class="text-14pxr" href="#">로그인</a>
+        <a class="text-14pxr" href="/src/pages/login/">로그인</a>
       </li>
       <li class="line">
         <a class="text-14pxr cs" href="#">고객센터</a>
@@ -35,7 +35,9 @@
       <!-- Middle-left -->
       <div class="flex items-center gap-3">
         <h2 class="w-82pxr h-42pxr">
-          <img src="/jandi_logo.svg" alt="잔디마켓" />
+          <a href="/">
+            <img src="/jandi_logo.svg" alt="잔디마켓" />
+          </a>
         </h2>
         <a class="font-semibold text-heading-large text-primary" href=""
           >잔디마켓</a
@@ -58,79 +60,51 @@
           </svg>
         </a>
       </div>
-      <!-- Header-Middle -->
-      <div class="flex items-center self-stretch justify-between mt-7">
-        <!-- Middle-left -->
-        <div class="flex items-center gap-3">
-          <h2 class="w-82pxr h-42pxr">
-            <img src="/jandi_logo.svg" alt="잔디마켓" />
-          </h2>
-          <a class="font-semibold text-heading-large text-primary" href=""
-            >잔디마켓</a
-          >
-          <div
-            class="before:content-['|'] before:w-1pxr before:text-gray-200"
-          ></div>
-          <a
-            class="relative font-semibold text-gray-400 text-heading-large"
-            href=""
-            >잔디뷰티
-            <svg
-              class="absolute top-[-3px] right-[-13px]"
-              role="img"
-              width="7"
-              height="7"
-              viewBox="0 0 7 7"
-            >
-              <use href="/icon/new.svg#new 1" />
-            </svg>
-          </a>
-        </div>
 
-        <!-- Middle-Center -->
-        <div class="relative">
-          <div
-            class="absolute flex items-center justify-between px-5 py-3 border rounded-md top-[-30px] right-[-150px] w-400pxr border-primary"
-          >
-            <input
-              class="tracking-tight outline-none"
-              type="text"
-              placeholder="검색어를 입력해주세요"
-            />
-            <button type="button">
+      <!-- Middle-Center -->
+
+      <div class="relative">
+        <div
+          class="absolute flex items-center justify-between px-5 py-3 border rounded-md top-[-30px] right-[-100px] w-400pxr border-primary"
+        >
+          <input
+            class="tracking-tight outline-none"
+            type="text"
+            placeholder="검색어를 입력해주세요"
+          />
+          <button type="button">
+            <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+              <use href="/icon/_sprite.svg#Search" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Middle-Right -->
+      <div class="relative">
+        <ul class="absolute right-[-5px] top-[-15px] flex items-center gap-5">
+          <li>
+            <button>
               <svg role="button" width="36" height="36" viewBox="0 0 36 36">
-                <use href="/icon/_sprite.svg#Search" />
+                <use href="/icon/_sprite.svg#Location" />
               </svg>
             </button>
-          </div>
-        </div>
-
-        <!-- Middle-Right -->
-        <div class="relative">
-          <ul class="absolute right-[-5px] top-[-15px] flex items-center gap-5">
-            <li>
-              <button>
-                <svg role="button" width="36" height="36" viewBox="0 0 36 36">
-                  <use href="/icon/_sprite.svg#Location" />
-                </svg>
-              </button>
-            </li>
-            <li>
-              <button>
-                <svg role="button" width="36" height="36" viewBox="0 0 36 36">
-                  <use href="/icon/_sprite.svg#Heart" />
-                </svg>
-              </button>
-            </li>
-            <li>
-              <button>
-                <svg role="button" width="36" height="36" viewBox="0 0 36 36">
-                  <use href="/icon/_sprite.svg#Cart_header" />
-                </svg>
-              </button>
-            </li>
-          </ul>
-        </div>
+          </li>
+          <li>
+            <button>
+              <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+                <use href="/icon/_sprite.svg#Heart" />
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button>
+              <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+                <use href="/icon/_sprite.svg#Cart_header" />
+              </svg>
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -380,13 +354,17 @@
           </div>
           <!-- Bottom-center -->
           <ul class="flex ml-24">
-            <li class="product_nav"><a href="#">신상품</a></li>
-            <li class="product_nav"><a href="#">베스트</a></li>
             <li class="product_nav">
-              <a href="#">알뜰쇼핑</a>
+              <a href="/src/pages/productList/">신상품</a>
             </li>
             <li class="product_nav">
-              <a href="#">특가/혜택</a>
+              <a href="/src/pages/productList/">베스트</a>
+            </li>
+            <li class="product_nav">
+              <a href="/src/pages/productList/">알뜰쇼핑</a>
+            </li>
+            <li class="product_nav">
+              <a href="/src/pages/productList/">특가/혜택</a>
             </li>
           </ul>
           <!-- Bottom-right -->
