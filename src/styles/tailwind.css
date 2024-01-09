@@ -5,8 +5,10 @@
 @import 'tailwindcss/utilities.css';
 /* @import './custom-utilities.css'; */
 
+@import './cart.css';
 @import './font.css';
 @import './common.css';
 @import './header.css';
 @import './footer.css';
+@import './detailModal.css';
 @import './detail.css';

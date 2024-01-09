@@ -21,10 +21,6 @@ const swiper = new Swiper('.swiper', {
 });
 
 const swiper2 = new Swiper('.swiper2', {
-  // If we need pagination
-  pagination: {
-    el: '.swiper2-pagination',
-  },
   slidesPerView: 4,
   slidesPerGroup: 4,
   // Navigation arrows
