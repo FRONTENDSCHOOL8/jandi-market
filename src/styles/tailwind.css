@@ -1,40 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base.css';
+/* @import './custom-base-styles.css'; */
+@import 'tailwindcss/components.css';
+/* @import './custom-components.css'; */
+@import 'tailwindcss/utilities.css';
+/* @import './custom-utilities.css'; */
 
-@layer base {
-  html {
-    font-family:
-      'Pretendard Variable',
-      Pretendard,
-      -apple-system,
-      BlinkMacSystemFont,
-      system-ui,
-      Roboto,
-      'Helvetica Neue',
-      'Segoe UI',
-      'Apple SD Gothic Neo',
-      'Noto Sans KR',
-      'Malgun Gothic',
-      'Apple Color Emoji',
-      'Segoe UI Emoji',
-      'Segoe UI Symbol',
-      sans-serif;
-  }
-}
-
-.flex_center {
-  @apply flex justify-center items-center;
-}
-/* footer cs_inquiry부분 버튼 스타일  */
-.inquiry_btn {
-  @apply block h-10 leading-10 text-center border border-gray-200 border-solid w-140pxr;
-}
-
-.w1050 {
-  @apply w-[1050px] my-0 mx-auto;
-}
-
-.sns_icon {
-  @apply block w-full h-full bg-[url('/icon/sns_icon.png')] bg-cover;
-}
+@import './cart.css';
+@import './font.css';
+@import './common.css';
+@import './header.css';
+@import './footer.css';
+@import './detailModal.css';
+@import './detail.css';

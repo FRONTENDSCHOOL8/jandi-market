@@ -19,3 +19,16 @@ const swiper = new Swiper('.swiper', {
     enabled: true,
   },
 });
+
+const swiper2 = new Swiper('.swiper2', {
+  slidesPerView: 4,
+  slidesPerGroup: 4,
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper2-button-next',
+    prevEl: '.swiper2-button-prev',
+  },
+  keyboard: {
+    enabled: true,
+  },
+});

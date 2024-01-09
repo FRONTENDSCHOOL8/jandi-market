@@ -1,0 +1,32 @@
+.line {
+  @apply before:content-['|'] before:mx-4 before:w-1pxr before:text-gray-200;
+}
+
+.banner_hidden {
+  @apply h-0;
+}
+
+.product_nav {
+  @apply flex justify-center leading-5 text-center w-150pxr hover:cursor-pointer hover:underline hover:text-primary;
+}
+
+.menu_hidden {
+  @apply hidden overflow-hidden;
+}
+
+.focus_menu {
+  @apply w-full px-3 py-2 hover:bg-gray-50 hover:text-primary;
+}
+
+.z_index {
+  z-index: 99999999;
+}
+
+.cs::after {
+  content: url('/icon/down_header.png');
+  width: 0.5rem;
+  height: 0.3125rem;
+  margin-left: 0.3125rem;
+  margin-bottom: 0.3125rem;
+}
+
