@@ -1,0 +1,99 @@
+.tab {
+  @apply py-15pxr border-gray-300 border bg-gray-50 w-full font-semibold;
+}
+.is_active_tab {
+  @apply bg-white border-gray-100 border-b border-b-white text-primary;
+}
+
+.flex_column {
+  @apply flex flex-col;
+}
+
+.leading_140 {
+  @apply leading-[140%];
+}
+.leading_160 {
+  @apply leading-[160%];
+}
+
+.info_flex {
+  @apply flex py-4;
+}
+
+.icon_box_gray {
+  @apply border border-gray-100 rounded-s p-2.5;
+}
+
+.button_normal {
+  @apply text-white font-semibold bg-primary rounded;
+}
+
+.text_gray_semibold {
+  @apply text-gray-400 font-semibold;
+}
+.badge {
+  @apply rounded-[1px] px-2 border;
+}
+.notice_badge {
+  @apply px-2 bg-gray-100 rounded-[1px] text-label-small font-semibold text-content;
+}
+
+/* why karly */
+.why_article {
+  @apply mt-14 w-[315px] flex_column gap-8 items-center;
+}
+.why_article_img_size {
+  @apply h-10 w-10;
+}
+.why_article_title {
+  @apply text-primary text-label-large font-semibold;
+}
+
+/* review */
+.best_badge {
+  @apply badge self-start bg-secondary border-secondary text-white;
+}
+.purple_badge {
+  @apply badge self-start border-primary text-primary;
+}
+.review_member {
+  @apply py-17pxr text-left text_gray_semibold text-label-small flex gap-2;
+}
+
+.review_table_subject {
+  @apply py-17pxr px-5 border-b border-b-gray-100;
+}
+.review_table_subject_toggle {
+  @apply flex gap-2 text-label-medium font-semibold items-center cursor-pointer;
+}
+.review_user_post_structure {
+  @apply border-b border-b-gray-100 flex gap-82pxr p-5;
+}
+.review_user_post_contents {
+  @apply py-17pxr text-left text-paragraph-small flex_column gap-5;
+}
+
+/* inquiry */
+.inquiry_table_group_title {
+  @apply py-17pxr font-semibold text-center;
+}
+.inquiry_table_subject {
+  @apply px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer;
+}
+.table_width100 {
+  @apply text-gray-400 text-center py-17pxr w-100pxr;
+}
+
+.inquiry_user_contents {
+  @apply p-5 bg-gray-50 border-b border-b-gray-100 flex_column gap-10 items-start;
+}
+.inquiry_contents_layout {
+  @apply flex gap-3 items-start self-stretch;
+}
+.inquiry_contents_question {
+  @apply text-label-small text-content font-semibold;
+}
+
+.inquiry_contents_answer {
+  @apply text-label-small font-semibold flex_column items-start gap-3;
+}
