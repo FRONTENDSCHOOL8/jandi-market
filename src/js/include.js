@@ -1,5 +1,5 @@
 // header.html 파일을 가져와서 header 요소에 삽입
-fetch('/src/components/header/header.html')
+fetch('/src/components/header/')
   .then((response) => response.text())
   .then((html) => {
     const headerElement = document.querySelector('#header');
@@ -11,7 +11,7 @@ fetch('/src/components/header/header.html')
   });
 
 // footer.html 파일을 가져와서 footer 요소에 삽입
-fetch('/src/components/footer/footer.html')
+fetch('/src/components/footer/')
   .then((response) => response.text())
   .then(async (html) => {
     const footerElement = document.querySelector('#footer');
