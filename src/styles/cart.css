@@ -1,0 +1,32 @@
+/* checkbox */
+.input_checkbox_label {
+  @apply w-6 h-6 mr-2 appearance-none;
+  /* 이 요소에 peer 추가 */
+}
+
+.checkbox_before_label {
+  @apply relative before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] before:absolute before:left-[-32px] before:top-[-1px] peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)];
+  /* 이 요소에 peer:checked 추가 */
+}
+
+.input_checkbox_nonlabel {
+  @apply relative w-6 h-6 mr-2 appearance-none;
+}
+
+.checkbox_before_nonlabel {
+  @apply relative block w-9 h-6 before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] before:absolute top-[-14px] ;
+}
+
+/* cart list  */
+.group_category {
+  @apply border-t border-solid pr-5pxr border-content;
+}
+
+.option_count {
+  @apply box-content flex items-center justify-between bg-white border border-gray-200 border-solid w-84pxr h-30pxr;
+}
+
+.price_delete {
+  @apply line-through text-[12px] text-gray-200 font-normal ml-1;
+}
+

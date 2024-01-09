@@ -1,0 +1,3 @@
+.modalButton {
+  @apply border flex justify-center items-center rounded text-label-medium font-semibold w-186pxr h-54pxr;
+}

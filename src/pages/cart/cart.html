@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>잔디 - 잔디마켓</title>
+
+    <meta
+      name="description"
+      content="Better Life for All. 건강한 식재료부터 믿을 수 있는 뷰티, 라이프스타일 상품까지. 나와 내 가족이 사고 싶은 상품을 판매합니다. 내일 아침 문 앞에서 만나요!"
+    />
+    <meta
+      name="keywords"
+      content="다이어트, 식단, 닭가슴살, 요리, 치아바타, 레시피, 상차림, 다이어트음식, 이유식, 건강이유식, 뷰티, 화장품"
+    />
+    <meta name="author" content="F4" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="잔디 - 잔디마켓/뷰티잔디" />
+    <meta property="og:title" content="잔디 - 잔디마켓/뷰티잔디" />
+    <meta
+      property="og:description"
+      content="Better Life for All. 건강한 식재료부터 믿을 수 있는 뷰티, 라이프스타일 상품까지. 나와 내 가족이 사고 싶은 상품을 판매합니다. 내일 아침 문 앞에서 만나요!"
+    />
+
+    <!-- <meta property="og:image" content="이미지 URL" /> -->
+    <!-- <meta property="og:url" content="웹페이지 URL" /> -->
+    <link rel="stylesheet" href="/src/styles/tailwind.css" />
+    <link
+      rel="preload"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <script src="../../js/include.js"></script>
+    <!-- <script src="../../components/header/header.js"></script> -->
+  </head>
+  <body>
+    <header id="header" class="shadow-md"></header>
+    
+    
+    <!-- cart page -->
+    <main class="cart_page">
+      <section class="cart w1050 pb-80pxr"> 
+        <h2 class="pb-12 font-semibold text-center cart_title text-label-xl pt-50pxr">장바구니</h2>
+        <div class="flex justify-between cart-content">
+          <article class="cart_list_wrap w-742pxr">
+            <h3 class="sr-only">장바구니 목록</h3>
+            <!-- item select -->
+            <div class="flex items-center my-4 item_select_area text-14pxr">
+              <fieldset class="flex items-center select_all">
+                <input type="checkbox" id="itemAllSelect" class="input_checkbox_label peer"/>
+                <label for="itemAllSelect" class="item_all_select checkbox_before_label ">전체선택 (3/3)</label>
+              </fieldset>
+              <span class="w-[1px] h-[13px] block bg-gray-200 mx-2"></span>
+              <button class="item_select_delete">선택삭제</button>
+            </div>
+            
+            <!-- cart list -->
+            <!-- cart list가 없을 떄  -->
+            <!-- <section>
+              <p class="text-center border-solid py-115pxr text-gray-200 font-label-large text-label-medium border-t-[1px] border-t-content border-b-[1px] border-b-gray-50 ">장바구니에 담긴 상품이 없습니다.</p>
+            </section> -->
+            
+            <!-- cart list가 있을 떄 -->
+            <div class="border-b border-solid cart_list border-gray-50">
+              <ul>
+                <li class="group_category">
+                  <div class="flex justify-between my-4 cart_category text-label-medium" >
+                    <div class="flex items-center gap-3 category_name">
+                      <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30">
+                        <use href="/icon/_sprite.svg#Refrigerated"/>
+                      </svg>
+                      <h4 class="font-semibold text-label-medium">냉장 식품</h4>
+                    </div>
+                    <button class="list_toggle">
+                      <span class="sr-only">카테고리 상품 보기</span>
+                      <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 18 18">
+                        <use href="/icon/_sprite.svg#Down"/>
+                      </svg>
+                    </button>
+                  </div>
+                  <ul class="product_frozen">
+                    <li class="flex items-center py-5">
+                      <fieldset class="item_select">
+                        <input type="checkbox" id="itemSelect" class="input_checkbox_nonlabel peer top-[-17px]"/>
+                        <label for="itemSelect" class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]">
+                          <span class="sr-only">목록 선택</span>
+                        </label>
+                      </fieldset>
+                      <a href="#">
+                        <img src="https://via.placeholder.com/60x78" alt="풀무원 탱탱쫄면 (4개입)" class="mr-5"/>
+                      </a>
+                      <a href="#" class="product_name">
+                        <span class="block mr-5 w-345pxr">[풀무원] 탱탱쫄면 (4개입)</span>
+                      </a>
+                      <div class="option_count">
+                        <button type="button" class="minus w-30pxr h-30pxr" style="background-image: url(/input/minus-disabled.svg);">
+                          <span class="sr-only">수량 감소</span>
+                        </button>
+                        <span class="item_count">1</span>
+                        <button type="button"  class="plus w-30pxr h-30pxr" style="background-image: url(/input/plus.svg);">
+                          <span class="sr-only">수량 증가</span>
+                        </button>
+                      </div>
+                      <div class="flex flex-col items-end font-bold product_price w-130pxr ">
+                        <span class="after_discount">4,980원</span>
+                        <span class="before_discount price_delete">5,600원</span>
+                      </div>
+                      <button class="product_delete ml-10pxr">
+                        <span class="sr-only">목록 삭제하기</span>
+                        <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30" >
+                          <use href="/icon/_sprite.svg#Cancel"/>
+                        </svg>
+                      </button>
+                    </li>
+                    <li class="flex items-center py-5">
+                      <fieldset class="item_select">
+                        <input type="checkbox" id="itemSelect2" class="input_checkbox_nonlabel peer top-[-17px]"/>
+                        <label for="itemSelect2" class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]">
+                          <span class="sr-only">목록 선택</span>
+                        </label>
+                      </fieldset>
+                      <a href="#">
+                        <img src="https://via.placeholder.com/60x78" alt="풀무원 탱탱쫄면 (4개입)" class="mr-5"/>
+                      </a>
+                      <a href="#" class="product_name">
+                        <span class="block mr-5 w-345pxr">[풀무원] 탱탱쫄면 (4개입)</span>
+                      </a>
+                      <div class="option_count">
+                        <button type="button" class="minus w-30pxr h-30pxr" style="background-image: url(/input/minus-disabled.svg);">
+                          <span class="sr-only">수량 감소</span>
+                        </button>
+                        <span class="item_count">1</span>
+                        <button type="button"  class="plus w-30pxr h-30pxr" style="background-image: url(/input/plus.svg);">
+                          <span class="sr-only">수량 증가</span>
+                        </button>
+                      </div>
+                      <div class="flex flex-col items-end font-bold product_price w-130pxr ">
+                        <span class="after_discount">4,980원</span>
+                        <span class="before_discount price_delete">5,600원</span>
+                      </div>
+                      <button class="product_delete ml-10pxr">
+                        <span class="sr-only">목록 삭제하기</span>
+                        <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30" >
+                          <use href="/icon/_sprite.svg#Cancel"/>
+                        </svg>
+                      </button>
+                    </li>
+                  </ul>
+                </li>
+                <li class="group_category">
+                  <h4 class="flex justify-between my-4 cart_category text-label-medium" >
+                    <div class="flex items-center gap-3 category_name">
+                      <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30">
+                        <use href="/icon/_sprite.svg#Frozen"/>
+                      </svg>
+                      <span class="font-semibold text-label-medium">냉동 식품</span>
+                    </div>
+                    <button class="list_toggle">
+                      <span class="sr-only">카테고리 상품 보기</span>
+                      <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 18 18">
+                        <use href="/icon/_sprite.svg#Down"/>
+                      </svg>
+                    </button>
+                  </h4>
+                  <ul class="product_refrigerated">
+                    <li class="flex items-center py-5">
+                      <fieldset class="item_select">
+                        <input type="checkbox" id="itemSelect3" class="input_checkbox_nonlabel peer top-[-17px]"/>
+                        <label for="itemSelect3" class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]">
+                          <span class="sr-only">목록 선택</span>
+                        </label>
+                      </fieldset>
+                      <a href="#">
+                        <img src="https://via.placeholder.com/60x78" alt="풀무원 탱탱쫄면 (4개입)" class="mr-5" />
+                      </a>
+                      <a href="#" class="product_name">
+                        <span class="block mr-5 w-345pxr">[풀무원] 탱탱쫄면 (4개입)</span>
+                      </a>
+                      <div class="option_count">
+                        <button type="button" class="minus w-30pxr h-30pxr" style="background-image: url(/input/minus-disabled.svg);">
+                          <span class="sr-only">수량 감소</span>
+                        </button>
+                        <span class="item_count">1</span>
+                        <button type="button"  class="plus w-30pxr h-30pxr" style="background-image: url(/input/plus.svg);">
+                          <span class="sr-only">수량 증가</span>
+                        </button>
+                      </div>
+                      <div class="flex flex-col items-end font-bold product_price w-130pxr ">
+                        <span class="after_discount">4,980원</span>
+                        <span class="before_discount price_delete">5,600원</span>
+                      </div>
+                      <button class="product_delete ml-10pxr">
+                        <span class="sr-only">목록 삭제하기</span>
+                        <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30" >
+                          <use href="/icon/_sprite.svg#Cancel"/>
+                        </svg>
+                      </button>
+                    </li>
+                  </ul>
+                </li>
+                <li class="group_category">
+                  <h4 class="flex justify-between my-4 cart_category text-label-medium" >
+                    <div class="flex items-center gap-3 category_name">
+                      <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30">
+                        <use href="/icon/_sprite.svg#Normal"/>
+                      </svg>
+                      <span class="font-semibold text-label-medium">상온 식품</span>
+                    </div>
+                    <button class="list_toggle">
+                      <span class="sr-only">카테고리 상품 보기</span>
+                      <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 18 18">
+                        <use href="/icon/_sprite.svg#Down"/>
+                      </svg>
+                    </button>
+                  </h4>
+                  <ul class="product_frozen">
+                    <li class="flex items-center py-5">
+                      <fieldset class="item_select">
+                        <input type="checkbox" id="itemSelect4" class="input_checkbox_nonlabel peer top-[-17px]"/>
+                        <label for="itemSelect4" class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]">
+                          <span class="sr-only">목록 선택</span>
+                        </label>
+                      </fieldset>
+                      <a href="#" class="product_image">
+                        <img src="https://via.placeholder.com/60x78" alt="풀무원 탱탱쫄면 (4개입)" class="mr-5" />
+                      </a>
+                      <a href="#" class="product_name">
+                        <span class="block mr-5 w-345pxr">[풀무원] 탱탱쫄면 (4개입)</span>
+                      </a>
+                      <div class="option_count">
+                        <button type="button" class="minus w-30pxr h-30pxr" style="background-image: url(/input/minus-disabled.svg);">
+                          <span class="sr-only">수량 감소</span>
+                        </button>
+                        <span class="item_count">1</span>
+                        <button type="button"  class="plus w-30pxr h-30pxr" style="background-image: url(/input/plus.svg);">
+                          <span class="sr-only">수량 증가</span>
+                        </button>
+                      </div>
+                      <div class="flex flex-col items-end font-bold product_price w-130pxr ">
+                        <span class="after_discount">4,980원</span>
+                        <span class="before_discount price_delete">5,600원</span>
+                      </div>
+                      <button class="product_delete ml-10pxr">
+                        <span class="sr-only">목록 삭제하기</span>
+                        <svg role="img" class="category-icon" width="30" height="30" viewBox="0 0 30 30" >
+                          <use href="/icon/_sprite.svg#Cancel"/>
+                        </svg>
+                      </button>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+        
+            <!-- item select -->
+            <div class="flex items-center my-4 item_select_area text-14pxr">
+              <fieldset class="flex items-center select_all">
+                <input type="checkbox" id="itemAllSelect2" class="input_checkbox_label peer"/>
+                <label for="itemAllSelect2" class="item_all_select checkbox_before_label">전체선택 (3/3)</label>
+              </fieldset>
+              <span class="w-[1px] h-[13px] block bg-gray-200 mx-2"></span>
+              <button class="item_select_delete">선택삭제</button>
+            </div>
+          </article>
+        
+          <!-- cart_side_area -->
+          <!-- non-member -->
+          <!-- <aside class="cart_side_area">
+            <div class="cart_side">
+              <div class="side_info">
+                <div class="sum_price">
+                  <span>상품금액</span>
+                  <span>52,800 <span>원</span></span>
+                </div>
+                <div class="discount_minus_price">
+                  <span>상품할인금액</span>
+                  <span>-10,000 <span>원</span></span>
+                </div>
+                <div class="delivery_fee">
+                  <span>배송비</span>
+                  <span>0 <span>원</span></span>
+                </div>
+                <div class="final_amount">
+                  <span>결제예정금액</span>
+                  <div class="font-bold option_sum text-heading-xl">
+                    <span>4,980 <span>원</span></span>
+                  </div>
+                </div>
+                <div class="flex reward text-label-small">
+                  <span class="bg-accent-yellow px-2 text-white rounded-[1px]">적립</span>
+                  <span class="ml-2" >구매 시 5원 적립</span>
+                </div>
+              </div>
+              <button class="login">
+                <a href="/src/pages/login/login.html">로그인</a>
+              </button>
+              <ul>
+                <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block before:bg-gray-500 before:rounded-full before:align-top before:mt-3">[주문완료] 상태일 경우에만 주문 취소 가능합니다.</li>
+                <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block before:bg-gray-500 before:rounded-full before:align-top before:mt-3">[마이컬리 > 주문내역 상세페이지] 에서 직접 취소하실 수 있습니다.</li>
+              </ul>
+            </div>
+          </aside> -->
+        
+          <!-- cart_side_area -->
+          <!-- member -->
+          <aside class="cart_side_area w-284pxr pt-14">
+            <div class="sticky flex flex-col gap-4 cart_side top-[-60px]">
+              <section class="border border-gray-100 border-solid">
+                <h3 class="sr-only">결제 정보</h3>
+                <article class="pb-5 delivery_info pt-23pxr px-19pxr">
+                <div class="flex text-label-medium">
+                    <svg role="img" class="delivery-icon" width="24" height="24" viewBox="0 0 40 40">
+                      <use href="/icon/_sprite.svg#Location"/>
+                    </svg>
+                    배송지
+                  </div>
+                  <p class="pt-5 text-label-medium">서울 중랑구 면목로 42길 11 (행운빌딩) 603호</p>
+                  <span class="block text-primary pt-7pxr pb-12pxr">샛별배송</span>
+                  <button type="button" class="w-full font-medium text-label-small text-primary h-9 border border-solid border-primary rounded-[3px]">배송지 변경</button>
+                </article>
+                <article class="border-solid side_info bg-gray-50 border-t-[1px] p-19pxr flex flex-col justify-between gap-3">
+                  <h5 class="sr-only">결제금액</h5>
+                  <div class="flex items-center justify-between sum_price w-25">
+                    <span class="text-label-">상품금액</span>
+                    <span><span class="text-[18px]">52,800</span> 원</span>
+                  </div>
+                  <div class="flex items-center justify-between discount_minus_price w-25">
+                    <span>상품할인금액</span>
+                    <span><span class="text-[18px]">1,000</span> 원</span>
+                  </div>
+                  <div class="flex items-center justify-between delivery_fee w-25">
+                    <span>배송비</span>
+                    <span><span class="text-[18px]">0</span> 원</span>
+                  </div>
+                  <div class="flex items-end justify-between mt-6 final_amount w-25">
+                    <span>결제예정금액</span>
+                    <div class="font-bold option_sum">
+                      <span><span class="text-heading-xl">4,980</span> 원</span>
+                    </div>
+                  </div>
+                  <div class="flex justify-end mt-1 reward text-label-small">
+                    <span class="bg-accent-yellow px-2 text-white rounded-[1px]">적립</span>
+                    <span class="ml-2" >구매 시 5원 적립</span>
+                  </div>
+                </article>
+              </section>
+              <a href="#" class="w-full order bg-primary block text-white rounded-[3px] h-56pxr text-label-medium font-semibold text-center leading-[56px]">주문하기</a>
+              <ul class="text-gray-500 text-label-small">
+                <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block flex items-center before:mb-[-9px] before:bg-gray-500 before:rounded-full before:mt-[-10px] before:mr-7pxr pt-1 ">쿠폰/적립금은 주문서에서 사용 가능합니다.</li>
+                <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block flex items-center before:mb-[-9px] before:bg-gray-500 before:rounded-full before:mt-[-10px] before:mr-7pxr pt-1 ">[주문완료] 상태일 경우에만 주문 취소 가능합니다.</li>
+                <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block flex items-center before:mb-[-9px] before:bg-gray-500 before:rounded-full before:mt-[-10px] before:mr-7pxr pt-1 ">[마이컬리 > 주문내역 상세페이지] 에서 직접 취소하실 수 있습니다.</li>
+                <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block flex items-center before:mb-[-9px] before:bg-gray-500 before:rounded-full before:mt-[-10px] before:mr-7pxr pt-1 ">쿠폰, 적립금 사용 금액을 제외한 실 결제 금액 기준으로 최종 산정됩니다.</li>
+                <li class="before:content-[''] before:w-1pxr before:h-1pxr before:inline-block flex items-center before:mb-[-9px] before:bg-gray-500 before:rounded-full before:mt-[-10px] before:mr-7pxr pt-1 ">상품별로 적립금 지급 기준이 다를 수 있습니다. (상품 상세 페이지에서 확인 가능합니다)</li>
+              </ul>
+            </div>
+          </aside>
+        
+        </div>
+      </section>
+    </main>
+    
+    
+    <footer id="footer" class="h-[600px]"></footer>
+  </body>
+</html>
