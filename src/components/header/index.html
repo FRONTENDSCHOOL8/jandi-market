@@ -1,0 +1,382 @@
+<div class="w-full bg-white shadow-md z_index">
+  <!-- Top Banner -->
+  <div class="flex top_banner bg-primary">
+    <div class="text-white w-[1050px] mx-auto flex_center py-1">
+      <span class="font-light w-[63rem] text-center"
+        >지금 가입하고 인기상품 <strong class="font-medium">100원</strong>에
+        받아가세요!</span
+      >
+      <button type="button">
+        <img
+          src="/icon/close_banner.png"
+          alt="배너 쿠폰 닫기 버튼"
+          class="w-42pxr h-42pxr"
+        />
+      </button>
+    </div>
+  </div>
+
+  <div class="header_box w-[1050px] mx-auto mt-3">
+    <!-- Header-Top -->
+    <ul class="relative flex justify-end">
+      <li class="text-primary">
+        <a class="text-14pxr" href="/src/pages/register/">회원가입</a>
+      </li>
+      <li class="line">
+        <a class="text-14pxr" href="/src/pages/login/">로그인</a>
+      </li>
+      <li class="line">
+        <a class="text-14pxr cs" href="#">고객센터</a>
+      </li>
+    </ul>
+
+    <!-- Header-Middle -->
+    <div class="flex items-center self-stretch justify-between mt-7">
+      <!-- Middle-left -->
+      <div class="flex items-center gap-3">
+        <h2 class="w-82pxr h-42pxr">
+          <a href="/">
+            <img src="/jandi_logo.svg" alt="잔디마켓" />
+          </a>
+        </h2>
+        <a class="font-semibold text-heading-large text-primary" href=""
+          >잔디마켓</a
+        >
+        <div
+          class="before:content-['|'] before:w-1pxr before:text-gray-200"
+        ></div>
+        <a
+          class="relative font-semibold text-gray-400 text-heading-large"
+          href=""
+          >잔디뷰티
+          <svg
+            class="absolute top-[-3px] right-[-13px]"
+            role="img"
+            width="7"
+            height="7"
+            viewBox="0 0 7 7"
+          >
+            <use href="/icon/new.svg#new 1" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Middle-Center -->
+
+      <div class="relative">
+        <div
+          class="absolute flex items-center justify-between px-5 py-3 border rounded-md top-[-30px] right-[-100px] w-400pxr border-primary"
+        >
+          <input
+            class="tracking-tight outline-none"
+            type="text"
+            placeholder="검색어를 입력해주세요"
+          />
+          <button type="button">
+            <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+              <use href="/icon/_sprite.svg#Search" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Middle-Right -->
+      <div class="relative">
+        <ul class="absolute right-[-5px] top-[-15px] flex items-center gap-5">
+          <li>
+            <button>
+              <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+                <use href="/icon/_sprite.svg#Location" />
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button>
+              <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+                <use href="/icon/_sprite.svg#Heart" />
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button>
+              <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+                <use href="/icon/_sprite.svg#Cart_header" />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Header-Bottom -->
+    <div class="">
+      <div
+        class="relative flex items-center justify-center w-full pt-6 z_index"
+      >
+        <div class="w-[1050px] flex justify-between items-center h-56pxr">
+          <!-- Bottom-left -->
+          <div id="menu_list_box" class="h-full">
+            <button
+              type="button"
+              id="menu_button"
+              class="flex items-center h-full gap-3 hover:text-primary"
+            >
+              <svg role="button" width="16" height="14" viewBox="0 0 16 14">
+                <use href="/icon/_sprite.svg#Hamburger" />
+              </svg>
+              카테고리
+            </button>
+            <ul
+              class="absolute bg-white border menu_hidden top-20 w-247pxr"
+              id="menu_list"
+            >
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2"
+                  ><img
+                    class="w-6 h-6"
+                    src="/menu/Gift.png"
+                    alt="선물하기"
+                    aria-hidden="true"
+                  />선물하기</a
+                >
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2"
+                  ><img
+                    class="w-6 h-6"
+                    src="/menu/Vegetable.png"
+                    alt="채소"
+                    aria-hidden="true"
+                  />채소</a
+                >
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2"
+                  ><img
+                    class="w-6 h-6"
+                    src="/menu/Fruit.png"
+                    alt="과일 · 견과 · 쌀"
+                    aria-hidden="true"
+                  />과일 · 견과 · 쌀</a
+                >
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/SeaFood.png"
+                    alt="수산 · 해산 · 건어물"
+                    aria-hidden="true"
+                  />수산 · 해산 · 건어물
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2"
+                  ><img
+                    class="w-6 h-6"
+                    src="/menu/Meet.png"
+                    alt="정육 · 계란"
+                    aria-hidden="true"
+                  />정육 · 계란</a
+                >
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Cook.png"
+                    alt="국 · 반찬 · 메인요리"
+                    aria-hidden="true"
+                  />국 · 반찬 · 메인요리
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Salad.png"
+                    alt="샐러드 · 간편식"
+                    aria-hidden="true"
+                  />샐러드 · 간편식
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Oil.png"
+                    alt="면 · 양념 · 오일"
+                    aria-hidden="true"
+                  />면 · 양념 · 오일
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Coffee.png"
+                    alt="생수 · 음료 · 우유 · 커피"
+                    aria-hidden="true"
+                  />생수 · 음료 · 우유 · 커피
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Snack.png"
+                    alt="간식 · 과자 · 떡"
+                    aria-hidden="true"
+                  />간식 · 과자 · 떡
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Bread.png"
+                    alt="베이커리 · 치즈 · 델리"
+                    aria-hidden="true"
+                  />베이커리 · 치즈 · 델리
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Health.png"
+                    alt="건강식품"
+                    aria-hidden="true"
+                  />건강식품
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Wine.png"
+                    alt="와인"
+                    aria-hidden="true"
+                  />와인
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Traditional_Liquor.png"
+                    alt="전통주"
+                    aria-hidden="true"
+                  />전통주
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Detergent.png"
+                    alt="생활용품 · 리빙 · 캠핑"
+                    aria-hidden="true"
+                  />생활용품 · 리빙 · 캠핑
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Cosmetics.png"
+                    alt="스킨케어 · 메이크업 "
+                    aria-hidden="true"
+                  />스킨케어 · 메이크업
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/shampoo.png"
+                    alt="헤어 · 바디 · 구강 "
+                    aria-hidden="true"
+                  />헤어 · 바디 · 구강
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Food.png"
+                    alt="주방용품"
+                    aria-hidden="true"
+                  />주방용품
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/HomeAppliances.png"
+                    alt="가전제품"
+                    aria-hidden="true"
+                  />가전제품
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Dog.png"
+                    alt="반려동물"
+                    aria-hidden="true"
+                  />반려동물
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Baby.png"
+                    alt="베이비 · 키즈 · 완구"
+                    aria-hidden="true"
+                  />베이비 · 키즈 · 완구
+                </a>
+              </li>
+              <li class="focus_menu">
+                <a href="#" class="flex gap-2">
+                  <img
+                    class="w-6 h-6"
+                    src="/menu/Travel.png"
+                    alt="여행 · 티켓 "
+                    aria-hidden="true"
+                  />여행 · 티켓
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Bottom-center -->
+          <ul class="flex ml-24">
+            <li class="product_nav">
+              <a href="/src/pages/productList/">신상품</a>
+            </li>
+            <li class="product_nav">
+              <a href="/src/pages/productList/">베스트</a>
+            </li>
+            <li class="product_nav">
+              <a href="/src/pages/productList/">알뜰쇼핑</a>
+            </li>
+            <li class="product_nav">
+              <a href="/src/pages/productList/">특가/혜택</a>
+            </li>
+          </ul>
+          <!-- Bottom-right -->
+          <a
+            class="px-2 py-1 text-sm font-normal text-gray-500 border border-gray-300 rounded-xl"
+            href="#"
+          >
+            <span class="text-primary">샛별·낮</span>
+            배송안내
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

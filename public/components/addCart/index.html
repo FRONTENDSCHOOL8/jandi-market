@@ -37,14 +37,12 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    
     <div class="flex items-center min-h-screen jusrify-center bg-amber-700">
-    
-      
-      
-      
-      <!-- addCart component -->      
-      <dialog id="addCart" class="w-356pxr box-content bg-white px-5 py-6 rounded-2xl shadow-[0_8px_36px_0_rgba(0,0,0,0.2)] flex flex-col ">
+      <!-- addCart component -->
+      <dialog
+        id="addCart"
+        class="w-356pxr box-content bg-white px-5 py-6 rounded-2xl shadow-[0_8px_36px_0_rgba(0,0,0,0.2)] flex flex-col"
+      >
         <div class="add_option">
           <div class="pb-2 font-normal option_name text-content">
             <span class="product_brand">[풀무원]</span>
@@ -53,21 +51,36 @@
           <div class="flex items-center justify-between option_price">
             <div class="font-bold product_price">
               <span class="after_discount">4,980원</span>
-              <span class="before_discount line-through text-[12px] text-gray-200 font-normal ml-1">5,600원</span>
+              <span
+                class="before_discount line-through text-[12px] text-gray-200 font-normal ml-1"
+                >5,600원</span
+              >
             </div>
-            <div class="box-content flex items-center justify-between bg-white border border-gray-200 border-solid option_count w-84pxr h-30pxr">
-              <button type="button" class="minus w-30pxr h-30pxr" style="background-image: url(/input/minus-disabled.svg);">
+            <div
+              class="box-content flex items-center justify-between bg-white border border-gray-200 border-solid option_count w-84pxr h-30pxr"
+            >
+              <button
+                type="button"
+                class="minus w-30pxr h-30pxr"
+                style="background-image: url(/input/minus-disabled.svg)"
+              >
                 <span class="sr-only">수량 감소</span>
               </button>
               <span class="item_count">1</span>
-              <button type="button"  class="plus w-30pxr h-30pxr" style="background-image: url(/input/plus.svg);">
+              <button
+                type="button"
+                class="plus w-30pxr h-30pxr"
+                style="background-image: url(/input/plus.svg)"
+              >
                 <span class="sr-only">수량 증가</span>
               </button>
             </div>
           </div>
         </div>
-        
-        <div class="flex flex-col items-end gap-1 pb-5 option_amount pt-14pxr border-t-[1px] border-t-gray-50">
+
+        <div
+          class="flex flex-col items-end gap-1 pb-5 option_amount pt-14pxr border-t-[1px] border-t-gray-50"
+        >
           <div class="flex items-end justify-between w-full">
             <span>합계</span>
             <div class="font-bold option_sum text-heading-xl">
@@ -75,27 +88,39 @@
             </div>
           </div>
           <div class="flex reward text-label-small">
-            <span class="bg-accent-yellow px-2 text-white rounded-[1px]">적립</span>
-            <span class="ml-2" >구매 시 5원 적립</span>
+            <span class="bg-accent-yellow px-2 text-white rounded-[1px]"
+              >적립</span
+            >
+            <span class="ml-2">구매 시 5원 적립</span>
           </div>
         </div>
-        
-        
+
         <ul class="flex gap-2 font-semibold add_cart_menu">
-          <li class="w-full"><button type="button" value="cancel" class="w-full border border-gray-400 rounded h-54pxr text-content">취소</button></li>
-          <li class="w-full"><button type="button" id="addBtn" class="w-full text-white rounded h-54pxr bg-primary">장바구니 담기</button></li>
+          <li class="w-full">
+            <button
+              type="button"
+              value="cancel"
+              class="w-full border border-gray-400 rounded h-54pxr text-content"
+            >
+              취소
+            </button>
+          </li>
+          <li class="w-full">
+            <button
+              type="button"
+              id="addBtn"
+              class="w-full text-white rounded h-54pxr bg-primary"
+            >
+              장바구니 담기
+            </button>
+          </li>
         </ul>
       </dialog>
       <!-- addCart component -->
-      
-      
+
       <!-- addCart bubble component -->
-      
-      
+
       <!-- addCart bubble component -->
-      
-      
-      
     </div>
   </body>
 </html>
