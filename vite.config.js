@@ -15,6 +15,7 @@ export default defineConfig({
         Header: resolve(__dirname, 'src/components/header/header.html'),
         productList: resolve(__dirname, 'src/pages/productList/index.html'),
         productDetail: resolve(__dirname, 'src/pages/productDetail/index.html'),
+        addCart: resolve(__dirname, 'src/components/addCart/addCart.html'),
       },
     },
   },
