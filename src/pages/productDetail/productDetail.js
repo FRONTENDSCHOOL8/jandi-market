@@ -257,34 +257,31 @@ fetch(URL)
   })
   .catch((err) => console.log(err));
 
-// 하트 클릭 시, localStorage에 상태( true, false ) 저장하여 .active 구현하기
-{
-  /* <svg
-  class="cursor-pointer icon_heart icon_box_gray h-14 w-14"
-  aria-hidden="true"
->
-  <use href="/public/icon/_sprite.svg#Heart-active"></use>
-</svg>; */
-}
+/* -------------------------------------------------------------------------- */
+/*    하트 클릭 시, localStorage에 상태( true, false ) 저장하여 .active 구현하기    */
+/* -------------------------------------------------------------------------- */
+
 const wishList = document.querySelector('.wish_list');
 const iconHeart = document.querySelector('.icon_heart');
 
-// localStorage에서 값을 가져와서 isWish 변수에 할당
-let isWish = localStorage.getItem('wish') === 'true';
+// localStorage에서 상품의 wish 상태를 가져옵니다.
+let productWish = JSON.parse(localStorage.getItem(productId) || 'false');
+
 // 초기 아이콘 설정
 updateHeartIcon();
 
 wishList.addEventListener('click', () => {
-  isWish = !isWish;
-  wishList.dataset.wish = String(isWish);
-  localStorage.setItem('wish', isWish);
+  productWish = !productWish; // wish 상태를 반전
+  console.log(productWish);
+  wishList.dataset.wish = String(productWish);
+  // 상품 ID를 키로 사용하여 wish 상태를 저장
+  localStorage.setItem(productId, JSON.stringify(productWish));
   updateHeartIcon();
-  console.log(isWish);
 });
 
 function updateHeartIcon() {
   iconHeart.setAttribute(
     'href',
-    `/public/icon/_sprite.svg#Heart${isWish ? '-active' : ''}`
+    `/public/icon/_sprite.svg#Heart${productWish ? '-active' : ''}`
   );
 }
