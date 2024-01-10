@@ -221,11 +221,21 @@ const productQuantity = document.querySelector('.product_quantity');
 const quantityIncrease = document.querySelector('.quantity_increase');
 let quantity = 1;
 quantityDecrease.addEventListener('click', () => {
-  if (quantity > 1) quantity--;
+  if (quantity > 1) {
+    quantity--;
+  }
+  if (quantity <= 2) {
+    quantityDecrease.src = `/public/input/minus-disabled.svg`;
+    quantityDecrease.alt = `수량 감소 비활성화`;
+  }
   productQuantity.textContent = quantity;
 });
 quantityIncrease.addEventListener('click', () => {
   quantity++;
+  if (quantity >= 0) {
+    quantityDecrease.src = `/public/input/minus.svg`;
+    quantityDecrease.alt = `수량 감소`;
+  }
   productQuantity.textContent = quantity;
 });
 
