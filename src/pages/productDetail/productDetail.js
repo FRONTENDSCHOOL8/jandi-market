@@ -18,6 +18,15 @@ const productDescription = document.querySelector('.product_description');
 const checkPoint = document.querySelector('.check_point');
 const productDetailImage = document.querySelector('.product_detail_img');
 
+const quantityDecrease = document.querySelector('.quantity_decrease');
+const productQuantity = document.querySelector('.product_quantity');
+const quantityIncrease = document.querySelector('.quantity_increase');
+
+const totalPrice = document.querySelector('.total_price');
+
+/* -------------------------------------------------------------------------- */
+/*                                   데이터바인딩                               */
+/* -------------------------------------------------------------------------- */
 fetch(URL)
   .then((response) => {
     if (response.ok === true) {
@@ -28,6 +37,7 @@ fetch(URL)
     console.log(data);
     const discountPrice = data.price - (data.price * data.discount) / 100;
     const floorDiscountPrice = Math.floor(discountPrice / 10) * 10;
+
     document.title = `${data.name} | 잔디마켓`;
 
     const renderMainImage = /* html */ `
@@ -123,8 +133,8 @@ fetch(URL)
             }
 
       ${
-        data.category === '과일/견과/쌀'
-          ? `
+        data.sugar_content !== ''
+          ? /* html */ `
       <div class="info_flex">
         <dt class="min-w-32">당도</dt>
         <dd>
@@ -190,7 +200,9 @@ fetch(URL)
         alt="상품 상세 이미지"
       />
     `;
-
+    const renderTotalPrice = /* html */ `
+      ${floorDiscountPrice.toLocaleString()}
+    `;
     product.insertAdjacentHTML('afterbegin', renderMainImage);
     productHeader.insertAdjacentHTML('afterbegin', renderProductHeader);
     productPrice.insertAdjacentHTML('afterbegin', renderProductPrice);
@@ -210,33 +222,37 @@ fetch(URL)
       'afterbegin',
       renderProductDetailImage
     );
+    totalPrice.insertAdjacentHTML('afterbegin', renderTotalPrice);
+
+    /* -------------------------------------------------------------------------- */
+    /*                                수량 증가 & 상품금액                          */
+    /* -------------------------------------------------------------------------- */
+
+    let quantity = 1;
+
+    quantityDecrease.addEventListener('click', () => {
+      if (quantity > 1) {
+        quantity--;
+      }
+      if (quantity <= 2) {
+        quantityDecrease.src = `/public/input/minus-disabled.svg`;
+        quantityDecrease.alt = `수량 감소 비활성화`;
+      }
+      productQuantity.textContent = quantity;
+      // 상품 수량을 누르면 그 값에 따라 금액도 달라진다.
+      let total = floorDiscountPrice * quantity;
+      totalPrice.textContent = total.toLocaleString();
+    });
+    quantityIncrease.addEventListener('click', () => {
+      quantity++;
+      if (quantity >= 0) {
+        quantityDecrease.src = `/public/input/minus.svg`;
+        quantityDecrease.alt = `수량 감소`;
+      }
+      productQuantity.textContent = quantity;
+      // 상품 수량을 누르면 그 값에 따라 금액도 달라진다.
+      let total = floorDiscountPrice * quantity;
+      totalPrice.textContent = total.toLocaleString();
+    });
   })
   .catch((err) => console.log(err));
-
-/* -------------------------------------------------------------------------- */
-/*                                    숫자 증가                                */
-/* -------------------------------------------------------------------------- */
-const quantityDecrease = document.querySelector('.quantity_decrease');
-const productQuantity = document.querySelector('.product_quantity');
-const quantityIncrease = document.querySelector('.quantity_increase');
-let quantity = 1;
-quantityDecrease.addEventListener('click', () => {
-  if (quantity > 1) {
-    quantity--;
-  }
-  if (quantity <= 2) {
-    quantityDecrease.src = `/public/input/minus-disabled.svg`;
-    quantityDecrease.alt = `수량 감소 비활성화`;
-  }
-  productQuantity.textContent = quantity;
-});
-quantityIncrease.addEventListener('click', () => {
-  quantity++;
-  if (quantity >= 0) {
-    quantityDecrease.src = `/public/input/minus.svg`;
-    quantityDecrease.alt = `수량 감소`;
-  }
-  productQuantity.textContent = quantity;
-});
-
-console.log(productQuantity.textContent);
