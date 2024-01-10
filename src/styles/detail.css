@@ -1,8 +1,8 @@
 .tab {
-  @apply py-15pxr border-gray-300 border bg-gray-50 w-full font-semibold;
+  @apply w-full font-semibold border border-gray-300 py-15pxr bg-gray-50;
 }
 .is_active_tab {
-  @apply bg-white border-gray-100 border-b border-b-white text-primary;
+  @apply bg-white border-b border-gray-100 border-b-white text-primary;
 }
 
 .flex_column {
@@ -16,6 +16,14 @@
   @apply leading-[160%];
 }
 
+/* product_info */
+.product {
+  @apply w-[1050px] flex items-start justify-between;
+}
+.product_header {
+  @apply gap-2 flex_column;
+}
+
 .info_flex {
   @apply flex py-4;
 }
@@ -25,11 +33,11 @@
 }
 
 .button_normal {
-  @apply text-white font-semibold bg-primary rounded;
+  @apply font-semibold text-white rounded bg-primary;
 }
 
 .text_gray_semibold {
-  @apply text-gray-400 font-semibold;
+  @apply font-semibold text-gray-400;
 }
 .badge {
   @apply rounded-[1px] px-2 border;
@@ -43,57 +51,57 @@
   @apply mt-14 w-[315px] flex_column gap-8 items-center;
 }
 .why_article_img_size {
-  @apply h-10 w-10;
+  @apply w-10 h-10;
 }
 .why_article_title {
-  @apply text-primary text-label-large font-semibold;
+  @apply font-semibold text-primary text-label-large;
 }
 
 /* review */
 .best_badge {
-  @apply badge self-start bg-secondary border-secondary text-white;
+  @apply self-start text-white badge bg-secondary border-secondary;
 }
 .purple_badge {
-  @apply badge self-start border-primary text-primary;
+  @apply self-start badge border-primary text-primary;
 }
 .review_member {
-  @apply py-17pxr text-left text_gray_semibold text-label-small flex gap-2;
+  @apply flex gap-2 text-left py-17pxr text_gray_semibold text-label-small;
 }
 
 .review_table_subject {
-  @apply py-17pxr px-5 border-b border-b-gray-100;
+  @apply px-5 border-b py-17pxr border-b-gray-100;
 }
 .review_table_subject_toggle {
-  @apply flex gap-2 text-label-medium font-semibold items-center cursor-pointer;
+  @apply flex items-center gap-2 font-semibold cursor-pointer text-label-medium;
 }
 .review_user_post_structure {
-  @apply border-b border-b-gray-100 flex gap-82pxr p-5;
+  @apply flex p-5 border-b border-b-gray-100 gap-82pxr;
 }
 .review_user_post_contents {
-  @apply py-17pxr text-left text-paragraph-small flex_column gap-5;
+  @apply gap-5 text-left py-17pxr text-paragraph-small flex_column;
 }
 
 /* inquiry */
 .inquiry_table_group_title {
-  @apply py-17pxr font-semibold text-center;
+  @apply font-semibold text-center py-17pxr;
 }
 .inquiry_table_subject {
-  @apply px-5 py-17pxr w-742pxr flex items-center font-semibold gap-5 cursor-pointer;
+  @apply flex items-center gap-5 px-5 font-semibold cursor-pointer py-17pxr w-742pxr;
 }
 .table_width100 {
-  @apply text-gray-400 text-center py-17pxr w-100pxr;
+  @apply text-center text-gray-400 py-17pxr w-100pxr;
 }
 
 .inquiry_user_contents {
-  @apply p-5 bg-gray-50 border-b border-b-gray-100 flex_column gap-10 items-start;
+  @apply items-start gap-10 p-5 border-b bg-gray-50 border-b-gray-100 flex_column;
 }
 .inquiry_contents_layout {
-  @apply flex gap-3 items-start self-stretch;
+  @apply flex items-start self-stretch gap-3;
 }
 .inquiry_contents_question {
-  @apply text-label-small text-content font-semibold;
+  @apply font-semibold text-label-small text-content;
 }
 
 .inquiry_contents_answer {
-  @apply text-label-small font-semibold flex_column items-start gap-3;
+  @apply items-start gap-3 font-semibold text-label-small flex_column;
 }

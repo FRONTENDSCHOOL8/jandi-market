@@ -1,0 +1,3 @@
+.login_input {
+  @apply w-full py-3 mt-3 border border-gray-300 rounded px-7;
+}
