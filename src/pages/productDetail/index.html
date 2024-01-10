@@ -47,36 +47,39 @@
       <h1 class="sr-only">상품 디테일 페이지</h1>
       <!-- product_info -->
       <section class="w-[1050px] mx-auto mt-0 mb-12">
-        <h2 class="sr-only">상품 요약 정보</h2>
-        <div class="w-[1050px] flex items-start justify-between">
-          <!-- product_image -->
-          <img src="https://via.placeholder.com/400x514" alt="상품명" />
+        <h2 class="sr-only">상품 정보</h2>
+        <div class="product">
+          <!-- product_image
+          <img src="https://via.placeholder.com/400x514" alt="상품명" /> -->
           <!-- product_detail -->
-          <article class="text-label-small">
+          <div class="text-label-small w-560pxr">
             <div class="gap-4 mb-5 flex_column">
-              <span class="font-bold text-heading-large leading_140"
-                >샛별배송</span
-              >
+              <span class="font-bold text-heading-large leading_140">
+                샛별배송
+              </span>
               <!-- product_header -->
-              <div class="gap-2 flex_column">
-                <h2 class="font-semibold text-label-xl">상품명</h2>
-                <p class="text-gray-400 text-paragraph-medium">상품요약설명</p>
+              <div class="product_header">
+                <!-- <h2 class="font-semibold text-label-xl">상품명</h2>
+                <p class="text-gray-400 text-paragraph-medium">상품요약설명</p> -->
               </div>
               <!-- price -->
-              <div class="font-semibold">
+              <div class="font-semibold product_price">
                 <!-- discount -->
-                <strong class="text-label-xl">
+                <!-- <strong class="text-label-xl">
                   <span class="text-red-500">25%</span>
                   <span>14,900</span>
                   <span class="font-bold text-heading-medium">원</span>
                 </strong>
-                <!-- regular price -->
+                regular price
                 <p class="text-gray-400 text-heading-medium">
                   <s>19,900원</s>
-                </p>
+                </p> -->
               </div>
-              <!-- region -->
-              <!-- <p>원산지 : ${국산}</p> -->
+              <div class="product_origin">
+                <!-- <p class="font-semibold text-24pxr text-content">
+                  원산지 : 국산
+                </p> -->
+              </div>
               <!-- point -->
               <p class="font-semibold text-primary text-label-medium">
                 로그인 후, 적립 혜택이 제공됩니다.
@@ -84,105 +87,112 @@
             </div>
             <!-- info -->
             <div class="border-gray-200 border-y">
-              <dl
-                class="font-semibold text-gray-500 divide-y divide-gray-200 w-560pxr"
-              >
-                <div class="info_flex">
-                  <dt class="min-w-32">배송</dt>
-                  <dd>
-                    <p>샛별배송</p>
-                    <p class="text-gray-400">
-                      23시 전 주문 시 내일 아침 7시 전 도착
-                    </p>
-                    <p class="text-gray-400">
-                      (대구 부산 울산 샛별배송 운영시;간 별도 확인)
-                    </p>
-                  </dd>
-                </div>
-                <div class="info_flex">
-                  <dt class="min-w-32">판매자</dt>
-                  <dd>
-                    <p>칼리</p>
-                  </dd>
-                </div>
-                <div class="info_flex">
-                  <dt class="min-w-32">포장타입</dt>
-                  <dd>
-                    <p>상온 (종이포장)</p>
-                    <p class="text-gray-400">
-                      택배배송은 에코 포장이 스티로폼으로 대체됩니다.
-                    </p>
-                  </dd>
-                </div>
-                <div class="info_flex">
-                  <dt class="min-w-32">판매단위</dt>
-                  <dd>
-                    <p>1봉</p>
-                  </dd>
-                </div>
-                <div class="info_flex">
-                  <dt class="min-w-32">중량/용량</dt>
-                  <dd>
-                    <p>123g*4봉</p>
-                  </dd>
-                </div>
-                <div class="info_flex">
-                  <dt class="min-w-32">원산지</dt>
-                  <dd>
-                    <p>상세페이지 별도표기</p>
-                  </dd>
-                </div>
-                <div class="info_flex">
-                  <dt class="min-w-32">알레르기정보</dt>
-                  <dd class="font-normal">
-                    <p>-대두, 밀, 쇠고기 함유</p>
-                    <p>
-                      - 계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우,
-                      복숭아, 토마토, 아황산류, 호두, 잣, 닭고기, 오징어,
-                      조개류(굴, 전복, 홍합 포함)를 사용한 제품과 같은
-                      제조시설에서 제조
-                    </p>
-                  </dd>
-                </div>
-                <div class="info_flex">
-                  <dt class="min-w-32">상품선택</dt>
-                  <dd class="p-3 border border-gray-200 w-432pxr">
-                    <p class="mb-3">[강남면옥] 소갈비찜</p>
-                    <div class="flex items-end justify-between">
-                      <!-- 수량버튼 -->
-                      <div
-                        class="flex items-center gap-2 border border-gray-200"
-                      >
-                        <button>
-                          <img
-                            src="/public/input/minus-disabled.svg"
-                            alt="수량 감소"
-                            class="cursor-pointer quantity_decrease"
-                          />
-                        </button>
-                        <span class="product_quantity">1</span>
-                        <button>
-                          <img
-                            src="/public/input/plus.svg"
-                            alt="수량 증가"
-                            class="cursor-pointer quantity_increase"
-                          />
-                        </button>
-                      </div>
-                      <span class="text-content">29,800원</span>
+              <div class="border-b border-gray-200">
+                <dl
+                  class="font-semibold text-gray-500 divide-y divide-gray-200 product_info"
+                >
+                  <!--  <div class="info_flex">
+                    <dt class="min-w-32">배송</dt>
+                    <dd>
+                      <p>샛별배송</p>
+                      <p class="text-gray-400">
+                        23시 전 주문 시 내일 아침 7시 전 도착
+                      </p>
+                      <p class="text-gray-400">
+                        (대구 부산 울산 샛별배송 운영시간 별도 확인)
+                      </p>
+                    </dd>
+                  </div>
+                  <div class="info_flex">
+                    <dt class="min-w-32">판매자</dt>
+                    <dd>
+                      <p>칼리</p>
+                    </dd>
+                  </div>
+                  <div class="info_flex">
+                    <dt class="min-w-32">포장타입</dt>
+                    <dd>
+                      <p>상온 (종이포장)</p>
+                      <p class="text-gray-400">
+                        택배배송은 에코 포장이 스티로폼으로 대체됩니다.
+                      </p>
+                    </dd>
+                  </div>
+                  <div class="info_flex">
+                    <dt class="min-w-32">판매단위</dt>
+                    <dd>
+                      <p>1봉</p>
+                    </dd>
+                  </div>
+                  <div class="info_flex">
+                    <dt class="min-w-32">중량/용량</dt>
+                    <dd>
+                      <p>123g*4봉</p>
+                    </dd>
+                  </div>
+                  <div class="info_flex">
+                    <dt class="min-w-32">원산지</dt>
+                    <dd>
+                      <p>상세페이지 별도표기</p>
+                    </dd>
+                  </div>
+                  <div class="info_flex">
+                    <dt class="min-w-32">알레르기정보</dt>
+                    <dd class="font-normal">
+                      <p>-대두, 밀, 쇠고기 함유</p>
+                      <p>
+                        - 계란, 우유, 메밀, 땅콩, 고등어, 게, 돼지고기, 새우,
+                        복숭아, 토마토, 아황산류, 호두, 잣, 닭고기, 오징어,
+                        조개류(굴, 전복, 홍합 포함)를 사용한 제품과 같은
+                        제조시설에서 제조
+                      </p>
+                    </dd>
+                  </div> -->
+                </dl>
+              </div>
+              <div class="info_flex font-semibold">
+                <p class="min-w-32">상품선택</p>
+                <div
+                  class="p-3 border border-gray-200 w-432pxr product_select_name"
+                >
+                  <!-- <p class="mb-3">[강남면옥] 소갈비찜</p> -->
+                  <div class="flex items-end justify-between">
+                    <!-- 수량버튼 -->
+                    <div class="flex items-center gap-2 border border-gray-200">
+                      <button>
+                        <img
+                          src="/public/input/minus-disabled.svg"
+                          alt="수량 감소 비활성화"
+                          class="cursor-pointer quantity_decrease"
+                        />
+                      </button>
+                      <span class="product_quantity w-3 text-center">1</span>
+                      <button>
+                        <img
+                          src="/public/input/plus.svg"
+                          alt="수량 증가"
+                          class="cursor-pointer quantity_increase"
+                        />
+                      </button>
                     </div>
-                  </dd>
+                    <div class="product_select_price">
+                      <!-- <span class="text-content">29,800원</span> -->
+                    </div>
+                  </div>
                 </div>
-              </dl>
+              </div>
             </div>
 
-            <div class="items-end gap-2 my-7 flex_column">
-              <p class="flex items-center font-semibold text-heading-medium">
+            <div class="gap-2 my-7 flex_column items-end justify-end">
+              <p
+                class="flex items-center justify-end font-semibold text-heading-medium"
+              >
+                <!-- 수량 별~~ 구현하기 -->
                 총 상품 금액 :
-                <strong class="total_price pl-17pxr text-label-xl"
-                  >29,800</strong
-                >
-                <span class="pl-1 font-bold">원</span>
+                <strong class="total_price pl-6 pr-1 text-label-xl">
+                  <!-- 29,800 -->
+                </strong>
+                <span class="pl-2 ml-2 font-bold">원</span>
               </p>
               <p class="flex gap-1.5 items-center">
                 <span
@@ -198,10 +208,13 @@
             <div class="flex items-start gap-3">
               <button class="wish_list" data-wish="false">
                 <svg
-                  class="text-gray-100 cursor-pointer icon_heart icon_box_gray h-14 w-14"
+                  class="text-primary cursor-pointer icon_box_gray h-14 w-14"
                   aria-hidden="true"
                 >
-                  <use href="/public/icon/_sprite.svg#Heart"></use>
+                  <use
+                    href="/public/icon/_sprite.svg#Heart"
+                    class="icon_heart"
+                  ></use>
                 </svg>
                 <span class="sr-only">찜하기</span>
               </button>
@@ -220,7 +233,7 @@
                 장바구니 담기
               </button>
             </div>
-          </article>
+          </div>
         </div>
       </section>
 
@@ -274,13 +287,12 @@
         class="w-[1050px] mt-0 mx-auto flex_column gap-24 mb-24"
       >
         <h2 class="sr-only">상품설명</h2>
-        <div>
-          <img
+        <div class="product_description">
+          <!-- <img
             src="https://via.placeholder.com/1050x670"
             alt="상품 디테일 이미지"
           />
 
-          <!-- context -->
           <div class="text-center pt-76pxr pb-9">
             <p class="font-semibold text-label-xl">
               튀기지 않아 부담 없는 매콤함
@@ -299,7 +311,7 @@
             자연스럽고 깊은 맛을 냅니다. 간단하게 조리해 마지막 한 가닥까지
             탱탱한 식감을 즐겨보세요. 취향에 따라 다양한 고명을 올려 드셔도
             좋아요.
-          </p>
+          </p> -->
         </div>
 
         <!-- karly's Check Point -->
@@ -311,10 +323,12 @@
             </h3>
             <div class="flex-grow h-px bg-gray-100"></div>
           </div>
-          <img
-            src="https://via.placeholder.com/1010x283"
-            alt="karly's Check Point"
-          />
+          <div class="check_point">
+            <!-- <img
+              src="https://via.placeholder.com/1010x283"
+              alt="karly's Check Point"
+            /> -->
+          </div>
         </div>
       </section>
 
@@ -327,10 +341,12 @@
       >
         <h2 class="sr-only">상세정보</h2>
 
-        <img
-          src="https://via.placeholder.com/1050x1066"
-          alt="상품 상세 이미지"
-        />
+        <div class="product_detail_img">
+          <!-- <img
+            src="https://via.placeholder.com/1050x1066"
+            alt="상품 상세 이미지"
+          /> -->
+        </div>
 
         <!-- why karly -->
         <article

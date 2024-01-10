@@ -5,7 +5,7 @@
 }
 
 .checkbox_before_label {
-  @apply relative before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] before:absolute before:left-[-32px] before:top-[-1px] peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)];
+  @apply relative before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] before:absolute before:left-[-32px] before:top-[-1px] peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)] z-[-1];
   /* 이 요소에 peer:checked 추가 */
 }
 
@@ -14,7 +14,7 @@
 }
 
 .checkbox_before_nonlabel {
-  @apply relative block w-9 h-6 before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] before:absolute top-[-14px] ;
+  @apply relative block w-9 h-6 before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] before:absolute top-[-14px] z-[-1];
 }
 
 /* cart list  */

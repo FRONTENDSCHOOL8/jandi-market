@@ -19,7 +19,7 @@
 }
 
 .z_index {
-  z-index: 99999999;
+  z-index: 999;
 }
 
 .cs::after {
