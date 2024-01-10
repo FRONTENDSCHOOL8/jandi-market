@@ -1,5 +1,9 @@
 .flex_center {
-  @apply flex justify-center items-center;
+  @apply flex items-center justify-center;
+}
+
+.flex_between {
+  @apply flex items-center justify-between;
 }
 
 .w1050 {

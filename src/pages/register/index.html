@@ -35,17 +35,287 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script type="module" src="/src/js/include.js"></script>
+    <script type="module" src="./register.js"></script>
   </head>
   <body>
     <header id="header"></header>
     <main>
       <div class="mt-20 mb-10">
-        <h2 class="text-3xl font-medium text-center">회원가입</h2>
-        <section>
-          <div class="text-sm text-right">
-            <span class="text-info-error">*</span>
-            필수입력사항
+        <section class="flex flex-col items-center w1050">
+          <h2 class="mb-10 text-3xl font-medium text-center">회원가입</h2>
+          <div class="">
+            <div class="mb-3 text-sm text-right">
+              <span class="text-info-error">*</span>
+              필수입력사항
+            </div>
+            <form
+              class="border-t-2 border-t-black w-640pxr"
+              action="/"
+              method="post"
+            >
+              <fieldset class="flex flex-col mb-5">
+                <legend class="sr-only">회원가입 양식</legend>
+                <ul class="w-full mt-1">
+                  <!-- 이메일 -->
+                  <li class="inline_flex">
+                    <label for="email" class="w-139pxr"
+                      >이메일<span class="text-info-error">*</span></label
+                    >
+                    <input
+                      id="email"
+                      type="email"
+                      placeholder="이메일을 입력해주세요."
+                      class="input_style"
+                      required
+                    />
+                    <button class="button_style" type="button">중복확인</button>
+                  </li>
+                  <!-- 비밀번호 -->
+                  <li class="inline_flex">
+                    <label for="password" class="w-139pxr"
+                      >비밀번호<span class="text-info-error">*</span></label
+                    >
+                    <input
+                      type="password"
+                      id="password"
+                      class="input_style"
+                      placeholder="비밀번호를 입력해주세요."
+                      required
+                    />
+                  </li>
+                  <!-- 비밀번호 확인 -->
+                  <li class="inline_flex">
+                    <label for="check_password" class="w-139pxr"
+                      >비밀번호 확인<span class="text-info-error"
+                        >*</span
+                      ></label
+                    >
+                    <input
+                      type="password"
+                      id="check_password"
+                      class="input_style"
+                      placeholder="비밀번호를 입력해주세요."
+                      required
+                    />
+                  </li>
+                  <!-- 이름 -->
+                  <li class="inline_flex">
+                    <label for="name" class="w-139pxr"
+                      >이름<span class="text-info-error">*</span></label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="이름을 입력해주세요."
+                      class="input_style"
+                      required
+                    />
+                  </li>
+                  <!-- 휴대폰 -->
+                  <li class="inline_flex">
+                    <label for="phone" class="w-139pxr"
+                      >휴대폰<span class="text-info-error">*</span></label
+                    >
+                    <input
+                      type="number"
+                      id="phone"
+                      class="input_style"
+                      placeholder="숫자만 입력해주세요."
+                      required
+                    />
+                    <button class="button_style">인증번호 받기</button>
+                  </li>
+                  <!-- 주소 -->
+                  <li class="inline_flex">
+                    <div role="search" class="w-139pxr">
+                      주소<span class="text-info-error">*</span>
+                    </div>
+                    <div>
+                      <button
+                        class="bg-white border rounded flex_center w-333pxr h-44pxr px-10pxr text-primary border-primary"
+                        id="address_find"
+                        type="button"
+                      >
+                        <svg
+                          role="img"
+                          width="36"
+                          height="36"
+                          viewBox="0 0 36 36"
+                        >
+                          <use href="/icon/_sprite.svg#Search" />
+                        </svg>
+                        <span>주소 검색</span>
+                      </button>
+                      <p class="mt-1 text-sm">
+                        배송지에 따라 상품 정보가 달라질 수 있습니다.
+                      </p>
+                    </div>
+                  </li>
+                  <!-- 성별 -->
+                  <li class="my-4 inline_flex">
+                    <span class="w-139pxr">성별</span>
+                    <ul class="flex justify-between w-333pxr">
+                      <li class="flex">
+                        <input
+                          id="male"
+                          type="radio"
+                          name="gender"
+                          class="input_radio peer"
+                        />
+                        <label for="male" class="label_radio">남자</label>
+                      </li>
+                      <li class="flex">
+                        <input
+                          id="female"
+                          type="radio"
+                          name="gender"
+                          class="input_radio peer"
+                        />
+                        <label for="female" class="label_radio">여자</label>
+                      </li>
+                      <li class="flex">
+                        <input
+                          id="none"
+                          type="radio"
+                          name="gender"
+                          class="input_radio peer"
+                        />
+                        <label for="none" class="label_radio">선택안함</label>
+                      </li>
+                    </ul>
+                  </li>
+                  <!-- 생년월일 -->
+                  <li class="my-3 inline_flex">
+                    <label for="birth" class="w-139pxr">생년월일</label>
+                    <input type="date" class="birthday input_style" />
+                  </li>
+                  <!-- 추가입력 사항 -->
+                  <li class="inline_flex">
+                    <div class="w-139pxr" role="checkbox">추가입력 사항</div>
+                    <ul class="flex justify-between w-333pxr">
+                      <li class="flex">
+                        <input
+                          type="radio"
+                          id="recommendation"
+                          name="add"
+                          class="input_radio peer"
+                        />
+                        <label for="recommendation" class="label_radio"
+                          >친구초대 추천인 아이디</label
+                        >
+                      </li>
+                      <li class="flex">
+                        <input
+                          type="radio"
+                          id="event"
+                          name="add"
+                          class="input_radio peer"
+                        />
+                        <label for="event" class="label_radio"
+                          >참여 이벤트명</label
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </fieldset>
+
+              <!-- 이용약관 동의 -->
+              <fieldset class="border-t border-t-black">
+                <legend class="sr-only">이용약관동의</legend>
+                <div class="inline-flex w-full px-5 py-20pxr">
+                  <!-- 이용 약관 체크 박스 -->
+                  <div class="justify-start w-139pxr">
+                    이용 약관 동의<span class="text-info-error">*</span>
+                  </div>
+                  <ul class="flex-grow flex-shrink w-461pxr basis-0">
+                    <li class="flex flex-col items-start">
+                      <div>
+                        <input
+                          type="checkbox"
+                          id="all"
+                          class="input_check peer"
+                        />
+                        <label
+                          for="all"
+                          class="text-lg font-medium label_check"
+                        >
+                          <span>전체 동의합니다.</span>
+                        </label>
+                      </div>
+                      <p class="pt-1 text-xs pl-9">
+                        선택항목에 동의하지 않은 경우도 회원가입 및 일반적인
+                        서비스를 이용할 수 있습니다.
+                      </p>
+                    </li>
+                    <li class="flex_between">
+                      <div>
+                        <input
+                          type="checkbox"
+                          id="essential1"
+                          class="input_check peer"
+                        />
+                        <label for="essential1" class="label_check">
+                          이용약관 동의 (필수)
+                        </label>
+                      </div>
+                      <div class="right_arrow">약관보기</div>
+                    </li>
+                    <li class="flex_between">
+                      <div>
+                        <input
+                          type="checkbox"
+                          id="essential2"
+                          class="input_check peer"
+                        />
+                        <label for="essential2" class="label_check">
+                          개인정보 수집 · 이용 동의 (필수)
+                        </label>
+                      </div>
+                      <div class="right_arrow">약관보기</div>
+                    </li>
+                    <li class="flex_between">
+                      <div>
+                        <input
+                          type="checkbox"
+                          id="choice1"
+                          class="input_check peer"
+                        />
+                        <label for="choice1" class="label_check">
+                          무료배송, 할인쿠폰 등 혜택/정보 수신 동의 (선택)
+                        </label>
+                      </div>
+                      <div class="right_arrow">약관보기</div>
+                    </li>
+                    <li class="flex_between">
+                      <div>
+                        <input
+                          type="checkbox"
+                          id="choice2"
+                          class="input_check peer"
+                        />
+                        <label for="choice2" class="label_check">
+                          본인은 만 14세 이상입니다. (필수)
+                        </label>
+                      </div>
+                      <div class="right_arrow">약관보기</div>
+                    </li>
+                  </ul>
+                </div>
+              </fieldset>
+
+              <!-- 가입하기 버튼 -->
+              <div class="flex justify-center border-t">
+                <button
+                  class="mt-10 text-white flex_center w-340pxr h-54pxr bg-primary"
+                  type="submit"
+                >
+                  가입하기
+                </button>
+              </div>
+            </form>
           </div>
         </section>
       </div>
