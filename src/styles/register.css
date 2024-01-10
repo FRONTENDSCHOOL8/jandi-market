@@ -23,7 +23,7 @@
 }
 
 .label_radio {
-  @apply pl-2 relative before:absolute before:left-[-25px] before:top-[-1px] before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/radio.svg)] peer-checked:before:bg-[url(/input/radio-isSelected.svg)];
+  @apply pl-2 relative before:absolute before:left-[-24px] before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/radio.svg)] peer-checked:before:bg-[url(/input/radio-isSelected.svg)];
 }
 
 .input_check {
@@ -31,5 +31,5 @@
 }
 
 .label_check {
-  @apply pl-2 relative before:absolute before:left-[-25px] before:top-[-1px] before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)];
+  @apply pl-2 relative before:absolute before:left-[-25px] before:top-[-3px] before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)];
 }
