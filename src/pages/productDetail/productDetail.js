@@ -1,8 +1,10 @@
 // const API = `https://jandi-market.pockethost.io/api/collections/products/records/:id`;
 // const imgURL = `https://jandi-market.pockethost.io/api/files/:collectionsID/:id/:fileName`;
 
-const URL = `https://jandi-market.pockethost.io/api/collections/products/records/elp6ix59srmj5io`;
-const imgURL = `https://jandi-market.pockethost.io/api/files/n9omag8299xjizq/elp6ix59srmj5io`;
+let productId = window.location.hash.slice(1);
+
+const URL = `https://jandi-market.pockethost.io/api/collections/products/records/${productId}`;
+const imgURL = `https://jandi-market.pockethost.io/api/files/n9omag8299xjizq/${productId}`;
 
 const product = document.querySelector('.product');
 const productHeader = document.querySelector('.product_header');
@@ -25,7 +27,7 @@ fetch(URL)
   .then((data) => {
     console.log(data);
     const discountPrice = data.price - (data.price * data.discount) / 100;
-
+    const floorDiscountPrice = Math.floor(discountPrice / 10) * 10;
     document.title = `${data.name} | 잔디마켓`;
 
     const renderMainImage = /* html */ `
@@ -34,13 +36,15 @@ fetch(URL)
       }" width="400" height="514" />
     `;
     const renderProductHeader = /* html */ `
-      <h2 class="font-semibold text-label-xl">${data.name}</h2>
+      <h2 class="font-semibold text-label-xl">${
+        data.brand !== '' ? `${data.brand} ` : ''
+      }${data.name}</h2>
       <p class="text-gray-400 text-paragraph-medium">${data.desc}</p>
     `;
     const renderProductPrice = /* html */ `
       <strong class="text-label-xl">
         <span class="text-red-500">${data.discount}%</span>
-        <span>${discountPrice.toLocaleString()}</span>
+        <span>${floorDiscountPrice.toLocaleString()}</span>
         <span class="font-bold text-heading-medium">원</span>
       </strong>
       <p class="text-gray-400 text-heading-medium">
@@ -54,7 +58,7 @@ fetch(URL)
     `;
     /* 내용 추가할 것 */
     const renderProductInfo = /* html */ `
-     <div class="info_flex">
+      <div class="info_flex">
         <dt class="min-w-32">배송</dt>
         <dd>
           <p>샛별배송</p>
@@ -93,24 +97,56 @@ fetch(URL)
           <p>${data.weight}</p>
         </dd>
       </div>
+      ${
+        data.allergy !== ''
+          ? /* html */ `
+      <div class="info_flex">
+        <dt class="min-w-32">알레르기정보</dt>
+        <dd>
+          <p>${data.allergy}</p>
+        </dd>
+      </div>  
+      `
+          : ``
+      }
+            ${
+              data.expiration_date !== ''
+                ? /* html */ `
       <div class="info_flex">
         <dt class="min-w-32">유통기한</dt>
         <dd>
           <p>${data.expiration_date}</p>
         </dd>
-      </div>
+      </div>  
+      `
+                : ``
+            }
+
+      ${
+        data.category === '과일/견과/쌀'
+          ? `
       <div class="info_flex">
         <dt class="min-w-32">당도</dt>
         <dd>
           <p>${data.sugar_content} Brix 이상</p>
         </dd>
       </div>
+      `
+          : ``
+      }
+      ${
+        data.notification !== ''
+          ? /* html */ `
       <div class="info_flex">
         <dt class="min-w-32">안내사항</dt>
-        <dd class="font-normal">
+        <dd>
           <p>${data.notification}</p>
         </dd>
-      </div>
+      </div>  
+      `
+          : ``
+      }
+
     `;
     const renderSelectProductName = /* html */ `
     <p class="mb-3">${data.name}</p>
@@ -176,3 +212,21 @@ fetch(URL)
     );
   })
   .catch((err) => console.log(err));
+
+/* -------------------------------------------------------------------------- */
+/*                                    숫자 증가                                */
+/* -------------------------------------------------------------------------- */
+const quantityDecrease = document.querySelector('.quantity_decrease');
+const productQuantity = document.querySelector('.product_quantity');
+const quantityIncrease = document.querySelector('.quantity_increase');
+let quantity = 1;
+quantityDecrease.addEventListener('click', () => {
+  if (quantity > 1) quantity--;
+  productQuantity.textContent = quantity;
+});
+quantityIncrease.addEventListener('click', () => {
+  quantity++;
+  productQuantity.textContent = quantity;
+});
+
+console.log(productQuantity.textContent);
