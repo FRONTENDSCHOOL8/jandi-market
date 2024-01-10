@@ -52,8 +52,8 @@
           >
             <img
               class="object-cover w-full"
-              src="./public/banner/banner05.png"
-              alt=""
+              src="/banner/banner05.png"
+              alt="컬리 장보기의 특권 이주의 특가 한 눈에 보기"
             />
           </div>
           <div
@@ -61,8 +61,8 @@
           >
             <img
               class="object-cover w-full"
-              src="./public/banner/banner02.png"
-              alt=""
+              src="/banner/banner02.png"
+              alt="한 눈에 보는 카드 혜택"
             />
           </div>
           <div
@@ -70,8 +70,8 @@
           >
             <img
               class="object-cover w-full"
-              src="./public/banner/banner03.png"
-              alt=""
+              src="/banner/banner03.png"
+              alt="컬리 퍼플 위크"
             />
           </div>
           <div
@@ -79,19 +79,35 @@
           >
             <img
               class="object-cover w-full"
-              src="./public/banner/banner01.png"
-              alt=""
+              src="/banner/banner01.png"
+              alt="부드러운 달콤함, 컬리 과일가게, 앵콜 특가 멜론 9900원"
             />
           </div>
         </div>
         <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
+        <div
+          class="flex justify-center items-center z-10 rounded-full font-normal absolute bottom-25pxr w-55pxr h-23pxr text-white bg-black/15 left-[1400px] swiper-pagination text-16pxr"
+        ></div>
 
         <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev after:hidden bg-[/]"></div>
-        <div class="swiper-button-next after:hidden"></div>
+        <div
+          class="absolute hidden transition-opacity duration-500 left-300pxr botton-800pxr swiper-button-prev"
+        >
+          <svg
+            class="rotate-180"
+            role="image"
+            width="60"
+            height="60"
+            viewBox="0 0 52 52"
+          >
+            <use href="/icon/_sprite.svg#Arrow_slide" />
+          </svg>
+        </div>
+        <div
+          class="absolute hidden transition-opacity duration-500 swiper-button-next right-300pxr"
+        ></div>
       </div>
-
+      <!-- product slide 첫번째 -->
       <section
         class="w-[1050px] h-608pxr flex flex-col items-start py-40pxr gap-28pxr box-content overflow-hidden"
       >
@@ -102,16 +118,16 @@
         </div>
         <div class="swiper2 w-[1050px] h-516pxr">
           <ul
-            class="flex items-start justify-between w-full list-none swiper-wrapper"
+            class="recommended_product_list flex items-start justify-between w-full list-none swiper-wrapper"
           >
-            <li
+            <!-- <li
               class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
             >
               <a href="/src/pages/productDetail/">
-                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
               </a>
               <button class="mt-6pxr" type="button">
-                <img src="./public/banner/add cart button.png" alt="" />
+                <img src="/banner/add cart button.png" alt="" />
               </button>
               <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
                 >사장님도 포기한 맛</span
@@ -134,10 +150,10 @@
               class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
             >
               <a href="/src/pages/productDetail/">
-                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
               </a>
               <button class="mt-6pxr" type="button">
-                <img src="./public/banner/add cart button.png" alt="" />
+                <img src="/banner/add cart button.png" alt="" />
               </button>
               <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
                 >사장님도 포기한 맛</span
@@ -160,10 +176,10 @@
               class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
             >
               <a href="/src/pages/productDetail/">
-                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
               </a>
               <button class="mt-6pxr" type="button">
-                <img src="./public/banner/add cart button.png" alt="" />
+                <img src="/banner/add cart button.png" alt="" />
               </button>
               <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
                 >사장님도 포기한 맛</span
@@ -186,10 +202,10 @@
               class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
             >
               <a href="/src/pages/productDetail/">
-                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
               </a>
               <button class="mt-6pxr" type="button">
-                <img src="./public/banner/add cart button.png" alt="" />
+                <img src="/banner/add cart button.png" alt="" />
               </button>
               <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
                 >사장님도 포기한 맛</span
@@ -212,10 +228,10 @@
               class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
             >
               <a href="/src/pages/productDetail/">
-                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
               </a>
               <button class="mt-6pxr" type="button">
-                <img src="./public/banner/add cart button.png" alt="" />
+                <img src="/banner/add cart button.png" alt="" />
               </button>
               <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
                 >사장님도 포기한 맛</span
@@ -238,10 +254,10 @@
               class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
             >
               <a href="/src/pages/productDetail/">
-                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
               </a>
               <button class="mt-6pxr" type="button">
-                <img src="./public/banner/add cart button.png" alt="" />
+                <img src="/banner/add cart button.png" alt="" />
               </button>
               <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
                 >사장님도 포기한 맛</span
@@ -264,10 +280,10 @@
               class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
             >
               <a href="/src/pages/productDetail/">
-                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
               </a>
               <button class="mt-6pxr" type="button">
-                <img src="./public/banner/add cart button.png" alt="" />
+                <img src="/banner/add cart button.png" alt="" />
               </button>
               <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
                 >사장님도 포기한 맛</span
@@ -290,10 +306,10 @@
               class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
             >
               <a href="/src/pages/productDetail/">
-                <img src="./public/banner/image-sample-for-test.jpg" alt="" />
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
               </a>
               <button class="mt-6pxr" type="button">
-                <img src="./public/banner/add cart button.png" alt="" />
+                <img src="/banner/add cart button.png" alt="" />
               </button>
               <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
                 >사장님도 포기한 맛</span
@@ -310,28 +326,293 @@
                 >
                 <span class="m-0 font-semibold text-16pxr">45,000원</span>
               </div>
-            </li>
+            </li> -->
           </ul>
           <!-- If we need pagination -->
           <div class="swiper2-pagination"></div>
-
-          <!-- If we need navigation buttons -->
-          <div class="relative">
-            <div
-              class="absolute z-10 top-[-370px] left-[-30px] swiper2-button-prev"
-            >
-              <svg role="button" width="60" height="60" viewBox="0 0 52 52">
-                <use href="./public/icon/_sprite.svg#Arrow_slide" />
-              </svg>
-            </div>
-
-            <div class="absolute swiper2-button-next"></div>
-          </div>
         </div>
+        <!-- If we need navigation buttons -->
       </section>
+      <div class="relative">
+        <div
+          class="absolute z-10 bottom-330pxr right-495pxr swiper2-button-prev"
+        >
+          <svg role="image" width="60" height="60" viewBox="0 0 52 52">
+            <use href="/icon/_sprite.svg#Arrow_slide" />
+          </svg>
+        </div>
+
+        <div
+          class="absolute z-10 bottom-330pxr left-480pxr swiper2-button-next"
+        >
+          <svg
+            class="rotate-180"
+            role="image"
+            width="60"
+            height="60"
+            viewBox="0 0 52 52"
+          >
+            <use href="/icon/_sprite.svg#Arrow_slide" />
+          </svg>
+        </div>
+      </div>
 
       <a class="block w-[1050px] h-139pxr my-40pxr" href="#">
-        <img src="./public/banner/line-banner 1.png" alt="" />
+        <img src="/banner/line-banner 1.png" alt="" />
+      </a>
+
+      <!-- product slide 2번째 -->
+      <section
+        class="w-[1050px] h-608pxr flex flex-col items-start py-40pxr gap-28pxr box-content overflow-hidden"
+      >
+        <div
+          class="flex flex-col justify-center items-center w-[1042px] h-563pxr p-4pxr"
+        >
+          <h2 class="text-[28.43px] font-bold">놓치면 후회할 가격</h2>
+        </div>
+        <div class="swiper3 w-[1050px] h-516pxr">
+          <ul
+            class="cheap_product_list flex items-start justify-between w-full list-none swiper-wrapper"
+          >
+            <!-- <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="/src/pages/productDetail/">
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="/banner/add cart button.png" alt="" />
+              </button>
+              <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+                >사장님도 포기한 맛</span
+              >
+              <h3 class="font-bold text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="/src/pages/productDetail/">
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="/banner/add cart button.png" alt="" />
+              </button>
+              <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+                >사장님도 포기한 맛</span
+              >
+              <h3 class="font-bold text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="/src/pages/productDetail/">
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="/banner/add cart button.png" alt="" />
+              </button>
+              <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+                >사장님도 포기한 맛</span
+              >
+              <h3 class="font-bold text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="/src/pages/productDetail/">
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="/banner/add cart button.png" alt="" />
+              </button>
+              <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+                >사장님도 포기한 맛</span
+              >
+              <h3 class="font-bold text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="/src/pages/productDetail/">
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="/banner/add cart button.png" alt="" />
+              </button>
+              <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+                >사장님도 포기한 맛</span
+              >
+              <h3 class="font-bold text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="/src/pages/productDetail/">
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="/banner/add cart button.png" alt="" />
+              </button>
+              <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+                >사장님도 포기한 맛</span
+              >
+              <h3 class="font-bold text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="/src/pages/productDetail/">
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="/banner/add cart button.png" alt="" />
+              </button>
+              <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+                >사장님도 포기한 맛</span
+              >
+              <h3 class="font-bold text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li>
+
+            <li
+              class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+            >
+              <a href="/src/pages/productDetail/">
+                <img src="/banner/image-sample-for-test.jpg" alt="" />
+              </a>
+              <button class="mt-6pxr" type="button">
+                <img src="/banner/add cart button.png" alt="" />
+              </button>
+              <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+                >사장님도 포기한 맛</span
+              >
+              <h3 class="font-bold text-16pxr mt-8pxr">
+                맛없고 비싸기만한 쫄면
+              </h3>
+              <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+                >90,000원</span
+              >
+              <div>
+                <span class="m-0 font-bold text-orange-600 text-16pxr"
+                  >50%</span
+                >
+                <span class="m-0 font-semibold text-16pxr">45,000원</span>
+              </div>
+            </li> -->
+          </ul>
+          <!-- If we need pagination -->
+          <div class="swiper3-pagination"></div>
+        </div>
+        <!-- If we need navigation buttons -->
+      </section>
+      <div class="relative">
+        <div
+          class="absolute z-10 bottom-330pxr right-495pxr swiper3-button-prev"
+        >
+          <svg role="image" width="60" height="60" viewBox="0 0 52 52">
+            <use href="/icon/_sprite.svg#Arrow_slide" />
+          </svg>
+        </div>
+
+        <div
+          class="absolute z-10 bottom-330pxr left-480pxr swiper3-button-next"
+        >
+          <svg
+            class="rotate-180"
+            role="image"
+            width="60"
+            height="60"
+            viewBox="0 0 52 52"
+          >
+            <use href="/icon/_sprite.svg#Arrow_slide" />
+          </svg>
+        </div>
+      </div>
+
+      <a class="block w-[1050px] h-139pxr my-40pxr" href="#">
+        <img src="/banner/line-banner 1.png" alt="" />
       </a>
     </main>
     <footer id="footer"></footer>
