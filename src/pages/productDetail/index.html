@@ -52,7 +52,7 @@
           <!-- product_image
           <img src="https://via.placeholder.com/400x514" alt="상품명" /> -->
           <!-- product_detail -->
-          <div class="text-label-small">
+          <div class="text-label-small w-560pxr">
             <div class="gap-4 mb-5 flex_column">
               <span class="font-bold text-heading-large leading_140">
                 샛별배송
@@ -89,7 +89,7 @@
             <div class="border-gray-200 border-y">
               <div class="border-b border-gray-200">
                 <dl
-                  class="font-semibold text-gray-500 divide-y divide-gray-200 product_info w-560pxr"
+                  class="font-semibold text-gray-500 divide-y divide-gray-200 product_info"
                 >
                   <!--  <div class="info_flex">
                     <dt class="min-w-32">배송</dt>
@@ -150,7 +150,7 @@
                   </div> -->
                 </dl>
               </div>
-              <div class="info_flex">
+              <div class="info_flex font-semibold">
                 <p class="min-w-32">상품선택</p>
                 <div
                   class="p-3 border border-gray-200 w-432pxr product_select_name"
@@ -162,11 +162,11 @@
                       <button>
                         <img
                           src="/public/input/minus-disabled.svg"
-                          alt="수량 감소"
+                          alt="수량 감소 비활성화"
                           class="cursor-pointer quantity_decrease"
                         />
                       </button>
-                      <span class="product_quantity">1</span>
+                      <span class="product_quantity w-3 text-center">1</span>
                       <button>
                         <img
                           src="/public/input/plus.svg"
@@ -183,16 +183,16 @@
               </div>
             </div>
 
-            <div class="items-end gap-2 my-7 flex_column">
+            <div class="gap-2 my-7 flex_column items-end justify-end">
               <p
-                class="flex items-center font-semibold total_price text-heading-medium"
+                class="flex items-center justify-end font-semibold text-heading-medium"
               >
                 <!-- 수량 별~~ 구현하기 -->
                 총 상품 금액 :
-                <strong class="total_price pl-17pxr text-label-xl"
-                  >29,800</strong
-                >
-                <span class="pl-1 font-bold">원</span>
+                <strong class="total_price pl-6 pr-1 text-label-xl">
+                  <!-- 29,800 -->
+                </strong>
+                <span class="pl-2 ml-2 font-bold">원</span>
               </p>
               <p class="flex gap-1.5 items-center">
                 <span
