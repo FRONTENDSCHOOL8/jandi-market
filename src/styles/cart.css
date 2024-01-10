@@ -14,7 +14,7 @@
 }
 
 .checkbox_before_nonlabel {
-  @apply relative block w-9 h-6 before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] before:absolute top-[-14px] ;
+  @apply relative block w-9 h-6 before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] before:absolute top-[-14px];
 }
 
 /* cart list  */
