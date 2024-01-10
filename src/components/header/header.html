@@ -67,13 +67,15 @@
         <div
           class="absolute flex items-center justify-between px-5 py-3 border rounded-md top-[-30px] right-[-100px] w-400pxr border-primary"
         >
+          <label for="search" class="sr-only">검색어를 입력해주세요.</label>
           <input
+            id="search"
             class="tracking-tight outline-none"
             type="text"
             placeholder="검색어를 입력해주세요"
           />
-          <button type="button">
-            <svg role="button" width="36" height="36" viewBox="0 0 36 36">
+          <button type="button" aria-label="검색">
+            <svg role="img" width="36" height="36" viewBox="0 0 36 36">
               <use href="/icon/_sprite.svg#Search" />
             </svg>
           </button>
