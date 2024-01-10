@@ -1,0 +1,20 @@
+.flex_h_center {
+  @apply flex items-center h-screen;
+}
+
+.add_cart_back {
+  @apply w-screen h-screen bg-black opacity-[.5];
+}
+
+
+.modal_index {
+  z-index: 9999;
+}
+
+.absolute_center {
+  left: calc(50% - 198px);
+}
+
+.modal_hidden {
+  @apply hidden;
+}
