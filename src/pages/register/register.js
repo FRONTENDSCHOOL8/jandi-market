@@ -9,4 +9,20 @@ function findAddress() {
   }).open();
 }
 
+window.onload = function () {
+  var dateInput = document.getElementById('birthday');
+  dateInput.addEventListener('click', function (e) {
+    this.focus(e);
+  });
+};
+
 addressFind.addEventListener('click', findAddress);
+
+const birthday = document.querySelector('#birthday');
+
+const getBirth = (e) => {
+  const value = e.target.value;
+  console.log(value);
+};
+
+birthday.addEventListener('input', getBirth);

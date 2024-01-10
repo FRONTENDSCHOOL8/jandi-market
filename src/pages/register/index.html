@@ -187,9 +187,16 @@
                     </ul>
                   </li>
                   <!-- 생년월일 -->
-                  <li class="my-3 inline_flex">
-                    <label for="birth" class="w-139pxr">생년월일</label>
-                    <input type="date" class="birthday input_style" />
+                  <li class="flex items-center w-full px-5 py-5 my-3">
+                    <label class="w-139pxr" for="birthday">생년월일</label>
+                    <input
+                      type="date"
+                      id="birthday"
+                      name="dateInput"
+                      class="text-center input_style"
+                      pattern="\d{4}-\d{2}-\d{2}"
+                      required
+                    />
                   </li>
                   <!-- 추가입력 사항 -->
                   <li class="inline_flex">
@@ -230,19 +237,18 @@
                   <div class="justify-start w-139pxr">
                     이용 약관 동의<span class="text-info-error">*</span>
                   </div>
-                  <ul class="flex-grow flex-shrink w-461pxr basis-0">
+                  <ul class="flex flex-col gap-3 w-461pxr">
                     <li class="flex flex-col items-start">
-                      <div>
+                      <div class="flex items-center">
                         <input
                           type="checkbox"
                           id="all"
                           class="input_check peer"
                         />
-                        <label
-                          for="all"
-                          class="text-lg font-medium label_check"
-                        >
-                          <span>전체 동의합니다.</span>
+                        <label for="all" class="label_check before:top-[2px]">
+                          <span class="text-lg font-medium"
+                            >전체 동의합니다.</span
+                          >
                         </label>
                       </div>
                       <p class="pt-1 text-xs pl-9">
@@ -251,7 +257,7 @@
                       </p>
                     </li>
                     <li class="flex_between">
-                      <div>
+                      <div class="flex items-center">
                         <input
                           type="checkbox"
                           id="essential1"
@@ -264,7 +270,7 @@
                       <div class="right_arrow">약관보기</div>
                     </li>
                     <li class="flex_between">
-                      <div>
+                      <div class="flex items-center">
                         <input
                           type="checkbox"
                           id="essential2"
@@ -277,7 +283,7 @@
                       <div class="right_arrow">약관보기</div>
                     </li>
                     <li class="flex_between">
-                      <div>
+                      <div class="flex items-center">
                         <input
                           type="checkbox"
                           id="choice1"
@@ -290,7 +296,7 @@
                       <div class="right_arrow">약관보기</div>
                     </li>
                     <li class="flex_between">
-                      <div>
+                      <div class="flex items-center">
                         <input
                           type="checkbox"
                           id="choice2"
