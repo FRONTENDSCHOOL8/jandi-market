@@ -125,3 +125,113 @@ swiperContainer.addEventListener('mouseleave', function () {
   nextButton.classList.add('hidden');
   swiper.autoplay.start();
 });
+
+/* -------------------------------------------------------------------------- */
+/*    ////////////////////////////////////////////////////////////////////    */
+/* -------------------------------------------------------------------------- */
+const URL = `https://jandi-market.pockethost.io/api/collections/products/records`;
+const imgURL = `https://jandi-market.pockethost.io/api/files/n9omag8299xjizq`;
+const recommendedProductList = document.querySelector(
+  '.recommended_product_list'
+);
+const cheapProductList = document.querySelector('.cheap_product_list');
+
+/* 이 상품 어때요 ? */
+fetch(`${URL}/?filter=(price>=15000)`)
+  .then((response) => {
+    if (response.ok === true) {
+      return response.json();
+    }
+  })
+  .then((data) => {
+    console.log(data);
+
+    data.items.forEach((item) => {
+      const template = /* html */ `
+      <li
+        class="flex flex-col items-start swiper-slide"
+      >
+        <a href="/src/pages/productDetail/#${item.id}">
+          <img
+          width="249"
+          height="516"
+          src="${`${imgURL}/${item.id}/${item.main_image}`}" alt="${
+            item.name
+          }" />
+        </a>
+        <button class="mt-6pxr" type="button">
+          <img src="/banner/add cart button.png" alt="" />
+        </button>
+        <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+          >${item.desc}</span
+        >
+        <h3 class="font-bold text-16pxr mt-8pxr">
+          ${item.name}
+        </h3>
+        <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+          >${item.price}원</span
+        >
+        <div>
+          <span class="m-0 font-bold text-orange-600 text-16pxr"
+            >${item.discount}%</span
+          >
+          <span class="m-0 font-semibold text-16pxr">${
+            item.price - (item.price * item.discount) / 100
+          }원</span>
+        </div>
+      </li>
+    `;
+
+      recommendedProductList.insertAdjacentHTML('beforeend', template);
+    });
+  })
+  .catch((error) => console.log(error));
+
+/* 놓치면 후회할 가격 */
+fetch(`${URL}/?filter=(price < 15000)`)
+  .then((response) => {
+    if (response.ok === true) {
+      return response.json();
+    }
+  })
+  .then((data) => {
+    data.items.forEach((item) => {
+      const template = /* html */ `
+      <li
+        class="flex flex-col items-start swiper-slide"
+      >
+        <a href="/src/pages/productDetail/#${item.id}">
+          <img
+          width="249"
+          height="516"
+          src="${`${imgURL}/${item.id}/${item.main_image}`}" alt="${
+            item.name
+          }" />
+        </a>
+        <button class="mt-6pxr" type="button">
+          <img src="/banner/add cart button.png" alt="" />
+        </button>
+        <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+          >${item.desc}</span
+        >
+        <h3 class="font-bold text-16pxr mt-8pxr">
+          ${item.name}
+        </h3>
+        <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+          >${item.price}원</span
+        >
+        <div>
+          <span class="m-0 font-bold text-orange-600 text-16pxr"
+            >${item.discount}%</span
+          >
+          <span class="m-0 font-semibold text-16pxr">${
+            item.price - (item.price * item.discount) / 100
+          }원</span>
+        </div>
+      </li>
+    `;
+
+      cheapProductList.insertAdjacentHTML('beforeend', template);
+    });
+  })
+  .catch((error) => console.log(error));
