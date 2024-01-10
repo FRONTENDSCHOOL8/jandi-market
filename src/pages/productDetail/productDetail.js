@@ -256,3 +256,35 @@ fetch(URL)
     });
   })
   .catch((err) => console.log(err));
+
+// 하트 클릭 시, localStorage에 상태( true, false ) 저장하여 .active 구현하기
+{
+  /* <svg
+  class="cursor-pointer icon_heart icon_box_gray h-14 w-14"
+  aria-hidden="true"
+>
+  <use href="/public/icon/_sprite.svg#Heart-active"></use>
+</svg>; */
+}
+const wishList = document.querySelector('.wish_list');
+const iconHeart = document.querySelector('.icon_heart');
+
+// localStorage에서 값을 가져와서 isWish 변수에 할당
+let isWish = localStorage.getItem('wish') === 'true';
+// 초기 아이콘 설정
+updateHeartIcon();
+
+wishList.addEventListener('click', () => {
+  isWish = !isWish;
+  wishList.dataset.wish = String(isWish);
+  localStorage.setItem('wish', isWish);
+  updateHeartIcon();
+  console.log(isWish);
+});
+
+function updateHeartIcon() {
+  iconHeart.setAttribute(
+    'href',
+    `/public/icon/_sprite.svg#Heart${isWish ? '-active' : ''}`
+  );
+}
