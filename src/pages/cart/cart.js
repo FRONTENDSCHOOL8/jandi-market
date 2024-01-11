@@ -25,6 +25,7 @@ function unSelectAll(e)  {
     itemSelectAll.checked = true;
     itemSelectAll2.checked = true;
   }
+  
 }
 
 // 전체선택 체크하면 모두 체크되도록
@@ -33,6 +34,16 @@ function selectAll(e)  {
   if(e.target.checked){
     itemSelectAll.checked = true;
     itemSelectAll2.checked = true;
+    
+    // 카테고리가 hidden 상태일 때 전체선택 클릭 시 이벤트
+    const cartProductList = document.querySelectorAll('.product_list');
+    cartProductList.forEach((check) => {
+      check.classList.remove('hidden');
+    });
+  }
+  if(!e.target.checked){
+    itemSelectAll.checked = false;
+    itemSelectAll2.checked = false;
   }
   
   checkBoxes.forEach((checkbox) => {
