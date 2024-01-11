@@ -283,3 +283,40 @@ function updateHeartIcon() {
     `/public/icon/_sprite.svg#Heart${productWish ? '-active' : ''}`
   );
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                     탭기능                                  */
+/* -------------------------------------------------------------------------- */
+// 각 버튼을 누르면 해당 스크롤이 섹션으로 이동한다.
+// 이동했을 경우 aria-selected가 true로 변경된다.
+// 이동했을 경우 is_active_tab 클래스가 추가된다.
+// 다른 버튼들은 aria-selected가 모두 false로 변경된다.
+// 키보드로도 이동할 수 있도록 만들어준다.
+
+const tabList = document.querySelector('[role="tablist"]');
+const tabs = tabList.querySelectorAll('[role="tab"]');
+const tabPanel = document.querySelectorAll('[role="tabpanel"]');
+
+// 이벤트 버블링을 이용
+
+function moveScrollToTab(e) {
+  const tabButton = e.target;
+  const controlledPanelId = tabButton.getAttribute('aria-controls');
+  tabs.forEach((tab) => {
+    tab.classList.remove('is_active_tab');
+    tab.setAttribute('aria-selected', false);
+  });
+  tabPanel.forEach((panel) => {
+    if (panel.getAttribute('id') === controlledPanelId) {
+      tabButton.classList.add('is_active_tab');
+      tabButton.setAttribute('aria-selected', true);
+      panel.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start',
+      });
+    }
+  });
+}
+
+tabList.addEventListener('click', moveScrollToTab);
