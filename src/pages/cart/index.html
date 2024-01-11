@@ -79,7 +79,7 @@
 
             <!-- cart list가 있을 떄 -->
             <div class="border-b border-solid cart_list border-gray-50">
-              <ul>
+              <ul class="cart_category">
                 <li class="group_category">
                   <div
                     class="flex justify-between my-4 cart_category text-label-medium"
@@ -109,7 +109,7 @@
                       </svg>
                     </button>
                   </div>
-                  <ul class="product_frozen">
+                  <ul class="product_frozen product_list">
                     <li class="flex items-center py-5">
                       <fieldset class="item_select">
                         <input
@@ -277,7 +277,7 @@
                       </svg>
                     </button>
                   </div>
-                  <ul class="product_refrigerated">
+                  <ul class="product_refrigerated product_list active:hidden">
                     <li class="flex items-center py-5">
                       <fieldset class="item_select">
                         <input
@@ -377,7 +377,7 @@
                       </svg>
                     </button>
                   </div>
-                  <ul class="product_frozen">
+                  <ul class="product_frozen product_list active:hidden">
                     <li class="flex items-center py-5">
                       <fieldset class="item_select">
                         <input

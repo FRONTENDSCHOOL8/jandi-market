@@ -86,3 +86,17 @@ itemCounts.forEach(function(itemCount) {
   minusButton.addEventListener('click', clickMinusButton);
   plusButton.addEventListener('click', clickPlusButton);
 });
+
+
+
+// 장바구니 리스트 카테고리 클릭 시 토글 버튼
+const productCategory = document.querySelectorAll('.group_category');
+
+productCategory.forEach(function(category) {
+  const CategoryButton = category.querySelector('.list_toggle');
+  const cartProductList = category.querySelector('.product_list');
+  
+  CategoryButton.addEventListener('click', function() {
+    cartProductList.classList.toggle('hidden');
+  });
+});
