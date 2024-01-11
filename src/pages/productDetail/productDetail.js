@@ -234,7 +234,7 @@ fetch(URL)
       if (quantity > 1) {
         quantity--;
       }
-      if (quantity <= 2) {
+      if (quantity <= 1) {
         quantityDecrease.src = `/public/input/minus-disabled.svg`;
         quantityDecrease.alt = `수량 감소 비활성화`;
       }
