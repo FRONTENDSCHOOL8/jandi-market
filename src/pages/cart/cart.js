@@ -16,7 +16,6 @@ function unSelectAll(e)  {
     itemSelectAll.checked = false;
     itemSelectAll2.checked = false;
   }
-  console.log("네ㅔ에?");
   
   let check = e.target.checked;
   checkBoxes.forEach((checkbox) => {
@@ -50,4 +49,6 @@ checkBoxes.forEach((checkbox) => {
 
 itemSelectAll.addEventListener("click",selectAll);
 itemSelectAll2.addEventListener("click",selectAll);
+
+
 

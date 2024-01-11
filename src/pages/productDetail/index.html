@@ -239,18 +239,51 @@
 
       <!-- 네비게이션 탭 -->
       <div
+        role="tablist"
         class="tabs flex justify-between w-[1050px] mx-auto mb-10 mt-0 sticky top-0"
       >
-        <button class="tab is_active_tab" aria-controls="section_description">
+        <button
+          role="tab"
+          class="tab is_active_tab"
+          aria-selected="true"
+          aria-controls="section_description"
+          id="tab_description"
+        >
           상품설명
         </button>
-        <button class="tab" aria-controls="section_details">상세정보</button>
-        <button class="tab" aria-controls="section_reviews">후기 ( 0 )</button>
-        <button class="tab" aria-controls="section_inquiry">문의</button>
+        <button
+          role="tab"
+          class="tab"
+          aria-selected="false"
+          aria-controls="section_details"
+          id="tab_details"
+        >
+          상세정보
+        </button>
+        <button
+          role="tab"
+          class="tab"
+          aria-selected="false"
+          aria-controls="section_reviews"
+          id="tab_reviews"
+        >
+          후기 ( 0 )
+        </button>
+        <button
+          role="tab"
+          class="tab"
+          aria-selected="false"
+          aria-controls="section_inquiry"
+          id="tab_inquiry"
+        >
+          문의
+        </button>
       </div>
 
       <section
+        role="tabpanel"
         id="section_description"
+        aria-labelledby="tab_description"
         class="w-[1050px] mt-0 mx-auto flex_column gap-24 mb-24"
       >
         <h2 class="sr-only">상품설명</h2>
@@ -300,7 +333,12 @@
       </section>
 
       <!-- 상세정보 -->
-      <section id="section_details" class="w1050">
+      <section
+        role="tabpanel"
+        id="section_details"
+        aria-labelledby="tab_details"
+        class="w1050"
+      >
         <h2 class="sr-only">상세정보</h2>
 
         <div class="product_detail_img">
@@ -392,7 +430,12 @@
       </section>
 
       <!-- 후기 -->
-      <section id="section_reviews" class="w1050 flex_column gap-14">
+      <section
+        role="tabpanel"
+        id="section_reviews"
+        aria-labelledby="tab_reviews"
+        class="w1050 flex_column gap-14"
+      >
         <div class="flex justify-between">
           <div>
             <h2 class="pb-6 font-bold text-heading-xl leading_140">상품후기</h2>
@@ -590,7 +633,12 @@
       </section>
 
       <!-- 문의 -->
-      <section id="section_inquiry" class="w1050">
+      <section
+        role="tabpanel"
+        id="section_inquiry"
+        aria-labelledby="tab_inquiry"
+        class="w1050"
+      >
         <div class="gap-4 flex_column">
           <div class="flex justify-between mt-72pxr">
             <div>
@@ -631,7 +679,7 @@
                   판매(일시)중단 제품 안내 (22.11.10 업데이트)
                 </div>
                 <div class="table_width100">칼리</div>
-                <time datetime="2017.02.01" class="table_width100">
+                <time datetime="2017-02-01" class="table_width100">
                   2017.02.01
                 </time>
                 <div class="table_width100">-</div>
@@ -644,7 +692,7 @@
               <div class="flex font-semibold border-b border-b-gray-100">
                 <div class="inquiry_table_subject">팩이 터져서 왔어요</div>
                 <div class="table_width100">김*식</div>
-                <time datetime="2022.11.11" class="table_width100">
+                <time datetime="2022-11-11" class="table_width100">
                   2022.11.11
                 </time>
                 <div class="table_width100">답변대기</div>
@@ -689,7 +737,7 @@
                       <br />
                       칼리 드림.<br />
                     </p>
-                    <time class="text-gray-400" dete-time="2022.11.11"
+                    <time class="text-gray-400" datetime="2022-11-11"
                       >2022.11.11</time
                     >
                   </div>
@@ -703,7 +751,7 @@
               <div class="flex font-semibold border-b border-b-gray-100">
                 <div class="inquiry_table_subject">팩이 터져서 왔어요2</div>
                 <div class="table_width100">김*식</div>
-                <time datetime="2022.11.11" class="table_width100">
+                <time datetime="2022-11-11" class="table_width100">
                   2022.11.11
                 </time>
                 <div class="table_width100">답변대기</div>
@@ -751,7 +799,7 @@
                       <br />
                       칼리 드림.<br />
                     </p>
-                    <time class="text-gray-400" dete-time="2022.11.11"
+                    <time class="text-gray-400" datetime="2022-11-11"
                       >2022.11.11</time
                     >
                   </div>
@@ -771,7 +819,7 @@
                   </span>
                 </div>
                 <div class="table_width100">김*식</div>
-                <time datetime="2022.11.11" class="table_width100">
+                <time datetime="2022-11-11" class="table_width100">
                   2022.11.11
                 </time>
                 <!-- 답변완료 -->
