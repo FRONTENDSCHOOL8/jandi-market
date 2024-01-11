@@ -2,9 +2,6 @@
 
 // 전체 체크박스
 const checkBoxes = document.querySelectorAll('input[name="cartList"]');
-console.log(checkBoxes);
-// 선택된 체크박스
-// const selectedBoxes = document.querySelectorAll('input[name="cartList"]:checked');
 // select all 체크박스
 const itemSelectAll = document.querySelector('input[id="itemAllSelect"]');
 // select all 하단 체크박스
@@ -27,9 +24,7 @@ function unSelectAll(e)  {
   if(check){
     itemSelectAll.checked = true;
     itemSelectAll2.checked = true;
-    
   }
-  // 낱개가 모두 선택되면 전체선택 되도록
 }
 
 // 전체선택 체크하면 모두 체크되도록
@@ -43,11 +38,7 @@ function selectAll(e)  {
   checkBoxes.forEach((checkbox) => {
     checkbox.checked = e.target.checked;
   })
-  
-  console.log(e.target.checked);
-  
 }
-
   
 checkBoxes.forEach((checkbox) => {
   checkbox.addEventListener("click", unSelectAll)
@@ -58,6 +49,7 @@ itemSelectAll2.addEventListener("click",selectAll);
 
 
 
+// 상품 수량 증가, 감소 버튼
 const itemCounts = document.querySelectorAll(".item_count");
 const minusButtons = document.querySelectorAll(".minus");
 const plusButtons = document.querySelectorAll(".plus");
@@ -69,28 +61,28 @@ itemCounts.forEach(function(itemCount) {
   const minusButton = itemCount.previousElementSibling;
   const plusButton = itemCount.nextElementSibling;
 
-  minusButton.addEventListener('click', function() {
+  // 마이너스 버튼 클릭 이벤트
+  function clickMinusButton() {
+    // 1이상일 때 감소
     if (quantity > 1) {
       quantity--;
       itemCount.innerText = quantity;
-      console.log("올라감");
-      
     }
+    // 1일 때 disabled
     if (quantity === 1){
       minusButton.style.backgroundImage = "url(/input/minus-disabled.svg)";
-      minusButton.disabled;
-      console.log("최소수량");
-      
+      minusButton.disabled = true;
     }
-  });
+  };
 
-  plusButton.addEventListener('click', function() {
+  // 플러스 버튼 클릭 이벤트
+  function clickPlusButton() {
     quantity++;
     itemCount.innerText = quantity;
-    if (quantity > 1)
     minusButton.style.backgroundImage = "url(/input/minus.svg)";
-    console.log("우왕");
+    minusButton.disabled = false;
+  };
   
-  });
-  console.log(minusButton.style.backgroundImage);
+  minusButton.addEventListener('click', clickMinusButton);
+  plusButton.addEventListener('click', clickPlusButton);
 });
