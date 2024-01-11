@@ -7,6 +7,15 @@ const itemSelectAll = document.querySelector('input[id="itemAllSelect"]');
 // select all 하단 체크박스
 const itemSelectAll2 = document.querySelector('input[id="itemAllSelect2"]');
 
+// 전체선택 옆 상품 갯수, 체크된 상품 갯수 표시
+const cartProduct = document.querySelectorAll('.item');
+const checkedCount = document.querySelectorAll('.checked_count');
+const allCheckCount = document.querySelectorAll('.all_check_count');
+
+allCheckCount.forEach((items) => {
+  items.innerText = cartProduct.length;
+});
+  
 // 하나라도 풀리면 전체선택 풀리도록
 function unSelectAll(e)  {
   
@@ -26,7 +35,22 @@ function unSelectAll(e)  {
     itemSelectAll2.checked = true;
   }
   
+  // 선택된 체크박스 리스트 수 나오기
+  let count = 0;
+  
+  checkBoxes.forEach((checkitem) => {
+    if(checkitem.checked) {
+      count++;
+    }
+  });
+  checkedCount.forEach((item) => {
+    item.textContent = count;
+  });
+    
 }
+  
+  
+  
 
 // 전체선택 체크하면 모두 체크되도록
 function selectAll(e)  {
@@ -49,6 +73,20 @@ function selectAll(e)  {
   checkBoxes.forEach((checkbox) => {
     checkbox.checked = e.target.checked;
   })
+  
+  // 전체선택 클릭 시 선택된 수 나오기
+  let count = 0;
+    
+  checkBoxes.forEach((checkitem) => {
+    if(checkitem.checked) {
+      count++;
+    }
+  });
+  checkedCount.forEach((item) => {
+    item.textContent = count;
+  });
+  
+  
 }
   
 checkBoxes.forEach((checkbox) => {
@@ -57,6 +95,12 @@ checkBoxes.forEach((checkbox) => {
 
 itemSelectAll.addEventListener("click",selectAll);
 itemSelectAll2.addEventListener("click",selectAll);
+
+
+
+
+
+
 
 
 
@@ -111,3 +155,4 @@ productCategory.forEach(function(category) {
     cartProductList.classList.toggle('hidden');
   });
 });
+
