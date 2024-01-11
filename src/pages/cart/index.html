@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="/src/styles/tailwind.css" />
     <link
       rel="stylesheet"
-      as="style"
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
@@ -117,7 +116,7 @@
                           type="checkbox"
                           name="cartList"
                           id="itemSelect"
-                          class="input_checkbox_nonlabel peer top-[-17px]"
+                          class="input_checkbox_nonlabel peer top-17pxr"
                         />
                         <label
                           for="itemSelect"
@@ -126,11 +125,12 @@
                           <span class="sr-only">목록 선택</span>
                         </label>
                       </fieldset>
-                      <a href="#">
+                      <a href="#"
+                      class="mr-5"
+                          >
                         <img
                           src="https://via.placeholder.com/60x78"
                           alt="풀무원 탱탱쫄면 (4개입)"
-                          class="mr-5"
                         />
                       </a>
                       <a href="#" class="product_name">
@@ -184,7 +184,7 @@
                           type="checkbox"
                           name="cartList"
                           id="itemSelect2"
-                          class="input_checkbox_nonlabel peer top-[-17px]"
+                          class="input_checkbox_nonlabel peer top-17pxr"
                         />
                         <label
                           for="itemSelect2"
@@ -193,11 +193,12 @@
                           <span class="sr-only">목록 선택</span>
                         </label>
                       </fieldset>
-                      <a href="#">
+                      <a href="#"
+                      class="mr-5"
+                          >
                         <img
                           src="https://via.placeholder.com/60x78"
                           alt="풀무원 탱탱쫄면 (4개입)"
-                          class="mr-5"
                         />
                       </a>
                       <a href="#" class="product_name">
@@ -248,7 +249,7 @@
                   </ul>
                 </li>
                 <li class="group_category">
-                  <h4
+                  <div
                     class="flex justify-between my-4 cart_category text-label-medium"
                   >
                     <div class="flex items-center gap-3 category_name">
@@ -261,9 +262,7 @@
                       >
                         <use href="/icon/_sprite.svg#Frozen" />
                       </svg>
-                      <span class="font-semibold text-label-medium"
-                        >냉동 식품</span
-                      >
+                      <h4 class="font-semibold text-label-medium">냉동 식품</h4>
                     </div>
                     <button class="list_toggle">
                       <span class="sr-only">카테고리 상품 보기</span>
@@ -277,7 +276,7 @@
                         <use href="/icon/_sprite.svg#Down" />
                       </svg>
                     </button>
-                  </h4>
+                  </div>
                   <ul class="product_refrigerated">
                     <li class="flex items-center py-5">
                       <fieldset class="item_select">
@@ -285,7 +284,7 @@
                           type="checkbox"
                           name="cartList"
                           id="itemSelect3"
-                          class="input_checkbox_nonlabel peer top-[-17px]"
+                          class="input_checkbox_nonlabel peer top-17pxr"
                         />
                         <label
                           for="itemSelect3"
@@ -294,11 +293,12 @@
                           <span class="sr-only">목록 선택</span>
                         </label>
                       </fieldset>
-                      <a href="#">
+                      <a href="#"
+                      class="mr-5"
+                          >
                         <img
                           src="https://via.placeholder.com/60x78"
                           alt="풀무원 탱탱쫄면 (4개입)"
-                          class="mr-5"
                         />
                       </a>
                       <a href="#" class="product_name">
@@ -349,7 +349,7 @@
                   </ul>
                 </li>
                 <li class="group_category">
-                  <h4
+                  <div
                     class="flex justify-between my-4 cart_category text-label-medium"
                   >
                     <div class="flex items-center gap-3 category_name">
@@ -362,9 +362,7 @@
                       >
                         <use href="/icon/_sprite.svg#Normal" />
                       </svg>
-                      <span class="font-semibold text-label-medium"
-                        >상온 식품</span
-                      >
+                      <h4 class="font-semibold text-label-medium">상온 식품</h4>
                     </div>
                     <button class="list_toggle">
                       <span class="sr-only">카테고리 상품 보기</span>
@@ -378,7 +376,7 @@
                         <use href="/icon/_sprite.svg#Down" />
                       </svg>
                     </button>
-                  </h4>
+                  </div>
                   <ul class="product_frozen">
                     <li class="flex items-center py-5">
                       <fieldset class="item_select">
@@ -386,7 +384,7 @@
                           type="checkbox"
                           name="cartList"
                           id="itemSelect4"
-                          class="input_checkbox_nonlabel peer top-[-17px]"
+                          class="input_checkbox_nonlabel peer top-17pxr"
                         />
                         <label
                           for="itemSelect4"
@@ -395,11 +393,12 @@
                           <span class="sr-only">목록 선택</span>
                         </label>
                       </fieldset>
-                      <a href="#" class="product_image">
+                      <a href="#"
+                      class="mr-5"
+                          >
                         <img
                           src="https://via.placeholder.com/60x78"
                           alt="풀무원 탱탱쫄면 (4개입)"
-                          class="mr-5"
                         />
                       </a>
                       <a href="#" class="product_name">
@@ -516,6 +515,7 @@
               <section class="border border-gray-100 border-solid">
                 <h3 class="sr-only">결제 정보</h3>
                 <article class="pb-5 delivery_info pt-23pxr px-19pxr">
+                  <h4 class="sr-only">배송 정보</h4>
                   <div class="flex text-label-medium">
                     <svg
                       role="img"

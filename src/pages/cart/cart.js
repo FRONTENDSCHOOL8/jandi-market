@@ -2,6 +2,7 @@
 
 // 전체 체크박스
 const checkBoxes = document.querySelectorAll('input[name="cartList"]');
+console.log(checkBoxes);
 // 선택된 체크박스
 // const selectedBoxes = document.querySelectorAll('input[name="cartList"]:checked');
 // select all 체크박스
@@ -34,8 +35,13 @@ function unSelectAll(e)  {
 // 전체선택 체크하면 모두 체크되도록
 function selectAll(e)  {
   
+  if(e.target.checked){
+    itemSelectAll.checked = true;
+    itemSelectAll2.checked = true;
+  }
+  
   checkBoxes.forEach((checkbox) => {
-    checkbox.checked = e.target.checked
+    checkbox.checked = e.target.checked;
   })
   
   console.log(e.target.checked);
@@ -52,3 +58,39 @@ itemSelectAll2.addEventListener("click",selectAll);
 
 
 
+const itemCounts = document.querySelectorAll(".item_count");
+const minusButtons = document.querySelectorAll(".minus");
+const plusButtons = document.querySelectorAll(".plus");
+
+itemCounts.forEach(function(itemCount) {
+  itemCount.innerText = "1";
+  let quantity = Number(itemCount.innerText);
+
+  const minusButton = itemCount.previousElementSibling;
+  const plusButton = itemCount.nextElementSibling;
+
+  minusButton.addEventListener('click', function() {
+    if (quantity > 1) {
+      quantity--;
+      itemCount.innerText = quantity;
+      console.log("올라감");
+      
+    }
+    if (quantity === 1){
+      minusButton.style.backgroundImage = "url(/input/minus-disabled.svg)";
+      minusButton.disabled;
+      console.log("최소수량");
+      
+    }
+  });
+
+  plusButton.addEventListener('click', function() {
+    quantity++;
+    itemCount.innerText = quantity;
+    if (quantity > 1)
+    minusButton.style.backgroundImage = "url(/input/minus.svg)";
+    console.log("우왕");
+  
+  });
+  console.log(minusButton.style.backgroundImage);
+});
