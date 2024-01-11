@@ -336,73 +336,54 @@ cartButton.addEventListener('click', () => {
 
   console.log(`${userId} 의 ${productId} 상품을 ${quantity}개 담았습니다.`);
 
-  let url = decodeURIComponent(
-    `${cartData}?filter=(userId="${userId}"&&productId="${productId}")`
-  );
+  /* 요상하게 가져오네.. */
+  const URL = import.meta.env.VITE_PH_CART;
+  const FILTER_URL = `${URL}?filter=(userId%3D'${userId}'%26%26productId%3D'${productId}')`;
   /* 카트의 정보를 가져온다. */
-  fetch(url).then((response) => {
-    console.log(response);
-  });
-  // .then((data) => {
-  /* DB의 정보를 가져온다. */
-
-  // console.log(data);
-  // });
+  fetch(FILTER_URL)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      console.log(data.items.length);
+      if (data.items.length > 0) {
+        console.log(data.items[0].quantity);
+        const cartId = data.items[0].id;
+        fetch(`${URL}/${cartId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId,
+            productId,
+            quantity: data.items[0].quantity + quantity,
+          }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+          })
+          .then((data) => console.log(data));
+      } else {
+        fetch(URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId,
+            productId,
+            quantity,
+          }),
+        })
+          .then((response) => {
+            if (response.ok) return response.json();
+          })
+          .then((data2) => console.log(data2));
+      }
+    });
 });
-
-// data.items.forEach((user) => {
-//   if (user.id === userId) {
-//     console.log('왜안나와');
-//   }
-// data.items.forEach((cart) => {
-//   let cartUser = cart.userId;
-//   let cartProduct = cart.productId;
-//   let cartQuantity = cart.quantity;
-//   let totalQuantity = quantity + cartQuantity;
-
-//   console.log(
-//     `${cartUser} 의 ${cartProduct} 상품을 ${totalQuantity}개 담겼습니다.`
-//   );
-//   console.log(totalQuantity);
-
-//   console.log(cartUser === userId);
-//   console.log(cartProduct === productId);
-
-//   if (cartUser === userId && cartProduct === productId) {
-//     fetch(`${cartData}/${cart.id}`, {
-//       method: 'PATCH',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({
-//         userId,
-//         productId,
-//         quantity: quantity + cartQuantity,
-//       }),
-//     })
-//       .then((response) => {
-//         console.log(response);
-//         if (response.ok) {
-//           return response.json();
-//         }
-//       })
-//       .then((data) => console.log(data));
-//   } else {
-//     console.log('초면이네요');
-//     fetch(cartData, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({
-//         userId,
-//         productId,
-//         quantity,
-//       }),
-//     }).then((response) => {
-//       console.log(response);
-//     });
-//   }
-// });
-//     });
-// });
