@@ -27,6 +27,7 @@ fetch('/src/components/addCart/addCart.html')
 .then((response) => response.text())
 .then(async (html) => {
   const addCartElement = document.querySelector('#addCart');
+  if (!addCartElement) return;
   addCartElement.innerHTML = html;
   return import('/src/components/addCart/addCart.js');
 })
