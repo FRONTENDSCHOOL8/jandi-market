@@ -50,7 +50,8 @@
         <h2 class="sr-only">상품 정보</h2>
         <div class="product">
           <!-- product_image
-          <img src="https://via.placeholder.com/400x514" alt="상품명" /> -->
+          -->
+          <!-- <img src="https://via.placeholder.com/400x514" alt="상품명" /> -->
           <!-- product_detail -->
           <div class="text-label-small w-560pxr">
             <div class="gap-4 mb-5 flex_column">
@@ -150,7 +151,7 @@
                   </div> -->
                 </dl>
               </div>
-              <div class="info_flex font-semibold">
+              <div class="font-semibold info_flex">
                 <p class="min-w-32">상품선택</p>
                 <div
                   class="p-3 border border-gray-200 w-432pxr product_select_name"
@@ -166,7 +167,7 @@
                           class="cursor-pointer quantity_decrease"
                         />
                       </button>
-                      <span class="product_quantity w-3 text-center">1</span>
+                      <span class="w-3 text-center product_quantity">1</span>
                       <button>
                         <img
                           src="/public/input/plus.svg"
@@ -183,13 +184,13 @@
               </div>
             </div>
 
-            <div class="gap-2 my-7 flex_column items-end justify-end">
+            <div class="items-end justify-end gap-2 my-7 flex_column">
               <p
                 class="flex items-center justify-end font-semibold text-heading-medium"
               >
                 <!-- 수량 별~~ 구현하기 -->
                 총 상품 금액 :
-                <strong class="total_price pl-6 pr-1 text-label-xl">
+                <strong class="pl-6 pr-1 total_price text-label-xl">
                   <!-- 29,800 -->
                 </strong>
                 <span class="pl-2 ml-2 font-bold">원</span>
@@ -208,7 +209,7 @@
             <div class="flex items-start gap-3">
               <button class="wish_list" data-wish="false">
                 <svg
-                  class="text-primary cursor-pointer icon_box_gray h-14 w-14"
+                  class="cursor-pointer text-primary icon_box_gray h-14 w-14"
                   aria-hidden="true"
                 >
                   <use
@@ -228,7 +229,7 @@
                 <span class="sr-only">재입고 알림 신청</span>
               </button>
               <button
-                class="font-semibold button_normal h-54pxr w-424pxr text-label-medium"
+                class="font-semibold cart_button button_normal h-54pxr w-424pxr text-label-medium"
               >
                 장바구니 담기
               </button>
