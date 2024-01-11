@@ -1,5 +1,5 @@
 .tab {
-  @apply w-full font-semibold border border-gray-300 py-15pxr bg-gray-50;
+  @apply w-full font-semibold border border-opacity-30 border-gray-300 py-15pxr bg-gray-50;
 }
 .is_active_tab {
   @apply bg-white border-b border-gray-100 border-b-white text-primary;
