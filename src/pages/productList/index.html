@@ -37,6 +37,7 @@
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script type="module" src="../../js/include.js"></script>
+    <script type="module" src="./productList.js"></script>
   </head>
   <body>
     <header id="header"></header>
@@ -53,9 +54,40 @@
           <div>특정상품 제외</div>
         </nav>
         <section>
+          <div class="flex justify-between h-24pxr mb-20pxr">
+            <div class="product-total text-14pxr"></div>
+            <ul class="flex text-14pxr">
+              <li>추천순</li>
+              <li
+                class="before:bg-gray-200 before:mx-8pxr before:inline-block before:content-[''] before:border-red-50 before:w-1pxr before:h-10pxr"
+              >
+                <a href="#">신상품순</a>
+              </li>
+              <li
+                class="before:bg-gray-200 before:mx-8pxr before:inline-block before:content-[''] before:border-red-50 before:w-1pxr before:h-10pxr"
+              >
+                <a href="#">판매량순 </a>
+              </li>
+              <li
+                class="before:bg-gray-200 before:mx-8pxr before:inline-block before:content-[''] before:border-red-50 before:w-1pxr before:h-10pxr"
+              >
+                <a href="#">혜택순</a>
+              </li>
+              <li
+                class="before:bg-gray-200 before:mx-8pxr before:inline-block before:content-[''] before:border-red-50 before:w-1pxr before:h-10pxr"
+              >
+                <a href="#">낮은 가격순</a>
+              </li>
+              <li
+                class="before:bg-gray-200 before:mx-8pxr before:inline-block before:content-[''] before:border-red-50 before:w-1pxr before:h-10pxr"
+              >
+                <a href="#">높은 가격순</a>
+              </li>
+            </ul>
+          </div>
           <h2 class="sr-only">베스트 상품리스트</h2>
           <div class="w-[783px]">
-            <ul class="flex flex-wrap justify-between">
+            <ul class="flex flex-wrap justify-between product-container">
               <li
                 class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
               >
