@@ -24,6 +24,8 @@ const quantityIncrease = document.querySelector('.quantity_increase');
 
 const totalPrice = document.querySelector('.total_price');
 
+let quantity = 1; // 상품 수량
+
 /* -------------------------------------------------------------------------- */
 /*                                   데이터바인딩                               */
 /* -------------------------------------------------------------------------- */
@@ -34,7 +36,7 @@ fetch(URL)
     }
   })
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     const discountPrice = data.price - (data.price * data.discount) / 100;
     const floorDiscountPrice = Math.floor(discountPrice / 10) * 10;
 
@@ -228,8 +230,6 @@ fetch(URL)
     /*                                수량 증가 & 상품금액                          */
     /* -------------------------------------------------------------------------- */
 
-    let quantity = 1;
-
     quantityDecrease.addEventListener('click', () => {
       if (quantity > 1) {
         quantity--;
@@ -320,3 +320,70 @@ function moveScrollToTab(e) {
 }
 
 tabList.addEventListener('click', moveScrollToTab);
+
+/* -------------------------------------------------------------------------- */
+/*                                   장바구니 담기                              */
+/* -------------------------------------------------------------------------- */
+// cartButton을 누르면 상품id, 유저id, 갯수가 장바구니 DB로 넘어간다.
+
+const cartButton = document.querySelector('.cart_button');
+const cartData = import.meta.env.VITE_PH_CART;
+// let productId = window.location.hash.slice(1);
+// let quantity = 1; // 상품 수량
+cartButton.addEventListener('click', () => {
+  // local
+  let userId = localStorage.getItem('userId');
+
+  console.log(`${userId} 의 ${productId} 상품을 ${quantity}개 담았습니다.`);
+
+  /* 요상하게 가져오네.. */
+  const URL = import.meta.env.VITE_PH_CART;
+  const FILTER_URL = `${URL}?filter=(userId%3D'${userId}'%26%26productId%3D'${productId}')`;
+  /* 카트의 정보를 가져온다. */
+  fetch(FILTER_URL)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then((data) => {
+      console.log(data.items.length);
+      if (data.items.length > 0) {
+        console.log(data.items[0].quantity);
+        const cartId = data.items[0].id;
+        fetch(`${URL}/${cartId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId,
+            productId,
+            quantity: data.items[0].quantity + quantity,
+          }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              return response.json();
+            }
+          })
+          .then((data) => console.log(data));
+      } else {
+        fetch(URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId,
+            productId,
+            quantity,
+          }),
+        })
+          .then((response) => {
+            if (response.ok) return response.json();
+          })
+          .then((data2) => console.log(data2));
+      }
+    });
+});
