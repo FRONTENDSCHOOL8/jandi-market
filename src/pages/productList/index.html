@@ -37,6 +37,7 @@
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script type="module" src="../../js/include.js"></script>
+    <script type="module" src="./productList.js"></script>
   </head>
   <body>
     <header id="header"></header>
@@ -44,18 +45,73 @@
       <h2 class="m-12 font-semibold text-center text-label-large">베스트</h2>
       <div class="flex">
         <nav class="w-267pxr">
-          <div>필터</div>
-          <div>카테고리</div>
-          <div>브랜드</div>
-          <div>가격</div>
-          <div>혜택</div>
-          <div>유형</div>
-          <div>특정상품 제외</div>
+          <div class="flex items-center border-b-2 w-220pxr h-52pxr">
+            <div class="flex justify-between w-full">
+              <button class="font-semibold" type="button">필터</button>
+              <button class="text-10pxr">초기화</button>
+            </div>
+          </div>
+
+          <div class="flex align-middle w-220pxr h-24pxr my-14pxr">
+            <button class="" type="button">카테고리</button>
+          </div>
+
+          <div class="flex align-middle w-220pxr h-24pxr my-14pxr">
+            <button class="" type="button">브랜드</button>
+          </div>
+
+          <div class="flex align-middle w-220pxr h-24pxr my-14pxr">
+            <button class="" type="button">가격</button>
+          </div>
+
+          <div class="flex align-middle w-220pxr h-24pxr my-14pxr">
+            <button class="" type="button">혜택</button>
+          </div>
+
+          <div class="flex align-middle w-220pxr h-24pxr my-14pxr">
+            <button class="" type="button">유형</button>
+          </div>
+
+          <div class="flex align-middle w-220pxr h-24pxr my-14pxr">
+            <button class="" type="button">특정상품 제외</button>
+          </div>
         </nav>
+
         <section>
+          <div class="flex justify-between h-24pxr mb-20pxr">
+            <div class="product-total text-14pxr"></div>
+            <ul class="flex text-14pxr">
+              <li>추천순</li>
+              <li
+                class="before:bg-gray-200 before:mx-8pxr before:inline-block before:content-[''] before:border-red-50 before:w-1pxr before:h-10pxr"
+              >
+                <a href="#">신상품순</a>
+              </li>
+              <li
+                class="before:bg-gray-200 before:mx-8pxr before:inline-block before:content-[''] before:border-red-50 before:w-1pxr before:h-10pxr"
+              >
+                <a href="#">판매량순 </a>
+              </li>
+              <li
+                class="before:bg-gray-200 before:mx-8pxr before:inline-block before:content-[''] before:border-red-50 before:w-1pxr before:h-10pxr"
+              >
+                <a href="#">혜택순</a>
+              </li>
+              <li
+                class="before:bg-gray-200 before:mx-8pxr before:inline-block before:content-[''] before:border-red-50 before:w-1pxr before:h-10pxr"
+              >
+                <a href="#">낮은 가격순</a>
+              </li>
+              <li
+                class="before:bg-gray-200 before:mx-8pxr before:inline-block before:content-[''] before:border-red-50 before:w-1pxr before:h-10pxr"
+              >
+                <a href="#">높은 가격순</a>
+              </li>
+            </ul>
+          </div>
           <h2 class="sr-only">베스트 상품리스트</h2>
           <div class="w-[783px]">
-            <ul class="flex flex-wrap justify-between">
+            <ul class="flex flex-wrap justify-between product-container">
               <li
                 class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
               >

@@ -1,0 +1,35 @@
+.inline_flex {
+  @apply inline-flex items-center w-full px-5 py-5;
+}
+
+.input_style {
+  @apply w-333pxr h-11 px-4 py-0.5 border rounded border-gray-300  leading-6 text-gray-400 outline-none;
+}
+
+.button_style {
+  @apply ml-2 text-center bg-white border rounded w-120pxr h-11 text-primary border-primary;
+}
+
+.spacing_out {
+  @apply py-2;
+}
+
+.right_arrow {
+  @apply text-sm text-primary after:ml-1 after:content-['>'] after:w-6pxr after:h-9pxr after:text-primary;
+}
+
+.input_radio {
+  @apply relative w-6 h-6 appearance-none;
+}
+
+.label_radio {
+  @apply pl-2 relative before:absolute before:left-[-24px] before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/radio.svg)] peer-checked:before:bg-[url(/input/radio-isSelected.svg)];
+}
+
+.input_check {
+  @apply relative w-6 h-6 appearance-none;
+}
+
+.label_check {
+  @apply pl-2 relative before:absolute before:left-[-24px] before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)];
+}
