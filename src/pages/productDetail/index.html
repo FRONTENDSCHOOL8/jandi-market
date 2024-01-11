@@ -37,6 +37,7 @@
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script type="module" src="./productDetail.js"></script>
+    <script type="module" src="./accordionToggle.js"></script>
     <script type="module" src="../../js/include.js"></script>
   </head>
   <body>
@@ -50,7 +51,8 @@
         <h2 class="sr-only">상품 정보</h2>
         <div class="product">
           <!-- product_image
-          <img src="https://via.placeholder.com/400x514" alt="상품명" /> -->
+          -->
+          <!-- <img src="https://via.placeholder.com/400x514" alt="상품명" /> -->
           <!-- product_detail -->
           <div class="text-label-small w-560pxr">
             <div class="gap-4 mb-5 flex_column">
@@ -150,7 +152,7 @@
                   </div> -->
                 </dl>
               </div>
-              <div class="info_flex font-semibold">
+              <div class="font-semibold info_flex">
                 <p class="min-w-32">상품선택</p>
                 <div
                   class="p-3 border border-gray-200 w-432pxr product_select_name"
@@ -166,7 +168,7 @@
                           class="cursor-pointer quantity_decrease"
                         />
                       </button>
-                      <span class="product_quantity w-3 text-center">1</span>
+                      <span class="w-3 text-center product_quantity">1</span>
                       <button>
                         <img
                           src="/public/input/plus.svg"
@@ -183,13 +185,13 @@
               </div>
             </div>
 
-            <div class="gap-2 my-7 flex_column items-end justify-end">
+            <div class="items-end justify-end gap-2 my-7 flex_column">
               <p
                 class="flex items-center justify-end font-semibold text-heading-medium"
               >
                 <!-- 수량 별~~ 구현하기 -->
                 총 상품 금액 :
-                <strong class="total_price pl-6 pr-1 text-label-xl">
+                <strong class="pl-6 pr-1 total_price text-label-xl">
                   <!-- 29,800 -->
                 </strong>
                 <span class="pl-2 ml-2 font-bold">원</span>
@@ -208,7 +210,7 @@
             <div class="flex items-start gap-3">
               <button class="wish_list" data-wish="false">
                 <svg
-                  class="text-primary cursor-pointer icon_box_gray h-14 w-14"
+                  class="cursor-pointer text-primary icon_box_gray h-14 w-14"
                   aria-hidden="true"
                 >
                   <use
@@ -228,7 +230,7 @@
                 <span class="sr-only">재입고 알림 신청</span>
               </button>
               <button
-                class="font-semibold button_normal h-54pxr w-424pxr text-label-medium"
+                class="font-semibold cart_button button_normal h-54pxr w-424pxr text-label-medium"
               >
                 장바구니 담기
               </button>
@@ -473,17 +475,16 @@
           <div class="border-t border-t-black">
             <!-- 공지 -->
             <div>
-              <h2 class="review_title review_table_subject">
-                <button
-                  class="review_toggle review_table_subject_toggle"
-                  aria-expanded="false"
-                  aria-controls="review_content"
-                >
+              <h2
+                class="review_title review_table_subject"
+                aria-expanded="false"
+              >
+                <button class="review_toggle review_table_subject_toggle">
                   <span class="notice_badge">공지</span>금주의 베스트 후기 안내
                 </button>
               </h2>
               <div
-                id="review_content"
+                aria-hidden="true"
                 hidden
                 class="p-5 border-b review_content bg-gray-50 border-b-gray-100"
               >
@@ -524,13 +525,17 @@
             </div>
 
             <div>
-              <h2 class="review_title review_table_subject">
+              <h2
+                class="review_title review_table_subject"
+                aria-expanded="false"
+              >
                 <button class="review_toggle review_table_subject_toggle">
                   <span class="notice_badge">공지</span>상품 후기 적립금 정책
                   안내
                 </button>
               </h2>
               <div
+                aria-hidden="true"
                 hidden
                 class="p-5 border-b bg-gray-50 review_content border-b-gray-100"
               >
@@ -673,33 +678,24 @@
 
             <!-- 문의글 -->
             <div>
-              <div class="flex font-semibold border-b border-b-gray-100">
-                <div class="inquiry_table_subject">
-                  <span class="notice_badge"> 공지 </span>
-                  판매(일시)중단 제품 안내 (22.11.10 업데이트)
-                </div>
-                <div class="table_width100">칼리</div>
-                <time datetime="2017-02-01" class="table_width100">
-                  2017.02.01
-                </time>
-                <div class="table_width100">-</div>
-              </div>
-            </div>
-
-            <!-- 유저글 -->
-            <div>
               <!-- 제목 -->
-              <div class="flex font-semibold border-b border-b-gray-100">
-                <div class="inquiry_table_subject">팩이 터져서 왔어요</div>
-                <div class="table_width100">김*식</div>
-                <time datetime="2022-11-11" class="table_width100">
-                  2022.11.11
-                </time>
-                <div class="table_width100">답변대기</div>
-              </div>
-
-              <!-- 내용 -->
-              <div class="inquiry_user_contents">
+              <h2 class="inquiry_title" aria-expanded="false">
+                <button
+                  class="flex font-semibold border-b border-b-gray-100"
+                  data-secret="false"
+                >
+                  <div class="inquiry_table_subject">
+                    <span class="notice_badge"> 공지 </span>
+                    판매(일시)중단 제품 안내 (22.11.10 업데이트)
+                  </div>
+                  <div class="table_width100">칼리</div>
+                  <time datetime="2017-02-01" class="table_width100">
+                    2017.02.01
+                  </time>
+                  <div class="table_width100">-</div>
+                </button>
+              </h2>
+              <div class="inquiry_content" aria-hidden="true" hidden>
                 <!-- question -->
                 <div class="question inquiry_contents_layout">
                   <span>
@@ -748,20 +744,20 @@
             <!-- 유저글 -->
             <div>
               <!-- 제목 -->
-              <div class="flex font-semibold border-b border-b-gray-100">
-                <div class="inquiry_table_subject">팩이 터져서 왔어요2</div>
-                <div class="table_width100">김*식</div>
-                <time datetime="2022-11-11" class="table_width100">
-                  2022.11.11
-                </time>
-                <div class="table_width100">답변대기</div>
-              </div>
-
-              <!-- 내용 -->
-              <div
-                class="flex-col items-start gap-10 p-5 border-b bg-gray-50 border-b-gray-100"
-                hidden
-              >
+              <h2 class="inquiry_title" aria-expanded="false">
+                <button
+                  class="flex font-semibold border-b border-b-gray-100"
+                  data-secret="false"
+                >
+                  <div class="inquiry_table_subject">팩이 터져서 왔어요</div>
+                  <div class="table_width100">김*식</div>
+                  <time datetime="2022-11-11" class="table_width100">
+                    2022.11.11
+                  </time>
+                  <div class="table_width100">답변대기</div>
+                </button>
+              </h2>
+              <div class="inquiry_content" aria-hidden="true" hidden>
                 <!-- question -->
                 <div class="question inquiry_contents_layout">
                   <span>
@@ -809,22 +805,73 @@
 
             <!-- 비밀글 -->
             <div>
-              <div class="flex font-semibold border-b border-b-gray-100">
-                <div class="text-gray-400 inquiry_table_subject">
-                  비밀글입니다.
+              <!-- 제목 -->
+              <h2 class="inquiry_title" aria-expanded="false">
+                <button
+                  class="flex font-semibold border-b border-b-gray-100"
+                  data-secret="true"
+                >
+                  <!-- <div class="text-gray-400 inquiry_table_subject"> -->
+                  <div class="inquiry_table_subject">
+                    또 터졌어
+                    <!-- <span>
+                      <svg width="12" height="14" aria-hidden="true">
+                        <use href="/public/icon/_sprite.svg#Lock"></use>
+                      </svg>
+                    </span> -->
+                  </div>
+                  <div class="table_width100">김*식</div>
+                  <time datetime="2022-11-11" class="table_width100">
+                    2022.11.11
+                  </time>
+                  <!-- 답변완료 -->
+                  <div class="text-center text-primary py-17pxr w-100pxr">
+                    답변완료
+                  </div>
+                </button>
+              </h2>
+              <div class="inquiry_content" aria-hidden="true" hidden>
+                <!-- question -->
+                <div class="question inquiry_contents_layout">
                   <span>
-                    <svg width="12" height="14" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Lock"></use>
+                    <svg width="24" height="24" aria-hidden="true">
+                      <use href="/public/icon/_sprite.svg#Question"></use>
                     </svg>
                   </span>
+                  <p class="inquiry_contents_question">
+                    스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요<br />
+                    환불 요청합니다.
+                  </p>
                 </div>
-                <div class="table_width100">김*식</div>
-                <time datetime="2022-11-11" class="table_width100">
-                  2022.11.11
-                </time>
-                <!-- 답변완료 -->
-                <div class="text-center text-primary py-17pxr w-100pxr">
-                  답변완료
+                <!-- answer -->
+                <div class="answer inquiry_contents_layout">
+                  <span>
+                    <svg width="24" height="24" aria-hidden="true">
+                      <use href="/public/icon/_sprite.svg#Answer"></use>
+                    </svg>
+                  </span>
+                  <div class="inquiry_contents_answer">
+                    <p class="text-content">
+                      안녕하세요. 칼리입니다.<br />
+                      믿고 찾아주신 상품에 불편을 드려 정말 죄송합니다.<br />
+                      <br />
+                      더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
+                      답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히
+                      죄송합니다.<br />
+                      <br />
+                      다행히도 고객님의 불편하셨던 사항은 고객행복센터를 통해
+                      안내 받으신 점 확인하였습니다.<br />
+                      <br />
+                      불편을 드려 정말 죄송할 따름이며, 고객님께 늘 신선하고
+                      최상의 상품을 불편 없이 전달드리기 위해 최선을 다하는
+                      칼리가 되겠습니다.<br />
+                      <br />
+                      칼리 드림.<br />
+                    </p>
+                    <time class="text-gray-400" datetime="2022-11-11"
+                      >2022.11.11</time
+                    >
+                  </div>
                 </div>
               </div>
             </div>
