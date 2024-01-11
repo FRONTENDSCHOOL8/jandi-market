@@ -264,7 +264,6 @@ fetch(URL)
 const wishList = document.querySelector('.wish_list');
 const iconHeart = document.querySelector('.icon_heart');
 
-// localStorage에서 상품의 wish 상태를 가져옵니다.
 let productWish = JSON.parse(localStorage.getItem(productId) || 'false');
 
 // 초기 아이콘 설정
@@ -274,7 +273,6 @@ wishList.addEventListener('click', () => {
   productWish = !productWish; // wish 상태를 반전
   console.log(productWish);
   wishList.dataset.wish = String(productWish);
-  // 상품 ID를 키로 사용하여 wish 상태를 저장
   localStorage.setItem(productId, JSON.stringify(productWish));
   updateHeartIcon();
 });
