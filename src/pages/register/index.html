@@ -60,71 +60,96 @@
                 <ul class="w-full mt-1">
                   <!-- 이메일 -->
                   <li class="inline_flex">
-                    <label for="email" class="w-139pxr"
+                    <label for="email" class="pt-3 w-139pxr"
                       >이메일<span class="text-info-error">*</span></label
                     >
-                    <input
-                      id="email"
-                      type="email"
-                      placeholder="이메일을 입력해주세요."
-                      class="input_style"
-                      required
-                    />
+                    <div class="">
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="이메일을 입력해주세요."
+                        class="input_style"
+                        required
+                      />
+                      <div id="email_error" class="hidden">
+                        이메일 형식으로 입력해 주세요.
+                      </div>
+                    </div>
                     <button class="button_style" type="button">중복확인</button>
                   </li>
                   <!-- 비밀번호 -->
                   <li class="inline_flex">
-                    <label for="password" class="w-139pxr"
+                    <label for="password" class="pt-3 w-139pxr"
                       >비밀번호<span class="text-info-error">*</span></label
                     >
-                    <input
-                      type="password"
-                      id="password"
-                      class="input_style"
-                      placeholder="비밀번호를 입력해주세요."
-                      required
-                    />
+                    <div>
+                      <input
+                        type="password"
+                        id="password"
+                        class="input_style"
+                        placeholder="비밀번호를 입력해주세요."
+                        required
+                      />
+                      <div id="password_error" class="hidden">
+                        특수문자 포함 최소 6자 - 16자 조합
+                      </div>
+                    </div>
                   </li>
                   <!-- 비밀번호 확인 -->
                   <li class="inline_flex">
-                    <label for="check_password" class="w-139pxr"
+                    <label for="check_password" class="pt-3 w-139pxr"
                       >비밀번호 확인<span class="text-info-error"
                         >*</span
                       ></label
                     >
-                    <input
-                      type="password"
-                      id="check_password"
-                      class="input_style"
-                      placeholder="비밀번호를 입력해주세요."
-                      required
-                    />
+                    <div>
+                      <input
+                        type="password"
+                        id="check_password"
+                        class="input_style"
+                        placeholder="비밀번호를 입력해주세요."
+                        required
+                      />
+                      <div id="check_password_error" class="hidden">
+                        비밀번호를 한번 더 입력해 주세요.
+                      </div>
+                    </div>
                   </li>
                   <!-- 이름 -->
                   <li class="inline_flex">
-                    <label for="name" class="w-139pxr"
+                    <label for="name" class="pt-3 w-139pxr"
                       >이름<span class="text-info-error">*</span></label
                     >
-                    <input
-                      type="text"
-                      id="name"
-                      placeholder="이름을 입력해주세요."
-                      class="input_style"
-                      required
-                    />
+                    <div>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder="이름을 입력해주세요."
+                        class="input_style"
+                        required
+                      />
+                      <div class="mt-1 text-xs font-medium text-info-error">
+                        이름을 입력해 주세요.
+                      </div>
+                    </div>
                   </li>
                   <!-- 휴대폰 -->
                   <li class="inline_flex">
-                    <label for="phone" class="w-139pxr"
+                    <label for="phone" class="pt-3 w-139pxr"
                       >휴대폰<span class="text-info-error">*</span></label
                     >
-                    <input
-                      type="number"
-                      id="phone"
-                      class="input_style"
-                      placeholder="숫자만 입력해주세요."
-                      required
-                    />
+                    <div>
+                      <input
+                        type="number"
+                        id="phone"
+                        class="input_style"
+                        placeholder="숫자만 입력해주세요."
+                        required
+                      />
+                      <div class="mt-1 text-xs font-medium text-info-error">
+                        휴대폰 번호를 입력해 주세요.
+                      </div>
+                    </div>
                     <button class="button_style">인증번호 받기</button>
                   </li>
                   <!-- 주소 -->

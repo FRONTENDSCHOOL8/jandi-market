@@ -1,5 +1,3 @@
-import '/src/styles/tailwind.css';
-
 const topBanner = document.querySelector('.top_banner');
 
 const closeBanner = (e) => {
