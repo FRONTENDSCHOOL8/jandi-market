@@ -33,18 +33,31 @@ const setBannerOnLoad = () => {
 topBanner.addEventListener('click', closeBanner);
 window.addEventListener('DOMContentLoaded', setBannerOnLoad);
 
-//스크롤 했을 때 헤더 탑 고정
+//스크롤 이벤트 적용
 const scroll = document.querySelector('#header_scroll');
 const delivery = document.querySelector('#delivery');
+const productNavLi = document.querySelectorAll('.nav_li');
+const categoryBox = document.querySelector('#categoryBox');
+const searchBar = document.querySelector('#searchBar');
+const searchInut = document.querySelector('#search');
+const iconBox = document.querySelector('#icons');
+
+function changeStyle(isScrolled) {
+  scroll.classList.toggle('top_fixed', isScrolled);
+  delivery.style.display = isScrolled ? 'none' : 'block';
+  categoryBox.classList.toggle('justify-between', !isScrolled);
+  searchBar.classList.toggle('scroll_search', isScrolled);
+  searchInut.classList.toggle('bg-gray-50', isScrolled);
+  iconBox.classList.toggle('scroll_icon', isScrolled);
+  productNavLi.forEach((li) => {
+    li.classList.toggle('product_nav', !isScrolled);
+    li.classList.toggle('product_nav_scroll', isScrolled);
+  });
+}
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY >= 150) {
-    scroll.classList.add('top_fixed');
-    delivery.style.display = 'none';
-  } else if (window.scrollY < 150) {
-    scroll.classList.remove('top_fixed');
-    delivery.style.display = 'block';
-  }
+  const isScrolled = window.scrollY >= 150;
+  changeStyle(isScrolled);
 });
 
 //로그인 성공 시, 유저 이름 UI로 구현
@@ -55,7 +68,7 @@ const bringUserInfo = async () => {
   const users = import.meta.env.VITE_PH_USERS;
 
   try {
-    const response = await fetch(`${users}/${userId}`);
+    const response = await fetch(`${users}/${userId ? userId : ''}`);
     if (response.ok) {
       const userData = await response.json(); // 데이터를 변수에 저장
       return userData; // Promise를 통해 데이터 반환
@@ -110,7 +123,7 @@ const showUserName = async () => {
   try {
     const userData = await bringUserInfo(); // 데이터 받아온 후에 변수에 할당
     // userData가 있는 경우 조건문 처리
-    if (userData) {
+    if (userData.id) {
       const jandiUser = /*html*/ `
           <li id="user_name" class="">
         <a class="text-sm drop_down" href="/src/pages/login/">${userData.name}님</a>
