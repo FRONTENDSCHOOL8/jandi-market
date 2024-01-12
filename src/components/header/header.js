@@ -70,11 +70,19 @@ const bringUserInfo = async () => {
   }
 };
 
-//로그인했을 때, 유저가 사용 가능한 리스트 보여주기
-const userList = document.querySelector('#user_list');
-const userName = document.querySelector('#user_name');
+//유저리스트에서 로그아웃 클릭시 세션스토리지 비우고 리렌더링
+const logOut = () => {
+  const logout = document.querySelector('.logout');
+  const handleLogOut = () => {
+    sessionStorage.removeItem('userId');
+  };
+  logout.addEventListener('click', handleLogOut);
+};
 
+//로그인했을 때, 유저가 사용 가능한 리스트 보여주기
 const showUserInfo = () => {
+  const userList = document.querySelector('#user_list');
+  const userName = document.querySelector('#user_name');
   userName.addEventListener('mouseover', () => {
     userList.classList.remove('list_hidden');
   });
@@ -119,14 +127,15 @@ const showUserName = async () => {
         <ul
           class="flex flex-col gap-1 px-2 py-1 mt-1 font-normal leading-5 border text-13pxr"
         >
-          <li class=""><a href="#">로그아웃</a></li>
+          <li class="logout"><a href="/">로그아웃</a></li>
           <li class=""><a href="#">찜한 상품</a></li>
-          <li class=""><a href="#">탈퇴하기</a></li>
+          <li class="withdrawal"><a href="#">탈퇴하기</a></li>
         </ul>
       </li>
     `;
       signList.insertAdjacentHTML('afterbegin', jandiUser);
       showUserInfo();
+      logOut();
       // 로그인이 아닌 상태일 때 UI 출력
     } else {
       const nonJandiUser = /*html*/ `
