@@ -10,7 +10,6 @@ const password = document.querySelector('#password');
 const doubleCheckPassword = document.querySelector('#check_password');
 const name = document.querySelector('#name');
 const phone = document.querySelector('#phone');
-
 const addressFind = document.querySelector('#address_find');
 const birthday = document.querySelector('#birthday');
 
@@ -27,43 +26,27 @@ fetch(URL)
 
 let emailPass = false;
 
-const checkEmail = (e) => {
-  const value = e.target.value;
-  const emailError = document.querySelector('#email_error');
-  if (emailReg(value)) {
-    emailError.classList.remove('error');
-    emailError.classList.add('hidden');
-    s;
-  } else {
-    emailError.classList.remove('hidden');
-    emailError.classList.add('error');
-  }
+//유효성체크 가능한 재사용 함수
+const isValidField = (validator, errorMessageEl) => {
+  return (e) => {
+    const value = e.target.value;
+    const errorElement = document.querySelector(errorMessageEl);
+    if (validator(value)) {
+      errorElement.classList.remove('error');
+      errorElement.classList.add('hidden');
+    } else {
+      errorElement.classList.remove('hidden');
+      errorElement.classList.add('error');
+    }
+  };
 };
 
-const checkPassword = (e) => {
-  const value = e.target.value;
-  const passwordError = document.querySelector('#password_error');
-  if (pwReg(value)) {
-    passwordError.classList.remove('error');
-    passwordError.classList.add('hidden');
-  } else {
-    passwordError.classList.remove('hidden');
-    passwordError.classList.add('error');
-  }
-};
-
-const confirmPassword = (e) => {
-  const value = e.target.value;
-  const passwordError = document.querySelector('#check_password_error');
-  if (value === password.value) {
-    passwordError.classList.remove('error');
-    passwordError.classList.add('hidden');
-  } else {
-    passwordError.classList.remove('hidden');
-    passwordError.classList.add('error');
-  }
-};
-
+const checkEmail = isValidField(emailReg, '#email_error');
+const checkPassword = isValidField(pwReg, '#password_error');
+const confirmPassword = isValidField(
+  (value) => value === password.value,
+  '#check_password_error'
+);
 const checkName = (e) => {
   const value = e.target.value;
 };
