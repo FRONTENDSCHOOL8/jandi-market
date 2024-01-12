@@ -37,3 +37,9 @@
 .error {
   @apply mt-1 overflow-hidden text-xs font-medium text-info-error;
 }
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

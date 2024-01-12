@@ -75,7 +75,13 @@
                         이메일 형식으로 입력해 주세요.
                       </div>
                     </div>
-                    <button class="button_style" type="button">중복확인</button>
+                    <button
+                      id="is_duplicated_email"
+                      class="button_style"
+                      type="button"
+                    >
+                      중복확인
+                    </button>
                   </li>
                   <!-- 비밀번호 -->
                   <li class="inline_flex">
@@ -128,7 +134,7 @@
                         class="input_style"
                         required
                       />
-                      <div class="mt-1 text-xs font-medium text-info-error">
+                      <div id="name_error" class="hidden">
                         이름을 입력해 주세요.
                       </div>
                     </div>
@@ -146,18 +152,20 @@
                         placeholder="숫자만 입력해주세요."
                         required
                       />
-                      <div class="mt-1 text-xs font-medium text-info-error">
+                      <div id="phone_error" class="hidden">
                         휴대폰 번호를 입력해 주세요.
                       </div>
                     </div>
-                    <button class="button_style">인증번호 받기</button>
+                    <button id="is_duplicated_phone" class="button_style">
+                      중복확인
+                    </button>
                   </li>
                   <!-- 주소 -->
-                  <li class="inline_flex">
+                  <li class="items-center inline_flex">
                     <div role="search" class="w-139pxr">
                       주소<span class="text-info-error">*</span>
                     </div>
-                    <div>
+                    <div id="address_box">
                       <button
                         class="bg-white border rounded flex_center w-333pxr h-44pxr px-10pxr text-primary border-primary"
                         id="address_find"
@@ -179,15 +187,16 @@
                     </div>
                   </li>
                   <!-- 성별 -->
-                  <li class="my-4 inline_flex">
+                  <li class="inline_flex">
                     <span class="w-139pxr">성별</span>
-                    <ul class="flex justify-between w-333pxr">
+                    <ul id="gender_list" class="flex justify-between w-333pxr">
                       <li class="flex">
                         <input
                           id="male"
                           type="radio"
                           name="gender"
                           class="input_radio peer"
+                          aria-label="성별 선택: 남자"
                         />
                         <label for="male" class="label_radio">남자</label>
                       </li>
@@ -197,6 +206,7 @@
                           type="radio"
                           name="gender"
                           class="input_radio peer"
+                          aria-label="성별 선택: 여자"
                         />
                         <label for="female" class="label_radio">여자</label>
                       </li>
@@ -206,13 +216,14 @@
                           type="radio"
                           name="gender"
                           class="input_radio peer"
+                          aria-label="성별 선택: 선택 안 함"
                         />
                         <label for="none" class="label_radio">선택안함</label>
                       </li>
                     </ul>
                   </li>
                   <!-- 생년월일 -->
-                  <li class="flex items-center w-full px-5 py-5 my-3">
+                  <li class="flex items-center w-full px-5 py-5 my-1">
                     <label class="w-139pxr" for="birthday">생년월일</label>
                     <input
                       type="date"
