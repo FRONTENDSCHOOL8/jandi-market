@@ -38,10 +38,10 @@ const scroll = document.querySelector('#header_scroll');
 const delivery = document.querySelector('#delivery');
 
 window.addEventListener('scroll', () => {
-  if (window.scrollY >= 100) {
+  if (window.scrollY >= 150) {
     scroll.classList.add('top_fixed');
     delivery.style.display = 'none';
-  } else if (window.scrollY < 100) {
+  } else if (window.scrollY < 150) {
     scroll.classList.remove('top_fixed');
     delivery.style.display = 'block';
   }
@@ -49,7 +49,6 @@ window.addEventListener('scroll', () => {
 
 //로그인 성공 시, 유저 이름 UI로 구현
 const signList = document.querySelector('#sign');
-// const userInfo = ;
 const userId = sessionStorage.getItem('userId');
 
 const bringUserInfo = async () => {
@@ -61,16 +60,15 @@ const bringUserInfo = async () => {
       const userData = await response.json(); // 데이터를 변수에 저장
       return userData; // Promise를 통해 데이터 반환
     } else {
-      console.error('유저 정보를 가져오는 중에 오류가 발생했습니다.');
+      return;
     }
   } catch (error) {
     console.error('유저 정보를 가져오는 중에 오류가 발생했습니다.', error);
-    // 추가적인 예외 처리를 수행할 수 있습니다.
-    throw error; // 에러를 다시 던져서 호출자에게 전달
+    // 추가적인 예외 처리
   }
 };
 
-//유저리스트에서 로그아웃 클릭시 세션스토리지 비우고 리렌더링
+//유저리스트에서 로그아웃 클릭 시 세션스토리지 비우기
 const logOut = () => {
   const logout = document.querySelector('.logout');
   const handleLogOut = () => {
@@ -110,7 +108,7 @@ const showUserInfo = () => {
 // 로그인한 유저 header에 UI 출력
 const showUserName = async () => {
   try {
-    const userData = await bringUserInfo(); // 데이터가 완전히 받아와진 후에 변수에 할당
+    const userData = await bringUserInfo(); // 데이터 받아온 후에 변수에 할당
     // userData가 있는 경우 조건문 처리
     if (userData) {
       const jandiUser = /*html*/ `
