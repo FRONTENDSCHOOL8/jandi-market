@@ -309,7 +309,7 @@ const cartButton = document.querySelector('.cart_button');
 const CART_URL = import.meta.env.VITE_PH_CART;
 
 cartButton.addEventListener('click', () => {
-  let userId = localStorage.getItem('userId');
+  let userId = sessionStorage.getItem('userId');
 
   console.log(`${userId} 의 ${productId} 상품을 ${quantity}개 담았습니다.`);
 
