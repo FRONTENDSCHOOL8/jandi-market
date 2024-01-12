@@ -1,59 +1,70 @@
-// const API = `https://jandi-market.pockethost.io/api/collections/products/records/:id`;
-// const imgURL = `https://jandi-market.pockethost.io/api/files/:collectionsID/:id/:fileName`;
+import './accordionToggle';
 
-let productId = window.location.hash.slice(1);
+let quantity = 1; // 상품 수량
+const COLLECTIONS_ID = 'n9omag8299xjizq';
+const productId = window.location.hash.slice(1);
 
-const URL = `https://jandi-market.pockethost.io/api/collections/products/records/${productId}`;
-const imgURL = `https://jandi-market.pockethost.io/api/files/n9omag8299xjizq/${productId}`;
-
-const product = document.querySelector('.product');
-const productHeader = document.querySelector('.product_header');
-const productPrice = document.querySelector('.product_price');
-const productOrigin = document.querySelector('.product_origin');
-const productPackaging = document.querySelector('.product_packaging');
-const productInfo = document.querySelector('.product_info');
-const productSelectName = document.querySelector('.product_select_name');
-const productSelectPrice = document.querySelector('.product_select_price');
-const productDescription = document.querySelector('.product_description');
-const checkPoint = document.querySelector('.check_point');
-const productDetailImage = document.querySelector('.product_detail_img');
+const URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
+const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
 
 const quantityDecrease = document.querySelector('.quantity_decrease');
 const productQuantity = document.querySelector('.product_quantity');
 const quantityIncrease = document.querySelector('.quantity_increase');
 
-const totalPrice = document.querySelector('.total_price');
+function insertAfterBegin(node, renderTemplate) {
+  node = document.querySelector(node);
 
-let quantity = 1; // 상품 수량
+  return node.insertAdjacentHTML('afterbegin', renderTemplate);
+}
+function generateInfoSection(title, content, addContent = '') {
+  return content !== ''
+    ? /* html */ `
+      <div class="info_flex">
+        <dt class="min-w-32">${title}</dt>
+        <dd>
+          <p>${content}</p>
+          ${addContent}
+        </dd>
+      </div>`
+    : '';
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                   데이터바인딩                               */
 /* -------------------------------------------------------------------------- */
-fetch(URL)
-  .then((response) => {
-    if (response.ok === true) {
-      return response.json();
-    }
-  })
-  .then((data) => {
-    // console.log(data);
+
+async function displayProductDetails() {
+  try {
+    const response = await fetch(URL);
+    if (!response.ok) throw new Error('API 호출에 실패했습니다.');
+
+    const data = await response.json();
+
     const discountPrice = data.price - (data.price * data.discount) / 100;
     const floorDiscountPrice = Math.floor(discountPrice / 10) * 10;
 
     document.title = `${data.name} | 잔디마켓`;
 
-    const renderMainImage = /* html */ `
+    insertAfterBegin(
+      '.product',
+      `
       <img src="${`${imgURL}/${data.main_image}`}" alt="${
         data.name
       }" width="400" height="514" />
-    `;
-    const renderProductHeader = /* html */ `
+    `
+    );
+    insertAfterBegin(
+      '.product_header',
+      `
       <h2 class="font-semibold text-label-xl">${
         data.brand !== '' ? `${data.brand} ` : ''
       }${data.name}</h2>
       <p class="text-gray-400 text-paragraph-medium">${data.desc}</p>
-    `;
-    const renderProductPrice = /* html */ `
+    `
+    );
+    insertAfterBegin(
+      '.product_price',
+      `
       <strong class="text-label-xl">
         <span class="text-red-500">${data.discount}%</span>
         <span>${floorDiscountPrice.toLocaleString()}</span>
@@ -62,14 +73,19 @@ fetch(URL)
       <p class="text-gray-400 text-heading-medium">
         <s>${data.price.toLocaleString()}원</s>
       </p>
-    `;
-    const renderProductOrigin = /* html */ `
+    `
+    );
+    insertAfterBegin(
+      '.product_origin',
+      `
     <p class="font-semibold text-24pxr text-content">
       원산지 : ${data.origin}
     </p>
-    `;
-    /* 내용 추가할 것 */
-    const renderProductInfo = /* html */ `
+    `
+    );
+    insertAfterBegin(
+      '.product_info',
+      `
       <div class="info_flex">
         <dt class="min-w-32">배송</dt>
         <dd>
@@ -82,91 +98,37 @@ fetch(URL)
           </p>
         </dd>
       </div>
-      <div class="info_flex">
-        <dt class="min-w-32">판매자</dt>
-        <dd>
-          <p>칼리</p>
-        </dd>
-      </div>
-      <div class="info_flex">
-        <dt class="min-w-32">포장타입</dt>
-        <dd>
-          <p>${data.packaging} (종이포장)</p>
-          <p class="text-gray-400">
+      ${generateInfoSection('판매자', '칼리')}
+      ${generateInfoSection(
+        '포장타입',
+        `${data.packaging} (종이포장)`,
+        `<p class="text-gray-400">
             택배배송은 에코 포장이 스티로폼으로 대체됩니다.
-          </p>
-        </dd>
-      </div>
-      <div class="info_flex">
-        <dt class="min-w-32">판매단위</dt>
-        <dd>
-          <p>${data.sales_unit}</p>
-        </dd>
-      </div>
-      <div class="info_flex">
-        <dt class="min-w-32">중량/용량</dt>
-        <dd>
-          <p>${data.weight}</p>
-        </dd>
-      </div>
-      ${
-        data.allergy !== ''
-          ? /* html */ `
-      <div class="info_flex">
-        <dt class="min-w-32">알레르기정보</dt>
-        <dd>
-          <p>${data.allergy}</p>
-        </dd>
-      </div>  
+          </p>`
+      )}
+      ${generateInfoSection('판매단위', data.sales_unit)}
+      ${generateInfoSection('중량/용량', data.weight)}
+      ${generateInfoSection('알레르기정보', data.allergy)}
+      ${generateInfoSection('유통기한', data.expiration_date)}
+      ${generateInfoSection('당도', `${data.sugar_content} Brix 이상`)}
+      ${generateInfoSection('안내사항', data.notification)}
+    `
+    );
+    insertAfterBegin(
+      '.product_select_name',
       `
-          : ``
-      }
-            ${
-              data.expiration_date !== ''
-                ? /* html */ `
-      <div class="info_flex">
-        <dt class="min-w-32">유통기한</dt>
-        <dd>
-          <p>${data.expiration_date}</p>
-        </dd>
-      </div>  
-      `
-                : ``
-            }
-
-      ${
-        data.sugar_content !== ''
-          ? /* html */ `
-      <div class="info_flex">
-        <dt class="min-w-32">당도</dt>
-        <dd>
-          <p>${data.sugar_content} Brix 이상</p>
-        </dd>
-      </div>
-      `
-          : ``
-      }
-      ${
-        data.notification !== ''
-          ? /* html */ `
-      <div class="info_flex">
-        <dt class="min-w-32">안내사항</dt>
-        <dd>
-          <p>${data.notification}</p>
-        </dd>
-      </div>  
-      `
-          : ``
-      }
-
-    `;
-    const renderSelectProductName = /* html */ `
     <p class="mb-3">${data.name}</p>
-    `;
-    const renderSelectProductPrice = /* html */ `
+    `
+    );
+    insertAfterBegin(
+      '.product_select_price',
+      `
       <span class="text-content">${data.price.toLocaleString()}원</span>
-    `;
-    const renderProductDescription = /* html */ `
+    `
+    );
+    insertAfterBegin(
+      '.product_description',
+      `
       <img
       src="${`${imgURL}/${data.info_main_image}`}"
       alt="${data.info_title}"
@@ -187,76 +149,70 @@ fetch(URL)
       >
         ${data.info_desc}
       </p>
-    `;
-    const renderCheckPoint = /* html */ `
+    `
+    );
+    insertAfterBegin(
+      '.check_point',
+      `
       <img
         src="${`${imgURL}/${data.info_check_point}`}"
         alt="karly's Check Point"
         width="1010"
         height="283"
       />
-    `;
-    const renderProductDetailImage = /* html */ `
+    `
+    );
+    insertAfterBegin(
+      '.product_detail_img',
+      `
       <img
         src="${`${imgURL}/${data.info_detail_image}`}"
         alt="상품 상세 이미지"
       />
-    `;
-    const renderTotalPrice = /* html */ `
+    `
+    );
+    insertAfterBegin(
+      '.total_price',
+      `
       ${floorDiscountPrice.toLocaleString()}
-    `;
-    product.insertAdjacentHTML('afterbegin', renderMainImage);
-    productHeader.insertAdjacentHTML('afterbegin', renderProductHeader);
-    productPrice.insertAdjacentHTML('afterbegin', renderProductPrice);
-    productOrigin.insertAdjacentHTML('afterbegin', renderProductOrigin);
-    productInfo.insertAdjacentHTML('afterbegin', renderProductInfo);
-    productSelectName.insertAdjacentHTML('afterbegin', renderSelectProductName);
-    productSelectPrice.insertAdjacentHTML(
-      'afterbegin',
-      renderSelectProductPrice
+    `
     );
-    productDescription.insertAdjacentHTML(
-      'afterbegin',
-      renderProductDescription
-    );
-    checkPoint.insertAdjacentHTML('afterbegin', renderCheckPoint);
-    productDetailImage.insertAdjacentHTML(
-      'afterbegin',
-      renderProductDetailImage
-    );
-    totalPrice.insertAdjacentHTML('afterbegin', renderTotalPrice);
 
     /* -------------------------------------------------------------------------- */
     /*                                수량 증가 & 상품금액                          */
     /* -------------------------------------------------------------------------- */
 
-    quantityDecrease.addEventListener('click', () => {
-      if (quantity > 1) {
-        quantity--;
-      }
+    function calculateTotalPrice() {
+      productQuantity.textContent = quantity;
+      let total = floorDiscountPrice * quantity;
+      totalPrice.textContent = total.toLocaleString();
+    }
+
+    function updateQuantity(increase) {
+      quantity += increase ? 1 : -1;
       if (quantity <= 1) {
         quantityDecrease.src = `/public/input/minus-disabled.svg`;
         quantityDecrease.alt = `수량 감소 비활성화`;
-      }
-      productQuantity.textContent = quantity;
-      // 상품 수량을 누르면 그 값에 따라 금액도 달라진다.
-      let total = floorDiscountPrice * quantity;
-      totalPrice.textContent = total.toLocaleString();
-    });
-    quantityIncrease.addEventListener('click', () => {
-      quantity++;
-      if (quantity >= 0) {
+      } else if (quantity > 1) {
         quantityDecrease.src = `/public/input/minus.svg`;
         quantityDecrease.alt = `수량 감소`;
       }
-      productQuantity.textContent = quantity;
-      // 상품 수량을 누르면 그 값에 따라 금액도 달라진다.
-      let total = floorDiscountPrice * quantity;
-      totalPrice.textContent = total.toLocaleString();
-    });
-  })
-  .catch((err) => console.log(err));
+      calculateTotalPrice();
+    }
 
+    quantityDecrease.addEventListener('click', () => {
+      if (quantity > 1) {
+        updateQuantity(false);
+      }
+    });
+    quantityIncrease.addEventListener('click', () => {
+      updateQuantity(true);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+displayProductDetails();
 /* -------------------------------------------------------------------------- */
 /*    하트 클릭 시, localStorage에 상태( true, false ) 저장하여 .active 구현하기    */
 /* -------------------------------------------------------------------------- */
@@ -266,38 +222,27 @@ const iconHeart = document.querySelector('.icon_heart');
 
 let productWish = JSON.parse(localStorage.getItem(productId) || 'false');
 
-// 초기 아이콘 설정
 updateHeartIcon();
 
 wishList.addEventListener('click', () => {
-  productWish = !productWish; // wish 상태를 반전
-  console.log(productWish);
+  productWish = !productWish;
   wishList.dataset.wish = String(productWish);
   localStorage.setItem(productId, JSON.stringify(productWish));
   updateHeartIcon();
 });
-
 function updateHeartIcon() {
   iconHeart.setAttribute(
     'href',
     `/public/icon/_sprite.svg#Heart${productWish ? '-active' : ''}`
   );
 }
-
 /* -------------------------------------------------------------------------- */
 /*                                     탭기능                                  */
 /* -------------------------------------------------------------------------- */
-// 각 버튼을 누르면 해당 스크롤이 섹션으로 이동한다.
-// 이동했을 경우 aria-selected가 true로 변경된다.
-// 이동했을 경우 is_active_tab 클래스가 추가된다.
-// 다른 버튼들은 aria-selected가 모두 false로 변경된다.
-// 키보드로도 이동할 수 있도록 만들어준다.
 
 const tabList = document.querySelector('[role="tablist"]');
 const tabs = tabList.querySelectorAll('[role="tab"]');
 const tabPanel = document.querySelectorAll('[role="tabpanel"]');
-
-// 이벤트 버블링을 이용
 
 function moveScrollToTab(e) {
   const tabButton = e.target;
@@ -318,40 +263,31 @@ function moveScrollToTab(e) {
     }
   });
 }
-
 tabList.addEventListener('click', moveScrollToTab);
 
 /* -------------------------------------------------------------------------- */
 /*                                   장바구니 담기                              */
 /* -------------------------------------------------------------------------- */
-// cartButton을 누르면 상품id, 유저id, 갯수가 장바구니 DB로 넘어간다.
 
 const cartButton = document.querySelector('.cart_button');
-const cartData = import.meta.env.VITE_PH_CART;
-// let productId = window.location.hash.slice(1);
-// let quantity = 1; // 상품 수량
+const CART_URL = import.meta.env.VITE_PH_CART;
+
 cartButton.addEventListener('click', () => {
-  // local
   let userId = localStorage.getItem('userId');
 
   console.log(`${userId} 의 ${productId} 상품을 ${quantity}개 담았습니다.`);
 
-  /* 요상하게 가져오네.. */
-  const URL = import.meta.env.VITE_PH_CART;
-  const FILTER_URL = `${URL}?filter=(userId%3D'${userId}'%26%26productId%3D'${productId}')`;
-  /* 카트의 정보를 가져온다. */
-  fetch(FILTER_URL)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-    })
-    .then((data) => {
-      console.log(data.items.length);
+  const FILTER_URL = `${CART_URL}?filter=(userId%3D'${userId}'%26%26productId%3D'${productId}')`;
+
+  async function updateCart() {
+    try {
+      const response = await fetch(FILTER_URL);
+      if (!response.ok) throw new Error('CART API 요청이 실패했습니다.');
+
+      const data = await response.json();
       if (data.items.length > 0) {
-        console.log(data.items[0].quantity);
         const cartId = data.items[0].id;
-        fetch(`${URL}/${cartId}`, {
+        const patchResponse = await fetch(`${CART_URL}/${cartId}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -361,15 +297,14 @@ cartButton.addEventListener('click', () => {
             productId,
             quantity: data.items[0].quantity + quantity,
           }),
-        })
-          .then((response) => {
-            if (response.ok) {
-              return response.json();
-            }
-          })
-          .then((data) => console.log(data));
+        });
+
+        if (!patchResponse.ok)
+          throw new Error('Patch API 요청이 실패했습니다.');
+        const patchData = await patchResponse.json();
+        alert(`${patchData.id}가 추가로 담겼습니다`);
       } else {
-        fetch(URL, {
+        const postResponse = await fetch(CART_URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -379,11 +314,14 @@ cartButton.addEventListener('click', () => {
             productId,
             quantity,
           }),
-        })
-          .then((response) => {
-            if (response.ok) return response.json();
-          })
-          .then((data2) => console.log(data2));
+        });
+        if (!postResponse.ok) throw new Error('Patch API 요청이 실패했습니다.');
+        const patchData = await patchResponse.json();
+        alert(`${patchData.id}가 추가로 담겼습니다`);
       }
-    });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  updateCart();
 });
