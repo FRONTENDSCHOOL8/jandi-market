@@ -1,3 +1,8 @@
+function setDocumentTitle(title) {
+  document.title = title;
+}
+setDocumentTitle('회원가입 - 잔디마켓');
+
 const addressFind = document.querySelector('#address_find');
 
 function findAddress() {
