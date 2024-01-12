@@ -246,25 +246,59 @@ const tabList = document.querySelector('[role="tablist"]');
 const tabs = tabList.querySelectorAll('[role="tab"]');
 const tabPanel = document.querySelectorAll('[role="tabpanel"]');
 
-function moveScrollToTab(e) {
-  const tabButton = e.target;
-  const controlledPanelId = tabButton.getAttribute('aria-controls');
-  tabs.forEach((tab) => {
+const tabListPostions = 1400;
+const tabPositions = [1511, 3470, 5390, 6146];
+// 모든 active클래스 지우기
+function removeIsActiveTab() {
+  return tabs.forEach((tab) => {
     tab.classList.remove('is_active_tab');
     tab.setAttribute('aria-selected', false);
   });
-  tabPanel.forEach((panel) => {
+}
+function setActiveTab(selector) {
+  selector.classList.add('is_active_tab');
+  selector.setAttribute('aria-selected', true);
+}
+
+function scrollingChanged() {
+  const scroll = window.scrollY;
+  console.log(scroll);
+  if (scroll >= tabListPostions) {
+    tabList.style.top = '56px';
+
+    if (scroll >= tabPositions[0]) {
+      removeIsActiveTab();
+      setActiveTab(tabs[0]);
+    }
+    if (scroll >= tabPositions[1]) {
+      removeIsActiveTab();
+      setActiveTab(tabs[1]);
+    }
+    if (scroll >= tabPositions[2]) {
+      removeIsActiveTab();
+      setActiveTab(tabs[2]);
+    }
+    if (scroll >= tabPositions[3]) {
+      removeIsActiveTab();
+      setActiveTab(tabs[3]);
+    }
+  } else {
+    removeIsActiveTab();
+  }
+}
+function moveScrollToTab(e) {
+  const tabButton = e.target;
+  const controlledPanelId = tabButton.getAttribute('aria-controls');
+
+  removeIsActiveTab();
+  tabPanel.forEach((panel, index) => {
     if (panel.getAttribute('id') === controlledPanelId) {
-      tabButton.classList.add('is_active_tab');
-      tabButton.setAttribute('aria-selected', true);
-      panel.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'start',
-      });
+      setActiveTab(tabButton);
+      window.scrollTo(0, tabPositions[index]);
     }
   });
 }
+window.addEventListener('scroll', scrollingChanged);
 tabList.addEventListener('click', moveScrollToTab);
 
 /* -------------------------------------------------------------------------- */
@@ -326,4 +360,24 @@ cartButton.addEventListener('click', () => {
     }
   }
   updateCart();
+});
+
+/* -------------------------------------------------------------------------- */
+/*                                     모달창                                  */
+/* -------------------------------------------------------------------------- */
+const detailModal = document.querySelector('#detailModal');
+const inquiryButton = document.querySelector('.inquiry_button');
+const reviewButton = document.querySelector('.review_button');
+const header = document.querySelector('#header');
+
+inquiryButton.addEventListener('click', () => {
+  const dialog = detailModal.children[1];
+  dialog.showModal();
+  dialog.classList.remove('modal_hidden');
+  header.style.zIndex = 0;
+});
+reviewButton.addEventListener('click', () => {
+  const dialog = detailModal.children[1];
+  dialog.showModal();
+  dialog.classList.remove('modal_hidden');
 });
