@@ -66,7 +66,9 @@ async function displayProductDetails() {
       '.product_price',
       `
       <strong class="text-label-xl">
-        <span class="text-red-500">${data.discount}%</span>
+        <span class="text-red-500">${`${
+          data.discount > 0 ? `${data.discount}%` : ''
+        }`}</span>
         <span>${floorDiscountPrice.toLocaleString()}</span>
         <span class="font-bold text-heading-medium">원</span>
       </strong>
