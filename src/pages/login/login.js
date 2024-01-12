@@ -36,15 +36,13 @@ const handleCheckPassword = (e) => {
 
 // 데이터베이스의유저 이메일과 비밀번호를 입력 값과 비교해 로그인 시도
 const handleLogin = () => {
-  e.preventDefault();
-
   const user = usersData.find(
     (user) => user.email === emailValue && user.password === passwordValue
   );
   if (user) {
     alert('로그인 성공!');
     // 로그인 성공 시 로컬 스토리지에 사용자의 ID 값을 저장 후 메인 페이지로 이동
-    localStorage.setItem('userId', user.id);
+    sessionStorage.setItem('userId', user.id);
     window.location.href = '/';
   } else {
     alert('로그인 실패: 이메일 또는 비밀번호가 잘못되었습니다.');
