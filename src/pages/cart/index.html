@@ -41,7 +41,7 @@
   </head>
   <body>
     <header id="header"></header>
-    <div id="addCart"></div>
+    <!-- <div id="addCart"></div> -->
     <!-- cart page -->
     <main class="cart_page">
       <section class="cart w1050 pb-80pxr">
@@ -132,13 +132,13 @@
                           <span class="sr-only">목록 선택</span>
                         </label>
                       </fieldset>
-                      <a href="#" class="mr-5">
+                      <a href="/src/pages/productDetail/index.html" class="mr-5">
                         <img
                           src="https://via.placeholder.com/60x78"
                           alt="풀무원 탱탱쫄면 (4개입)"
                         />
                       </a>
-                      <a href="#" class="product_name">
+                      <a href="/src/pages/productDetail/index.html" class="product_name">
                         <span class="block mr-5 w-345pxr"
                           >[풀무원] 탱탱쫄면 (4개입)</span
                         >
@@ -193,6 +193,138 @@
                         />
                         <label
                           for="itemSelect2"
+                          class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
+                        >
+                          <span class="sr-only">목록 선택</span>
+                        </label>
+                      </fieldset>
+                      <a href="/src/pages/productDetail/index.html" class="mr-5">
+                        <img
+                          src="https://via.placeholder.com/60x78"
+                          alt="풀무원 탱탱쫄면 (4개입)"
+                        />
+                      </a>
+                      <a href="/src/pages/productDetail/index.html" class="product_name">
+                        <span class="block mr-5 w-345pxr"
+                          >[풀무원] 탱탱쫄면 (4개입)</span
+                        >
+                      </a>
+                      <div class="option_count">
+                        <button
+                          type="button"
+                          class="minus w-30pxr h-30pxr"
+                          style="
+                            background-image: url(/input/minus-disabled.svg);
+                          "
+                        >
+                          <span class="sr-only">수량 감소</span>
+                        </button>
+                        <span class="item_count">1</span>
+                        <button
+                          type="button"
+                          class="plus w-30pxr h-30pxr"
+                          style="background-image: url(/input/plus.svg)"
+                        >
+                          <span class="sr-only">수량 증가</span>
+                        </button>
+                      </div>
+                      <div
+                        class="flex flex-col items-end font-bold product_price w-130pxr"
+                      >
+                        <span class="after_discount">4,980원</span>
+                        <span class="before_discount price_delete"
+                          >5,600원</span
+                        >
+                      </div>
+                      <button class="product_delete ml-10pxr">
+                        <span class="sr-only">목록 삭제하기</span>
+                        <svg
+                          role="img"
+                          class="category-icon"
+                          width="30"
+                          height="30"
+                          viewBox="0 0 30 30"
+                        >
+                          <use href="/icon/_sprite.svg#Cancel" />
+                        </svg>
+                      </button>
+                    </li>
+                    <li class="flex items-center py-5 item">
+                      <fieldset class="item_select">
+                        <input
+                          type="checkbox"
+                          name="cartList"
+                          id="itemSelect3"
+                          class="input_checkbox_nonlabel peer top-17pxr"
+                        />
+                        <label
+                          for="itemSelect3"
+                          class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
+                        >
+                          <span class="sr-only">목록 선택</span>
+                        </label>
+                      </fieldset>
+                      <a href="/src/pages/productDetail/index.html" class="mr-5">
+                        <img
+                          src="https://via.placeholder.com/60x78"
+                          alt="풀무원 탱탱쫄면 (4개입)"
+                        />
+                      </a>
+                      <a href="/src/pages/productDetail/index.html" class="product_name">
+                        <span class="block mr-5 w-345pxr"
+                          >[풀무원] 탱탱쫄면 (4개입)</span
+                        >
+                      </a>
+                      <div class="option_count">
+                        <button
+                          type="button"
+                          class="minus w-30pxr h-30pxr"
+                          style="
+                            background-image: url(/input/minus-disabled.svg);
+                          "
+                        >
+                          <span class="sr-only">수량 감소</span>
+                        </button>
+                        <span class="item_count">1</span>
+                        <button
+                          type="button"
+                          class="plus w-30pxr h-30pxr"
+                          style="background-image: url(/input/plus.svg)"
+                        >
+                          <span class="sr-only">수량 증가</span>
+                        </button>
+                      </div>
+                      <div
+                        class="flex flex-col items-end font-bold product_price w-130pxr"
+                      >
+                        <span class="after_discount">4,980원</span>
+                        <span class="before_discount price_delete"
+                          >5,600원</span
+                        >
+                      </div>
+                      <button class="product_delete ml-10pxr">
+                        <span class="sr-only">목록 삭제하기</span>
+                        <svg
+                          role="img"
+                          class="category-icon"
+                          width="30"
+                          height="30"
+                          viewBox="0 0 30 30"
+                        >
+                          <use href="/icon/_sprite.svg#Cancel" />
+                        </svg>
+                      </button>
+                    </li>
+                    <li class="flex items-center py-5 item">
+                      <fieldset class="item_select">
+                        <input
+                          type="checkbox"
+                          name="cartList"
+                          id="itemSelect4"
+                          class="input_checkbox_nonlabel peer top-17pxr"
+                        />
+                        <label
+                          for="itemSelect4"
                           class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
                         >
                           <span class="sr-only">목록 선택</span>
@@ -286,23 +418,23 @@
                         <input
                           type="checkbox"
                           name="cartList"
-                          id="itemSelect3"
+                          id="itemSelect5"
                           class="input_checkbox_nonlabel peer top-17pxr"
                         />
                         <label
-                          for="itemSelect3"
+                          for="itemSelect5"
                           class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
                         >
                           <span class="sr-only">목록 선택</span>
                         </label>
                       </fieldset>
-                      <a href="#" class="mr-5">
+                      <a href="/src/pages/productDetail/index.html" class="mr-5">
                         <img
                           src="https://via.placeholder.com/60x78"
                           alt="풀무원 탱탱쫄면 (4개입)"
                         />
                       </a>
-                      <a href="#" class="product_name">
+                      <a href="/src/pages/productDetail/index.html" class="product_name">
                         <span class="block mr-5 w-345pxr"
                           >[풀무원] 탱탱쫄면 (4개입)</span
                         >
@@ -384,23 +516,23 @@
                         <input
                           type="checkbox"
                           name="cartList"
-                          id="itemSelect4"
+                          id="itemSelect6"
                           class="input_checkbox_nonlabel peer top-17pxr"
                         />
                         <label
-                          for="itemSelect4"
+                          for="itemSelect6"
                           class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
                         >
                           <span class="sr-only">목록 선택</span>
                         </label>
                       </fieldset>
-                      <a href="#" class="mr-5">
+                      <a href="/src/pages/productDetail/index.html" class="mr-5">
                         <img
                           src="https://via.placeholder.com/60x78"
                           alt="풀무원 탱탱쫄면 (4개입)"
                         />
                       </a>
-                      <a href="#" class="product_name">
+                      <a href="/src/pages/productDetail/index.html" class="product_name">
                         <span class="block mr-5 w-345pxr"
                           >[풀무원] 탱탱쫄면 (4개입)</span
                         >
@@ -518,7 +650,7 @@
           <!-- member -->
           <aside class="cart_side_area w-284pxr pt-14">
             <div
-              class="sticky z-[-1] flex flex-col gap-4 cart_side top-[-60px]"
+              class="sticky z-[-1] flex flex-col gap-4 cart_side top-0"
             >
               <section class="border border-gray-100 border-solid">
                 <h3 class="sr-only">결제 정보</h3>
