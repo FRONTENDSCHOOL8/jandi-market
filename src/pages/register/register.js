@@ -1,3 +1,8 @@
+function setDocumentTitle(title) {
+  document.title = title;
+}
+setDocumentTitle('회원가입 - 잔디마켓');
+
 const URL = `https://jandi-market.pockethost.io/api/collections/users/records/`;
 
 const email = document.querySelector('#email');
@@ -5,6 +10,7 @@ const password = document.querySelector('#password');
 const doubleCheckPassword = document.querySelector('#check_password');
 const name = document.querySelector('#name');
 const phone = document.querySelector('#phone');
+
 const addressFind = document.querySelector('#address_find');
 const birthday = document.querySelector('#birthday');
 
@@ -16,7 +22,7 @@ fetch(URL)
   })
   .then((data) => {
     const usersData = data.items;
-    console.log(usersData)
+    console.log(usersData);
   });
 
 let emailPass = false;
