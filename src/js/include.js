@@ -10,7 +10,7 @@ fetch('/src/components/header/header.html')
     console.error(error);
   });
 
-fetch('/src/components/headerCategory/headerCategory.html')
+fetch('/src/components/header/headerCategory/headerCategory.html')
   .then((response) => response.text())
   .then((html) => {
     const headerCategoryElement = document.querySelector('#menu_list');
