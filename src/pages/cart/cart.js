@@ -1,5 +1,6 @@
-// cart list 전체선택 구현
-
+/* -------------------------------------------------------------------------- */
+/*                            cart list 전체선택 구현                            */
+/* -------------------------------------------------------------------------- */
 // 전체 체크박스
 const checkBoxes = document.querySelectorAll('input[name="cartList"]');
 // select all 체크박스
@@ -88,7 +89,9 @@ checkBoxes.forEach((checkbox) => {
 itemSelectAll.addEventListener('click', selectAll);
 itemSelectAll2.addEventListener('click', selectAll);
 
-// 상품 수량 증가, 감소 버튼
+/* -------------------------------------------------------------------------- */
+/*                               상품 수량 증가, 감소 버튼                              */
+/* -------------------------------------------------------------------------- */
 const itemCounts = document.querySelectorAll('.item_count');
 const minusButtons = document.querySelectorAll('.minus');
 const plusButtons = document.querySelectorAll('.plus');
@@ -126,7 +129,9 @@ itemCounts.forEach(function (itemCount) {
   plusButton.addEventListener('click', clickPlusButton);
 });
 
-// 장바구니 리스트 카테고리 클릭 시 토글 버튼
+/* -------------------------------------------------------------------------- */
+/*                       장바구니 리스트 카테고리 클릭 시 토글 버튼                        */
+/* -------------------------------------------------------------------------- */
 const productCategory = document.querySelectorAll('.group_category');
 
 productCategory.forEach(function (category) {
@@ -135,5 +140,6 @@ productCategory.forEach(function (category) {
 
   CategoryButton.addEventListener('click', function () {
     cartProductList.classList.toggle('hidden');
+    CategoryButton.classList.toggle('rotate-180');
   });
 });
