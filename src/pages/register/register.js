@@ -3,15 +3,24 @@ function setDocumentTitle(title) {
 }
 setDocumentTitle('회원가입 - 잔디마켓');
 
-const URL = `https://jandi-market.pockethost.io/api/collections/users/records/`;
+let usersData; // 데이터베이스에서 가져온 유저들 데이터를 저장할 변수
 
-const email = document.querySelector('#email');
-const password = document.querySelector('#password');
+// 데이터베이스에서 가져온 유저들 데이터
+async function fetchData() {
+  const response = await fetch(import.meta.env.VITE_PH_USERS);
+  const data = await response.json();
+  usersData = data.items;
+}
+fetchData();
+
+//회원가입 양식에 해당되는 input요소
+const emailInput = document.querySelector('#email');
+const passwordInput = document.querySelector('#password');
 const doubleCheckPassword = document.querySelector('#check_password');
 const nameInput = document.querySelector('#name');
-const phone = document.querySelector('#phone');
-const birthday = document.querySelector('#birthday');
-const gender = document.querySelector('#gender_list');
+const phoneInput = document.querySelector('#phone');
+const birthdayInput = document.querySelector('#birthday');
+const genderInput = document.querySelector('#gender_list');
 
 let userData = {
   email: '',
@@ -25,18 +34,6 @@ let userData = {
   birth: '',
 };
 
-// 중복 체크 할 유저 정보 가져오기
-let usersData; // 데이터베이스에서 가져온 유저들 데이터
-fetch(URL)
-  .then((response) => {
-    if (response.ok === true) {
-      return response.json();
-    }
-  })
-  .then((data) => {
-    usersData = data.items;
-  });
-
 //유효성체크 가능한 재사용 함수
 const isValidField = (validator, errorMessageEl, valueKey) => {
   return (e) => {
@@ -46,45 +43,67 @@ const isValidField = (validator, errorMessageEl, valueKey) => {
       errorElement.classList.remove('error');
       errorElement.classList.add('hidden');
       userData[valueKey] = value;
+      // console.log('Updated userData:', userData); // 디버깅 코드
     } else {
       errorElement.classList.remove('hidden');
       errorElement.classList.add('error');
       userData[valueKey] = '';
+      // console.log('Updated userData:', userData); // 디버깅 코드
     }
   };
 };
 
-// 회원가입 입력값 유효성 체크 및 각 변수에 value 저장
-const handleEmail = isValidField(emailReg, '#email_error', 'email');
-const handlePassword = isValidField(pwReg, '#password_error', 'password');
-const handleConfirmPassword = isValidField(
-  (value) => value === password.value,
-  '#check_password_error',
-  'doubleCheckPassword'
+// 비밀번호 확인 입력값은 데이터베이스에 필요없으니 따로 작성
+const handleConfirmPassword = (e) => {
+  const value = e.target.value;
+  const errorElement = document.querySelector('#check_password_error');
+  if (value === password.value) {
+    errorElement.classList.remove('error');
+    errorElement.classList.add('hidden');
+  } else {
+    errorElement.classList.remove('hidden');
+    errorElement.classList.add('error');
+  }
+};
+
+// 회원가입 입력값 유효성 체크
+emailInput.addEventListener(
+  'input',
+  isValidField(emailReg, '#email_error', 'email')
 );
-const handleName = isValidField(
-  (value) => value.trim().length > 0,
-  '#name_error',
-  'name'
+passwordInput.addEventListener(
+  'input',
+  isValidField(pwReg, '#password_error', 'password')
 );
-const handlePhone = isValidField(
-  (value) => value.length >= 10 && value.length < 12,
-  '#phone_error',
-  'phone'
+doubleCheckPassword.addEventListener('input', handleConfirmPassword);
+//   isValidField((value) => value === password.value, '#check_password_error')
+// );
+nameInput.addEventListener(
+  'input',
+  isValidField((value) => value.trim().length > 0, '#name_error', 'name')
+);
+phoneInput.addEventListener(
+  'input',
+  isValidField(
+    (value) => value.length >= 10 && value.length < 12,
+    '#phone_error',
+    'phone'
+  )
 );
 const handleBirth = (e) => {
   const value = e.target.value;
-  userData[birth] = value;
+  userData.birth = value;
 };
 const handleGender = (e) => {
   const value = e.target.id;
-  userData[gender] = value;
+  userData.gender = value;
+  console.log(value);
 };
-
-gender.addEventListener('click', handleGender);
+birthdayInput.addEventListener('input', handleBirth);
+genderInput.addEventListener('click', handleGender);
 
 const emailButton = document.querySelector('#is_duplicated_email');
-const phoneButton = document.querySelector('#is_duplicated_phone');
+// const phoneButton = document.querySelector('#is_duplicated_phone');
 
 const checkDuplication = (value) => {
   return () => {
@@ -101,18 +120,11 @@ const checkDuplication = (value) => {
 
 // 이메일과 휴대폰 중복 체크 함수
 const checkEmailDuplication = checkDuplication('email');
-const checkPhoneDuplication = checkDuplication('phone');
+// const checkPhoneDuplication = checkDuplication('phone');
 
 // 이메일과 휴대폰 중복 체크 이벤트 리스너
 emailButton.addEventListener('click', checkEmailDuplication);
-phoneButton.addEventListener('click', checkPhoneDuplication);
-
-email.addEventListener('input', handleEmail);
-password.addEventListener('input', handlePassword);
-doubleCheckPassword.addEventListener('input', handleConfirmPassword);
-nameInput.addEventListener('input', handleName);
-phone.addEventListener('input', handlePhone);
-birthday.addEventListener('input', handleBirth);
+// phoneButton.addEventListener('click', checkPhoneDuplication);
 
 function emailReg(text) {
   const re =
@@ -126,7 +138,7 @@ function pwReg(text) {
   return re.test(String(text).toLowerCase());
 }
 
-// 주소 찾기
+// 주소 찾기 버튼을 클릭했을 때 동작하는 함수
 const addressFind = document.querySelector('#address_find');
 
 const addAddressValue = () => {
@@ -182,6 +194,13 @@ const addAddressValue = () => {
   detailAddress.addEventListener('input', handleDetailAddress);
 };
 
+// 상세주소를 입력하는 이벤트 핸들러
+const handleDetailAddress = (e) => {
+  const value = e.target.value;
+  userData.addressDtl = value; // 상세 주소를 userData 객체에 저장합니다.
+};
+
+// 주소 검색 API의 oncomplete 콜백 함수
 function findAddress() {
   addAddressValue();
   let width = 500; //팝업의 너비
@@ -229,8 +248,12 @@ function findAddress() {
       //우편번호와 주소 정보를 해당 필드에 넣는다.
       document.getElementById('postcodeValue').value = data.zonecode;
       document.getElementById('addressValue').value = address;
-      userData[poshNo] = data.zonecode;
-      userData[address] = address;
+
+      // userData 객체에 주소 정보를 저장.
+      userData.postNo = data.zonecode;
+      userData.address = address;
+      // userData.addressDtl은 handleDetailAddress 함수에서 저장.
+
       // 커서를 상세주소 필드로 이동한다.
       document.getElementById('detailAddressValue').focus();
     },
@@ -241,10 +264,59 @@ function findAddress() {
 }
 addressFind.addEventListener('click', findAddress);
 
-const handleDetailAddress = (e) => {
-  const value = e.target.value;
-  userData[addressDtl] = value;
+const signupButton = document.querySelector('button[type=submit]');
+
+const handleSignup = (e) => {
+  e.preventDefault();
+  // 회원가입에 입력한 값들 구조분해할당
+  let {
+    email,
+    password,
+    name,
+    phone,
+    postNo,
+    address,
+    addressDtl,
+    gender,
+    birth,
+  } = userData;
+
+  // // 값이 있는 변수만 포함시킬 객체 생성
+  // let postBody = {};
+
+  // if (email) postBody.email = email;
+  // if (password) postBody.password = password;
+  // if (name) postBody.name = name;
+  // if (phone) postBody.phone = phone;
+  // if (postNo) postBody.postNo = postNo;
+  // if (address) postBody.address = address;
+  // if (addressDtl) postBody.addressDtl = addressDtl;
+  // if (gender) postBody.gender = gender;
+  // if (birth) postBody.birth = birth;
+
+  fetch(import.meta.env.VITE_PH_USERS, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      password,
+      name,
+      phone,
+      postNo,
+      address,
+      addressDtl,
+      gender,
+      birth,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error:', error));
 };
+
+signupButton.addEventListener('click', handleSignup);
 
 // 모든 체크박스를 선택
 let checkboxes = document.querySelectorAll('input[type=checkbox]');
