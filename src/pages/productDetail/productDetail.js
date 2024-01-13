@@ -847,7 +847,7 @@ async function inquiryDataRender() {
                 <h2
                   class="inquiry_title"
                   aria-expanded="false"
-                  data-secret="false"
+                  data-secret="${inquiry.secret}"
                 >
                   <button class="flex font-semibold border-b border-b-gray-100">
                     <div class="inquiry_table_subject">${inquiry.title}</div>
@@ -905,52 +905,51 @@ async function inquiryDataRender() {
     if (data.items.length === 0) {
       inquiryList.innerHTML = initialTemplate;
     }
-  }
 
-  /* -------------------------------------------------------------------------- */
-  /*                                    아코디언                                 */
-  /* -------------------------------------------------------------------------- */
-  function accordion() {
-    // 리뷰 섹션
-    const reviewTitle = document.querySelectorAll('.review_title');
-    const reviewContents = document.querySelectorAll('.review_content');
-    // 문의 섹션
-    const inquiryTitle = document.querySelectorAll('.inquiry_title');
-    const inquiryContents = document.querySelectorAll('.inquiry_content');
+    /* -------------------------------------------------------------------------- */
+    /*                                    아코디언                                 */
+    /* -------------------------------------------------------------------------- */
+    function accordion() {
+      // 리뷰 섹션
+      const reviewTitle = document.querySelectorAll('.review_title');
+      const reviewContents = document.querySelectorAll('.review_content');
+      // 문의 섹션
+      const inquiryTitle = document.querySelectorAll('.inquiry_title');
+      const inquiryContents = document.querySelectorAll('.inquiry_content');
 
-    console.log(inquiryTitle);
+      console.log(inquiryTitle);
 
-    function toggleContent(titles, contents) {
-      titles.forEach((title) => {
-        title.addEventListener('click', () => {
-          const content = title.nextElementSibling;
-          let hidden = !content.hidden;
-          contents.forEach((content, index) => {
-            content.hidden = true;
-            content.setAttribute('aria-hidden', true);
-            content.classList.remove('flex_column');
-            titles[index].setAttribute('aria-expanded', false);
+      function toggleContent(titles, contents) {
+        titles.forEach((title) => {
+          title.addEventListener('click', () => {
+            const content = title.nextElementSibling;
+            let hidden = !content.hidden;
+            contents.forEach((content, index) => {
+              content.hidden = true;
+              content.setAttribute('aria-hidden', true);
+              content.classList.remove('flex_column');
+              titles[index].setAttribute('aria-expanded', false);
+            });
+
+            content.hidden = hidden;
+            content.setAttribute('aria-hidden', hidden);
+            if (!hidden) {
+              content.classList.add('flex_column');
+            }
+            title.setAttribute('aria-expanded', !hidden);
           });
-
-          content.hidden = hidden;
-          content.setAttribute('aria-hidden', hidden);
-          if (!hidden) {
-            content.classList.add('flex_column');
-          }
-          title.setAttribute('aria-expanded', !hidden);
         });
-      });
-    }
+      }
 
-    /* -------------------------------------------------------------------------- */
-    /*                                     비밀글                                  */
-    /* -------------------------------------------------------------------------- */
-    function secretCheck() {
-      inquiryTitle.forEach((title) => {
-        if (title.dataset.secret == 'true') {
-          let content = title.nextElementSibling;
+      /* -------------------------------------------------------------------------- */
+      /*                                     비밀글                                  */
+      /* -------------------------------------------------------------------------- */
+      function secretCheck() {
+        inquiryTitle.forEach((title) => {
+          if (title.dataset.secret == 'true') {
+            let content = title.nextElementSibling;
 
-          title.innerHTML = `
+            title.innerHTML = `
       <button class="flex font-semibold border-b border-b-gray-100">
         <div class="text-gray-400 inquiry_table_subject">
         비밀글입니다.
@@ -960,30 +959,37 @@ async function inquiryDataRender() {
           </svg>
         </span>
       </div>
-      <div class="table_width100">김*식</div>
-      <time datetime="2022-11-11" class="table_width100">
-        2022.11.11
+      <div class="table_width100">${userName}</div>
+      <time datetime="${createDay}" class="table_width100">
+        ${createDay}
       </time>
-      <div class="text-center text-primary py-17pxr w-100pxr">
-        답변완료
-      </div>
+          ${
+            inquiry.answerStatus
+              ? `<div class="table_width100 text-primary font-semibold">
+                      답변 완료
+                    </div>`
+              : `<div class="table_width100">
+                      답변 대기
+                    </div>`
+          }
     </button>
       `;
 
-          content.style.display = 'none';
-          content.setAttribute('aria-hidden', true);
-          content.hidden = true;
-          content.classList.remove('flex_column');
-          title.setAttribute('aria-expanded', false);
+            content.style.display = 'none';
+            content.setAttribute('aria-hidden', true);
+            content.hidden = true;
+            content.classList.remove('flex_column');
+            title.setAttribute('aria-expanded', false);
 
-          // 만약 로그인 한 사람이 본인이거나 어드민일 경우 다 보임
-        }
-      });
+            // 만약 로그인 한 사람이 본인이거나 어드민일 경우 다 보임
+          }
+        });
+      }
+      secretCheck();
+      toggleContent(reviewTitle, reviewContents);
+      toggleContent(inquiryTitle, inquiryContents);
     }
-    secretCheck();
-    toggleContent(reviewTitle, reviewContents);
-    toggleContent(inquiryTitle, inquiryContents);
+    accordion();
   }
-  accordion();
 }
 inquiryDataRender();
