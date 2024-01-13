@@ -681,6 +681,7 @@ function moveScrollToTab(e) {
     }
   });
 }
+window.addEventListener('scroll', scrollingChanged);
 tabList.addEventListener('click', moveScrollToTab);
 
 /* -------------------------------------------------------------------------- */
@@ -698,6 +699,7 @@ cartButton.addEventListener('click', () => {
     try {
       const response = await fetch(FILTER_URL);
       if (!response.ok) throw new Error('CART API 요청이 실패했습니다.');
+
       const data = await response.json();
       if (data.items.length > 0) {
         const cartId = data.items[0].id;
