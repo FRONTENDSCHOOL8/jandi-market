@@ -2,10 +2,11 @@ import {
   generateInfoSection,
   insertAfterBegin,
   fetchData,
+  loginCheck,
 } from '/src/lib/detail/index.js';
-
 let quantity = 1; // 상품 수량
 const COLLECTIONS_ID = 'n9omag8299xjizq';
+let userId = sessionStorage.getItem('userId');
 const productId = window.location.hash.slice(1);
 
 const PRODUCT_URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
@@ -14,7 +15,7 @@ const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
 const quantityDecrease = document.querySelector('.quantity_decrease');
 const productQuantity = document.querySelector('.product_quantity');
 const quantityIncrease = document.querySelector('.quantity_increase');
-
+const totalPrice = document.querySelector('.total_price');
 /* -------------------------------------------------------------------------- */
 /*                                   데이터바인딩                               */
 /* -------------------------------------------------------------------------- */
@@ -197,6 +198,9 @@ async function displayProductDetails() {
     /* -------------------------------------------------------------------------- */
     /*                                     모달창                                  */
     /* -------------------------------------------------------------------------- */
+    const reviewButton = document.querySelector('.review_button');
+    const inquiryButton = document.querySelector('.inquiry_button');
+    const submitButton = document.querySelector('[type="submit"]');
 
     function clickedShowModal() {
       const dialog = detailModal.children[1];
@@ -235,27 +239,23 @@ async function displayProductDetails() {
         submitButton.classList.add('bg-gray-200');
       }
     }
-
-    function closeButton() {
-      const closeButton = document.querySelector('.close_button');
-
-      closeButton.addEventListener('click', closeModal);
-    }
     desc.addEventListener('input', () => {
       updateTextUI();
     });
     /* -------------------------------------------------------------------------- */
     /*                               후기 & 문의 데이터보내기                        */
     /* -------------------------------------------------------------------------- */
-
-    reviewButton.addEventListener('click', () => {
-      if (!sessionStorage.userId) {
-        alert('로그인을 해주세요');
-        location.href = '/src/pages/login/';
+    function showModal(title, onSubmit) {
+      // 로그인 확인
+      if (!userId) {
+        loginCheck();
+        return;
       } else {
+        // 모달 초기화
         clickedShowModal();
         updateTextUI();
 
+        // 모달의 DOM 요소
         const ModalTitle = document.querySelector('.modal_title');
         const ModalProduct = document.querySelector('.modal_product');
         const modalContentTitle = document.querySelector(
@@ -264,35 +264,41 @@ async function displayProductDetails() {
         const virtualPlaceholder = document.querySelector(
           '.virtual_placeholder'
         );
-        const secretCheck = document.querySelector('.secret_check');
+        const secretCheckClass = document.querySelector('.secret_check');
+
+        // 모달 초기 내용 업데이트
         ModalTitle.innerHTML = `
-      <h2 class="text-heading-xl font-bold leading-[140%]">후기 작성하기</h2>
-      <svg role="후기작성 모달창 닫기" class="cursor-pointer close_button" width="30" height="30">
-        <use href="/icon/_sprite.svg#Cancel" />
-      </svg>
-      `;
+          <h2 class="text-heading-xl font-bold leading-[140%]">${title}</h2>
+          <svg role="${title} 모달창 닫기" class="cursor-pointer close_button" width="30" height="30">
+            <use href="/icon/_sprite.svg#Cancel" />
+          </svg>
+          `;
         ModalProduct.innerHTML = `
-      <img src="${`${imgURL}/${data.main_image}`}" alt="${
-        data.name
-      }" width="72" height="72" />
-      <h3 class="font-semibold text-label-medium">${
-        data.brand ? data.brand : ''
-      } ${data.name}</h3>
+          <img src="${`${imgURL}/${data.main_image}`}" alt="${
+            data.name
+          }" width="72" height="72" />
+          <h3 class="font-semibold text-label-medium">${
+            data.brand ? data.brand : ''
+          } ${data.name}</h3>
       `;
         modalContentTitle.innerHTML = `<label
-        for="review_title"
+        for="${title === '후기 작성하기' ? 'review' : 'inquiry'}_title"
         class="pt-2 pr-2 font-semibold text-content text-label-medium w-100pxr"
         >제목</label
       >
       <input
         type="text"
-        id="review_title"
-        value="${data.brand ? data.brand : ''} ${data.name}"
-        disabled
+        id="${title === '후기 작성하기' ? 'review' : 'inquiry'}_title"
+        ${
+          title === '후기 작성하기'
+            ? `value="${data.brand ? data.brand : ''} ${data.name}" disabled`
+            : `placeholder="제목을 입력해 주세요"`
+        }
         class="w-full text-paragraph-medium placeholder:leading-[160%] text-gray-400 border border-gray-300 rounded p-5 h-11 outline-none flex items-center self-stretch"
       />`;
-
-        virtualPlaceholder.innerHTML = `
+        virtualPlaceholder.innerHTML =
+          title === '후기 작성하기'
+            ? `
               <p>
                 컬리는 믿을 수 있는 후기문화를 함께 만들어가고자 합니다. 식품
                 등의 표시광고에 대한 법률을 준수하고자 다음과 같은 부당한
@@ -354,87 +360,8 @@ async function displayProductDetails() {
                   작성하고 적립금을 취득한 경우 작성자에 법적 책임의 소지가
                   있음을 알려드립니다.</strong
                 >
-              </div>`;
-        secretCheck.innerHTML = ``;
-
-        closeButton();
-
-        submitButton.addEventListener('click', () => {
-          const title = ModalTitle.children[0].textContent;
-          if (title === '후기 작성하기') {
-            async function modalFetch() {
-              try {
-                const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
-                // const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
-                const reviewResponse = await fetch(REVIEW_URL, {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    productId,
-                    userId,
-                    title: `${data.brand ? data.brand : ''} ${data.name}`,
-                    contents: desc.value,
-                  }),
-                });
-                if (!reviewResponse.ok)
-                  throw new Error('REVIEW API 통신에 실패했습니다.');
-                closeModal();
-                const reviewData = await reviewResponse.json();
-              } catch (error) {
-                console.error(error);
-              }
-            }
-            modalFetch();
-          }
-        });
-      }
-    });
-
-    inquiryButton.addEventListener('click', () => {
-      if (!sessionStorage.userId) {
-        alert('로그인을 해주세요');
-        location.href = '/src/pages/login/';
-      } else {
-        clickedShowModal();
-        updateTextUI();
-        const ModalTitle = document.querySelector('.modal_title');
-        const ModalProduct = document.querySelector('.modal_product');
-        const modalContentTitle = document.querySelector(
-          '.modal_content_title'
-        );
-        const virtualPlaceholder = document.querySelector(
-          '.virtual_placeholder'
-        );
-        const secretCheck = document.querySelector('.secret_check');
-
-        ModalTitle.innerHTML = `
-      <h2 class="text-heading-xl font-bold leading-[140%]">상품 문의하기</h2>
-      <svg role="상품문의 모달창 닫기" class="cursor-pointer close_button" width="30" height="30">
-      <use href="/icon/_sprite.svg#Cancel" />
-      </svg>
-      `;
-        ModalProduct.innerHTML = `
-      <img src="${`${imgURL}/${data.main_image}`}" alt="${
-        data.name
-      }" width="72" height="72" />
-      <h3 class="font-semibold text-label-medium">${
-        data.brand ? data.brand : ''
-      } ${data.name}</h3>
-      `;
-        modalContentTitle.innerHTML = `<label
-      for="inquiry_title"
-      class="pt-2 pr-2 font-semibold text-content text-label-medium w-100pxr"
-      >제목</label
-      >
-      <input
-      type="text"
-      id="inquiry_title"
-      placeholder="제목을 입력해 주세요"
-      class="w-full text-paragraph-medium placeholder:leading-[160%] border border-gray-300 rounded p-5 h-11 outline-none flex items-center self-stretch"
-      />`;
-        virtualPlaceholder.innerHTML = `<div>
+              </div>`
+            : `<div>
                 <strong class="leading-normal text-label-medium"
                   >상품문의 작성 전 확인해 주세요</strong
                 >
@@ -504,10 +431,12 @@ async function displayProductDetails() {
                   ※ 전화번호, 이메일, 주소, 계좌번호 등의 상세 개인정보가 문의
                   내용에 저장되지 않도록 주의해 주시기 바랍니다.
                 </strong>
-              </div>
-      `;
-        secretCheck.innerHTML = `
-      <fieldset class="flex pl-82pxr pb-22pxr">
+              </div>`;
+
+        secretCheckClass.innerHTML =
+          title === '후기 작성하기'
+            ? ``
+            : `<fieldset class="flex pl-82pxr pb-22pxr">
         <input
           type="checkbox"
           id="secretCheck"
@@ -522,20 +451,40 @@ async function displayProductDetails() {
             >비밀글로 문의하기</span
           >
         </label>
-      </fieldset>
-      `;
-        const inquiryTitle = document.querySelector('#inquiry_title');
-
-        closeButton();
-
+      </fieldset>`;
+        const closeButton = document.querySelector('.close_button');
+        closeButton.addEventListener('click', closeModal);
         submitButton.addEventListener('click', () => {
-          const secretCheckedStatus = document.querySelector('#secretCheck');
-          const title = ModalTitle.children[0].textContent;
+          const inquiryTitle = document.querySelector('#inquiry_title');
+          const secretCehckBox = document.querySelector('#secretCheck');
+          if (title === '후기 작성하기') {
+            async function modalFetch() {
+              try {
+                const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
+                await fetchData(REVIEW_URL, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    productId,
+                    userId,
+                    title: `${data.brand ? data.brand : ''} ${data.name}`,
+                    contents: desc.value,
+                  }),
+                });
+                closeModal();
+              } catch (error) {
+                console.error(error);
+              }
+            }
+            modalFetch();
+          }
           if (title === '상품 문의하기') {
             async function modalFetch() {
               try {
                 const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
-                const inquiryResponse = await fetch(INQUIRY_URL, {
+                await fetchData(INQUIRY_URL, {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -546,13 +495,10 @@ async function displayProductDetails() {
                     title: inquiryTitle.value,
                     question: desc.value,
                     answerStatus: '답변대기',
-                    secret: secretCheckedStatus.checked,
+                    secret: secretCehckBox.checked,
                   }),
                 });
-                if (!inquiryResponse.ok)
-                  throw new Error('INQUIRY API 통신에 실패했습니다.');
                 closeModal();
-                const inquiryData = await inquiryResponse.json();
               } catch (error) {
                 console.error(error);
               }
@@ -561,12 +507,20 @@ async function displayProductDetails() {
           }
         });
       }
+    }
+
+    reviewButton.addEventListener('click', () => {
+      showModal('후기 작성하기', '후기작성');
+    });
+
+    // 문의 버튼 클릭 시 '상품 문의하기' 모달 띄우기
+    inquiryButton.addEventListener('click', () => {
+      showModal('상품 문의하기', '상품문의');
     });
   } catch (error) {
     console.error(error);
   }
 }
-
 displayProductDetails();
 
 /*--------------------------------------------------------------------------*/
@@ -626,21 +580,11 @@ function scrollingChanged() {
   if (scroll >= tabListPostions) {
     tabList.style.top = '56px';
 
-    if (scroll >= tabPositions[0]) {
-      removeIsActiveTab();
-      setActiveTab(tabs[0]);
-    }
-    if (scroll >= tabPositions[1]) {
-      removeIsActiveTab();
-      setActiveTab(tabs[1]);
-    }
-    if (scroll >= tabPositions[2]) {
-      removeIsActiveTab();
-      setActiveTab(tabs[2]);
-    }
-    if (scroll >= tabPositions[3]) {
-      removeIsActiveTab();
-      setActiveTab(tabs[3]);
+    for (let i = 0; i < tabListPostions.length; i + 1) {
+      if (scroll >= tabPositions[i]) {
+        removeIsActiveTab();
+        setActiveTab(tabs[i]);
+      }
     }
   } else {
     removeIsActiveTab();
@@ -668,7 +612,6 @@ tabList.addEventListener('click', moveScrollToTab);
 const cartButton = document.querySelector('.cart_button');
 const CART_URL = import.meta.env.VITE_PH_CART;
 
-let userId = sessionStorage.getItem('userId');
 const FILTER_URL = `${CART_URL}?filter=(userId%3D'${userId}'%26%26productId%3D'${productId}')`;
 
 cartButton.addEventListener('click', () => {
@@ -714,7 +657,13 @@ cartButton.addEventListener('click', () => {
       console.error(error);
     }
   }
-  updateCart();
+
+  if (!userId) {
+    loginCheck();
+    return;
+  } else {
+    updateCart();
+  }
 });
 
 async function reviewDataRender() {
@@ -788,12 +737,7 @@ async function inquiryDataRender() {
   const USER_URL = import.meta.env.VITE_PH_USERS;
   const INQUIRY_FILTER_URL = `${INQUIRY_URL}?filter=(productId%3D'${productId}')`;
 
-  const inquiryGetResponse = await fetch(INQUIRY_FILTER_URL);
-
-  if (!inquiryGetResponse.ok)
-    throw new Error('INQUIRY API 통신에 실패했습니다.');
-
-  const data = await inquiryGetResponse.json();
+  const inqurityData = await fetchData(INQUIRY_FILTER_URL);
 
   const initialTemplate = /* html */ `
     <div
@@ -803,7 +747,7 @@ async function inquiryDataRender() {
   </div>`;
   inquiryList.innerHTML = '';
 
-  for (const inquiry of data.items) {
+  for (const inquiry of inqurityData.items) {
     const createDay = String(inquiry.created).slice(0, 10);
     const answerDay = String(inquiry.answerDay).slice(0, 10);
 
@@ -874,7 +818,7 @@ async function inquiryDataRender() {
     /*                                     비밀글                                  */
     /* -------------------------------------------------------------------------- */
 
-    if (data.items.length === 0) {
+    if (inqurityData.items.length === 0) {
       inquiryList.innerHTML = initialTemplate;
     }
 
