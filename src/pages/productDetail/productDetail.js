@@ -1,3 +1,9 @@
+import {
+  generateInfoSection,
+  insertAfterBegin,
+  fetchData,
+} from '/src/lib/detail/index.js';
+
 let quantity = 1; // 상품 수량
 const COLLECTIONS_ID = 'n9omag8299xjizq';
 const productId = window.location.hash.slice(1);
@@ -9,34 +15,13 @@ const quantityDecrease = document.querySelector('.quantity_decrease');
 const productQuantity = document.querySelector('.product_quantity');
 const quantityIncrease = document.querySelector('.quantity_increase');
 
-function insertAfterBegin(node, renderTemplate) {
-  node = document.querySelector(node);
-
-  return node.insertAdjacentHTML('afterbegin', renderTemplate);
-}
-function generateInfoSection(title, content, addContent = '') {
-  return content !== ''
-    ? /* html */ `
-      <div class="info_flex">
-        <dt class="min-w-32">${title}</dt>
-        <dd>
-          <p>${content}</p>
-          ${addContent}
-        </dd>
-      </div>`
-    : '';
-}
-
 /* -------------------------------------------------------------------------- */
 /*                                   데이터바인딩                               */
 /* -------------------------------------------------------------------------- */
 
 async function displayProductDetails() {
   try {
-    const response = await fetch(PRODUCT_URL);
-    if (!response.ok) throw new Error('API 호출에 실패했습니다.');
-
-    const data = await response.json();
+    const data = await fetchData(PRODUCT_URL);
 
     const discountPrice = data.price - (data.price * data.discount) / 100;
     const floorDiscountPrice = Math.floor(discountPrice / 10) * 10;
@@ -396,9 +381,7 @@ async function displayProductDetails() {
                 if (!reviewResponse.ok)
                   throw new Error('REVIEW API 통신에 실패했습니다.');
                 closeModal();
-                console.log(reviewResponse);
                 const reviewData = await reviewResponse.json();
-                await console.log(reviewData);
               } catch (error) {
                 console.error(error);
               }
@@ -543,10 +526,6 @@ async function displayProductDetails() {
       `;
         const inquiryTitle = document.querySelector('#inquiry_title');
 
-        inquiryTitle.addEventListener('input', () => {
-          console.log(inquiryTitle.value);
-        });
-
         closeButton();
 
         submitButton.addEventListener('click', () => {
@@ -573,9 +552,7 @@ async function displayProductDetails() {
                 if (!inquiryResponse.ok)
                   throw new Error('INQUIRY API 통신에 실패했습니다.');
                 closeModal();
-                console.log(inquiryResponse);
                 const inquiryData = await inquiryResponse.json();
-                await console.log(inquiryData);
               } catch (error) {
                 console.error(error);
               }
@@ -740,13 +717,10 @@ cartButton.addEventListener('click', () => {
   updateCart();
 });
 
-// id="tab_reviews" textContent 후기 ( ${items.length} )
-// count="review_count" textContent 총 ${items.length}개
-// review_list에 insertAd어쩌고로 넣기?
-// length:0개일때
-
 async function reviewDataRender() {
   const reviewList = document.querySelector('.review_list');
+  const reviewCount = document.querySelector('.review_count');
+  const tabReviews = document.querySelector('#tab_reviews');
   const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
   const USER_URL = import.meta.env.VITE_PH_USERS;
   const REVIEW_FILTER_URL = `${REVIEW_URL}?filter=(productId%3D'${productId}')`;
@@ -757,8 +731,8 @@ async function reviewDataRender() {
 
   const data = await reivewGetResponse.json();
 
-  console.log(data);
-
+  reviewCount.textContent = `총 ${data.items.length}개`;
+  tabReviews.textContent = `후기 ( ${data.items.length} )`;
   const initialTemplate = /* html */ `
     <div
       class="items-center gap-5 py-10 border-b border-b-gray-100 flex_column"
@@ -820,8 +794,6 @@ async function inquiryDataRender() {
     throw new Error('INQUIRY API 통신에 실패했습니다.');
 
   const data = await inquiryGetResponse.json();
-
-  console.log(data);
 
   const initialTemplate = /* html */ `
     <div
@@ -916,8 +888,6 @@ async function inquiryDataRender() {
       // 문의 섹션
       const inquiryTitle = document.querySelectorAll('.inquiry_title');
       const inquiryContents = document.querySelectorAll('.inquiry_content');
-
-      console.log(inquiryTitle);
 
       function toggleContent(titles, contents) {
         titles.forEach((title) => {
