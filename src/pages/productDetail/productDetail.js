@@ -217,6 +217,7 @@ async function displayProductDetails() {
 
     const reviewButton = document.querySelector('.review_button');
     const inquiryButton = document.querySelector('.inquiry_button');
+    const submitButton = document.querySelector('[type="submit"]');
 
     function clickedShowModal() {
       const dialog = detailModal.children[1];
@@ -227,8 +228,16 @@ async function displayProductDetails() {
     const desc = document.querySelector('#desc');
     const virtualPlaceholder = document.querySelector('.virtual_placeholder');
     const textLength = document.querySelector('.text_length');
-    const MAX_LENGTH = 5000;
 
+    const MAX_LENGTH = 5000;
+    function closeModal() {
+      const dialog = document.querySelector('dialog');
+
+      dialog.close();
+      dialog.classList.add('modal_hidden');
+      desc.value = '';
+      updateTextUI();
+    }
     function updateTextUI() {
       const length = desc.value.length;
       virtualPlaceholder.classList.toggle('hidden', length > 0);
@@ -237,38 +246,53 @@ async function displayProductDetails() {
       if (length > MAX_LENGTH) {
         desc.value = desc.value.slice(0, MAX_LENGTH);
       }
+      if (length > 0) {
+        submitButton.disabled = false;
+        submitButton.classList.remove('bg-gray-200');
+        submitButton.classList.add('bg-primary');
+      } else {
+        submitButton.disabled = true;
+        submitButton.classList.remove('bg-primary');
+        submitButton.classList.add('bg-gray-200');
+      }
     }
+
     function closeButton() {
       const closeButton = document.querySelector('.close_button');
 
-      closeButton.addEventListener('click', () => {
-        const dialog = document.querySelector('dialog');
-
-        dialog.close();
-        dialog.classList.add('modal_hidden');
-        updateTextUI();
-      });
+      closeButton.addEventListener('click', closeModal);
     }
     desc.addEventListener('input', () => {
       updateTextUI();
     });
+    /* -------------------------------------------------------------------------- */
+    /*                               후기 & 문의 데이터보내기                        */
+    /* -------------------------------------------------------------------------- */
 
     reviewButton.addEventListener('click', () => {
-      clickedShowModal();
-      updateTextUI();
+      if (!sessionStorage.userId) {
+        alert('로그인을 해주세요');
+        location.href = '/src/pages/login/';
+      } else {
+        clickedShowModal();
+        updateTextUI();
 
-      const ModalTitle = document.querySelector('.modal_title');
-      const ModalProduct = document.querySelector('.modal_product');
-      const modalContentTitle = document.querySelector('.modal_content_title');
-      const virtualPlaceholder = document.querySelector('.virtual_placeholder');
-      const secretCheck = document.querySelector('.secret_check');
-      ModalTitle.innerHTML = `
+        const ModalTitle = document.querySelector('.modal_title');
+        const ModalProduct = document.querySelector('.modal_product');
+        const modalContentTitle = document.querySelector(
+          '.modal_content_title'
+        );
+        const virtualPlaceholder = document.querySelector(
+          '.virtual_placeholder'
+        );
+        const secretCheck = document.querySelector('.secret_check');
+        ModalTitle.innerHTML = `
       <h2 class="text-heading-xl font-bold leading-[140%]">후기 작성하기</h2>
       <svg role="후기작성 모달창 닫기" class="cursor-pointer close_button" width="30" height="30">
         <use href="/icon/_sprite.svg#Cancel" />
       </svg>
       `;
-      ModalProduct.innerHTML = `
+        ModalProduct.innerHTML = `
       <img src="${`${imgURL}/${data.main_image}`}" alt="${
         data.name
       }" width="72" height="72" />
@@ -276,7 +300,7 @@ async function displayProductDetails() {
         data.brand ? data.brand : ''
       } ${data.name}</h3>
       `;
-      modalContentTitle.innerHTML = `<label
+        modalContentTitle.innerHTML = `<label
         for="review_title"
         class="pt-2 pr-2 font-semibold text-content text-label-medium w-100pxr"
         >제목</label
@@ -289,7 +313,7 @@ async function displayProductDetails() {
         class="w-full text-paragraph-medium placeholder:leading-[160%] text-gray-400 border border-gray-300 rounded p-5 h-11 outline-none flex items-center self-stretch"
       />`;
 
-      virtualPlaceholder.innerHTML = `
+        virtualPlaceholder.innerHTML = `
               <p>
                 컬리는 믿을 수 있는 후기문화를 함께 만들어가고자 합니다. 식품
                 등의 표시광고에 대한 법률을 준수하고자 다음과 같은 부당한
@@ -352,26 +376,69 @@ async function displayProductDetails() {
                   있음을 알려드립니다.</strong
                 >
               </div>`;
-      secretCheck.innerHTML = ``;
+        secretCheck.innerHTML = ``;
 
-      closeButton();
+        closeButton();
+
+        submitButton.addEventListener('click', () => {
+          const title = ModalTitle.children[0].textContent;
+          if (title === '후기 작성하기') {
+            async function modalFetch() {
+              try {
+                const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
+                // const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
+                const reviewResponse = await fetch(REVIEW_URL, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    productId,
+                    userId,
+                    title: `${data.brand ? data.brand : ''} ${data.name}`,
+                    contents: desc.value,
+                  }),
+                });
+                if (!reviewResponse.ok)
+                  throw new Error('REVIEW API 통신에 실패했습니다.');
+                closeModal();
+                console.log(reviewResponse);
+                const reviewData = await reviewResponse.json();
+                await console.log(reviewData);
+              } catch (error) {
+                console.error(error);
+              }
+            }
+            modalFetch();
+          }
+        });
+      }
     });
 
     inquiryButton.addEventListener('click', () => {
-      clickedShowModal();
-      updateTextUI();
-      const ModalTitle = document.querySelector('.modal_title');
-      const ModalProduct = document.querySelector('.modal_product');
-      const modalContentTitle = document.querySelector('.modal_content_title');
-      const virtualPlaceholder = document.querySelector('.virtual_placeholder');
-      const secretCheck = document.querySelector('.secret_check');
-      ModalTitle.innerHTML = `
+      if (!sessionStorage.userId) {
+        alert('로그인을 해주세요');
+        location.href = '/src/pages/login/';
+      } else {
+        clickedShowModal();
+        updateTextUI();
+        const ModalTitle = document.querySelector('.modal_title');
+        const ModalProduct = document.querySelector('.modal_product');
+        const modalContentTitle = document.querySelector(
+          '.modal_content_title'
+        );
+        const virtualPlaceholder = document.querySelector(
+          '.virtual_placeholder'
+        );
+        const secretCheck = document.querySelector('.secret_check');
+
+        ModalTitle.innerHTML = `
       <h2 class="text-heading-xl font-bold leading-[140%]">상품 문의하기</h2>
       <svg role="상품문의 모달창 닫기" class="cursor-pointer close_button" width="30" height="30">
       <use href="/icon/_sprite.svg#Cancel" />
       </svg>
       `;
-      ModalProduct.innerHTML = `
+        ModalProduct.innerHTML = `
       <img src="${`${imgURL}/${data.main_image}`}" alt="${
         data.name
       }" width="72" height="72" />
@@ -379,18 +446,18 @@ async function displayProductDetails() {
         data.brand ? data.brand : ''
       } ${data.name}</h3>
       `;
-      modalContentTitle.innerHTML = `<label
-      for="review_title"
+        modalContentTitle.innerHTML = `<label
+      for="inquiry_title"
       class="pt-2 pr-2 font-semibold text-content text-label-medium w-100pxr"
       >제목</label
       >
       <input
       type="text"
-      id="review_title"
+      id="inquiry_title"
       placeholder="제목을 입력해 주세요"
       class="w-full text-paragraph-medium placeholder:leading-[160%] border border-gray-300 rounded p-5 h-11 outline-none flex items-center self-stretch"
       />`;
-      virtualPlaceholder.innerHTML = `<div>
+        virtualPlaceholder.innerHTML = `<div>
                 <strong class="leading-normal text-label-medium"
                   >상품문의 작성 전 확인해 주세요</strong
                 >
@@ -462,16 +529,16 @@ async function displayProductDetails() {
                 </strong>
               </div>
       `;
-      secretCheck.innerHTML = `
+        secretCheck.innerHTML = `
       <fieldset class="flex pl-82pxr pb-22pxr">
         <input
           type="checkbox"
-          id="itemSelect2"
+          id="secretCheck"
           class="input_checkbox_label peer"
         />
 
         <label
-          for="itemSelect2"
+          for="secretCheck"
           class="flex items-center checkbox_before_label peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
         >
           <span class="block w-87pxr text-paragraph-small leading-[160%]"
@@ -480,13 +547,55 @@ async function displayProductDetails() {
         </label>
       </fieldset>
       `;
+        const inquiryTitle = document.querySelector('#inquiry_title');
 
-      closeButton();
+        inquiryTitle.addEventListener('input', () => {
+          console.log(inquiryTitle.value);
+        });
+
+        closeButton();
+
+        submitButton.addEventListener('click', () => {
+          const secretCheckedStatus = document.querySelector('#secretCheck');
+          const title = ModalTitle.children[0].textContent;
+          if (title === '상품 문의하기') {
+            async function modalFetch() {
+              try {
+                const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
+                const inquiryResponse = await fetch(INQUIRY_URL, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    productId,
+                    userId,
+                    title: inquiryTitle.value,
+                    question: desc.value,
+                    answerStatus: '답변대기',
+                    secret: secretCheckedStatus.checked,
+                  }),
+                });
+                if (!inquiryResponse.ok)
+                  throw new Error('INQUIRY API 통신에 실패했습니다.');
+                closeModal();
+                console.log(inquiryResponse);
+                const inquiryData = await inquiryResponse.json();
+                await console.log(inquiryData);
+              } catch (error) {
+                console.error(error);
+              }
+            }
+            modalFetch();
+          }
+        });
+      }
     });
   } catch (error) {
     console.error(error);
   }
 }
+
 displayProductDetails();
 
 /*--------------------------------------------------------------------------*/
