@@ -37,13 +37,13 @@ function secretCheck() {
 
       title.innerHTML = `
       <button class="flex font-semibold border-b border-b-gray-100">
-        <div class="text-gray-400 inquiry_table_subject"> 
+        <div class="text-gray-400 inquiry_table_subject">
         비밀글입니다.
           <span>
           <svg width="12" height="14" aria-hidden="true">
             <use href="/icon/_sprite.svg#Lock"></use>
           </svg>
-        </span> 
+        </span>
       </div>
       <div class="table_width100">김*식</div>
       <time datetime="2022-11-11" class="table_width100">

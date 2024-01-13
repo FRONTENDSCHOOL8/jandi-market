@@ -739,3 +739,233 @@ cartButton.addEventListener('click', () => {
   }
   updateCart();
 });
+
+// id="tab_reviews" textContent 후기 ( ${items.length} )
+// count="review_count" textContent 총 ${items.length}개
+// review_list에 insertAd어쩌고로 넣기?
+// length:0개일때
+
+async function reviewDataRender() {
+  const reviewList = document.querySelector('.review_list');
+  const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
+  const USER_URL = import.meta.env.VITE_PH_USERS;
+  const REVIEW_FILTER_URL = `${REVIEW_URL}?filter=(productId%3D'${productId}')`;
+
+  const reivewGetResponse = await fetch(REVIEW_FILTER_URL);
+
+  if (!reivewGetResponse.ok) throw new Error('REVIEW API 통신에 실패했습니다.');
+
+  const data = await reivewGetResponse.json();
+
+  console.log(data);
+
+  const initialTemplate = /* html */ `
+    <div
+      class="items-center gap-5 py-10 border-b border-b-gray-100 flex_column"
+    >
+      <svg
+        class="text-gray-100"
+        width="48"
+        height="48"
+        aria-hidden="true"
+      >
+        <use href="/icon/_sprite.svg#Notice"></use>
+        </svg>
+        <p>따뜻한 첫 후기를 기다리고 있어요.</p>
+        </div>`;
+  await data.items.forEach(async (review) => {
+    const createDay = String(review.created).slice(0, 10);
+
+    const userResponse = await fetch(`${USER_URL}/${review.userId}`);
+    if (!userResponse.ok) throw new Error('USER API 통신에 실패했습니다.');
+    const userData = await userResponse.json();
+    const userName = `
+    ${userData.name[0]}${'*'.repeat(userData.name.length - 2)}${
+      userData.name[2]
+    }`;
+
+    const reviewTemplate = /* html */ `
+      <div class="review_user_post_structure">
+        <div class="review_member">
+          <span class="best_badge">베스트</span>
+          <span class="purple_badge">퍼플</span>
+          <span class="self-start">${userName}</span>
+        </div>
+        <div class="review_user_post_contents">
+          <h4 class="text_gray_semibold">${review.title}</h4>
+          <p class="leading_160">
+            ${review.contents}
+          </p>
+          <p class="text_gray_semibold">${createDay}</p>
+        </div>
+      </div>`;
+    if (data.items.length === 0) {
+      reviewList.innerHTML = initialTemplate;
+    } else {
+      reviewList.insertAdjacentHTML('beforeend', reviewTemplate);
+    }
+  });
+}
+reviewDataRender();
+
+async function inquiryDataRender() {
+  const inquiryList = document.querySelector('.inquiry_list');
+  const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
+  const USER_URL = import.meta.env.VITE_PH_USERS;
+  const INQUIRY_FILTER_URL = `${INQUIRY_URL}?filter=(productId%3D'${productId}')`;
+
+  const inquiryGetResponse = await fetch(INQUIRY_FILTER_URL);
+
+  if (!inquiryGetResponse.ok)
+    throw new Error('INQUIRY API 통신에 실패했습니다.');
+
+  const data = await inquiryGetResponse.json();
+
+  console.log(data);
+
+  const initialTemplate = /* html */ `
+    <div
+      class="items-center gap-5 py-10 border-b border-b-gray-100 flex_column"
+    >
+      <p>등록된 문의가 없습니다.</p>
+  </div>`;
+  await data.items.forEach(async (inquiry) => {
+    const createDay = String(inquiry.created).slice(0, 10);
+    const answerDay = String(inquiry.answerDay).slice(0, 10);
+
+    const userResponse = await fetch(`${USER_URL}/${inquiry.userId}`);
+    if (!userResponse.ok) throw new Error('USER API 통신에 실패했습니다.');
+    const userData = await userResponse.json();
+    const userName = `
+    ${userData.name[0]}${'*'.repeat(userData.name.length - 2)}${
+      userData.name[2]
+    }`;
+
+    const inquiryTemplate = /* html */ `<div>
+                <h2
+                  class="inquiry_title"
+                  aria-expanded="false"
+                  data-secret="false"
+                >
+                  <button class="flex font-semibold border-b border-b-gray-100">
+                    <div class="inquiry_table_subject">${inquiry.title}</div>
+                    <div class="table_width100">${userName}</div>
+                    <time datetime="${createDay}" class="table_width100">
+                      ${createDay}
+                    </time>
+                    ${
+                      inquiry.answerStatus
+                        ? `<div class="table_width100 text-primary font-semibold">
+                      답변 완료
+                    </div>`
+                        : `<div class="table_width100">
+                      답변 대기
+                    </div>`
+                    }
+                  </button>
+                </h2>
+                <div class="inquiry_content" aria-hidden="true" hidden>
+                  <div class="question inquiry_contents_layout">
+                    <span>
+                      <svg width="24" height="24" aria-hidden="true">
+                        <use href="/icon/_sprite.svg#Question"></use>
+                      </svg>
+                    </span>
+                    <p class="inquiry_contents_question">
+                      ${inquiry.question}
+                    </p>
+                  </div>
+                  <div class="answer inquiry_contents_layout">
+                    <span>
+                      <svg width="24" height="24" aria-hidden="true">
+                        <use href="/icon/_sprite.svg#Answer"></use>
+                      </svg>
+                    </span>
+                    <div class="inquiry_contents_answer">
+                      <p class="text-content">
+                        ${inquiry.question ? inquiry.question : ''}
+                      </p>
+                      <time class="text-gray-400" datetime="${
+                        answerDay ? answerDay : ''
+                      }"
+                        >${answerDay ? answerDay : ''}</time
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>`;
+
+    // 문의 섹션
+    const inquiryTitle = document.querySelectorAll('.inquiry_title');
+    const inquiryContents = document.querySelectorAll('.inquiry_content');
+
+    function toggleContent(titles, contents) {
+      titles.forEach((title) => {
+        title.addEventListener('click', () => {
+          const content = title.nextElementSibling;
+          let hidden = !content.hidden;
+          contents.forEach((content, index) => {
+            content.hidden = true;
+            content.setAttribute('aria-hidden', true);
+            content.classList.remove('flex_column');
+            titles[index].setAttribute('aria-expanded', false);
+          });
+
+          content.hidden = hidden;
+          content.setAttribute('aria-hidden', hidden);
+          if (!hidden) {
+            content.classList.add('flex_column');
+          }
+          title.setAttribute('aria-expanded', !hidden);
+        });
+      });
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                                     비밀글                                  */
+    /* -------------------------------------------------------------------------- */
+    function secretCheck() {
+      inquiryTitle.forEach((title) => {
+        if (title.dataset.secret == 'true') {
+          let content = title.nextElementSibling;
+
+          title.innerHTML = `
+      <button class="flex font-semibold border-b border-b-gray-100">
+        <div class="text-gray-400 inquiry_table_subject">
+        비밀글입니다.
+          <span>
+          <svg width="12" height="14" aria-hidden="true">
+            <use href="/icon/_sprite.svg#Lock"></use>
+          </svg>
+        </span>
+      </div>
+      <div class="table_width100">김*식</div>
+      <time datetime="2022-11-11" class="table_width100">
+        2022.11.11
+      </time>
+      <div class="text-center text-primary py-17pxr w-100pxr">
+        답변완료
+      </div>
+    </button>
+      `;
+
+          content.style.display = 'none';
+          content.setAttribute('aria-hidden', true);
+          content.hidden = true;
+          content.classList.remove('flex_column');
+          title.setAttribute('aria-expanded', false);
+
+          // 만약 로그인 한 사람이 본인이거나 어드민일 경우 다 보임
+        }
+      });
+    }
+    secretCheck();
+    toggleContent(inquiryTitle, inquiryContents);
+    if (data.items.length === 0) {
+      inquiryList.innerHTML = initialTemplate;
+    } else {
+      inquiryList.insertAdjacentHTML('beforeend', inquiryTemplate);
+    }
+  });
+}
+inquiryDataRender();
