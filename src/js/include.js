@@ -44,3 +44,15 @@ fetch('/src/components/addCart/addCart.html')
   .catch((error) => {
     console.error(error);
   });
+// detailModal.html 파일을 가져와서 detailModal 요소에 삽입
+fetch('/src/components/detailModal/detailModal.html')
+  .then((response) => response.text())
+  .then(async (html) => {
+    const detailModalElement = document.querySelector('#detailModal');
+    if (!detailModalElement) return;
+    detailModalElement.innerHTML = html;
+    return import('/src/components/detailModal/detailModal.js');
+  })
+  .catch((error) => {
+    console.error(error);
+  });

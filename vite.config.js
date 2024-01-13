@@ -16,6 +16,10 @@ export default defineConfig({
         productList: resolve(__dirname, 'src/pages/productList/index.html'),
         productDetail: resolve(__dirname, 'src/pages/productDetail/index.html'),
         addCart: resolve(__dirname, 'src/components/addCart/addCart.html'),
+        detailModal: resolve(
+          __dirname,
+          'src/components/detailModal/detailModal.html'
+        ),
       },
     },
   },
