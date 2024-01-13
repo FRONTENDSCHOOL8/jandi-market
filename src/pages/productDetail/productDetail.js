@@ -829,7 +829,9 @@ async function inquiryDataRender() {
     >
       <p>등록된 문의가 없습니다.</p>
   </div>`;
-  await data.items.forEach(async (inquiry) => {
+  inquiryList.innerHTML = '';
+
+  for (const inquiry of data.items) {
     const createDay = String(inquiry.created).slice(0, 10);
     const answerDay = String(inquiry.answerDay).slice(0, 10);
 
@@ -883,7 +885,7 @@ async function inquiryDataRender() {
                     </span>
                     <div class="inquiry_contents_answer">
                       <p class="text-content">
-                        ${inquiry.question ? inquiry.question : ''}
+                        ${inquiry.answer ? inquiry.answer : '답변 대기중입니다'}
                       </p>
                       <time class="text-gray-400" datetime="${
                         answerDay ? answerDay : ''
@@ -894,10 +896,29 @@ async function inquiryDataRender() {
                   </div>
                 </div>
               </div>`;
+    inquiryList.insertAdjacentHTML('beforeend', inquiryTemplate);
 
+    /* -------------------------------------------------------------------------- */
+    /*                                     비밀글                                  */
+    /* -------------------------------------------------------------------------- */
+
+    if (data.items.length === 0) {
+      inquiryList.innerHTML = initialTemplate;
+    }
+  }
+
+  /* -------------------------------------------------------------------------- */
+  /*                                    아코디언                                 */
+  /* -------------------------------------------------------------------------- */
+  function accordion() {
+    // 리뷰 섹션
+    const reviewTitle = document.querySelectorAll('.review_title');
+    const reviewContents = document.querySelectorAll('.review_content');
     // 문의 섹션
     const inquiryTitle = document.querySelectorAll('.inquiry_title');
     const inquiryContents = document.querySelectorAll('.inquiry_content');
+
+    console.log(inquiryTitle);
 
     function toggleContent(titles, contents) {
       titles.forEach((title) => {
@@ -960,12 +981,9 @@ async function inquiryDataRender() {
       });
     }
     secretCheck();
+    toggleContent(reviewTitle, reviewContents);
     toggleContent(inquiryTitle, inquiryContents);
-    if (data.items.length === 0) {
-      inquiryList.innerHTML = initialTemplate;
-    } else {
-      inquiryList.insertAdjacentHTML('beforeend', inquiryTemplate);
-    }
-  });
+  }
+  accordion();
 }
 inquiryDataRender();
