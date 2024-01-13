@@ -37,7 +37,6 @@
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script type="module" src="./productDetail.js"></script>
-    <script type="module" src="./accordionToggle.js"></script>
     <script type="module" src="../../js/include.js"></script>
   </head>
   <body>
@@ -163,7 +162,7 @@
                     <div class="flex items-center gap-2 border border-gray-200">
                       <button>
                         <img
-                          src="/public/input/minus-disabled.svg"
+                          src="/input/minus-disabled.svg"
                           alt="수량 감소 비활성화"
                           class="cursor-pointer quantity_decrease"
                         />
@@ -171,7 +170,7 @@
                       <span class="w-3 text-center product_quantity">1</span>
                       <button>
                         <img
-                          src="/public/input/plus.svg"
+                          src="/input/plus.svg"
                           alt="수량 증가"
                           class="cursor-pointer quantity_increase"
                         />
@@ -213,10 +212,7 @@
                   class="cursor-pointer text-primary icon_box_gray h-14 w-14"
                   aria-hidden="true"
                 >
-                  <use
-                    href="/public/icon/_sprite.svg#Heart"
-                    class="icon_heart"
-                  ></use>
+                  <use href="/icon/_sprite.svg#Heart" class="icon_heart"></use>
                 </svg>
                 <span class="sr-only">찜하기</span>
               </button>
@@ -225,7 +221,7 @@
                   class="text-gray-100 icon_box_gray h-14 w-14 cursor-no-drop"
                   aria-hidden="true"
                 >
-                  <use href="/public/icon/_sprite.svg#Bell"></use>
+                  <use href="/icon/_sprite.svg#Bell"></use>
                 </svg>
                 <span class="sr-only">재입고 알림 신청</span>
               </button>
@@ -360,7 +356,7 @@
             <div class="flex justify-center">
               <article class="why_article">
                 <svg class="why_article_img_size" aria-hidden="true">
-                  <use href="/public/icon/_sprite.svg#Committee"></use>
+                  <use href="/icon/_sprite.svg#Committee"></use>
                 </svg>
                 <h4 class="why_article_title">깐깐한 상품위원회</h4>
                 <p class="text-center">
@@ -372,7 +368,7 @@
               </article>
               <article class="why_article">
                 <svg class="why_article_img_size" aria-hidden="true">
-                  <use href="/public/icon/_sprite.svg#Different"></use>
+                  <use href="/icon/_sprite.svg#Different"></use>
                 </svg>
                 <h4 class="why_article_title">차별화된 Karly Only 상품</h4>
                 <p class="text-center">
@@ -384,7 +380,7 @@
               </article>
               <article class="why_article">
                 <svg class="why_article_img_size" aria-hidden="true">
-                  <use href="/public/icon/_sprite.svg#Delivery"></use>
+                  <use href="/icon/_sprite.svg#Delivery"></use>
                 </svg>
                 <h4 class="why_article_title">신선한 풀콜드체인 배송</h4>
                 <p class="text-center">
@@ -398,7 +394,7 @@
             <div class="flex justify-center gap-4">
               <article class="why_article">
                 <svg class="why_article_img_size" aria-hidden="true">
-                  <use href="/public/icon/_sprite.svg#Price"></use>
+                  <use href="/icon/_sprite.svg#Price"></use>
                 </svg>
                 <h4 class="why_article_title">
                   고객, 생산자를 위한 최선의 가격
@@ -413,7 +409,7 @@
               </article>
               <article class="why_article">
                 <svg class="why_article_img_size" aria-hidden="true">
-                  <use href="/public/icon/_sprite.svg#Enviroment"></use>
+                  <use href="/icon/_sprite.svg#Enviroment"></use>
                 </svg>
                 <h4 class="why_article_title">
                   환경을 생각하는 지속 가능한 유통
@@ -585,7 +581,7 @@
                 height="48"
                 aria-hidden="true"
               >
-                <use href="/public/icon/_sprite.svg#Notice"></use>
+                <use href="/icon/_sprite.svg#Notice"></use>
               </svg>
               <p>따뜻한 첫 후기를 기다리고 있어요.</p>
             </div> -->
@@ -617,7 +613,7 @@
                 viewBox="0 0 18 18"
                 aria-hidden="true"
               >
-                <use href="/public/icon/_sprite.svg#Left"></use>
+                <use href="/icon/_sprite.svg#Left"></use>
               </svg>
               <span class="sr-only">이전 페이지</span>
             </button>
@@ -629,7 +625,7 @@
                 viewBox="0 0 18 18"
                 aria-hidden="true"
               >
-                <use href="/public/icon/_sprite.svg#Right"></use>
+                <use href="/icon/_sprite.svg#Right"></use>
               </svg>
               <span class="sr-only">다음 페이지</span>
             </button>
@@ -679,11 +675,12 @@
             <!-- 문의글 -->
             <div>
               <!-- 제목 -->
-              <h2 class="inquiry_title" aria-expanded="false">
-                <button
-                  class="flex font-semibold border-b border-b-gray-100"
-                  data-secret="false"
-                >
+              <h2
+                class="inquiry_title"
+                aria-expanded="false"
+                data-secret="false"
+              >
+                <button class="flex font-semibold border-b border-b-gray-100">
                   <div class="inquiry_table_subject">
                     <span class="notice_badge"> 공지 </span>
                     판매(일시)중단 제품 안내 (22.11.10 업데이트)
@@ -700,7 +697,7 @@
                 <div class="question inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Question"></use>
+                      <use href="/icon/_sprite.svg#Question"></use>
                     </svg>
                   </span>
                   <p class="inquiry_contents_question">
@@ -712,7 +709,7 @@
                 <div class="answer inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Answer"></use>
+                      <use href="/icon/_sprite.svg#Answer"></use>
                     </svg>
                   </span>
                   <div class="inquiry_contents_answer">
@@ -744,11 +741,12 @@
             <!-- 유저글 -->
             <div>
               <!-- 제목 -->
-              <h2 class="inquiry_title" aria-expanded="false">
-                <button
-                  class="flex font-semibold border-b border-b-gray-100"
-                  data-secret="false"
-                >
+              <h2
+                class="inquiry_title"
+                aria-expanded="false"
+                data-secret="false"
+              >
+                <button class="flex font-semibold border-b border-b-gray-100">
                   <div class="inquiry_table_subject">팩이 터져서 왔어요</div>
                   <div class="table_width100">김*식</div>
                   <time datetime="2022-11-11" class="table_width100">
@@ -762,7 +760,7 @@
                 <div class="question inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Question"></use>
+                      <use href="/icon/_sprite.svg#Question"></use>
                     </svg>
                   </span>
                   <p class="inquiry_contents_question">
@@ -774,7 +772,7 @@
                 <div class="answer inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Answer"></use>
+                      <use href="/icon/_sprite.svg#Answer"></use>
                     </svg>
                   </span>
                   <div class="inquiry_contents_answer">
@@ -806,17 +804,18 @@
             <!-- 비밀글 -->
             <div>
               <!-- 제목 -->
-              <h2 class="inquiry_title" aria-expanded="false">
-                <button
-                  class="flex font-semibold border-b border-b-gray-100"
-                  data-secret="true"
-                >
+              <h2
+                class="inquiry_title"
+                aria-expanded="false"
+                data-secret="true"
+              >
+                <button class="flex font-semibold border-b border-b-gray-100">
                   <!-- <div class="text-gray-400 inquiry_table_subject"> -->
                   <div class="inquiry_table_subject">
                     또 터졌어
                     <!-- <span>
                       <svg width="12" height="14" aria-hidden="true">
-                        <use href="/public/icon/_sprite.svg#Lock"></use>
+                        <use href="/icon/_sprite.svg#Lock"></use>
                       </svg>
                     </span> -->
                   </div>
@@ -835,7 +834,7 @@
                 <div class="question inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Question"></use>
+                      <use href="/icon/_sprite.svg#Question"></use>
                     </svg>
                   </span>
                   <p class="inquiry_contents_question">
@@ -847,7 +846,7 @@
                 <div class="answer inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Answer"></use>
+                      <use href="/icon/_sprite.svg#Answer"></use>
                     </svg>
                   </span>
                   <div class="inquiry_contents_answer">
@@ -887,7 +886,7 @@
                 viewBox="0 0 18 18"
                 aria-hidden="true"
               >
-                <use href="/public/icon/_sprite.svg#Left"></use>
+                <use href="/icon/_sprite.svg#Left"></use>
               </svg>
               <span class="sr-only">이전 페이지</span>
             </button>
@@ -899,7 +898,7 @@
                 viewBox="0 0 18 18"
                 aria-hidden="true"
               >
-                <use href="/public/icon/_sprite.svg#Right"></use>
+                <use href="/icon/_sprite.svg#Right"></use>
               </svg>
               <span class="sr-only">다음 페이지</span>
             </button>
