@@ -1,10 +1,8 @@
-import './accordionToggle';
-
 let quantity = 1; // 상품 수량
 const COLLECTIONS_ID = 'n9omag8299xjizq';
 const productId = window.location.hash.slice(1);
 
-const URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
+const PRODUCT_URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
 const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
 
 const quantityDecrease = document.querySelector('.quantity_decrease');
@@ -35,7 +33,7 @@ function generateInfoSection(title, content, addContent = '') {
 
 async function displayProductDetails() {
   try {
-    const response = await fetch(URL);
+    const response = await fetch(PRODUCT_URL);
     if (!response.ok) throw new Error('API 호출에 실패했습니다.');
 
     const data = await response.json();
@@ -214,10 +212,6 @@ async function displayProductDetails() {
     /* -------------------------------------------------------------------------- */
     /*                                     모달창                                  */
     /* -------------------------------------------------------------------------- */
-
-    const reviewButton = document.querySelector('.review_button');
-    const inquiryButton = document.querySelector('.inquiry_button');
-    const submitButton = document.querySelector('[type="submit"]');
 
     function clickedShowModal() {
       const dialog = detailModal.children[1];
@@ -612,7 +606,13 @@ updateHeartIcon();
 wishList.addEventListener('click', () => {
   productWish = !productWish;
   wishList.dataset.wish = String(productWish);
-  localStorage.setItem(productId, JSON.stringify(productWish));
+
+  if (productWish) {
+    localStorage.setItem(productId, JSON.stringify(productWish));
+  } else {
+    localStorage.removeItem(productId);
+  }
+
   updateHeartIcon();
 });
 function updateHeartIcon() {
