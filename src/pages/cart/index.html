@@ -87,7 +87,7 @@
             <!-- cart list가 있을 떄 -->
             <div class="border-b border-solid cart_list border-gray-50">
               <ul class="cart_category">
-                <li class="group_category">
+                <li class="hidden group_category category_refrigerated">
                   <div
                     class="flex justify-between my-4 cart_category text-label-medium"
                   >
@@ -116,8 +116,8 @@
                       </svg>
                     </button>
                   </div>
-                  <ul class="product_frozen product_list">
-                    <li class="flex items-center py-5 item">
+                  <ul class="product_refrigerated product_list">
+                    <!-- <li class="flex items-center py-5 item">
                       <fieldset class="item_select">
                         <input
                           type="checkbox"
@@ -380,10 +380,10 @@
                           <use href="/icon/_sprite.svg#Cancel" />
                         </svg>
                       </button>
-                    </li>
+                    </li> -->
                   </ul>
                 </li>
-                <li class="group_category">
+                <li class="hidden group_category category_frozen">
                   <div
                     class="flex justify-between my-4 cart_category text-label-medium"
                   >
@@ -412,8 +412,8 @@
                       </svg>
                     </button>
                   </div>
-                  <ul class="product_refrigerated product_list">
-                    <li class="flex items-center py-5 item">
+                  <ul class="product_frozen product_list">
+                    <!-- <li class="flex items-center py-5 item">
                       <fieldset class="item_select">
                         <input
                           type="checkbox"
@@ -478,10 +478,10 @@
                           <use href="/icon/_sprite.svg#Cancel" />
                         </svg>
                       </button>
-                    </li>
+                    </li> -->
                   </ul>
                 </li>
-                <li class="group_category">
+                <li class="hidden group_category category_normal">
                   <div
                     class="flex justify-between my-4 cart_category text-label-medium"
                   >
@@ -495,7 +495,7 @@
                       >
                         <use href="/icon/_sprite.svg#Normal" />
                       </svg>
-                      <h4 class="font-semibold text-label-medium">상온 식품</h4>
+                      <h4 class="font-semibold text-label-medium">상온 상품</h4>
                     </div>
                     <button class="list_toggle">
                       <span class="sr-only">카테고리 상품 보기</span>
@@ -510,8 +510,8 @@
                       </svg>
                     </button>
                   </div>
-                  <ul class="product_frozen product_list">
-                    <li class="flex items-center py-5 item">
+                  <ul class="product_normal product_list">
+                    <!-- <li class="flex items-center py-5 item">
                       <fieldset class="item_select">
                         <input
                           type="checkbox"
@@ -576,7 +576,7 @@
                           <use href="/icon/_sprite.svg#Cancel" />
                         </svg>
                       </button>
-                    </li>
+                    </li> -->
                   </ul>
                 </li>
               </ul>
