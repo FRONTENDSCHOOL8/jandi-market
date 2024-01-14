@@ -1,33 +1,23 @@
 import {
   getNode,
   getNodes,
-  insertAfterBegin,
+  updateHeartIcon,
   insertBeforeEnd,
+  insertAfterBegin,
+  generateInfoSection,
 } from '/src/lib/index.js';
 
 let quantity = 1; // 상품 수량
 const COLLECTIONS_ID = 'n9omag8299xjizq';
-const productId = window.location.hash.slice(1);
-const URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
-const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
-const quantityDecrease = getNode('.quantity_decrease');
-const productQuantity = getNode('.product_quantity');
-const quantityIncrease = getNode('.quantity_increase');
 const reviewList = getNode('.review_list');
 const inquiryList = getNode('.inquiry_list');
+const productId = window.location.hash.slice(1);
+const productQuantity = getNode('.product_quantity');
+const quantityDecrease = getNode('.quantity_decrease');
+const quantityIncrease = getNode('.quantity_increase');
+const URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
+const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
 
-function generateInfoSection(title, content, addContent = '') {
-  return content !== ''
-    ? /* html */ `
-      <div class="info_flex">
-        <dt class="min-w-32">${title}</dt>
-        <dd>
-          <p>${content}</p>
-          ${addContent}
-        </dd>
-      </div>`
-    : '';
-}
 /* -------------------------------------------------------------------------- */
 /*                                   데이터바인딩                               */
 /* -------------------------------------------------------------------------- */
@@ -575,24 +565,18 @@ displayProductDetails();
 /*--------------------------------------------------------------------------*/
 
 const wishList = getNode('.wish_list');
-const iconHeart = getNode('.icon_heart');
-
 let productWish = JSON.parse(localStorage.getItem(productId) || 'false');
 
-updateHeartIcon();
+updateHeartIcon(productWish);
 
-wishList.addEventListener('click', () => {
+function setWishList() {
   productWish = !productWish;
   wishList.dataset.wish = String(productWish);
   localStorage.setItem(productId, JSON.stringify(productWish));
-  updateHeartIcon();
-});
-function updateHeartIcon() {
-  iconHeart.setAttribute(
-    'href',
-    `/public/icon/_sprite.svg#Heart${productWish ? '-active' : ''}`
-  );
+  updateHeartIcon(productWish);
 }
+wishList.addEventListener('click', setWishList);
+
 /* -------------------------------------------------------------------------- */
 /*                                     탭기능                                  */
 /* -------------------------------------------------------------------------- */
