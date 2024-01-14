@@ -822,19 +822,19 @@ async function inquiryDataRender() {
                   data-secret="${inquiry.secret}"
                 >
                   <button class="flex font-semibold border-b border-b-gray-100">
-                    <div class="inquiry_table_subject">${inquiry.title}</div>
-                    <div class="table_width100">${userName}</div>
+                    <span class="inquiry_table_subject">${inquiry.title}</span>
+                    <span class="table_width100">${userName}</span>
                     <time datetime="${createDay}" class="table_width100">
                       ${createDay}
                     </time>
                     ${
                       inquiry.answerStatus
-                        ? `<div class="table_width100 text-primary font-semibold">
+                        ? `<span class="table_width100 text-primary font-semibold">
                       답변 완료
-                    </div>`
-                        : `<div class="table_width100">
+                    </span>`
+                        : `<span class="table_width100">
                       답변 대기
-                    </div>`
+                    </span>`
                     }
                   </button>
                 </h2>
