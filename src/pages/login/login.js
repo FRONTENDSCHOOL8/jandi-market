@@ -1,3 +1,5 @@
+import { closeModal } from '/src/components/modal/modal.js';
+
 function setDocumentTitle(title) {
   document.title = title;
 }
@@ -31,18 +33,20 @@ const handleCheckPassword = (e) => {
   passwordValue = e.target.value;
 };
 
-const errorMessage = document.querySelector('#login_error');
+const messageBox = document.querySelector('#modal_box');
 
-const closeModal = () => {
-  const closeButton = document.querySelector('#close_modal');
-  const errorModal = document.querySelector('dialog');
+// const closeModal = () => {
+//   const closeButton = document.querySelector('#close_modal');
+//   const errorModal = document.querySelector('dialog');
 
-  closeButton.addEventListener('click', (e) => {
-    console.log(e.target);
-    errorModal.close();
-    errorMessage.classList.add('hidden');
-  });
-};
+//   closeModal('아이디, 비밀번호를 확인해주세요.');
+
+//   closeButton.addEventListener('click', (e) => {
+//     console.log(e.target);
+//     errorModal.close();
+//     errorMessage.classList.add('hidden');
+//   });
+// };
 
 // 데이터베이스의유저 이메일과 비밀번호를 입력 값과 비교해 로그인 시도
 const handleLogin = () => {
@@ -60,8 +64,8 @@ const handleLogin = () => {
     sessionStorage.setItem('userId', user.id);
     window.location.href = '/';
   } else {
-    errorMessage.classList.remove('hidden');
-    closeModal();
+    messageBox.classList.remove('hidden');
+    closeModal('아이디, 비밀번호를 확인해주세요.');
   }
 };
 
