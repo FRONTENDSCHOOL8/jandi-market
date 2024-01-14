@@ -126,7 +126,7 @@ const showUserName = async () => {
     if (userData.id) {
       const jandiUser = /*html*/ `
           <li id="user_name" class="">
-        <a class="text-sm drop_down" href="/src/pages/login/">${userData.name}님</a>
+        <a class="text-sm drop_down" href="#">${userData.name} 님</a>
       </li>
             <li class="line_before">
         <a class="text-sm drop_down" href="#">고객센터</a>
