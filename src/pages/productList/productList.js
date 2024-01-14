@@ -41,6 +41,7 @@ liItems.forEach((li) => {
     } else {
       image.src = '/public/input/checkBox.svg';
     }
+    anjsd;
   });
 });
 
