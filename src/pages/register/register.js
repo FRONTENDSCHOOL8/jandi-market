@@ -4,7 +4,6 @@ function setDocumentTitle(title) {
 setDocumentTitle('회원가입 - 잔디마켓');
 
 let usersData; // 데이터베이스에서 가져온 유저들 데이터를 저장할 변수
-
 // 데이터베이스에서 가져온 유저들 데이터
 async function fetchData() {
   const response = await fetch(import.meta.env.VITE_PH_USERS);
@@ -22,6 +21,7 @@ const phoneInput = document.querySelector('#phone');
 const birthdayInput = document.querySelector('#birthday');
 const genderInput = document.querySelector('#gender_list');
 
+// 입력한 유저의 정보를 저장할 객체
 let userData = {
   email: '',
   password: '',
@@ -39,17 +39,12 @@ const isValidField = (validator, errorMessageEl, valueKey) => {
   return (e) => {
     let value = e.target.value;
     const errorElement = document.querySelector(errorMessageEl);
-    if (validator(value)) {
-      errorElement.classList.remove('error');
-      errorElement.classList.add('hidden');
-      userData[valueKey] = value;
-      // console.log('Updated userData:', userData); // 디버깅 코드
-    } else {
-      errorElement.classList.remove('hidden');
-      errorElement.classList.add('error');
-      userData[valueKey] = '';
-      // console.log('Updated userData:', userData); // 디버깅 코드
-    }
+    const isError = !validator(value);
+
+    errorElement.classList.toggle('error', isError);
+    errorElement.classList.toggle('hidden', !isError);
+    userData[valueKey] = isError ? '' : value;
+    console.log('Updated userData:', userData); // 디버깅 코드
   };
 };
 
@@ -57,13 +52,10 @@ const isValidField = (validator, errorMessageEl, valueKey) => {
 const handleConfirmPassword = (e) => {
   const value = e.target.value;
   const errorElement = document.querySelector('#check_password_error');
-  if (value === password.value) {
-    errorElement.classList.remove('error');
-    errorElement.classList.add('hidden');
-  } else {
-    errorElement.classList.remove('hidden');
-    errorElement.classList.add('error');
-  }
+  const isError = value !== passwordInput.value;
+
+  errorElement.classList.toggle('error', isError);
+  errorElement.classList.toggle('hidden', !isError);
 };
 
 // 회원가입 입력값 유효성 체크
@@ -97,34 +89,52 @@ const handleBirth = (e) => {
 const handleGender = (e) => {
   const value = e.target.id;
   userData.gender = value;
-  console.log(value);
 };
+
 birthdayInput.addEventListener('input', handleBirth);
 genderInput.addEventListener('click', handleGender);
 
 const emailButton = document.querySelector('#is_duplicated_email');
-// const phoneButton = document.querySelector('#is_duplicated_phone');
+const phoneButton = document.querySelector('#is_duplicated_phone');
 
+// 입력값 확인 함수
+const checkValue = (value) => {
+  let userValue = userData[value];
+  if (!userValue) {
+    alert(`${value}를 입력해주세요.`);
+    return false; // userValue가 없는 경우 false를 반환
+  }
+  return true; // userValue가 있는 경우 true를 반환
+};
+
+// 중복 검사 함수
 const checkDuplication = (value) => {
+  let userValue = userData[value];
+  let isDuplicated = usersData.some((user) => user[value] === userValue);
+
+  if (isDuplicated) {
+    alert(`이미 사용중인 ${value}입니다.`);
+  } else {
+    alert(`사용 가능한 ${value}입니다.`);
+  }
+};
+
+// 중복 검사를 실행하기 전에 입력값을 확인하는 함수
+const validateAndCheckDuplication = (value) => {
   return () => {
-    const isDuplicated = usersData.some(
-      (user) => user[value] === userData[value]
-    );
-    if (isDuplicated) {
-      alert(`이미 사용중인 ${value}입니다.`);
-    } else {
-      alert(`사용 가능한 ${value}입니다.`);
+    if (checkValue(value)) {
+      checkDuplication(value);
     }
   };
 };
 
 // 이메일과 휴대폰 중복 체크 함수
-const checkEmailDuplication = checkDuplication('email');
-// const checkPhoneDuplication = checkDuplication('phone');
+const checkEmailDuplication = validateAndCheckDuplication('email');
+const checkPhoneDuplication = validateAndCheckDuplication('phone');
 
 // 이메일과 휴대폰 중복 체크 이벤트 리스너
 emailButton.addEventListener('click', checkEmailDuplication);
-// phoneButton.addEventListener('click', checkPhoneDuplication);
+phoneButton.addEventListener('click', checkPhoneDuplication);
 
 function emailReg(text) {
   const re =
@@ -281,19 +291,17 @@ const handleSignup = (e) => {
     birth,
   } = userData;
 
-  // // 값이 있는 변수만 포함시킬 객체 생성
-  // let postBody = {};
+  // 필수 입력 사항이 다 채워졌는지 체크
+  const requiredInput = [email, password, name, phone, postNo, address];
+  console.log(requiredInput);
+  const confirmAllInput = requiredInput.every((input) => input !== '');
 
-  // if (email) postBody.email = email;
-  // if (password) postBody.password = password;
-  // if (name) postBody.name = name;
-  // if (phone) postBody.phone = phone;
-  // if (postNo) postBody.postNo = postNo;
-  // if (address) postBody.address = address;
-  // if (addressDtl) postBody.addressDtl = addressDtl;
-  // if (gender) postBody.gender = gender;
-  // if (birth) postBody.birth = birth;
+  if (!confirmAllInput) {
+    alert('모든 필수 입력 사항을 채워주세요.');
+    return;
+  }
 
+  // 회원가입 양식에 작성한 값 데이터베이스로 POST
   fetch(import.meta.env.VITE_PH_USERS, {
     method: 'POST',
     headers: {
@@ -312,7 +320,11 @@ const handleSignup = (e) => {
     }),
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      alert(`${name}님 잔디 마켓에 가입하신 걸 환영합니다!`);
+      console.log(data);
+      window.location.href = '/src/pages/login/';
+    })
     .catch((error) => console.error('Error:', error));
 };
 
