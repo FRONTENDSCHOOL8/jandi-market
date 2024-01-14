@@ -40,6 +40,8 @@ export default {
         'blue-900': ' #001433',
         'info-error': '#F03F40',
         'accent-yellow': '#FA622F',
+        'black-40': 'rgba(0, 0, 0, 0.4)',
+        modal: '#fefefe',
       },
       spacing: {
         ...pxToRemFunc(0, 1000),
