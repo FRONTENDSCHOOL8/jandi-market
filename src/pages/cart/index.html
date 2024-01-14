@@ -87,7 +87,7 @@
             <!-- cart list가 있을 떄 -->
             <div class="border-b border-solid cart_list border-gray-50">
               <ul class="cart_category">
-                <li class="group_category">
+                <li class="hidden group_category category_refrigerated">
                   <div
                     class="flex justify-between my-4 cart_category text-label-medium"
                   >
@@ -116,8 +116,8 @@
                       </svg>
                     </button>
                   </div>
-                  <ul class="product_frozen product_list">
-                    <li class="flex items-center py-5 item">
+                  <ul class="product_refrigerated product_list">
+                    <!-- <li class="flex items-center py-5 item">
                       <fieldset class="item_select">
                         <input
                           type="checkbox"
@@ -132,13 +132,13 @@
                           <span class="sr-only">목록 선택</span>
                         </label>
                       </fieldset>
-                      <a href="#" class="mr-5">
+                      <a href="/src/pages/productDetail/index.html" class="mr-5">
                         <img
                           src="https://via.placeholder.com/60x78"
                           alt="풀무원 탱탱쫄면 (4개입)"
                         />
                       </a>
-                      <a href="#" class="product_name">
+                      <a href="/src/pages/productDetail/index.html" class="product_name">
                         <span class="block mr-5 w-345pxr"
                           >[풀무원] 탱탱쫄면 (4개입)</span
                         >
@@ -198,13 +198,13 @@
                           <span class="sr-only">목록 선택</span>
                         </label>
                       </fieldset>
-                      <a href="#" class="mr-5">
+                      <a href="/src/pages/productDetail/index.html" class="mr-5">
                         <img
                           src="https://via.placeholder.com/60x78"
                           alt="풀무원 탱탱쫄면 (4개입)"
                         />
                       </a>
-                      <a href="#" class="product_name">
+                      <a href="/src/pages/productDetail/index.html" class="product_name">
                         <span class="block mr-5 w-345pxr"
                           >[풀무원] 탱탱쫄면 (4개입)</span
                         >
@@ -249,38 +249,6 @@
                         </svg>
                       </button>
                     </li>
-                  </ul>
-                </li>
-                <li class="group_category">
-                  <div
-                    class="flex justify-between my-4 cart_category text-label-medium"
-                  >
-                    <div class="flex items-center gap-3 category_name">
-                      <svg
-                        role="img"
-                        class="category-icon"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 30 30"
-                      >
-                        <use href="/icon/_sprite.svg#Frozen" />
-                      </svg>
-                      <h4 class="font-semibold text-label-medium">냉동 식품</h4>
-                    </div>
-                    <button class="list_toggle">
-                      <span class="sr-only">카테고리 상품 보기</span>
-                      <svg
-                        role="img"
-                        class="category-icon"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 18 18"
-                      >
-                        <use href="/icon/_sprite.svg#Down" />
-                      </svg>
-                    </button>
-                  </div>
-                  <ul class="product_refrigerated product_list">
                     <li class="flex items-center py-5 item">
                       <fieldset class="item_select">
                         <input
@@ -296,13 +264,13 @@
                           <span class="sr-only">목록 선택</span>
                         </label>
                       </fieldset>
-                      <a href="#" class="mr-5">
+                      <a href="/src/pages/productDetail/index.html" class="mr-5">
                         <img
                           src="https://via.placeholder.com/60x78"
                           alt="풀무원 탱탱쫄면 (4개입)"
                         />
                       </a>
-                      <a href="#" class="product_name">
+                      <a href="/src/pages/productDetail/index.html" class="product_name">
                         <span class="block mr-5 w-345pxr"
                           >[풀무원] 탱탱쫄면 (4개입)</span
                         >
@@ -347,38 +315,6 @@
                         </svg>
                       </button>
                     </li>
-                  </ul>
-                </li>
-                <li class="group_category">
-                  <div
-                    class="flex justify-between my-4 cart_category text-label-medium"
-                  >
-                    <div class="flex items-center gap-3 category_name">
-                      <svg
-                        role="img"
-                        class="category-icon"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 30 30"
-                      >
-                        <use href="/icon/_sprite.svg#Normal" />
-                      </svg>
-                      <h4 class="font-semibold text-label-medium">상온 식품</h4>
-                    </div>
-                    <button class="list_toggle">
-                      <span class="sr-only">카테고리 상품 보기</span>
-                      <svg
-                        role="img"
-                        class="category-icon"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 18 18"
-                      >
-                        <use href="/icon/_sprite.svg#Down" />
-                      </svg>
-                    </button>
-                  </div>
-                  <ul class="product_frozen product_list">
                     <li class="flex items-center py-5 item">
                       <fieldset class="item_select">
                         <input
@@ -444,7 +380,203 @@
                           <use href="/icon/_sprite.svg#Cancel" />
                         </svg>
                       </button>
-                    </li>
+                    </li> -->
+                  </ul>
+                </li>
+                <li class="hidden group_category category_frozen">
+                  <div
+                    class="flex justify-between my-4 cart_category text-label-medium"
+                  >
+                    <div class="flex items-center gap-3 category_name">
+                      <svg
+                        role="img"
+                        class="category-icon"
+                        width="30"
+                        height="30"
+                        viewBox="0 0 30 30"
+                      >
+                        <use href="/icon/_sprite.svg#Frozen" />
+                      </svg>
+                      <h4 class="font-semibold text-label-medium">냉동 식품</h4>
+                    </div>
+                    <button class="list_toggle">
+                      <span class="sr-only">카테고리 상품 보기</span>
+                      <svg
+                        role="img"
+                        class="category-icon"
+                        width="30"
+                        height="30"
+                        viewBox="0 0 18 18"
+                      >
+                        <use href="/icon/_sprite.svg#Down" />
+                      </svg>
+                    </button>
+                  </div>
+                  <ul class="product_frozen product_list">
+                    <!-- <li class="flex items-center py-5 item">
+                      <fieldset class="item_select">
+                        <input
+                          type="checkbox"
+                          name="cartList"
+                          id="itemSelect5"
+                          class="input_checkbox_nonlabel peer top-17pxr"
+                        />
+                        <label
+                          for="itemSelect5"
+                          class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
+                        >
+                          <span class="sr-only">목록 선택</span>
+                        </label>
+                      </fieldset>
+                      <a href="/src/pages/productDetail/index.html" class="mr-5">
+                        <img
+                          src="https://via.placeholder.com/60x78"
+                          alt="풀무원 탱탱쫄면 (4개입)"
+                        />
+                      </a>
+                      <a href="/src/pages/productDetail/index.html" class="product_name">
+                        <span class="block mr-5 w-345pxr"
+                          >[풀무원] 탱탱쫄면 (4개입)</span
+                        >
+                      </a>
+                      <div class="option_count">
+                        <button
+                          type="button"
+                          class="minus w-30pxr h-30pxr"
+                          style="
+                            background-image: url(/input/minus-disabled.svg);
+                          "
+                        >
+                          <span class="sr-only">수량 감소</span>
+                        </button>
+                        <span class="item_count">1</span>
+                        <button
+                          type="button"
+                          class="plus w-30pxr h-30pxr"
+                          style="background-image: url(/input/plus.svg)"
+                        >
+                          <span class="sr-only">수량 증가</span>
+                        </button>
+                      </div>
+                      <div
+                        class="flex flex-col items-end font-bold product_price w-130pxr"
+                      >
+                        <span class="after_discount">4,980원</span>
+                        <span class="before_discount price_delete"
+                          >5,600원</span
+                        >
+                      </div>
+                      <button class="product_delete ml-10pxr">
+                        <span class="sr-only">목록 삭제하기</span>
+                        <svg
+                          role="img"
+                          class="category-icon"
+                          width="30"
+                          height="30"
+                          viewBox="0 0 30 30"
+                        >
+                          <use href="/icon/_sprite.svg#Cancel" />
+                        </svg>
+                      </button>
+                    </li> -->
+                  </ul>
+                </li>
+                <li class="hidden group_category category_normal">
+                  <div
+                    class="flex justify-between my-4 cart_category text-label-medium"
+                  >
+                    <div class="flex items-center gap-3 category_name">
+                      <svg
+                        role="img"
+                        class="category-icon"
+                        width="30"
+                        height="30"
+                        viewBox="0 0 30 30"
+                      >
+                        <use href="/icon/_sprite.svg#Normal" />
+                      </svg>
+                      <h4 class="font-semibold text-label-medium">상온 상품</h4>
+                    </div>
+                    <button class="list_toggle">
+                      <span class="sr-only">카테고리 상품 보기</span>
+                      <svg
+                        role="img"
+                        class="category-icon"
+                        width="30"
+                        height="30"
+                        viewBox="0 0 18 18"
+                      >
+                        <use href="/icon/_sprite.svg#Down" />
+                      </svg>
+                    </button>
+                  </div>
+                  <ul class="product_normal product_list">
+                    <!-- <li class="flex items-center py-5 item">
+                      <fieldset class="item_select">
+                        <input
+                          type="checkbox"
+                          name="cartList"
+                          id="itemSelect6"
+                          class="input_checkbox_nonlabel peer top-17pxr"
+                        />
+                        <label
+                          for="itemSelect6"
+                          class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
+                        >
+                          <span class="sr-only">목록 선택</span>
+                        </label>
+                      </fieldset>
+                      <a href="/src/pages/productDetail/index.html" class="mr-5">
+                        <img
+                          src="https://via.placeholder.com/60x78"
+                          alt="풀무원 탱탱쫄면 (4개입)"
+                        />
+                      </a>
+                      <a href="/src/pages/productDetail/index.html" class="product_name">
+                        <span class="block mr-5 w-345pxr"
+                          >[풀무원] 탱탱쫄면 (4개입)</span
+                        >
+                      </a>
+                      <div class="option_count">
+                        <button
+                          type="button"
+                          class="minus w-30pxr h-30pxr"
+                          style="
+                            background-image: url(/input/minus-disabled.svg);
+                          "
+                        >
+                          <span class="sr-only">수량 감소</span>
+                        </button>
+                        <span class="item_count">1</span>
+                        <button
+                          type="button"
+                          class="plus w-30pxr h-30pxr"
+                          style="background-image: url(/input/plus.svg)"
+                        >
+                          <span class="sr-only">수량 증가</span>
+                        </button>
+                      </div>
+                      <div
+                        class="flex flex-col items-end font-bold product_price w-130pxr"
+                      >
+                        <span class="after_discount">4,980원</span>
+                        <span class="before_discount price_delete"
+                          >5,600원</span
+                        >
+                      </div>
+                      <button class="product_delete ml-10pxr">
+                        <span class="sr-only">목록 삭제하기</span>
+                        <svg
+                          role="img"
+                          class="category-icon"
+                          width="30"
+                          height="30"
+                          viewBox="0 0 30 30"
+                        >
+                          <use href="/icon/_sprite.svg#Cancel" />
+                        </svg>
+                      </button>
+                    </li> -->
                   </ul>
                 </li>
               </ul>
@@ -518,7 +650,7 @@
           <!-- member -->
           <aside class="cart_side_area w-284pxr pt-14">
             <div
-              class="sticky z-[-1] flex flex-col gap-4 cart_side top-[-60px]"
+              class="sticky z-[-1] flex flex-col gap-4 cart_side top-0"
             >
               <section class="border border-gray-100 border-solid">
                 <h3 class="sr-only">결제 정보</h3>

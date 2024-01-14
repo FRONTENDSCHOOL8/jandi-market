@@ -20,6 +20,15 @@ arcodianButton.forEach((button, index) => {
   });
 });
 
+<<<<<<< HEAD
+=======
+// // arcodianButton에 클릭 이벤트 리스너를 추가합니다.
+// arcodianButton.addEventListener('click', function () {
+//   // categoryDetail의 hidden 클래스 유무를 토글합니다.
+//   categoryDetail.classList.toggle('hidden');
+// });
+
+>>>>>>> develop
 // 카테고리 1번째 체크박스 구현
 // 모든 li 요소 선택
 const liItems = document.querySelectorAll('.checkbox-container');
@@ -41,6 +50,7 @@ liItems.forEach((li) => {
     } else {
       image.src = '/public/input/checkBox.svg';
     }
+<<<<<<< HEAD
     anjsd;
   });
 });
@@ -99,3 +109,7 @@ fetch(`${URL}/?filter=(price>=15000)`)
     });
   })
   .catch((error) => console.log(error));
+=======
+  });
+});
+>>>>>>> develop
