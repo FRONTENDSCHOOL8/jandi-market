@@ -20,12 +20,6 @@ arcodianButton.forEach((button, index) => {
   });
 });
 
-// // arcodianButton에 클릭 이벤트 리스너를 추가합니다.
-// arcodianButton.addEventListener('click', function () {
-//   // categoryDetail의 hidden 클래스 유무를 토글합니다.
-//   categoryDetail.classList.toggle('hidden');
-// });
-
 // 카테고리 1번째 체크박스 구현
 // 모든 li 요소 선택
 const liItems = document.querySelectorAll('.checkbox-container');
@@ -49,3 +43,58 @@ liItems.forEach((li) => {
     }
   });
 });
+
+const URL = `https://jandi-market.pockethost.io/api/collections/products/records`;
+const imgURL = `https://jandi-market.pockethost.io/api/files/n9omag8299xjizq`;
+const recommendedProductList = document.querySelector('.product-container');
+const cheapProductList = document.querySelector('.cheap_product_list');
+
+fetch(`${URL}/?filter=(price>=15000)`)
+  .then((response) => {
+    if (response.ok === true) {
+      return response.json();
+    }
+  })
+  .then((data) => {
+    console.log(data);
+
+    data.items.forEach((item) => {
+      const template = /* html */ `
+      <li
+        class="flex flex-col items-start swiper-slide w-249pxr h-516pxr"
+      >
+        <a href="/src/pages/productDetail/#${item.id}">
+          <img
+          width="249"
+          height="516"
+          src="${`${imgURL}/${item.id}/${item.main_image}`}" alt="${
+            item.name
+          }" />
+        </a>
+        <button class="mt-6pxr" type="button">
+          <img src="/banner/add cart button.png" alt="" />
+        </button>
+        <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
+          >${item.desc}</span
+        >
+        <h3 class="font-bold text-16pxr mt-8pxr">
+          ${item.name}
+        </h3>
+        <span class="font-normal text-gray-300 text-14pxr mt-16pxr"
+          >${item.price}원</span
+        >
+        <div>
+          <span class="m-0 font-bold text-orange-600 text-16pxr"
+            >${item.discount}%</span
+          >
+          <span class="m-0 font-semibold text-16pxr">${
+            item.price - (item.price * item.discount) / 100
+          }원</span>
+        </div>
+      </li>
+    `;
+
+      recommendedProductList.insertAdjacentHTML('beforeend', template);
+    });
+  })
+  .catch((error) => console.log(error));
