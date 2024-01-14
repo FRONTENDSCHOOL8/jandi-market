@@ -1,17 +1,13 @@
 let quantity = 1; // 상품 수량
 const COLLECTIONS_ID = 'n9omag8299xjizq';
 const productId = window.location.hash.slice(1);
-
 const URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
 const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
-
 const quantityDecrease = document.querySelector('.quantity_decrease');
 const productQuantity = document.querySelector('.product_quantity');
 const quantityIncrease = document.querySelector('.quantity_increase');
-
 function insertAfterBegin(node, renderTemplate) {
   node = document.querySelector(node);
-
   return node.insertAdjacentHTML('afterbegin', renderTemplate);
 }
 function generateInfoSection(title, content, addContent = '') {
@@ -26,23 +22,17 @@ function generateInfoSection(title, content, addContent = '') {
       </div>`
     : '';
 }
-
 /* -------------------------------------------------------------------------- */
 /*                                   데이터바인딩                               */
 /* -------------------------------------------------------------------------- */
-
 async function displayProductDetails() {
   try {
     const response = await fetch(URL);
     if (!response.ok) throw new Error('API 호출에 실패했습니다.');
-
     const data = await response.json();
-
     const discountPrice = data.price - (data.price * data.discount) / 100;
     const floorDiscountPrice = Math.floor(discountPrice / 10) * 10;
-
     document.title = `${data.name} | 잔디마켓`;
-
     insertAfterBegin(
       '.product',
       `
@@ -135,7 +125,6 @@ async function displayProductDetails() {
       width="1050"
       height="670"
       />
-
       <div class="text-center pt-76pxr pb-9">
         <p class="font-semibold text-label-xl">
           ${data.info_sub_title}
@@ -177,17 +166,14 @@ async function displayProductDetails() {
       ${floorDiscountPrice.toLocaleString()}
     `
     );
-
     /* -------------------------------------------------------------------------- */
     /*                                수량 증가 & 상품금액                          */
     /* -------------------------------------------------------------------------- */
-
     function calculateTotalPrice() {
       productQuantity.textContent = quantity;
       let total = floorDiscountPrice * quantity;
       totalPrice.textContent = total.toLocaleString();
     }
-
     function updateQuantity(increase) {
       quantity += increase ? 1 : -1;
       if (quantity <= 1) {
@@ -199,7 +185,6 @@ async function displayProductDetails() {
       }
       calculateTotalPrice();
     }
-
     quantityDecrease.addEventListener('click', () => {
       if (quantity > 1) {
         updateQuantity(false);
@@ -208,7 +193,6 @@ async function displayProductDetails() {
     quantityIncrease.addEventListener('click', () => {
       updateQuantity(true);
     });
-
     /* -------------------------------------------------------------------------- */
     /*                                     모달창                                  */
     /* -------------------------------------------------------------------------- */
@@ -469,7 +453,6 @@ async function displayProductDetails() {
                   </li>
                 </ul>
               </div>
-
               <div>
                 <strong class="leading-normal text-label-medium">제품</strong>
                 <ul class="ml-4 list-disc marker:text-10pxr">
@@ -483,7 +466,6 @@ async function displayProductDetails() {
                   </li>
                 </ul>
               </div>
-
               <div>
                 <strong class="leading-normal text-label-medium"
                   >주문취소</strong
@@ -510,7 +492,6 @@ async function displayProductDetails() {
                   재구매 해주세요.
                 </strong>
               </div>
-
               <div>
                 <strong class="leading-normal text-label-medium">배송</strong>
                 <ul class="ml-4 list-disc marker:text-10pxr">
@@ -532,7 +513,6 @@ async function displayProductDetails() {
           id="secretCheck"
           class="input_checkbox_label peer"
         />
-
         <label
           for="secretCheck"
           class="flex items-center checkbox_before_label peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
@@ -543,9 +523,7 @@ async function displayProductDetails() {
         </label>
       </fieldset>
       `;
-        const inquiryTitle = document.querySelector('#inquiry_title');
-
-        inquiryTitle.addEventListener('input', () => {});
+        const inquiryTitleId = document.querySelector('#inquiry_title');
 
         closeButton();
 
@@ -564,7 +542,7 @@ async function displayProductDetails() {
                   body: JSON.stringify({
                     productId,
                     userId,
-                    title: inquiryTitle.value,
+                    title: inquiryTitleId.value,
                     question: desc.value,
                     answerStatus: '답변대기',
                     secret: secretCheckedStatus.checked,
@@ -709,7 +687,7 @@ cartButton.addEventListener('click', () => {
 
         if (!patchResponse.ok)
           throw new Error('Patch API 요청이 실패했습니다.');
-        const patchData = await patchResponse.json();
+        await patchResponse.json();
       } else {
         const postResponse = await fetch(CART_URL, {
           method: 'POST',
@@ -723,7 +701,7 @@ cartButton.addEventListener('click', () => {
           }),
         });
         if (!postResponse.ok) throw new Error('POST API 요청이 실패했습니다.');
-        const postData = await postResponse.json();
+        await postResponse.json();
       }
     } catch (error) {
       console.error(error);
@@ -818,14 +796,18 @@ async function inquiryDataRender() {
   </div>`;
   inquiryList.innerHTML = '';
 
+  let userName;
+  let createDay;
+  let answerDay;
+  let userData;
   for (const inquiry of data.items) {
-    const createDay = String(inquiry.created).slice(0, 10);
-    const answerDay = String(inquiry.answerDay).slice(0, 10);
+    createDay = String(inquiry.created).slice(0, 10);
+    answerDay = String(inquiry.answerDay).slice(0, 10);
 
     const userResponse = await fetch(`${USER_URL}/${inquiry.userId}`);
     if (!userResponse.ok) throw new Error('USER API 통신에 실패했습니다.');
-    const userData = await userResponse.json();
-    const userName = `
+    userData = await userResponse.json();
+    userName = `
     ${userData.name[0]}${'*'.repeat(userData.name.length - 2)}${
       userData.name[2]
     }`;
@@ -897,7 +879,7 @@ async function inquiryDataRender() {
   /* -------------------------------------------------------------------------- */
   /*                                    아코디언                                 */
   /* -------------------------------------------------------------------------- */
-  function accordion() {
+  function accordion(userData, userName, createDay) {
     // 리뷰 섹션
     const reviewTitle = document.querySelectorAll('.review_title');
     const reviewContents = document.querySelectorAll('.review_content');
@@ -930,55 +912,56 @@ async function inquiryDataRender() {
     /* -------------------------------------------------------------------------- */
     /*                                     비밀글                                  */
     /* -------------------------------------------------------------------------- */
-    function secretCheck() {
+    function secretCheck(userName, createDay) {
       inquiryTitle.forEach((title) => {
-        if (title.dataset.secret == 'true') {
-          let content = title.nextElementSibling;
+        if (title.getAttribute('data-secret') == 'true') {
+          if (
+            userData.id == sessionStorage.getItem('userId') ||
+            userData.id === '2u0lzbadzcsuqg0'
+          ) {
+            return;
+          } else {
+            let content = title.nextElementSibling;
 
-          title.innerHTML = `
-      <button class="flex font-semibold border-b border-b-gray-100">
-        <div class="text-gray-400 inquiry_table_subject">
-        비밀글입니다.
-          <span>
-          <svg width="12" height="14" aria-hidden="true">
-            <use href="/icon/_sprite.svg#Lock"></use>
-          </svg>
-        </span>
-      </div>
-      <div class="table_width100">김*식</div>
-      <time datetime="2022-11-11" class="table_width100">
-        2022.11.11
-      </time>
-      <div class="text-center text-primary py-17pxr w-100pxr">
-        답변완료
-      </div>
-    </button>
-      `;
+            title.innerHTML = `
+                <button class="flex font-semibold border-b border-b-gray-100">
+                  <div class="text-gray-400 inquiry_table_subject">
+                  비밀글입니다.
+                    <span>
+                    <svg width="12" height="14" aria-hidden="true">
+                      <use href="/icon/_sprite.svg#Lock"></use>
+                    </svg>
+                  </span>
+                </div>
+                <div class="table_width100">${userName}</div>
+                <time datetime="${createDay}" class="table_width100">
+                  ${createDay}
+                </time>
+                ${
+                  data.items.answerStatus
+                    ? `<div class="table_width100 text-primary font-semibold">
+                                답변 완료
+                              </div>`
+                    : `<div class="table_width100">
+                                답변 대기
+                              </div>`
+                }
+              </button>
+            `;
 
-          content.style.display = 'none';
-          content.setAttribute('aria-hidden', true);
-          content.hidden = true;
-          content.classList.remove('flex_column');
-          title.setAttribute('aria-expanded', false);
-
-          // 만약 로그인 한 사람이 본인이거나 어드민일 경우 다 보임
+            content.style.display = 'none';
+            content.setAttribute('aria-hidden', true);
+            content.hidden = true;
+            content.classList.remove('flex_column');
+            title.setAttribute('aria-expanded', false);
+          }
         }
       });
     }
-    secretCheck();
+    secretCheck(userName, createDay);
     toggleContent(reviewTitle, reviewContents);
     toggleContent(inquiryTitle, inquiryContents);
   }
-  accordion();
+  accordion(userData, userName, createDay);
 }
 inquiryDataRender();
-
-const loginPoint = document.querySelectorAll('.login_point');
-
-function accumulatePoints() {
-  if (sessionStorage.getItem('userId')) {
-    loginPoint[0].textContent = `적립 제외 상품 입니다`;
-    loginPoint[1].textContent = `구매 시 0원 적립`;
-  }
-}
-accumulatePoints();
