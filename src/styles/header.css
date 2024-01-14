@@ -25,6 +25,10 @@
   @apply flex justify-center leading-5 text-center w-150pxr hover:cursor-pointer hover:underline hover:text-primary;
 }
 
+.product_nav_scroll {
+  @apply flex justify-center leading-5 text-center w-100pxr hover:cursor-pointer hover:underline hover:text-primary;
+}
+
 .list_hidden {
   @apply hidden overflow-hidden;
 }
@@ -47,4 +51,22 @@
   height: 0.3125rem;
   margin-left: 0.3125rem;
   margin-bottom: 0.3125rem;
+}
+
+.scroll_search {
+  width: 242px;
+  height: 36px;
+  position: fixed;
+  z-index: 9999;
+  top: 10px;
+  left: calc(50% + 100px);
+  border: none;
+  background-color: #f9f9f9;
+}
+
+.scroll_icon {
+  position: fixed;
+  z-index: 9999;
+  top: 10px;
+  left: calc(50% + 380px);
 }
