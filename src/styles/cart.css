@@ -23,7 +23,7 @@
 }
 
 .option_count {
-  @apply box-content flex items-center justify-between bg-white border border-gray-200 border-solid w-84pxr h-30pxr;
+  @apply box-content flex items-center justify-between bg-white border border-gray-200 border-solid w-84pxr h-30pxr rounded-[3px];
 }
 
 .price_delete {

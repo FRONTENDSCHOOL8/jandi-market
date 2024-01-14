@@ -37,7 +37,6 @@
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script type="module" src="./productDetail.js"></script>
-    <script type="module" src="./accordionToggle.js"></script>
     <script type="module" src="../../js/include.js"></script>
   </head>
   <body>
@@ -83,7 +82,9 @@
                 </p> -->
               </div>
               <!-- point -->
-              <p class="font-semibold text-primary text-label-medium">
+              <p
+                class="font-semibold text-primary text-label-medium login_point"
+              >
                 로그인 후, 적립 혜택이 제공됩니다.
               </p>
             </div>
@@ -163,7 +164,7 @@
                     <div class="flex items-center gap-2 border border-gray-200">
                       <button>
                         <img
-                          src="/public/input/minus-disabled.svg"
+                          src="/input/minus-disabled.svg"
                           alt="수량 감소 비활성화"
                           class="cursor-pointer quantity_decrease"
                         />
@@ -171,7 +172,7 @@
                       <span class="w-3 text-center product_quantity">1</span>
                       <button>
                         <img
-                          src="/public/input/plus.svg"
+                          src="/input/plus.svg"
                           alt="수량 증가"
                           class="cursor-pointer quantity_increase"
                         />
@@ -202,7 +203,9 @@
                 >
                   적립
                 </span>
-                <span class="text-label-medium">로그인 후, 적립 혜택 제공</span>
+                <span class="text-label-medium login_point"
+                  >로그인 후, 적립 혜택 제공</span
+                >
               </p>
             </div>
 
@@ -213,10 +216,7 @@
                   class="cursor-pointer text-primary icon_box_gray h-14 w-14"
                   aria-hidden="true"
                 >
-                  <use
-                    href="/public/icon/_sprite.svg#Heart"
-                    class="icon_heart"
-                  ></use>
+                  <use href="/icon/_sprite.svg#Heart" class="icon_heart"></use>
                 </svg>
                 <span class="sr-only">찜하기</span>
               </button>
@@ -225,7 +225,7 @@
                   class="text-gray-100 icon_box_gray h-14 w-14 cursor-no-drop"
                   aria-hidden="true"
                 >
-                  <use href="/public/icon/_sprite.svg#Bell"></use>
+                  <use href="/icon/_sprite.svg#Bell"></use>
                 </svg>
                 <span class="sr-only">재입고 알림 신청</span>
               </button>
@@ -360,7 +360,7 @@
             <div class="flex justify-center">
               <article class="why_article">
                 <svg class="why_article_img_size" aria-hidden="true">
-                  <use href="/public/icon/_sprite.svg#Committee"></use>
+                  <use href="/icon/_sprite.svg#Committee"></use>
                 </svg>
                 <h4 class="why_article_title">깐깐한 상품위원회</h4>
                 <p class="text-center">
@@ -372,7 +372,7 @@
               </article>
               <article class="why_article">
                 <svg class="why_article_img_size" aria-hidden="true">
-                  <use href="/public/icon/_sprite.svg#Different"></use>
+                  <use href="/icon/_sprite.svg#Different"></use>
                 </svg>
                 <h4 class="why_article_title">차별화된 Karly Only 상품</h4>
                 <p class="text-center">
@@ -384,7 +384,7 @@
               </article>
               <article class="why_article">
                 <svg class="why_article_img_size" aria-hidden="true">
-                  <use href="/public/icon/_sprite.svg#Delivery"></use>
+                  <use href="/icon/_sprite.svg#Delivery"></use>
                 </svg>
                 <h4 class="why_article_title">신선한 풀콜드체인 배송</h4>
                 <p class="text-center">
@@ -398,7 +398,7 @@
             <div class="flex justify-center gap-4">
               <article class="why_article">
                 <svg class="why_article_img_size" aria-hidden="true">
-                  <use href="/public/icon/_sprite.svg#Price"></use>
+                  <use href="/icon/_sprite.svg#Price"></use>
                 </svg>
                 <h4 class="why_article_title">
                   고객, 생산자를 위한 최선의 가격
@@ -413,7 +413,7 @@
               </article>
               <article class="why_article">
                 <svg class="why_article_img_size" aria-hidden="true">
-                  <use href="/public/icon/_sprite.svg#Enviroment"></use>
+                  <use href="/icon/_sprite.svg#Enviroment"></use>
                 </svg>
                 <h4 class="why_article_title">
                   환경을 생각하는 지속 가능한 유통
@@ -458,12 +458,16 @@
               </li>
             </ul>
           </div>
-          <button class="button_normal w-155pxr h-44pxr">후기 작성하기</button>
+          <button class="review_button button_normal w-155pxr h-44pxr">
+            후기 작성하기
+          </button>
         </div>
 
         <div class="gap-4 flex_column">
           <div class="flex justify-between font-semibold">
-            <span class="text-content text-label-small">총 2개</span>
+            <span class="text-content text-label-small review_count"
+              >총 2개</span
+            >
             <div class="flex items-center gap-2">
               <button class="text-content">추천순</button>
               <span class="bg-gray-300 w-1pxr h-10pxr"></span>
@@ -575,41 +579,30 @@
               </div>
             </div>
 
-            <!-- 글없을때 -->
-            <!-- <div
-              class="items-center gap-5 p-5 border-b border-b-gray-100 flex_column"
-            >
-              <svg
-                class="text-gray-100"
-                width="48"
-                height="48"
-                aria-hidden="true"
-              >
-                <use href="/public/icon/_sprite.svg#Notice"></use>
-              </svg>
-              <p>따뜻한 첫 후기를 기다리고 있어요.</p>
-            </div> -->
-            <!-- 후기글 -->
-            <div class="review_user_post_structure">
-              <div class="review_member">
-                <span class="best_badge">베스트</span>
-                <span class="purple_badge">퍼플</span>
-                <span class="self-start">김*진</span>
-              </div>
-              <div class="review_user_post_contents">
-                <h4 class="text_gray_semibold">[풀무원] 탱탱쫄면(4개입)</h4>
-                <p class="leading_160">
-                  너무 맛있어여~<br />
-                  면이 쫄깃하고 양념도 짱맛나요!!
-                </p>
-                <p class="text_gray_semibold">2022.11.10</p>
-              </div>
+            <div class="review_list">
+              <!-- 후기글
+              <div class="review_user_post_structure">
+                <div class="review_member">
+                  <span class="best_badge">베스트</span>
+                  <span class="purple_badge">퍼플</span>
+                  <span class="self-start">김*진</span>
+                </div>
+                <div class="review_user_post_contents">
+                  <h4 class="text_gray_semibold">[풀무원] 탱탱쫄면(4개입)</h4>
+                  <p class="leading_160">
+                    너무 맛있어여~<br />
+                    면이 쫄깃하고 양념도 짱맛나요!!
+                  </p>
+                  <p class="text_gray_semibold">2022.11.10</p>
+                </div>
+              </div> -->
             </div>
           </div>
           <!-- /게시글 -->
 
+          <!-- 페이지네이션 -->
           <div class="flex items-start gap-4 mx-auto">
-            <button class="w-14 h-14 icon_box_gray" data-arrow="">
+            <button class="w-14 h-14 icon_box_gray" disabled>
               <svg
                 class="text-gray-100 cursor-pointer"
                 width="36"
@@ -617,19 +610,19 @@
                 viewBox="0 0 18 18"
                 aria-hidden="true"
               >
-                <use href="/public/icon/_sprite.svg#Left"></use>
+                <use href="/icon/_sprite.svg#Left"></use>
               </svg>
               <span class="sr-only">이전 페이지</span>
             </button>
-            <button class="w-14 h-14 icon_box_gray" data-arrow="">
+            <button class="w-14 h-14 icon_box_gray" disabled>
               <svg
-                class="text-gray-500 cursor-pointer"
+                class="text-gray-100 cursor-pointer"
                 width="36"
                 height="36"
                 viewBox="0 0 18 18"
                 aria-hidden="true"
               >
-                <use href="/public/icon/_sprite.svg#Right"></use>
+                <use href="/icon/_sprite.svg#Right"></use>
               </svg>
               <span class="sr-only">다음 페이지</span>
             </button>
@@ -663,7 +656,9 @@
                 </li>
               </ul>
             </div>
-            <button class="button_normal w-155pxr h-44pxr">문의하기</button>
+            <button class="inquiry_button button_normal w-155pxr h-44pxr">
+              문의하기
+            </button>
           </div>
 
           <!-- 시작 -->
@@ -679,20 +674,21 @@
             <!-- 문의글 -->
             <div>
               <!-- 제목 -->
-              <h2 class="inquiry_title" aria-expanded="false">
-                <button
-                  class="flex font-semibold border-b border-b-gray-100"
-                  data-secret="false"
-                >
-                  <div class="inquiry_table_subject">
+              <h2
+                class="inquiry_title"
+                aria-expanded="false"
+                data-secret="false"
+              >
+                <button class="flex font-semibold border-b border-b-gray-100">
+                  <span class="inquiry_table_subject">
                     <span class="notice_badge"> 공지 </span>
                     판매(일시)중단 제품 안내 (22.11.10 업데이트)
-                  </div>
-                  <div class="table_width100">칼리</div>
+                  </span>
+                  <span class="table_width100">칼리</span>
                   <time datetime="2017-02-01" class="table_width100">
                     2017.02.01
                   </time>
-                  <div class="table_width100">-</div>
+                  <span class="table_width100">-</span>
                 </button>
               </h2>
               <div class="inquiry_content" aria-hidden="true" hidden>
@@ -700,7 +696,7 @@
                 <div class="question inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Question"></use>
+                      <use href="/icon/_sprite.svg#Question"></use>
                     </svg>
                   </span>
                   <p class="inquiry_contents_question">
@@ -712,7 +708,7 @@
                 <div class="answer inquiry_contents_layout">
                   <span>
                     <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Answer"></use>
+                      <use href="/icon/_sprite.svg#Answer"></use>
                     </svg>
                   </span>
                   <div class="inquiry_contents_answer">
@@ -741,145 +737,134 @@
               </div>
             </div>
 
-            <!-- 유저글 -->
-            <div>
-              <!-- 제목 -->
-              <h2 class="inquiry_title" aria-expanded="false">
-                <button
-                  class="flex font-semibold border-b border-b-gray-100"
+            <div class="inquiry_list">
+              <!-- 유저글 -->
+              <!-- <div class>
+                <h2
+                  class="inquiry_title"
+                  aria-expanded="false"
                   data-secret="false"
                 >
-                  <div class="inquiry_table_subject">팩이 터져서 왔어요</div>
-                  <div class="table_width100">김*식</div>
-                  <time datetime="2022-11-11" class="table_width100">
-                    2022.11.11
-                  </time>
-                  <div class="table_width100">답변대기</div>
-                </button>
-              </h2>
-              <div class="inquiry_content" aria-hidden="true" hidden>
-                <!-- question -->
-                <div class="question inquiry_contents_layout">
-                  <span>
-                    <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Question"></use>
-                    </svg>
-                  </span>
-                  <p class="inquiry_contents_question">
-                    스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요<br />
-                    환불 요청합니다.
-                  </p>
-                </div>
-                <!-- answer -->
-                <div class="answer inquiry_contents_layout">
-                  <span>
-                    <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Answer"></use>
-                    </svg>
-                  </span>
-                  <div class="inquiry_contents_answer">
-                    <p class="text-content">
-                      안녕하세요. 칼리입니다.<br />
-                      믿고 찾아주신 상품에 불편을 드려 정말 죄송합니다.<br />
-                      <br />
-                      더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
-                      답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히
-                      죄송합니다.<br />
-                      <br />
-                      다행히도 고객님의 불편하셨던 사항은 고객행복센터를 통해
-                      안내 받으신 점 확인하였습니다.<br />
-                      <br />
-                      불편을 드려 정말 죄송할 따름이며, 고객님께 늘 신선하고
-                      최상의 상품을 불편 없이 전달드리기 위해 최선을 다하는
-                      칼리가 되겠습니다.<br />
-                      <br />
-                      칼리 드림.<br />
+                  <button class="flex font-semibold border-b border-b-gray-100">
+                    <div class="inquiry_table_subject">팩이 터져서 왔어요</div>
+                    <div class="table_width100">김*식</div>
+                    <time datetime="2022-11-11" class="table_width100">
+                      2022.11.11
+                    </time>
+                    <div class="table_width100">답변대기</div>
+                  </button>
+                </h2>
+                <div class="inquiry_content" aria-hidden="true" hidden>
+                  <div class="question inquiry_contents_layout">
+                    <span>
+                      <svg width="24" height="24" aria-hidden="true">
+                        <use href="/icon/_sprite.svg#Question"></use>
+                      </svg>
+                    </span>
+                    <p class="inquiry_contents_question">
+                      스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요<br />
+                      환불 요청합니다.
                     </p>
-                    <time class="text-gray-400" datetime="2022-11-11"
-                      >2022.11.11</time
-                    >
+                  </div>
+                  <div class="answer inquiry_contents_layout">
+                    <span>
+                      <svg width="24" height="24" aria-hidden="true">
+                        <use href="/icon/_sprite.svg#Answer"></use>
+                      </svg>
+                    </span>
+                    <div class="inquiry_contents_answer">
+                      <p class="text-content">
+                        안녕하세요. 칼리입니다.<br />
+                        믿고 찾아주신 상품에 불편을 드려 정말 죄송합니다.<br />
+                        <br />
+                        더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
+                        답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히
+                        죄송합니다.<br />
+                        <br />
+                        다행히도 고객님의 불편하셨던 사항은 고객행복센터를 통해
+                        안내 받으신 점 확인하였습니다.<br />
+                        <br />
+                        불편을 드려 정말 죄송할 따름이며, 고객님께 늘 신선하고
+                        최상의 상품을 불편 없이 전달드리기 위해 최선을 다하는
+                        칼리가 되겠습니다.<br />
+                        <br />
+                        칼리 드림.<br />
+                      </p>
+                      <time class="text-gray-400" datetime="2022-11-11"
+                        >2022.11.11</time
+                      >
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div> -->
 
-            <!-- 비밀글 -->
-            <div>
-              <!-- 제목 -->
-              <h2 class="inquiry_title" aria-expanded="false">
-                <button
-                  class="flex font-semibold border-b border-b-gray-100"
+              <!-- 비밀글 -->
+              <!-- <div>
+                <h2
+                  class="inquiry_title"
+                  aria-expanded="false"
                   data-secret="true"
                 >
-                  <!-- <div class="text-gray-400 inquiry_table_subject"> -->
-                  <div class="inquiry_table_subject">
-                    또 터졌어
-                    <!-- <span>
-                      <svg width="12" height="14" aria-hidden="true">
-                        <use href="/public/icon/_sprite.svg#Lock"></use>
+                  <button class="flex font-semibold border-b border-b-gray-100">
+                    <div class="inquiry_table_subject">또 터졌어</div>
+                    <div class="table_width100">김*식</div>
+                    <time datetime="2022-11-11" class="table_width100">
+                      2022.11.11
+                    </time>
+                    <div class="text-center text-primary py-17pxr w-100pxr">
+                      답변완료
+                    </div>
+                  </button>
+                </h2>
+                <div class="inquiry_content" aria-hidden="true" hidden>
+                  <div class="question inquiry_contents_layout">
+                    <span>
+                      <svg width="24" height="24" aria-hidden="true">
+                        <use href="/icon/_sprite.svg#Question"></use>
                       </svg>
-                    </span> -->
-                  </div>
-                  <div class="table_width100">김*식</div>
-                  <time datetime="2022-11-11" class="table_width100">
-                    2022.11.11
-                  </time>
-                  <!-- 답변완료 -->
-                  <div class="text-center text-primary py-17pxr w-100pxr">
-                    답변완료
-                  </div>
-                </button>
-              </h2>
-              <div class="inquiry_content" aria-hidden="true" hidden>
-                <!-- question -->
-                <div class="question inquiry_contents_layout">
-                  <span>
-                    <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Question"></use>
-                    </svg>
-                  </span>
-                  <p class="inquiry_contents_question">
-                    스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요<br />
-                    환불 요청합니다.
-                  </p>
-                </div>
-                <!-- answer -->
-                <div class="answer inquiry_contents_layout">
-                  <span>
-                    <svg width="24" height="24" aria-hidden="true">
-                      <use href="/public/icon/_sprite.svg#Answer"></use>
-                    </svg>
-                  </span>
-                  <div class="inquiry_contents_answer">
-                    <p class="text-content">
-                      안녕하세요. 칼리입니다.<br />
-                      믿고 찾아주신 상품에 불편을 드려 정말 죄송합니다.<br />
-                      <br />
-                      더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
-                      답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히
-                      죄송합니다.<br />
-                      <br />
-                      다행히도 고객님의 불편하셨던 사항은 고객행복센터를 통해
-                      안내 받으신 점 확인하였습니다.<br />
-                      <br />
-                      불편을 드려 정말 죄송할 따름이며, 고객님께 늘 신선하고
-                      최상의 상품을 불편 없이 전달드리기 위해 최선을 다하는
-                      칼리가 되겠습니다.<br />
-                      <br />
-                      칼리 드림.<br />
+                    </span>
+                    <p class="inquiry_contents_question">
+                      스티로폼 박스도 손상되어 있어 포장이 터져 엉망이네요<br />
+                      환불 요청합니다.
                     </p>
-                    <time class="text-gray-400" datetime="2022-11-11"
-                      >2022.11.11</time
-                    >
+                  </div>
+                  <div class="answer inquiry_contents_layout">
+                    <span>
+                      <svg width="24" height="24" aria-hidden="true">
+                        <use href="/icon/_sprite.svg#Answer"></use>
+                      </svg>
+                    </span>
+                    <div class="inquiry_contents_answer">
+                      <p class="text-content">
+                        안녕하세요. 칼리입니다.<br />
+                        믿고 찾아주신 상품에 불편을 드려 정말 죄송합니다.<br />
+                        <br />
+                        더불어, 해당 게시판은 실시간으로 상담이 어려워 순차적으로
+                        답변드리고 있는 관계로 신속하게 답변 드리지 못하여 대단히
+                        죄송합니다.<br />
+                        <br />
+                        다행히도 고객님의 불편하셨던 사항은 고객행복센터를 통해
+                        안내 받으신 점 확인하였습니다.<br />
+                        <br />
+                        불편을 드려 정말 죄송할 따름이며, 고객님께 늘 신선하고
+                        최상의 상품을 불편 없이 전달드리기 위해 최선을 다하는
+                        칼리가 되겠습니다.<br />
+                        <br />
+                        칼리 드림.<br />
+                      </p>
+                      <time class="text-gray-400" datetime="2022-11-11"
+                        >2022.11.11</time
+                      >
+                    </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
           <!-- 버튼 -->
           <div class="flex items-start gap-4 mx-auto">
-            <button class="w-14 h-14 icon_box_gray" data-arrow="">
+            <button class="w-14 h-14 icon_box_gray" disabled>
               <svg
                 class="text-gray-100 cursor-pointer"
                 width="36"
@@ -887,19 +872,19 @@
                 viewBox="0 0 18 18"
                 aria-hidden="true"
               >
-                <use href="/public/icon/_sprite.svg#Left"></use>
+                <use href="/icon/_sprite.svg#Left"></use>
               </svg>
               <span class="sr-only">이전 페이지</span>
             </button>
-            <button class="w-14 h-14 icon_box_gray" data-arrow="">
+            <button class="w-14 h-14 icon_box_gray" disabled>
               <svg
-                class="text-gray-500 cursor-pointer"
+                class="text-gray-100 cursor-pointer"
                 width="36"
                 height="36"
                 viewBox="0 0 18 18"
                 aria-hidden="true"
               >
-                <use href="/public/icon/_sprite.svg#Right"></use>
+                <use href="/icon/_sprite.svg#Right"></use>
               </svg>
               <span class="sr-only">다음 페이지</span>
             </button>
@@ -909,5 +894,6 @@
     </main>
 
     <footer id="footer"></footer>
+    <div id="detailModal"></div>
   </body>
 </html>
