@@ -56,3 +56,15 @@ fetch('/src/components/detailModal/detailModal.html')
   .catch((error) => {
     console.error(error);
   });
+
+fetch('/src/components/loginModal/loginModal.html')
+  .then((response) => response.text())
+  .then(async (html) => {
+    const loginModalElement = document.querySelector('#login_error');
+    if (!loginModalElement) return;
+    loginModalElement.innerHTML = html;
+    return import('/src/components/loginModal/loginModal.js');
+  })
+  .catch((error) => {
+    console.error(error);
+  });
