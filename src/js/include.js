@@ -57,13 +57,13 @@ fetch('/src/components/detailModal/detailModal.html')
     console.error(error);
   });
 
-fetch('/src/components/loginModal/loginModal.html')
+fetch('/src/components/modal/modal.html')
   .then((response) => response.text())
   .then(async (html) => {
     const loginModalElement = document.querySelector('#login_error');
     if (!loginModalElement) return;
     loginModalElement.innerHTML = html;
-    return import('/src/components/loginModal/loginModal.js');
+    return import('/src/components/modal/modal.js');
   })
   .catch((error) => {
     console.error(error);
