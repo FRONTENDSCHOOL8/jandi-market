@@ -1,9 +1,11 @@
 import {
   getNode,
   getNodes,
+  setActiveTab,
   updateHeartIcon,
   insertBeforeEnd,
   insertAfterBegin,
+  removeIsActiveTab,
   generateInfoSection,
 } from '/src/lib/index.js';
 
@@ -588,48 +590,36 @@ const tabPanel = getNodes('[role="tabpanel"]');
 const tabListPostions = 1320;
 const tabPositions = [1400, 3040, 4380, 5100];
 
-// 모든 active클래스 지우기
-function removeIsActiveTab() {
-  return tabs.forEach((tab) => {
-    tab.classList.remove('is_active_tab');
-    tab.setAttribute('aria-selected', false);
-  });
-}
-function setActiveTab(selector) {
-  selector.classList.add('is_active_tab');
-  selector.setAttribute('aria-selected', true);
-}
-
 function scrollingChanged() {
   const scroll = window.scrollY;
   if (scroll >= tabListPostions) {
     tabList.style.top = '56px';
 
     if (scroll >= tabPositions[0]) {
-      removeIsActiveTab();
+      removeIsActiveTab(tabs);
       setActiveTab(tabs[0]);
     }
     if (scroll >= tabPositions[1]) {
-      removeIsActiveTab();
+      removeIsActiveTab(tabs);
       setActiveTab(tabs[1]);
     }
     if (scroll >= tabPositions[2]) {
-      removeIsActiveTab();
+      removeIsActiveTab(tabs);
       setActiveTab(tabs[2]);
     }
     if (scroll >= tabPositions[3]) {
-      removeIsActiveTab();
+      removeIsActiveTab(tabs);
       setActiveTab(tabs[3]);
     }
   } else {
-    removeIsActiveTab();
+    removeIsActiveTab(tabs);
   }
 }
 function moveScrollToTab(e) {
   const tabButton = e.target;
   const controlledPanelId = tabButton.getAttribute('aria-controls');
 
-  removeIsActiveTab();
+  removeIsActiveTab(tabs);
   tabPanel.forEach((panel, index) => {
     if (panel.getAttribute('id') === controlledPanelId) {
       setActiveTab(tabButton);
