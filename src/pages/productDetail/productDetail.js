@@ -1,13 +1,15 @@
+import { getNode, getNodes } from '/src/lib/detail/index.js';
+
 let quantity = 1; // 상품 수량
 const COLLECTIONS_ID = 'n9omag8299xjizq';
 const productId = window.location.hash.slice(1);
 const URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
 const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
-const quantityDecrease = document.querySelector('.quantity_decrease');
-const productQuantity = document.querySelector('.product_quantity');
-const quantityIncrease = document.querySelector('.quantity_increase');
+const quantityDecrease = getNode('.quantity_decrease');
+const productQuantity = getNode('.product_quantity');
+const quantityIncrease = getNode('.quantity_increase');
 function insertAfterBegin(node, renderTemplate) {
-  node = document.querySelector(node);
+  node = getNode(node);
   return node.insertAdjacentHTML('afterbegin', renderTemplate);
 }
 function generateInfoSection(title, content, addContent = '') {
@@ -197,9 +199,9 @@ async function displayProductDetails() {
     /*                                     모달창                                  */
     /* -------------------------------------------------------------------------- */
 
-    const reviewButton = document.querySelector('.review_button');
-    const inquiryButton = document.querySelector('.inquiry_button');
-    const submitButton = document.querySelector('[type="submit"]');
+    const reviewButton = getNode('.review_button');
+    const inquiryButton = getNode('.inquiry_button');
+    const submitButton = getNode('[type="submit"]');
 
     function clickedShowModal() {
       const dialog = detailModal.children[1];
@@ -207,13 +209,13 @@ async function displayProductDetails() {
       dialog.classList.remove('modal_hidden');
     }
 
-    const desc = document.querySelector('#desc');
-    const virtualPlaceholder = document.querySelector('.virtual_placeholder');
-    const textLength = document.querySelector('.text_length');
+    const desc = getNode('#desc');
+    const virtualPlaceholder = getNode('.virtual_placeholder');
+    const textLength = getNode('.text_length');
 
     const MAX_LENGTH = 5000;
     function closeModal() {
-      const dialog = document.querySelector('dialog');
+      const dialog = getNode('dialog');
 
       dialog.close();
       dialog.classList.add('modal_hidden');
@@ -240,7 +242,7 @@ async function displayProductDetails() {
     }
 
     function closeButton() {
-      const closeButton = document.querySelector('.close_button');
+      const closeButton = getNode('.close_button');
 
       closeButton.addEventListener('click', closeModal);
     }
@@ -259,15 +261,11 @@ async function displayProductDetails() {
         clickedShowModal();
         updateTextUI();
 
-        const ModalTitle = document.querySelector('.modal_title');
-        const ModalProduct = document.querySelector('.modal_product');
-        const modalContentTitle = document.querySelector(
-          '.modal_content_title'
-        );
-        const virtualPlaceholder = document.querySelector(
-          '.virtual_placeholder'
-        );
-        const secretCheck = document.querySelector('.secret_check');
+        const ModalTitle = getNode('.modal_title');
+        const ModalProduct = getNode('.modal_product');
+        const modalContentTitle = getNode('.modal_content_title');
+        const virtualPlaceholder = getNode('.virtual_placeholder');
+        const secretCheck = getNode('.secret_check');
         ModalTitle.innerHTML = `
       <h2 class="text-heading-xl font-bold leading-[140%]">후기 작성하기</h2>
       <svg role="후기작성 모달창 닫기" class="cursor-pointer close_button" width="30" height="30">
@@ -402,15 +400,11 @@ async function displayProductDetails() {
       } else {
         clickedShowModal();
         updateTextUI();
-        const ModalTitle = document.querySelector('.modal_title');
-        const ModalProduct = document.querySelector('.modal_product');
-        const modalContentTitle = document.querySelector(
-          '.modal_content_title'
-        );
-        const virtualPlaceholder = document.querySelector(
-          '.virtual_placeholder'
-        );
-        const secretCheck = document.querySelector('.secret_check');
+        const ModalTitle = getNode('.modal_title');
+        const ModalProduct = getNode('.modal_product');
+        const modalContentTitle = getNode('.modal_content_title');
+        const virtualPlaceholder = getNode('.virtual_placeholder');
+        const secretCheck = getNode('.secret_check');
 
         ModalTitle.innerHTML = `
       <h2 class="text-heading-xl font-bold leading-[140%]">상품 문의하기</h2>
@@ -523,12 +517,12 @@ async function displayProductDetails() {
         </label>
       </fieldset>
       `;
-        const inquiryTitleId = document.querySelector('#inquiry_title');
+        const inquiryTitleId = getNode('#inquiry_title');
 
         closeButton();
 
         submitButton.addEventListener('click', () => {
-          const secretCheckedStatus = document.querySelector('#secretCheck');
+          const secretCheckedStatus = getNode('#secretCheck');
           const title = ModalTitle.children[0].textContent;
           if (title === '상품 문의하기') {
             async function modalFetch() {
@@ -572,8 +566,8 @@ displayProductDetails();
 /*    하트 클릭 시, localStorage에 상태( true, false ) 저장하여 .active 구현하기 */
 /*--------------------------------------------------------------------------*/
 
-const wishList = document.querySelector('.wish_list');
-const iconHeart = document.querySelector('.icon_heart');
+const wishList = getNode('.wish_list');
+const iconHeart = getNode('.icon_heart');
 
 let productWish = JSON.parse(localStorage.getItem(productId) || 'false');
 
@@ -595,9 +589,9 @@ function updateHeartIcon() {
 /*                                     탭기능                                  */
 /* -------------------------------------------------------------------------- */
 
-const tabList = document.querySelector('[role="tablist"]');
-const tabs = tabList.querySelectorAll('[role="tab"]');
-const tabPanel = document.querySelectorAll('[role="tabpanel"]');
+const tabList = getNode('[role="tablist"]');
+const tabs = getNodes('[role="tab"]', tabList);
+const tabPanel = getNodes('[role="tabpanel"]');
 
 const tabListPostions = 1320;
 const tabPositions = [1400, 3040, 4380, 5100];
@@ -658,7 +652,7 @@ tabList.addEventListener('click', moveScrollToTab);
 /*                                   장바구니 담기                              */
 /* -------------------------------------------------------------------------- */
 
-const cartButton = document.querySelector('.cart_button');
+const cartButton = getNode('.cart_button');
 const CART_URL = import.meta.env.VITE_PH_CART;
 
 let userId = sessionStorage.getItem('userId');
@@ -711,12 +705,12 @@ cartButton.addEventListener('click', () => {
 });
 
 async function reviewDataRender() {
-  const reviewList = document.querySelector('.review_list');
+  const reviewList = getNode('.review_list');
   const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
   const USER_URL = import.meta.env.VITE_PH_USERS;
   const REVIEW_FILTER_URL = `${REVIEW_URL}?filter=(productId%3D'${productId}')`;
-  const tabReviews = document.querySelector('#tab_reviews');
-  const reviewCount = document.querySelector('.review_count');
+  const tabReviews = getNode('#tab_reviews');
+  const reviewCount = getNode('.review_count');
   const reivewGetResponse = await fetch(REVIEW_FILTER_URL);
 
   if (!reivewGetResponse.ok) throw new Error('REVIEW API 통신에 실패했습니다.');
@@ -776,7 +770,7 @@ async function reviewDataRender() {
 reviewDataRender();
 
 async function inquiryDataRender() {
-  const inquiryList = document.querySelector('.inquiry_list');
+  const inquiryList = getNode('.inquiry_list');
   const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
   const USER_URL = import.meta.env.VITE_PH_USERS;
   const INQUIRY_FILTER_URL = `${INQUIRY_URL}?filter=(productId%3D'${productId}')`;
@@ -881,11 +875,11 @@ async function inquiryDataRender() {
   /* -------------------------------------------------------------------------- */
   function accordion(userData, userName, createDay) {
     // 리뷰 섹션
-    const reviewTitle = document.querySelectorAll('.review_title');
-    const reviewContents = document.querySelectorAll('.review_content');
+    const reviewTitle = getNodes('.review_title');
+    const reviewContents = getNodes('.review_content');
     // 문의 섹션
-    const inquiryTitle = document.querySelectorAll('.inquiry_title');
-    const inquiryContents = document.querySelectorAll('.inquiry_content');
+    const inquiryTitle = getNodes('.inquiry_title');
+    const inquiryContents = getNodes('.inquiry_content');
 
     function toggleContent(titles, contents) {
       titles.forEach((title) => {
