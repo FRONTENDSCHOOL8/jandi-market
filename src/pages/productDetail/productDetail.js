@@ -3,7 +3,7 @@ import {
   getNodes,
   insertAfterBegin,
   insertBeforeEnd,
-} from '/src/lib/detail/index.js';
+} from '/src/lib/index.js';
 
 let quantity = 1; // 상품 수량
 const COLLECTIONS_ID = 'n9omag8299xjizq';
@@ -13,6 +13,8 @@ const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
 const quantityDecrease = getNode('.quantity_decrease');
 const productQuantity = getNode('.product_quantity');
 const quantityIncrease = getNode('.quantity_increase');
+const reviewList = getNode('.review_list');
+const inquiryList = getNode('.inquiry_list');
 
 function generateInfoSection(title, content, addContent = '') {
   return content !== ''
@@ -385,6 +387,8 @@ async function displayProductDetails() {
                   throw new Error('REVIEW API 통신에 실패했습니다.');
                 closeModal();
                 const reviewData = await reviewResponse.json();
+                reviewList.innerHTML = '';
+                reviewDataRender(reviewData);
               } catch (error) {
                 console.error(error);
               }
@@ -548,6 +552,8 @@ async function displayProductDetails() {
                   throw new Error('INQUIRY API 통신에 실패했습니다.');
                 closeModal();
                 const inquiryData = await inquiryResponse.json();
+                inquiryList.innerHTML = '';
+                inquiryDataRender(inquiryData);
               } catch (error) {
                 console.error(error);
               }
@@ -707,7 +713,6 @@ cartButton.addEventListener('click', () => {
 });
 
 async function reviewDataRender() {
-  const reviewList = getNode('.review_list');
   const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
   const USER_URL = import.meta.env.VITE_PH_USERS;
   const REVIEW_FILTER_URL = `${REVIEW_URL}?filter=(productId%3D'${productId}')`;
@@ -772,7 +777,6 @@ async function reviewDataRender() {
 reviewDataRender();
 
 async function inquiryDataRender() {
-  const inquiryList = getNode('.inquiry_list');
   const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
   const USER_URL = import.meta.env.VITE_PH_USERS;
   const INQUIRY_FILTER_URL = `${INQUIRY_URL}?filter=(productId%3D'${productId}')`;
@@ -790,7 +794,6 @@ async function inquiryDataRender() {
     >
       <p>등록된 문의가 없습니다.</p>
   </div>`;
-  inquiryList.innerHTML = '';
 
   let userName;
   let createDay;

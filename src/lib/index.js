@@ -1,1 +1,1 @@
-import './detail/index.js';
+export * from './detail/index.js';

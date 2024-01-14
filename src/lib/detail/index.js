@@ -1,2 +1,2 @@
-import './insert.js';
-import './getNode.js';
+export * from './insert.js';
+export * from './getNode.js';

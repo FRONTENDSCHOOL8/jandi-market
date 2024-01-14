@@ -1,3 +1,5 @@
+import { getNode } from './getNode.js';
+
 export function insertAfterBegin(node, renderTemplate) {
   if (typeof node === 'string') node = getNode(node);
   return node.insertAdjacentHTML('afterbegin', renderTemplate);
