@@ -45,6 +45,7 @@ const categoryNormal = document.querySelector('.category_normal');
 const productRefrigerator = document.querySelector('.product_refrigerated');
 const productFrozen = document.querySelector('.product_frozen');
 const productNormal = document.querySelector('.product_normal');
+const cartNoneList = document.querySelector('.cart_nonelist');
 
 
 function comma(number) {
@@ -55,59 +56,54 @@ function comma(number) {
 console.log(comma(333333));
 
 async function cartPage() {
-  try {const response = await fetch(CART_URL)
-    // .then((response) => {
-    if (!response.ok) {
-      // return response.json();
-      throw new Error ('REVIEW API 통신에 실패했습니다.');
+  try {
+    const reviewResponse = await fetch(CART_URL);
+    if (!reviewResponse.ok) {
+      throw new Error('REVIEW API 통신에 실패했습니다.');
     }
     const reviewData = await reviewResponse.json();
-    // })
-    // ((data) => { 
+
     const dataItem = reviewData.items;
     const userCartData = [];
-    
-    
+
     dataItem.forEach((items) => {
-      console.log(items.userId);
-      if(items.userId === userId){
-        userCartData.push({productId:items.productId, quantity:items.quantity});
+      if (items.userId === userId) {
+        userCartData.push({
+          productId: items.productId,
+          quantity: items.quantity,
+        });
       }
     });
-    
-    // return userCartData;
-    
-    // })
-    // .then((datas)=>{
-    console.log(datas);
-    datas.forEach((data) => {
+
+    userCartData.forEach(async (data) => {
       // data.productId;
       // data.quantity;
-      
-      // const productURL = `/${data.productId}`;
+
       const productURL = `${import.meta.env.VITE_PH_PL}/${data.productId}`;
-      // const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
-      console.log(productURL);
-      
+
       let count = 1;
+
+      const productDataList = await fetch(productURL);
+      if (!productDataList.ok) {
+        throw new Error('REVIEW API 통신에 실패했습니다.');
+      }
+      const productDatas = await productDataList.json();
+      console.log(productDatas);
+
+      let {
+        packaging,
+        discount,
+        price,
+        brand,
+        name,
+        collectionId,
+        id,
+        main_image,
+      } = productDatas;
       
-      const productDataList = fetch(productURL)
-      // .then((response) => {
-        if (!productDataList.ok) {
-              // console.log( response.json());
-          throw new Error ('REVIEW API 통신에 실패했습니다.');
-        }
-        const productDatas = productDataList.json();
-        console.log(productDatas);
-      // })
-      (({packaging, discount, price, brand, name, collectionId, id, main_image }) => {
-        
-        console.log(packaging);
-        
-        // discount, price, brand, name, collectionId, id, main_image
-        const discountPrice = price - (price * discount) / 100;
-        
-        const template = /* html */ `
+      const discountPrice = price - (price * discount) / 100;
+
+      const template = /* html */ `
         <li class="flex items-center py-5 item">
                       <fieldset class="item_select">
                         <input
@@ -157,9 +153,11 @@ async function cartPage() {
                       <div
                         class="flex flex-col items-end font-bold product_price w-130pxr"
                       >
-                        <span class="after_discount">${comma(discountPrice*data.quantity)}원</span>
+                        <span class="after_discount">${comma(
+                          discountPrice * data.quantity
+                        )}원</span>
                         <span class="before_discount price_delete"
-                          >${price*data.quantity}원</span
+                          >${price * data.quantity}원</span
                         >
                       </div>
                       <button class="product_delete ml-10pxr">
@@ -175,24 +173,25 @@ async function cartPage() {
                         </svg>
                       </button>
                     </li>`;
-        
-                    if(packaging === "냉동"){
-                      categoryFrozen.classList.remove('hidden');
-                      categoryFrozen.classList.add('block');
-                      productFrozen.insertAdjacentHTML('beforeend', template);
-                    } else if (packaging === "냉장"){
-                      categoryRefrigerated.classList.remove('hidden');
-                      categoryRefrigerated.classList.add('block');
-                      productRefrigerator.insertAdjacentHTML('beforeend', template);
-                    } else if(packaging === "상온") {
-                      categoryNormal.classList.remove('hidden');
-                      categoryNormal.classList.add('block');
-                      productNormal.insertAdjacentHTML('beforeend', template);
-                    }
-      
-      })
-      
+      if (packaging === '냉동') {
+        cartNoneList.classList.add('hidden');
+        categoryFrozen.classList.remove('hidden');
+        categoryFrozen.classList.add('block');
+        productFrozen.insertAdjacentHTML('beforeend', template);
+      } else if (packaging === '냉장') {
+        cartNoneList.classList.add('hidden');
+        categoryRefrigerated.classList.remove('hidden');
+        categoryRefrigerated.classList.add('block');
+        productRefrigerator.insertAdjacentHTML('beforeend', template);
+      } else if (packaging === '상온') {
+        cartNoneList.classList.add('hidden');
+        categoryNormal.classList.remove('hidden');
+        categoryNormal.classList.add('block');
+        productNormal.insertAdjacentHTML('beforeend', template);
+      }
     });
+      
+    // });
         
     /* -------------------------------------------------------------------------- */
     /*                               상품 수량 증가, 감소 버튼                              */
