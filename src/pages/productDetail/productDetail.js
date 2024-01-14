@@ -1,4 +1,9 @@
-import { getNode, getNodes } from '/src/lib/detail/index.js';
+import {
+  getNode,
+  getNodes,
+  insertAfterBegin,
+  insertBeforeEnd,
+} from '/src/lib/detail/index.js';
 
 let quantity = 1; // 상품 수량
 const COLLECTIONS_ID = 'n9omag8299xjizq';
@@ -8,10 +13,7 @@ const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
 const quantityDecrease = getNode('.quantity_decrease');
 const productQuantity = getNode('.product_quantity');
 const quantityIncrease = getNode('.quantity_increase');
-function insertAfterBegin(node, renderTemplate) {
-  node = getNode(node);
-  return node.insertAdjacentHTML('afterbegin', renderTemplate);
-}
+
 function generateInfoSection(title, content, addContent = '') {
   return content !== ''
     ? /* html */ `
@@ -763,7 +765,7 @@ async function reviewDataRender() {
     if (data.items.length === 0) {
       reviewList.innerHTML = initialTemplate;
     } else {
-      reviewList.insertAdjacentHTML('beforeend', reviewTemplate);
+      insertBeforeEnd('.review_list', reviewTemplate);
     }
   });
 }
@@ -859,7 +861,7 @@ async function inquiryDataRender() {
                   </div>
                 </div>
               </div>`;
-    inquiryList.insertAdjacentHTML('beforeend', inquiryTemplate);
+    insertBeforeEnd('.inquiry_list', inquiryTemplate);
 
     /* -------------------------------------------------------------------------- */
     /*                                     비밀글                                  */
