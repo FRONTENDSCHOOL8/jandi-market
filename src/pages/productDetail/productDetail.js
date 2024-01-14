@@ -1,28 +1,43 @@
 import {
-  generateInfoSection,
-  insertAfterBegin,
-  fetchData,
   loginCheck,
+  updateCart,
+  setActiveTab,
+  wishListChecked,
+  insertAfterBegin,
+  accumulatePoints,
+  reviewDataRender,
+  removeIsActiveTab,
+  inquiryDataRender,
+  generateInfoSection,
+  calculateTotalPrice,
 } from '/src/lib/detail/index.js';
+
 let quantity = 1; // 상품 수량
 const COLLECTIONS_ID = 'n9omag8299xjizq';
 let userId = sessionStorage.getItem('userId');
 const productId = window.location.hash.slice(1);
-
-const PRODUCT_URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
 const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
+const PRODUCT_URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
 
-const quantityDecrease = document.querySelector('.quantity_decrease');
-const productQuantity = document.querySelector('.product_quantity');
-const quantityIncrease = document.querySelector('.quantity_increase');
+const wishList = document.querySelector('.wish_list');
+const iconHeart = document.querySelector('.icon_heart');
 const totalPrice = document.querySelector('.total_price');
+const loginPoint = document.querySelectorAll('.login_point');
+const productQuantity = document.querySelector('.product_quantity');
+const quantityDecrease = document.querySelector('.quantity_decrease');
+const quantityIncrease = document.querySelector('.quantity_increase');
+
 /* -------------------------------------------------------------------------- */
 /*                                   데이터바인딩                               */
 /* -------------------------------------------------------------------------- */
 
 async function displayProductDetails() {
   try {
-    const data = await fetchData(PRODUCT_URL);
+    const response = await fetch(PRODUCT_URL);
+    if (!response.ok)
+      throw new Error(`${PRODUCT_URL} API 호출에 실패했습니다.`);
+
+    const data = await response.json();
 
     const discountPrice = data.price - (data.price * data.discount) / 100;
     const floorDiscountPrice = Math.floor(discountPrice / 10) * 10;
@@ -168,12 +183,6 @@ async function displayProductDetails() {
     /*                                수량 증가 & 상품금액                          */
     /* -------------------------------------------------------------------------- */
 
-    function calculateTotalPrice() {
-      productQuantity.textContent = quantity;
-      let total = floorDiscountPrice * quantity;
-      totalPrice.textContent = total.toLocaleString();
-    }
-
     function updateQuantity(increase) {
       quantity += increase ? 1 : -1;
       if (quantity <= 1) {
@@ -183,7 +192,12 @@ async function displayProductDetails() {
         quantityDecrease.src = `/public/input/minus.svg`;
         quantityDecrease.alt = `수량 감소`;
       }
-      calculateTotalPrice();
+      calculateTotalPrice(
+        productQuantity,
+        floorDiscountPrice,
+        quantity,
+        totalPrice
+      );
     }
 
     quantityDecrease.addEventListener('click', () => {
@@ -461,7 +475,7 @@ async function displayProductDetails() {
             async function modalFetch() {
               try {
                 const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
-                await fetchData(REVIEW_URL, {
+                const response = await fetch(REVIEW_URL, {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -473,6 +487,11 @@ async function displayProductDetails() {
                     contents: desc.value,
                   }),
                 });
+                if (!response.ok)
+                  throw new Error(`${REVIEW_URL} API 호출에 실패했습니다.`);
+
+                await response.json();
+
                 closeModal();
               } catch (error) {
                 console.error(error);
@@ -484,7 +503,7 @@ async function displayProductDetails() {
             async function modalFetch() {
               try {
                 const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
-                await fetchData(INQUIRY_URL, {
+                const response = await fetch(INQUIRY_URL, {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -498,6 +517,11 @@ async function displayProductDetails() {
                     secret: secretCehckBox.checked,
                   }),
                 });
+                if (!response.ok)
+                  throw new Error(`${REVIEW_URL} API 호출에 실패했습니다.`);
+
+                await response.json();
+
                 closeModal();
               } catch (error) {
                 console.error(error);
@@ -523,35 +547,6 @@ async function displayProductDetails() {
 }
 displayProductDetails();
 
-/*--------------------------------------------------------------------------*/
-/*    하트 클릭 시, localStorage에 상태( true, false ) 저장하여 .active 구현하기 */
-/*--------------------------------------------------------------------------*/
-
-const wishList = document.querySelector('.wish_list');
-const iconHeart = document.querySelector('.icon_heart');
-
-let productWish = JSON.parse(localStorage.getItem(productId) || 'false');
-
-updateHeartIcon();
-
-wishList.addEventListener('click', () => {
-  productWish = !productWish;
-  wishList.dataset.wish = String(productWish);
-
-  if (productWish) {
-    localStorage.setItem(productId, JSON.stringify(productWish));
-  } else {
-    localStorage.removeItem(productId);
-  }
-
-  updateHeartIcon();
-});
-function updateHeartIcon() {
-  iconHeart.setAttribute(
-    'href',
-    `/public/icon/_sprite.svg#Heart${productWish ? '-active' : ''}`
-  );
-}
 /* -------------------------------------------------------------------------- */
 /*                                     탭기능                                  */
 /* -------------------------------------------------------------------------- */
@@ -563,38 +558,36 @@ const tabPanel = document.querySelectorAll('[role="tabpanel"]');
 const tabListPostions = 1320;
 const tabPositions = [1400, 3040, 4380, 5100];
 
-// 모든 active클래스 지우기
-function removeIsActiveTab() {
-  return tabs.forEach((tab) => {
-    tab.classList.remove('is_active_tab');
-    tab.setAttribute('aria-selected', false);
-  });
-}
-function setActiveTab(selector) {
-  selector.classList.add('is_active_tab');
-  selector.setAttribute('aria-selected', true);
-}
-
 function scrollingChanged() {
   const scroll = window.scrollY;
   if (scroll >= tabListPostions) {
     tabList.style.top = '56px';
 
-    for (let i = 0; i < tabListPostions.length; i + 1) {
-      if (scroll >= tabPositions[i]) {
-        removeIsActiveTab();
-        setActiveTab(tabs[i]);
-      }
+    if (scroll >= tabPositions[0]) {
+      removeIsActiveTab(tabs);
+      setActiveTab(tabs[0]);
+    }
+    if (scroll >= tabPositions[1]) {
+      removeIsActiveTab(tabs);
+      setActiveTab(tabs[1]);
+    }
+    if (scroll >= tabPositions[2]) {
+      removeIsActiveTab(tabs);
+      setActiveTab(tabs[2]);
+    }
+    if (scroll >= tabPositions[3]) {
+      removeIsActiveTab(tabs);
+      setActiveTab(tabs[3]);
     }
   } else {
-    removeIsActiveTab();
+    removeIsActiveTab(tabs);
   }
 }
 function moveScrollToTab(e) {
   const tabButton = e.target;
   const controlledPanelId = tabButton.getAttribute('aria-controls');
 
-  removeIsActiveTab();
+  removeIsActiveTab(tabs);
   tabPanel.forEach((panel, index) => {
     if (panel.getAttribute('id') === controlledPanelId) {
       setActiveTab(tabButton);
@@ -610,300 +603,22 @@ tabList.addEventListener('click', moveScrollToTab);
 /* -------------------------------------------------------------------------- */
 
 const cartButton = document.querySelector('.cart_button');
-const CART_URL = import.meta.env.VITE_PH_CART;
 
+const CART_URL = import.meta.env.VITE_PH_CART;
 const FILTER_URL = `${CART_URL}?filter=(userId%3D'${userId}'%26%26productId%3D'${productId}')`;
 
-cartButton.addEventListener('click', () => {
-  async function updateCart() {
-    try {
-      const response = await fetch(FILTER_URL);
-      if (!response.ok) throw new Error('CART API 요청이 실패했습니다.');
-
-      const data = await response.json();
-      if (data.items.length > 0) {
-        const cartId = data.items[0].id;
-        const patchResponse = await fetch(`${CART_URL}/${cartId}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userId,
-            productId,
-            quantity: data.items[0].quantity + quantity,
-          }),
-        });
-
-        if (!patchResponse.ok)
-          throw new Error('Patch API 요청이 실패했습니다.');
-        const patchData = await patchResponse.json();
-      } else {
-        const postResponse = await fetch(CART_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userId,
-            productId,
-            quantity,
-          }),
-        });
-        if (!postResponse.ok) throw new Error('POST API 요청이 실패했습니다.');
-        const postData = await postResponse.json();
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
+function addCart() {
   if (!userId) {
     loginCheck();
     return;
   } else {
-    updateCart();
-  }
-});
-
-async function reviewDataRender() {
-  const reviewList = document.querySelector('.review_list');
-  const reviewCount = document.querySelector('.review_count');
-  const tabReviews = document.querySelector('#tab_reviews');
-  const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
-  const USER_URL = import.meta.env.VITE_PH_USERS;
-  const REVIEW_FILTER_URL = `${REVIEW_URL}?filter=(productId%3D'${productId}')`;
-
-  const reivewGetResponse = await fetch(REVIEW_FILTER_URL);
-
-  if (!reivewGetResponse.ok) throw new Error('REVIEW API 통신에 실패했습니다.');
-
-  const data = await reivewGetResponse.json();
-
-  reviewCount.textContent = `총 ${data.items.length}개`;
-  tabReviews.textContent = `후기 ( ${data.items.length} )`;
-  const initialTemplate = /* html */ `
-    <div
-      class="items-center gap-5 py-10 border-b border-b-gray-100 flex_column"
-    >
-      <svg
-        class="text-gray-100"
-        width="48"
-        height="48"
-        aria-hidden="true"
-      >
-        <use href="/icon/_sprite.svg#Notice"></use>
-        </svg>
-        <p>따뜻한 첫 후기를 기다리고 있어요.</p>
-        </div>`;
-  await data.items.forEach(async (review) => {
-    const createDay = String(review.created).slice(0, 10);
-
-    const userResponse = await fetch(`${USER_URL}/${review.userId}`);
-    if (!userResponse.ok) throw new Error('USER API 통신에 실패했습니다.');
-    const userData = await userResponse.json();
-    const userName = `
-    ${userData.name[0]}${'*'.repeat(userData.name.length - 2)}${
-      userData.name[2]
-    }`;
-
-    const reviewTemplate = /* html */ `
-      <div class="review_user_post_structure">
-        <div class="review_member">
-          <span class="best_badge">베스트</span>
-          <span class="purple_badge">퍼플</span>
-          <span class="self-start">${userName}</span>
-        </div>
-        <div class="review_user_post_contents">
-          <h4 class="text_gray_semibold">${review.title}</h4>
-          <p class="leading_160">
-            ${review.contents}
-          </p>
-          <p class="text_gray_semibold">${createDay}</p>
-        </div>
-      </div>`;
-    if (data.items.length === 0) {
-      reviewList.innerHTML = initialTemplate;
-    } else {
-      reviewList.insertAdjacentHTML('beforeend', reviewTemplate);
-    }
-  });
-}
-reviewDataRender();
-
-async function inquiryDataRender() {
-  const inquiryList = document.querySelector('.inquiry_list');
-  const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
-  const USER_URL = import.meta.env.VITE_PH_USERS;
-  const INQUIRY_FILTER_URL = `${INQUIRY_URL}?filter=(productId%3D'${productId}')`;
-
-  const inqurityData = await fetchData(INQUIRY_FILTER_URL);
-
-  const initialTemplate = /* html */ `
-    <div
-      class="items-center gap-5 py-10 border-b border-b-gray-100 flex_column"
-    >
-      <p>등록된 문의가 없습니다.</p>
-  </div>`;
-  inquiryList.innerHTML = '';
-
-  for (const inquiry of inqurityData.items) {
-    const createDay = String(inquiry.created).slice(0, 10);
-    const answerDay = String(inquiry.answerDay).slice(0, 10);
-
-    const userResponse = await fetch(`${USER_URL}/${inquiry.userId}`);
-    if (!userResponse.ok) throw new Error('USER API 통신에 실패했습니다.');
-    const userData = await userResponse.json();
-    const userName = `
-    ${userData.name[0]}${'*'.repeat(userData.name.length - 2)}${
-      userData.name[2]
-    }`;
-
-    const inquiryTemplate = /* html */ `<div>
-                <h2
-                  class="inquiry_title"
-                  aria-expanded="false"
-                  data-secret="${inquiry.secret}"
-                >
-                  <button class="flex font-semibold border-b border-b-gray-100">
-                    <div class="inquiry_table_subject">${inquiry.title}</div>
-                    <div class="table_width100">${userName}</div>
-                    <time datetime="${createDay}" class="table_width100">
-                      ${createDay}
-                    </time>
-                    ${
-                      inquiry.answerStatus
-                        ? `<div class="table_width100 text-primary font-semibold">
-                      답변 완료
-                    </div>`
-                        : `<div class="table_width100">
-                      답변 대기
-                    </div>`
-                    }
-                  </button>
-                </h2>
-                <div class="inquiry_content" aria-hidden="true" hidden>
-                  <div class="question inquiry_contents_layout">
-                    <span>
-                      <svg width="24" height="24" aria-hidden="true">
-                        <use href="/icon/_sprite.svg#Question"></use>
-                      </svg>
-                    </span>
-                    <p class="inquiry_contents_question">
-                      ${inquiry.question}
-                    </p>
-                  </div>
-                  <div class="answer inquiry_contents_layout">
-                    <span>
-                      <svg width="24" height="24" aria-hidden="true">
-                        <use href="/icon/_sprite.svg#Answer"></use>
-                      </svg>
-                    </span>
-                    <div class="inquiry_contents_answer">
-                      <p class="text-content">
-                        ${inquiry.answer ? inquiry.answer : '답변 대기중입니다'}
-                      </p>
-                      <time class="text-gray-400" datetime="${
-                        answerDay ? answerDay : ''
-                      }"
-                        >${answerDay ? answerDay : ''}</time
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>`;
-    inquiryList.insertAdjacentHTML('beforeend', inquiryTemplate);
-
-    /* -------------------------------------------------------------------------- */
-    /*                                     비밀글                                  */
-    /* -------------------------------------------------------------------------- */
-
-    if (inqurityData.items.length === 0) {
-      inquiryList.innerHTML = initialTemplate;
-    }
-
-    /* -------------------------------------------------------------------------- */
-    /*                                    아코디언                                 */
-    /* -------------------------------------------------------------------------- */
-    function accordion() {
-      // 리뷰 섹션
-      const reviewTitle = document.querySelectorAll('.review_title');
-      const reviewContents = document.querySelectorAll('.review_content');
-      // 문의 섹션
-      const inquiryTitle = document.querySelectorAll('.inquiry_title');
-      const inquiryContents = document.querySelectorAll('.inquiry_content');
-
-      function toggleContent(titles, contents) {
-        titles.forEach((title) => {
-          title.addEventListener('click', () => {
-            const content = title.nextElementSibling;
-            let hidden = !content.hidden;
-            contents.forEach((content, index) => {
-              content.hidden = true;
-              content.setAttribute('aria-hidden', true);
-              content.classList.remove('flex_column');
-              titles[index].setAttribute('aria-expanded', false);
-            });
-
-            content.hidden = hidden;
-            content.setAttribute('aria-hidden', hidden);
-            if (!hidden) {
-              content.classList.add('flex_column');
-            }
-            title.setAttribute('aria-expanded', !hidden);
-          });
-        });
-      }
-
-      /* -------------------------------------------------------------------------- */
-      /*                                     비밀글                                  */
-      /* -------------------------------------------------------------------------- */
-      function secretCheck() {
-        inquiryTitle.forEach((title) => {
-          if (title.dataset.secret == 'true') {
-            let content = title.nextElementSibling;
-
-            title.innerHTML = `
-      <button class="flex font-semibold border-b border-b-gray-100">
-        <div class="text-gray-400 inquiry_table_subject">
-        비밀글입니다.
-          <span>
-          <svg width="12" height="14" aria-hidden="true">
-            <use href="/icon/_sprite.svg#Lock"></use>
-          </svg>
-        </span>
-      </div>
-      <div class="table_width100">${userName}</div>
-      <time datetime="${createDay}" class="table_width100">
-        ${createDay}
-      </time>
-          ${
-            inquiry.answerStatus
-              ? `<div class="table_width100 text-primary font-semibold">
-                      답변 완료
-                    </div>`
-              : `<div class="table_width100">
-                      답변 대기
-                    </div>`
-          }
-    </button>
-      `;
-
-            content.style.display = 'none';
-            content.setAttribute('aria-hidden', true);
-            content.hidden = true;
-            content.classList.remove('flex_column');
-            title.setAttribute('aria-expanded', false);
-
-            // 만약 로그인 한 사람이 본인이거나 어드민일 경우 다 보임
-          }
-        });
-      }
-      secretCheck();
-      toggleContent(reviewTitle, reviewContents);
-      toggleContent(inquiryTitle, inquiryContents);
-    }
-    accordion();
+    updateCart(userId, productId, quantity, FILTER_URL, CART_URL);
   }
 }
-inquiryDataRender();
+
+cartButton.addEventListener('click', addCart);
+
+reviewDataRender(productId);
+inquiryDataRender(productId);
+accumulatePoints(loginPoint, userId);
+wishListChecked(productId, wishList, iconHeart);
