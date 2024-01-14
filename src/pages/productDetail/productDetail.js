@@ -13,6 +13,7 @@ let quantity = 1; // 상품 수량
 const COLLECTIONS_ID = 'n9omag8299xjizq';
 const reviewList = getNode('.review_list');
 const inquiryList = getNode('.inquiry_list');
+const userId = sessionStorage.getItem('userId');
 const productId = window.location.hash.slice(1);
 const productQuantity = getNode('.product_quantity');
 const quantityDecrease = getNode('.quantity_decrease');
@@ -25,7 +26,12 @@ const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
 /* -------------------------------------------------------------------------- */
 async function displayProductDetails() {
   try {
-    const response = await fetch(URL);
+    const response = await fetch(URL, {
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     if (!response.ok) throw new Error('API 호출에 실패했습니다.');
     const data = await response.json();
     const discountPrice = data.price - (data.price * data.discount) / 100;
@@ -250,7 +256,7 @@ async function displayProductDetails() {
     /* -------------------------------------------------------------------------- */
 
     reviewButton.addEventListener('click', () => {
-      if (!sessionStorage.userId) {
+      if (!userId) {
         alert('로그인을 해주세요');
         location.href = '/src/pages/login/';
       } else {
@@ -362,8 +368,8 @@ async function displayProductDetails() {
             async function modalFetch() {
               try {
                 const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
-                // const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
                 const reviewResponse = await fetch(REVIEW_URL, {
+                  cache: 'no-cache',
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -379,7 +385,7 @@ async function displayProductDetails() {
                   throw new Error('REVIEW API 통신에 실패했습니다.');
                 closeModal();
                 const reviewData = await reviewResponse.json();
-                reviewList.innerHTML = '';
+                reviewList.textContent = '';
                 reviewDataRender(reviewData);
               } catch (error) {
                 console.error(error);
@@ -392,7 +398,7 @@ async function displayProductDetails() {
     });
 
     inquiryButton.addEventListener('click', () => {
-      if (!sessionStorage.userId) {
+      if (!userId) {
         alert('로그인을 해주세요');
         location.href = '/src/pages/login/';
       } else {
@@ -527,6 +533,7 @@ async function displayProductDetails() {
               try {
                 const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
                 const inquiryResponse = await fetch(INQUIRY_URL, {
+                  cache: 'no-cache',
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
@@ -544,7 +551,7 @@ async function displayProductDetails() {
                   throw new Error('INQUIRY API 통신에 실패했습니다.');
                 closeModal();
                 const inquiryData = await inquiryResponse.json();
-                inquiryList.innerHTML = '';
+                inquiryList.textContent = '';
                 inquiryDataRender(inquiryData);
               } catch (error) {
                 console.error(error);
@@ -637,19 +644,24 @@ tabList.addEventListener('click', moveScrollToTab);
 const cartButton = getNode('.cart_button');
 const CART_URL = import.meta.env.VITE_PH_CART;
 
-let userId = sessionStorage.getItem('userId');
 const FILTER_URL = `${CART_URL}?filter=(userId%3D'${userId}'%26%26productId%3D'${productId}')`;
 
 cartButton.addEventListener('click', () => {
   async function updateCart() {
     try {
-      const response = await fetch(FILTER_URL);
+      const response = await fetch(FILTER_URL, {
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       if (!response.ok) throw new Error('CART API 요청이 실패했습니다.');
 
       const data = await response.json();
       if (data.items.length > 0) {
         const cartId = data.items[0].id;
         const patchResponse = await fetch(`${CART_URL}/${cartId}`, {
+          cache: 'no-cache',
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -666,6 +678,7 @@ cartButton.addEventListener('click', () => {
         await patchResponse.json();
       } else {
         const postResponse = await fetch(CART_URL, {
+          cache: 'no-cache',
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -692,7 +705,12 @@ async function reviewDataRender() {
   const REVIEW_FILTER_URL = `${REVIEW_URL}?filter=(productId%3D'${productId}')`;
   const tabReviews = getNode('#tab_reviews');
   const reviewCount = getNode('.review_count');
-  const reivewGetResponse = await fetch(REVIEW_FILTER_URL);
+  const reivewGetResponse = await fetch(REVIEW_FILTER_URL, {
+    cache: 'no-cache',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
   if (!reivewGetResponse.ok) throw new Error('REVIEW API 통신에 실패했습니다.');
 
@@ -718,7 +736,12 @@ async function reviewDataRender() {
   await data.items.forEach(async (review) => {
     const createDay = String(review.created).slice(0, 10);
 
-    const userResponse = await fetch(`${USER_URL}/${review.userId}`);
+    const userResponse = await fetch(`${USER_URL}/${review.userId}`, {
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     if (!userResponse.ok) throw new Error('USER API 통신에 실패했습니다.');
     const userData = await userResponse.json();
     const userName = `
@@ -755,7 +778,12 @@ async function inquiryDataRender() {
   const USER_URL = import.meta.env.VITE_PH_USERS;
   const INQUIRY_FILTER_URL = `${INQUIRY_URL}?filter=(productId%3D'${productId}')`;
 
-  const inquiryGetResponse = await fetch(INQUIRY_FILTER_URL);
+  const inquiryGetResponse = await fetch(INQUIRY_FILTER_URL, {
+    cache: 'no-cache',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
   if (!inquiryGetResponse.ok)
     throw new Error('INQUIRY API 통신에 실패했습니다.');
@@ -769,15 +797,17 @@ async function inquiryDataRender() {
       <p>등록된 문의가 없습니다.</p>
   </div>`;
 
-  let userName;
-  let createDay;
-  let answerDay;
-  let userData;
+  let userName, createDay, answerDay, userData;
   for (const inquiry of data.items) {
     createDay = String(inquiry.created).slice(0, 10);
     answerDay = String(inquiry.answerDay).slice(0, 10);
 
-    const userResponse = await fetch(`${USER_URL}/${inquiry.userId}`);
+    const userResponse = await fetch(`${USER_URL}/${inquiry.userId}`, {
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     if (!userResponse.ok) throw new Error('USER API 통신에 실패했습니다.');
     userData = await userResponse.json();
     userName = `
@@ -888,10 +918,7 @@ async function inquiryDataRender() {
     function secretCheck(userName, createDay) {
       inquiryTitle.forEach((title) => {
         if (title.getAttribute('data-secret') == 'true') {
-          if (
-            userData.id == sessionStorage.getItem('userId') ||
-            userData.id === '2u0lzbadzcsuqg0'
-          ) {
+          if (userData.id == userId || userData.id === '2u0lzbadzcsuqg0') {
             return;
           } else {
             let content = title.nextElementSibling;
