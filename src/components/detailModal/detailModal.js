@@ -1,7 +1,5 @@
-import { getNode } from '/src/lib/detail/index.js';
-
-const dialog = getNode('dialog');
-const resetButton = getNode('[type="reset"]');
+const dialog = document.querySelector('dialog');
+const resetButton = document.querySelector('[type="reset"]');
 
 function closeModal() {
   dialog.close();
