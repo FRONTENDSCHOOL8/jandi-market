@@ -1,18 +1,10 @@
-/*--------------------------------------------------------------------------*/
-/*    하트 클릭 시, localStorage에 상태( true, false ) 저장하여 .active 구현하기 */
-/*--------------------------------------------------------------------------*/
+import { updateHeartIcon } from './updateHeartIcon';
 
 export function wishListChecked(productId, wishList, iconHeart) {
   let productWish = JSON.parse(localStorage.getItem(productId) || 'false');
-  function updateHeartIcon() {
-    iconHeart.setAttribute(
-      'href',
-      `/public/icon/_sprite.svg#Heart${productWish ? '-active' : ''}`
-    );
-  }
-  updateHeartIcon();
 
-  wishList.addEventListener('click', () => {
+  updateHeartIcon(iconHeart, productWish);
+  function wishToggle() {
     productWish = !productWish;
     wishList.dataset.wish = String(productWish);
 
@@ -22,6 +14,7 @@ export function wishListChecked(productId, wishList, iconHeart) {
       localStorage.removeItem(productId);
     }
 
-    updateHeartIcon();
-  });
+    updateHeartIcon(iconHeart, productWish);
+  }
+  wishList.addEventListener('click', wishToggle);
 }

@@ -1,13 +1,15 @@
 import {
+  getNode,
+  getNodes,
+  accordion,
   loginCheck,
   updateCart,
   setActiveTab,
   wishListChecked,
   insertAfterBegin,
+  insertBeforeEnd,
   accumulatePoints,
-  reviewDataRender,
   removeIsActiveTab,
-  inquiryDataRender,
   generateInfoSection,
   calculateTotalPrice,
 } from '/src/lib/detail/index.js';
@@ -19,13 +21,13 @@ const productId = window.location.hash.slice(1);
 const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
 const PRODUCT_URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
 
-const wishList = document.querySelector('.wish_list');
-const iconHeart = document.querySelector('.icon_heart');
-const totalPrice = document.querySelector('.total_price');
-const loginPoint = document.querySelectorAll('.login_point');
-const productQuantity = document.querySelector('.product_quantity');
-const quantityDecrease = document.querySelector('.quantity_decrease');
-const quantityIncrease = document.querySelector('.quantity_increase');
+const wishList = getNode('.wish_list');
+const iconHeart = getNode('.icon_heart');
+const totalPrice = getNode('.total_price');
+const loginPoint = getNodes('.login_point');
+const productQuantity = getNode('.product_quantity');
+const quantityDecrease = getNode('.quantity_decrease');
+const quantityIncrease = getNode('.quantity_increase');
 
 /* -------------------------------------------------------------------------- */
 /*                                   데이터바인딩                               */
@@ -212,9 +214,9 @@ async function displayProductDetails() {
     /* -------------------------------------------------------------------------- */
     /*                                     모달창                                  */
     /* -------------------------------------------------------------------------- */
-    const reviewButton = document.querySelector('.review_button');
-    const inquiryButton = document.querySelector('.inquiry_button');
-    const submitButton = document.querySelector('[type="submit"]');
+    const reviewButton = getNode('.review_button');
+    const inquiryButton = getNode('.inquiry_button');
+    const submitButton = getNode('[type="submit"]');
 
     function clickedShowModal() {
       const dialog = detailModal.children[1];
@@ -222,13 +224,13 @@ async function displayProductDetails() {
       dialog.classList.remove('modal_hidden');
     }
 
-    const desc = document.querySelector('#desc');
-    const virtualPlaceholder = document.querySelector('.virtual_placeholder');
-    const textLength = document.querySelector('.text_length');
+    const desc = getNode('#desc');
+    const virtualPlaceholder = getNode('.virtual_placeholder');
+    const textLength = getNode('.text_length');
 
     const MAX_LENGTH = 5000;
     function closeModal() {
-      const dialog = document.querySelector('dialog');
+      const dialog = getNode('dialog');
 
       dialog.close();
       dialog.classList.add('modal_hidden');
@@ -270,15 +272,11 @@ async function displayProductDetails() {
         updateTextUI();
 
         // 모달의 DOM 요소
-        const ModalTitle = document.querySelector('.modal_title');
-        const ModalProduct = document.querySelector('.modal_product');
-        const modalContentTitle = document.querySelector(
-          '.modal_content_title'
-        );
-        const virtualPlaceholder = document.querySelector(
-          '.virtual_placeholder'
-        );
-        const secretCheckClass = document.querySelector('.secret_check');
+        const ModalTitle = getNode('.modal_title');
+        const ModalProduct = getNode('.modal_product');
+        const modalContentTitle = getNode('.modal_content_title');
+        const virtualPlaceholder = getNode('.virtual_placeholder');
+        const secretCheckClass = getNode('.secret_check');
 
         // 모달 초기 내용 업데이트
         ModalTitle.innerHTML = `
@@ -466,11 +464,11 @@ async function displayProductDetails() {
           >
         </label>
       </fieldset>`;
-        const closeButton = document.querySelector('.close_button');
+        const closeButton = getNode('.close_button');
         closeButton.addEventListener('click', closeModal);
         submitButton.addEventListener('click', () => {
-          const inquiryTitle = document.querySelector('#inquiry_title');
-          const secretCehckBox = document.querySelector('#secretCheck');
+          const inquiryTitle = getNode('#inquiry_title');
+          const secretCehckBox = getNode('#secretCheck');
           if (title === '후기 작성하기') {
             async function modalFetch() {
               try {
@@ -551,9 +549,9 @@ displayProductDetails();
 /*                                     탭기능                                  */
 /* -------------------------------------------------------------------------- */
 
-const tabList = document.querySelector('[role="tablist"]');
-const tabs = tabList.querySelectorAll('[role="tab"]');
-const tabPanel = document.querySelectorAll('[role="tabpanel"]');
+const tabList = getNode('[role="tablist"]');
+const tabs = getNodes('[role="tab"]', tabList);
+const tabPanel = getNodes('[role="tabpanel"]');
 
 const tabListPostions = 1320;
 const tabPositions = [1400, 3040, 4380, 5100];
@@ -602,7 +600,7 @@ tabList.addEventListener('click', moveScrollToTab);
 /*                                   장바구니 담기                              */
 /* -------------------------------------------------------------------------- */
 
-const cartButton = document.querySelector('.cart_button');
+const cartButton = getNode('.cart_button');
 
 const CART_URL = import.meta.env.VITE_PH_CART;
 const FILTER_URL = `${CART_URL}?filter=(userId%3D'${userId}'%26%26productId%3D'${productId}')`;
@@ -618,7 +616,177 @@ function addCart() {
 
 cartButton.addEventListener('click', addCart);
 
-reviewDataRender(productId);
-inquiryDataRender(productId);
+async function reviewDataRender() {
+  const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
+  const USER_URL = import.meta.env.VITE_PH_USERS;
+  const reviewList = getNode('.review_list');
+  const tabReviews = getNode('#tab_reviews');
+  const reviewCount = getNode('.review_count');
+  const REVIEW_FILTER_URL = `${REVIEW_URL}?filter=(productId%3D'${productId}')`;
+
+  const reivewGetResponse = await fetch(REVIEW_FILTER_URL);
+
+  if (!reivewGetResponse.ok) throw new Error('REVIEW API 통신에 실패했습니다.');
+
+  const data = await reivewGetResponse.json();
+
+  reviewCount.textContent = `총 ${data.items.length}개`;
+  tabReviews.textContent = `후기 ( ${data.items.length} )`;
+
+  const initialTemplate = /* html */ `
+    <div
+      class="items-center gap-5 py-10 border-b border-b-gray-100 flex_column"
+    >
+      <svg
+        class="text-gray-100"
+        width="48"
+        height="48"
+        aria-hidden="true"
+      >
+        <use href="/icon/_sprite.svg#Notice"></use>
+        </svg>
+        <p>따뜻한 첫 후기를 기다리고 있어요.</p>
+        </div>`;
+  await data.items.forEach(async (review) => {
+    const createDay = String(review.created).slice(0, 10);
+
+    const userResponse = await fetch(`${USER_URL}/${review.userId}`);
+    if (!userResponse.ok) throw new Error('USER API 통신에 실패했습니다.');
+    const userData = await userResponse.json();
+    const userName = `
+    ${userData.name[0]}${'*'.repeat(userData.name.length - 2)}${
+      userData.name[2]
+    }`;
+
+    const reviewTemplate = /* html */ `
+      <div class="review_user_post_structure">
+        <div class="review_member">
+          <span class="best_badge">베스트</span>
+          <span class="purple_badge">퍼플</span>
+          <span class="self-start">${userName}</span>
+        </div>
+        <div class="review_user_post_contents">
+          <h4 class="text_gray_semibold">${review.title}</h4>
+          <p class="leading_160">
+            ${review.contents}
+          </p>
+          <p class="text_gray_semibold">${createDay}</p>
+        </div>
+      </div>`;
+    if (data.items.length === 0) {
+      reviewList.innerHTML = initialTemplate;
+    } else {
+      insertBeforeEnd('.review_list', reviewTemplate);
+    }
+  });
+}
+reviewDataRender();
+
+async function inquiryDataRender() {
+  const inquiryList = document.querySelector('.inquiry_list');
+  const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
+  const USER_URL = import.meta.env.VITE_PH_USERS;
+  const INQUIRY_FILTER_URL = `${INQUIRY_URL}?filter=(productId%3D'${productId}')`;
+
+  const inquiryGetResponse = await fetch(INQUIRY_FILTER_URL);
+
+  if (!inquiryGetResponse.ok)
+    throw new Error('INQUIRY API 통신에 실패했습니다.');
+
+  const data = await inquiryGetResponse.json();
+
+  console.log(data);
+
+  const initialTemplate = /* html */ `
+    <div
+      class="items-center gap-5 py-10 border-b border-b-gray-100 flex_column"
+    >
+      <p>등록된 문의가 없습니다.</p>
+  </div>`;
+  inquiryList.innerHTML = '';
+
+  for (const inquiry of data.items) {
+    const createDay = String(inquiry.created).slice(0, 10);
+    const answerDay = String(inquiry.answerDay).slice(0, 10);
+
+    const userResponse = await fetch(`${USER_URL}/${inquiry.userId}`);
+    if (!userResponse.ok) throw new Error('USER API 통신에 실패했습니다.');
+    const userData = await userResponse.json();
+    const userName = `
+    ${userData.name[0]}${'*'.repeat(userData.name.length - 2)}${
+      userData.name[2]
+    }`;
+
+    const inquiryTemplate = /* html */ `<div>
+                <h2
+                  class="inquiry_title"
+                  aria-expanded="false"
+                  data-secret="${inquiry.secret}"
+                >
+                  <button class="flex font-semibold border-b border-b-gray-100">
+                    <div class="inquiry_table_subject">${inquiry.title}</div>
+                    <div class="table_width100">${userName}</div>
+                    <time datetime="${createDay}" class="table_width100">
+                      ${createDay}
+                    </time>
+                    ${
+                      inquiry.answerStatus
+                        ? `<div class="table_width100 text-primary font-semibold">
+                      답변 완료
+                    </div>`
+                        : `<div class="table_width100">
+                      답변 대기
+                    </div>`
+                    }
+                  </button>
+                </h2>
+                <div class="inquiry_content" aria-hidden="true" hidden>
+                  <div class="question inquiry_contents_layout">
+                    <span>
+                      <svg width="24" height="24" aria-hidden="true">
+                        <use href="/icon/_sprite.svg#Question"></use>
+                      </svg>
+                    </span>
+                    <p class="inquiry_contents_question">
+                      ${inquiry.question}
+                    </p>
+                  </div>
+                  <div class="answer inquiry_contents_layout">
+                    <span>
+                      <svg width="24" height="24" aria-hidden="true">
+                        <use href="/icon/_sprite.svg#Answer"></use>
+                      </svg>
+                    </span>
+                    <div class="inquiry_contents_answer">
+                      <p class="text-content">
+                        ${inquiry.answer ? inquiry.answer : '답변 대기중입니다'}
+                      </p>
+                      <time class="text-gray-400" datetime="${
+                        answerDay ? answerDay : ''
+                      }"
+                        >${answerDay ? answerDay : ''}</time
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>`;
+    if (data.items.length === 0) {
+      inquiryList.innerHTML = initialTemplate;
+    } else {
+      insertBeforeEnd('.inquiry_list', inquiryTemplate);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                                     비밀글                                  */
+    /* -------------------------------------------------------------------------- */
+
+    if (data.items.length === 0) {
+      inquiryList.innerHTML = initialTemplate;
+    }
+
+    accordion(inquiry, userName, createDay);
+  }
+}
+inquiryDataRender();
 accumulatePoints(loginPoint, userId);
 wishListChecked(productId, wishList, iconHeart);

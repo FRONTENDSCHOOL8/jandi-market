@@ -1,7 +1,7 @@
-const dialog = document.querySelector('dialog');
-const detailModal = document.querySelector('#detailModal');
-const resetButton = document.querySelector('[type="reset"]');
-const reviewCloseButton = document.querySelector('.review_close_button');
+import { getNode } from '/src/lib/detail/index.js';
+
+const dialog = getNode('dialog');
+const resetButton = getNode('[type="reset"]');
 
 function closeModal() {
   dialog.close();

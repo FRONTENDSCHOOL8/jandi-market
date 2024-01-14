@@ -1,4 +1,5 @@
 export * from './insert.js';
+export * from './getNode.js';
 export * from './activeTab.js';
 export * from './accordion.js';
 export * from './updateCart.js';
@@ -6,7 +7,7 @@ export * from './loginCheck.js';
 export * from './secretCheck.js';
 export * from './toggleContent.js';
 export * from './wishListChecked.js';
-export * from './reviewAndInquiry.js';
+export * from './updateHeartIcon.js';
 export * from './accumulatePoints.js';
 export * from './calcuateTotalPrice.js';
 export * from './generateInfoSection.js';
