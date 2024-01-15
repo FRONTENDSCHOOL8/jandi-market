@@ -3,7 +3,7 @@ export const changeMessage = (newMessage) => {
   messageElement.textContent = newMessage;
 };
 
-export const closeModal = (closeMessage) => {
+export const closeMessageModal = (closeMessage) => {
   const messageBox = document.querySelector('#modal_box');
   const closeButton = document.querySelector('#close_modal');
   const modal = document.querySelector('dialog');
