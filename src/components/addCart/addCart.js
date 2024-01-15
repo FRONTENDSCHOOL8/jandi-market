@@ -1,3 +1,4 @@
+
 // 클릭했을 때 모달 열리기
 export const openModal = (element, className) => {
   element.classList.remove(className);
@@ -47,3 +48,4 @@ itemCounts.forEach(function (itemCount) {
   minusButton.addEventListener('click', clickMinusButton);
   plusButton.addEventListener('click', clickPlusButton);
 });
+
