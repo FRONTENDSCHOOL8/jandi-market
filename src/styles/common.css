@@ -9,3 +9,7 @@
 .w1050 {
   @apply w-[1050px] my-0 mx-auto;
 }
+
+.bubble {
+  @apply bottom-[-103px] right-[-44px] absolute p-5 bg-white border border-gray-200 border-solid w-346pxr h-102pxr  z-[98];
+}
