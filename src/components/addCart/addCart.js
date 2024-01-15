@@ -1,5 +1,6 @@
 const addCartModal = document.querySelector('#addCartModal');
 const closeModalBtn = document.querySelector('#closeModal');
+
 const addBtn = document.querySelector('#addBtn');
 
 // 클릭했을 때 모달 열리기
