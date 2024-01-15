@@ -5,11 +5,13 @@ function setDocumentTitle(title) {
 }
 setDocumentTitle('로그인 - 잔디마켓');
 
+const URL = import.meta.env.VITE_PH_USERS;
+
 let usersData;
 
 // 데이버베이스에 있는 유저 정보 가져오기
 const getUsersData = async () => {
-  const response = await fetch(import.meta.env.VITE_PH_USERS);
+  const response = await fetch(URL);
   if (response.ok) {
     const data = await response.json();
     usersData = data.items;
@@ -50,7 +52,7 @@ const handleLogin = () => {
     (user) => user.email === emailValue && user.password === passwordValue
   );
   if (user) {
-    // 로그인 성공 시 로컬 스토리지에 사용자의 ID 값을 저장 후 메인 페이지로 이동
+    // 로그인 성공 시 세션 스토리지에 사용자의 ID 값을 저장 후 메인 페이지로 이동
     sessionStorage.setItem('userId', user.id);
     window.location.href = '/';
   } else {

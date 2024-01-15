@@ -61,9 +61,9 @@ fetch('/src/components/detailModal/detailModal.html')
 fetch('/src/components/modal/modal.html')
   .then((response) => response.text())
   .then(async (html) => {
-    const ModalElement = document.querySelector('#modal_box');
-    if (!ModalElement) return;
-    ModalElement.innerHTML = html;
+    const modalElement = document.querySelector('#modal_box');
+    if (!modalElement) return;
+    modalElement.innerHTML = html;
     return import('/src/components/modal/modal.js');
   })
   .catch((error) => {
