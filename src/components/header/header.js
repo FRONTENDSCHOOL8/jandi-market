@@ -1,5 +1,3 @@
-import { gsap } from 'gsap';
-
 //쿠폰 이벤트 배너 닫기
 const topBanner = document.querySelector('.top_banner');
 
@@ -19,11 +17,11 @@ const closeBanner = (e) => {
 };
 
 const saveBannerStatus = () => {
-  localStorage.setItem('bannerClosed', 'true');
+  sessionStorage.setItem('bannerClosed', 'true');
 };
 
 const setBannerOnLoad = () => {
-  const bannerClosed = localStorage.getItem('bannerClosed');
+  const bannerClosed = sessionStorage.getItem('bannerClosed');
 
   if (bannerClosed === 'true') {
     topBanner.style.display = 'none';
@@ -31,7 +29,7 @@ const setBannerOnLoad = () => {
 };
 
 topBanner.addEventListener('click', closeBanner);
-window.addEventListener('DOMContentLoaded', setBannerOnLoad);
+setBannerOnLoad();
 
 //스크롤 이벤트 적용
 const scroll = document.querySelector('#header_scroll');
@@ -116,7 +114,6 @@ const showUserInfo = () => {
     }
   });
 };
-// gsap.from('#user_list', { duration: 1, y: '10%', ease: 'power2.inOut' });
 
 // 로그인한 유저 header에 UI 출력
 const showUserName = async () => {
@@ -125,7 +122,7 @@ const showUserName = async () => {
     // userData가 있는 경우 조건문 처리
     if (userData.id) {
       const jandiUser = /*html*/ `
-          <li id="user_name" class="">
+          <li id="user_name">
         <a class="text-sm drop_down" href="#">${userData.name} 님</a>
       </li>
             <li class="line_before">
@@ -176,14 +173,6 @@ const cartBtn = document.querySelector('.cart');
 
 menuBox.addEventListener('mouseover', () => {
   menuList.classList.remove('list_hidden');
-  // listItems.forEach((item, index) => {
-  //   gsap.from(item, {
-  //     y: -20,
-  //     opacity: 0,
-  //     duration: 0.2,
-  //     delay: index * 0.1,
-  //   });
-  // });
 });
 
 menuBox.addEventListener('mouseout', (e) => {
