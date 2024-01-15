@@ -37,9 +37,9 @@ liItems.forEach((li) => {
 
     // 이미지의 src를 변경한다.
     if (button.classList.contains('active')) {
-      image.src = '/public/input/checkBox-isChecked.svg';
+      image.src = '/input/checkBox-isChecked.svg';
     } else {
-      image.src = '/public/input/checkBox.svg';
+      image.src = '/input/checkBox.svg';
     }
   });
 });

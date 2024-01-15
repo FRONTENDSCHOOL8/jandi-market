@@ -81,16 +81,8 @@
 
 #### :white_check_mark: 황승준
 
-<!-- - `Main(메인페이지)`
-  - Swiper 키보드 조작 구현
-  - swiper 에 마우스 접근시 auto play 정지
-  - swiper 슬라이드 첫번째 요소와 마지막 요소에 각각 Prev , Next button 보이지 않도록 설정
-  - 상품 pb 에서 동적으로 연동
-  - 상품 담기 버튼 클릭시 장바구니 담기 모달창 연결
+- `Main(메인페이지)` 
 - `ProductList`
-  - 사이드 필터 목록 구현 (아코디언 사용, 필터 기능구현은 X)
-  - 상품List 개수
-  - 상품List pb 에서 동적으로 연동 -->
 
 ---
 
@@ -223,7 +215,7 @@
 </details>
 
 <details>
-  <summary>네이밍 컨벤션</summary>
+  <summary>:white_check_mark: 네이밍 컨벤션</summary>
   - 이름을 통해 쓰임새를 알 수 있도록 한다. (20자 미만, 직관적으로)<br />
   - 이름의 맨 앞이나 맨 뒤에 언더바(_)를 사용하지 않는다.<br />
   <table>
@@ -307,9 +299,15 @@ feature/담당페이지#이슈번호
 
 <details>
 <summary>디렉터리 구조 보기</summary>
-<pre><code>
+전체 폴더 구성
+<pre>
+<img src=https://cdn.discordapp.com/attachments/1159345472624930840/1196454359823818772/image.png?ex=65b7aff4&is=65a53af4&hm=988591d901dbdd5bcf51ff291647c81a36d591689bdd09a3b54d350028803f68&/>
+</pre>
 
-</code></pre>
+세부 폴더별(Src)
+<pre>
+<img src=https://cdn.discordapp.com/attachments/1159345472624930840/1196502053183299594/image.png?ex=65b7dc5f&is=65a5675f&hm=62665f96d8565e9a217ed392cea876900b522024080cec9c28d5c24023ff0fac&/>
+</pre>
 
 </details>
 
