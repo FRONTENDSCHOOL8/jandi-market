@@ -122,7 +122,7 @@ const showUserName = async () => {
   try {
     const userData = await bringUserInfo(); // 데이터 받아온 후에 변수에 할당
     // userData가 있는 경우 조건문 처리
-    if (userData.id) {
+    if (userData) {
       const jandiUser = /*html*/ `
           <li id="user_name">
         <a class="text-sm drop_down" href="#">${userData.name} 님</a>
