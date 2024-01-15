@@ -1,3 +1,20 @@
+![header](https://capsule-render.vercel.app/api?&section=header&color=random&type=waving&height=200&,100:5F0080&)
+
+## 목차
+
+<ul>
+  <li><a href='#역할-분담-speaking_head'>역할 분담</a></li>
+  <li><a href="#기술-스택-gear">기술 스택</a></li>
+  <li><a href="#cowork-tools-">Cowork Tools</a></li>
+  <li><a href="#프로젝트-초기-세팅-hammer">프로젝트 초기 세팅</a> </li>
+  <li><a href="#컨벤션-bookmark_tabs">컨벤션</a></li>
+  <li><a href="#git-branch-전략-busts_in_silhouette">git branch 전략</a></li>
+  <li><a href="#디렉터리-구조-open_file_folder">디렉터리 구조</a></li>
+  <li><a href="#페이지별-기능-소개-sparkles">페이지별 기능 소개</a></li>
+  <li><a href="#프로젝트-사용법-question">프로젝트 사용법</a></li>
+  <li><a href="#배포-링크-tada">배포 링크</a></li>
+</ul>
+
 ## 프로젝트 소개 :)
 
 마켓컬리 홈페이지를 클론하여 비슷하게 구현한 프로젝트 **Jandi Market** 입니다.
@@ -32,23 +49,6 @@
 | | 1 | 2 | 3<br/>시작 | 4 | 5 | 6 |
 | 7 | 8 | 9 <br/>점검 | 10 | 11 | 12 | 13 |
 | 14 | 15 | 16 <br/>최종 | | | | |
-
- <br/>
-
-## 목차
-
-<ul>
-  <li><a href='#역할-분담-speaking_head'>역할 분담</a></li>
-  <li><a href="#기술-스택-gear">기술 스택</a></li>
-  <li><a href="#cowork-tools-">Cowork Tools</a></li>
-  <li><a href="#프로젝트-초기-세팅-hammer">프로젝트 초기 세팅</a> </li>
-  <li><a href="#컨벤션-bookmark_tabs">컨벤션</a></li>
-  <li><a href="#git-branch-전략-busts_in_silhouette">git branch 전략</a></li>
-  <li><a href="#디렉터리-구조-open_file_folder">디렉터리 구조</a></li>
-  <li><a href="#페이지별-기능-소개-sparkles">페이지별 기능 소개</a></li>
-  <li><a href="#프로젝트-사용법-question">프로젝트 사용법</a></li>
-  <li><a href="#배포-링크-tada">배포 링크</a></li>
-</ul>
 
  <br/>
 
@@ -99,7 +99,7 @@
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
 <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-<img src="https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss">
+<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white">
 <br />
 <img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white"/>
 <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=Prettier&logoColor=white"/>
