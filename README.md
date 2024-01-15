@@ -173,18 +173,12 @@
 ![image](https://user-images.githubusercontent.com/112063987/233780716-bc4e58b3-ac66-40e6-be24-bc04620c7ace.png)
 </details>
 
+
 ## 5. 컨벤션 :bookmark_tabs: 
 <details>
   <summary>:white_check_mark: Gitmoji</summary>
   <table>
   <thead>
-    <tr>
-      <th align="center">Emoji</th>
-      <th align="center">Text</th>
-      <th align="center">Description</th>
-    </tr>
-  </thead>
-  <tbody>
     <tr>
       <td align="center">✨</td>
       <td align="center">[Feat]</td>
@@ -205,7 +199,6 @@
       <td align="center">[Design]</td>
       <td align="center">CSS 등 사용자 UI 디자인 변경</td>
     </tr>
-     
     <tr>
       <td align="center">🎨</td>
       <td align="center">[Modify]</td>
@@ -216,31 +209,26 @@
       <td align="center">[Comment]</td>
       <td align="center">필요한 주석 추가 및 변경</td>
     </tr>
-
     <tr>
       <td align="center">♻️</td>
       <td align="center">[Refactoring]</td>
       <td align="center">리팩토링</td>
     </tr>
-
     <tr>
       <td align="center">📝</td>
       <td align="center">[docs]</td>
       <td align="center">문서 (문서 추가, 수정, 삭제)</td>
     </tr>
-    
     <tr>
       <td align="center">✅</td>
       <td align="center">[Test]</td>
       <td align="center">테스트(테스트 코드 추가, 수정, 삭제)</td>
     </tr>
-
     <tr>
       <td align="center">📦</td>
       <td align="center">[Chore]</td>
       <td align="center">기타 변경사항 (빌드 스크립트 수정 등)</td>
-    </tr>
-    
+    </tr>  
     <tr>
       <td align="center">📘</td>
       <td align="center">[Post]</td>
@@ -251,37 +239,31 @@
       <td align="center">[Rename]</td>
       <td align="center">파일 혹은 폴더명을 수정하거나 옮기는 작업만 하는 경우</td>
     </tr>
-
     <tr>
       <td align="center">🔥</td>
       <td align="center">[Remove]</td>
       <td align="center">파일을 삭제</td>
     </tr>
-
     <tr>
       <td align="center">⏪</td>
       <td align="center">[Revert]</td>
       <td align="center">변경 내용 되돌리기</td>
     </tr>
-
-        <tr>
+    <tr>
       <td align="center">🏛️</td>
       <td align="center">[Build]</td>
       <td align="center">새로운 라이브러리 or 패키지 설치</td>
     </tr>
-
-        <tr>
+    <tr>
       <td align="center">🔀</td>
       <td align="center">[Merge]</td>
       <td align="center">pull 과정 중 현재 commit과 자동 병합이 일어날 때</td>
     </tr>
-
-        <tr>
+    <tr>
       <td align="center">🗃️</td>
       <td align="center">[Database]</td>
       <td align="center">데이터베이스 관련 수정</td>
     </tr>
-    
   </tbody>
 </table>
 </details>
@@ -289,8 +271,7 @@
 <details>
   <summary>:white_check_mark: Commit 컨벤션</summary>
   - Gitmoji 확장프로그램 설치 후 사용<br />
-  - Gitmoji 카테고리에 해당되는 분류 클릭 후, [ 소문자 ] + 이슈내용 + #이슈번호<br />
-  <img src="https://user-images.githubusercontent.com/112063987/233770199-be4785ea-1f46-4e53-844f-1b9474f6a4ad.png" width="350">
+  - Gitmoji 카테고리에 해당되는 분류 클릭 후, 변경내용 작성
 </details>
 
 <details>
@@ -370,139 +351,155 @@ feature/담당페이지#이슈번호
 <details>
 <summary>디렉터리 구조 보기</summary>
 <pre><code>
-├─.github
-│  └─PULL_REQUEST_TEMPLATE.md
-├─.storybook
-├─build
-│  └─static
-├─public
-│  └─assets
-│      ├─cart
-│      ├─common
-│      ├─footer
-│      ├─header
-│      ├─main
-│      ├─modal
-│      ├─product
-│      │  ├─bacon
-│      │  ├─brownrice
-│      │  ├─detergent
-│      │  ├─jukkumi
-│      │  ├─kangnam
-│      │  ├─suncushion
-│      │  ├─tangtang
-│      │  └─ubuho
-│      ├─product-detail
-│      └─product-list
-├─src
-│  ├─app
-│  ├─assets
-│  │  ├─cart
-│  │  ├─common
-│  │  ├─footer
-│  │  ├─header
-│  │  ├─main
-│  │  ├─modal
-│  │  ├─product
-│  │  │  ├─bacon
-│  │  │  ├─brownrice
-│  │  │  ├─detergent
-│  │  │  ├─jukkumi
-│  │  │  ├─kangnam
-│  │  │  ├─suncushion
-│  │  │  ├─tangtang
-│  │  │  └─ubuho
-│  │  ├─product-detail
-│  │  └─product-list
-│  ├─components
-│  │  ├─Accordion
-│  │  ├─AlertBox
-│  │  │  ├─@hook
-│  │  │  ├─@recoil
-│  │  │  └─BtnType
-│  │  │      ├─ConfirmAndCancel
-│  │  │      └─OnlyConfirm
-│  │  ├─Badge
-│  │  ├─Button
-│  │  ├─CartModal
-│  │  ├─CartPopup
-│  │  ├─Counter
-│  │  │  └─@recoil
-│  │  ├─DarkFilter
-│  │  ├─Footer
-│  │  ├─FormInput
-│  │  ├─Header
-│  │  │  ├─@recoil
-│  │  │  ├─@recoilhooks
-│  │  │  ├─HeaderIcon
-│  │  │  ├─HeaderLogoContainer
-│  │  │  ├─HeaderNav
-│  │  │  ├─Member
-│  │  │  ├─SearchInput
-│  │  │  └─Topbanner
-│  │  ├─PageTitle
-│  │  ├─ProductCard
-│  │  ├─ProductDetailPopUp
-│  │  │  ├─PlaceholderInquiry
-│  │  │  ├─PlaceholderReview
-│  │  │  └─Secret
-│  │  ├─RadioButton
-│  │  ├─ScrollToTop
-│  │  ├─StorybookExample
-│  │  └─TransparentFilter
-│  │      └─@recoil
-│  ├─firebase
-│  │  ├─auth
-│  │  └─firestore
-│  ├─hooks
-│  ├─pages
-│  │  ├─Cart
-│  │  │  ├─Address
-│  │  │  ├─CartAccordion
-│  │  │  ├─PaymentPrice
-│  │  │  └─PriceInfo
-│  │  ├─Home
-│  │  │  ├─Carousel
-│  │  │  ├─LineBanner
-│  │  │  └─MainModal
-│  │  │      └─@recoil
-│  │  ├─Layout
-│  │  ├─NotFound
-│  │  ├─ProductDetail
-│  │  │  ├─@hook
-│  │  │  ├─DetailInformation
-│  │  │  ├─ProductDetailMenu
-│  │  │  ├─ProductInformation
-│  │  │  ├─ProductInquiry
-│  │  │  │  ├─@recoil
-│  │  │  │  └─ProductInquiryAccordion
-│  │  │  ├─ProductReview
-│  │  │  │  ├─@recoil
-│  │  │  │  └─ProductReviewList
-│  │  │  └─ProductThumbnail
-│  │  ├─ProductList
-│  │  │  ├─@recoil
-│  │  │  └─@recoilHook
-│  │  ├─SignIn
-│  │  └─SignUp
-│  │      ├─@hook
-│  │      ├─@recoil
-│  │      ├─Agreement
-│  │      ├─BirthInput
-│  │      ├─CheckBox
-│  │      ├─GenderInput
-│  │      ├─Input
-│  │      └─SignUpAddress
-│  ├─store
-│  ├─stories
-│  │  └─assets
-│  ├─styles
-│  ├─theme
-│  ├─types
-│  └─utils
-└─webpack
-    ├─loaders
-    └─plugins
+```
+📦 
+├─ .eslintrc.cjs
+├─ .github
+│  └─ PULL_REQUEST_TEMPLATE.md
+├─ .gitignore
+├─ .gitmessage.txt
+├─ .prettierrc.cjs
+├─ README.md
+├─ index.html
+├─ main.js
+├─ package-lock.json
+├─ package.json
+├─ pocketbase
+│  ├─ CHANGELOG.md
+│  ├─ CHANGELOG_8_15.md
+│  ├─ LICENSE.md
+│  ├─ pb_data
+│  │  ├─ data.db
+│  │  ├─ logs.db
+│  │  └─ types.d.ts
+│  └─ pocketbase.exe
+├─ postcss.config.js
+├─ public
+│  ├─ banner
+│  │  ├─ add cart button.png
+│  │  ├─ banner01.png
+│  │  ├─ banner02.png
+│  │  ├─ banner03.png
+│  │  ├─ banner05.png
+│  │  ├─ image-sample-for-test.jpg
+│  │  └─ line-banner 1.png
+│  ├─ favicon.svg
+│  ├─ icon
+│  │  ├─ Search_gray.svg
+│  │  ├─ _sprite.svg
+│  │  ├─ close_banner.png
+│  │  ├─ down_header.png
+│  │  ├─ isms.png
+│  │  ├─ new.svg
+│  │  ├─ privacy.png
+│  │  ├─ sns_icon.png
+│  │  ├─ tosspayments.png
+│  │  └─ wooriBank.png
+│  ├─ input
+│  │  ├─ checkBox-isChecked.svg
+│  │  ├─ checkBox.svg
+│  │  ├─ minus-disabled.svg
+│  │  ├─ minus.svg
+│  │  ├─ plus-disabled.svg
+│  │  ├─ plus.svg
+│  │  ├─ radio-isSelected.svg
+│  │  ├─ radio.svg
+│  │  ├─ wish-disabled.svg
+│  │  └─ wish.svg
+│  ├─ jandi_logo.svg
+│  └─ menu
+│     ├─ Baby.png
+│     ├─ Bread.png
+│     ├─ Coffee.png
+│     ├─ Cook.png
+│     ├─ Cosmetics.png
+│     ├─ Detergent.png
+│     ├─ Dog.png
+│     ├─ Food.png
+│     ├─ Fruit.png
+│     ├─ Gift.png
+│     ├─ Health.png
+│     ├─ HomeAppliances.png
+│     ├─ Meet.png
+│     ├─ Oil.png
+│     ├─ Salad.png
+│     ├─ SeaFood.png
+│     ├─ Snack.png
+│     ├─ Traditional_Liquor.png
+│     ├─ Travel.png
+│     ├─ Vegetable.png
+│     ├─ Wine.png
+│     └─ shampoo.png
+├─ src
+│  ├─ assets
+│  │  ├─ banner01.png
+│  │  ├─ banner02.png
+│  │  ├─ banner03.png
+│  │  └─ banner05.png
+│  ├─ components
+│  │  ├─ addCart
+│  │  │  ├─ addCart.html
+│  │  │  └─ addCart.js
+│  │  ├─ bubble
+│  │  │  ├─ bubble.js
+│  │  │  └─ index.html
+│  │  ├─ detailModal
+│  │  │  ├─ detailModal.html
+│  │  │  └─ detailModal.js
+│  │  ├─ footer
+│  │  │  ├─ footer.html
+│  │  │  └─ footer.js
+│  │  ├─ header
+│  │  │  ├─ header.html
+│  │  │  ├─ header.js
+│  │  │  └─ headerCategory.html
+│  │  └─ modal
+│  │     ├─ modal.html
+│  │     └─ modal.js
+│  ├─ js
+│  │  └─ include.js
+│  ├─ lib
+│  │  ├─ detail
+│  │  │  ├─ activeTab.js
+│  │  │  ├─ generateInfoSection.js
+│  │  │  ├─ getNode.js
+│  │  │  ├─ index.js
+│  │  │  ├─ insert.js
+│  │  │  └─ updateHeartIcon.js
+│  │  └─ index.js
+│  ├─ pages
+│  │  ├─ cart
+│  │  │  ├─ cart.js
+│  │  │  └─ index.html
+│  │  ├─ login
+│  │  │  ├─ index.html
+│  │  │  └─ login.js
+│  │  ├─ productDetail
+│  │  │  ├─ accordionToggle.js
+│  │  │  ├─ index.html
+│  │  │  └─ productDetail.js
+│  │  ├─ productList
+│  │  │  ├─ index.html
+│  │  │  └─ productList.js
+│  │  └─ register
+│  │     ├─ index.html
+│  │     └─ register.js
+│  └─ styles
+│     ├─ addCart.css
+│     ├─ cart.css
+│     ├─ common.css
+│     ├─ detail.css
+│     ├─ detailModal.css
+│     ├─ font.css
+│     ├─ footer.css
+│     ├─ header.css
+│     ├─ login.css
+│     ├─ register.css
+│     └─ tailwind.css
+├─ tailwind.config.js
+├─ template.html
+└─ vite.config.js
+```
 </code></pre>
 </details>
 
