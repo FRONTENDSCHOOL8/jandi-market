@@ -1,5 +1,5 @@
 import Swiper from 'swiper/bundle';
-import 'swiper/css/bundle';
+import 'swiper/css';
 
 const swiper = new Swiper('.swiper', {
   // 페이지 표시 N / N 으로 커스터마이징
