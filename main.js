@@ -1,5 +1,6 @@
 import Swiper from 'swiper/bundle';
 import 'swiper/css';
+import { openModal, closeModal } from '/src/components/addCart/addCart.js';
 
 const swiper = new Swiper('.swiper', {
   // 페이지 표시 N / N 으로 커스터마이징
@@ -144,8 +145,6 @@ fetch(`${URL}/?filter=(price>=15000)`)
     }
   })
   .then((data) => {
-    console.log(data);
-
     data.items.forEach((item) => {
       const template = /* html */ `
       <li
@@ -185,14 +184,16 @@ fetch(`${URL}/?filter=(price>=15000)`)
 
       recommendedProductList.insertAdjacentHTML('beforeend', template);
       const addCart = document.querySelector('.add_cart');
-      const addCartModal = document.querySelector('#addCart');
-      addCart.addEventListener('click', (e) => {
-        console.log(addCartModal);
-        addCartModal.classList.remove('hidden');
+      const addCartModal = document.querySelector('#addCartModal');
+      addCart.addEventListener('click', () => {
+        openModal(addCartModal, 'modal_hidden');
+      });
+      const closeBtn = document.querySelector('#closeModal');
+      closeBtn.addEventListener('click', () => {
+        closeModal(addCartModal, 'modal_hidden');
       });
     });
   })
-
   .catch((error) => console.log(error));
 
 /* 놓치면 후회할 가격 */
