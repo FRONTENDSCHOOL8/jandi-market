@@ -71,7 +71,6 @@ passwordInput.addEventListener(
   isValidField(pwReg, '#password_error', 'password')
 );
 doubleCheckPassword.addEventListener('input', handleConfirmPassword);
-
 nameInput.addEventListener(
   'input',
   isValidField((value) => value.trim().length > 0, '#name_error', 'name')
