@@ -71,8 +71,7 @@ passwordInput.addEventListener(
   isValidField(pwReg, '#password_error', 'password')
 );
 doubleCheckPassword.addEventListener('input', handleConfirmPassword);
-//   isValidField((value) => value === password.value, '#check_password_error')
-// );
+
 nameInput.addEventListener(
   'input',
   isValidField((value) => value.trim().length > 0, '#name_error', 'name')
@@ -299,7 +298,6 @@ const handleSignup = (e) => {
 
   // 필수 입력 사항이 다 채워졌는지 체크
   const requiredInput = [email, password, name, phone, postNo, address];
-  console.log(requiredInput);
   const confirmAllInput = requiredInput.every((input) => input !== '');
 
   if (!confirmAllInput) {
@@ -330,7 +328,6 @@ const handleSignup = (e) => {
     .then((data) => {
       messageBox.classList.remove('hidden');
       closeMessageModal(`${name}님 잔디 마켓에 가입하신 걸 환영합니다!`);
-      console.log(data);
       window.location.href = '/src/pages/login/';
     })
     .catch((error) => console.error('Error:', error));
