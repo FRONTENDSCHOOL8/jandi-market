@@ -1,12 +1,19 @@
+const addCartModal = document.querySelector('#add_cart_modal');
+const closeModalBtn = document.querySelector('#close_modal');
+
+const addBtn = document.querySelector('#add_btn');
+
 // 클릭했을 때 모달 열리기
-export const openModal = (element, className) => {
-  element.classList.remove(className);
-};
+function openModal() {
+  addCartModal.classList.remove('modal_hidden');
+}
 
 // 취소 버튼 클릭하여 모달 닫기
-export const closeModal = (element, className) => {
-  element.classList.add(className);
-};
+function closeModal() {
+  addCartModal.classList.add('modal_hidden');
+}
+
+closeModalBtn.addEventListener('click', closeModal);
 
 /* -------------------------------------------------------------------------- */
 /*                               상품 수량 증가, 감소 버튼                              */
