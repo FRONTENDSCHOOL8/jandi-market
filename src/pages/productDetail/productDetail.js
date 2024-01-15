@@ -1,3 +1,4 @@
+import { closeMessageModal } from '/src/components/modal/modal.js';
 import {
   getNode,
   getNodes,
@@ -18,9 +19,17 @@ const productId = window.location.hash.slice(1);
 const productQuantity = getNode('.product_quantity');
 const quantityDecrease = getNode('.quantity_decrease');
 const quantityIncrease = getNode('.quantity_increase');
-const URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
-const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
+const messageBox = getNode('#modal_box');
 
+const URL = `${import.meta.env.VITE_PH_PL}/${productId}`;
+const USER_URL = import.meta.env.VITE_PH_USERS;
+const CART_URL = import.meta.env.VITE_PH_CART;
+const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
+const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
+const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
+const REVIEW_FILTER_URL = `${REVIEW_URL}?filter=(productId%3D'${productId}')`;
+const INQUIRY_FILTER_URL = `${INQUIRY_URL}?filter=(productId%3D'${productId}')`;
+const CART_FILTER_URL = `${CART_URL}?filter=(userId%3D'${userId}'%26%26productId%3D'${productId}')`;
 /* -------------------------------------------------------------------------- */
 /*                                   데이터바인딩                               */
 /* -------------------------------------------------------------------------- */
@@ -181,10 +190,10 @@ async function displayProductDetails() {
     function updateQuantity(increase) {
       quantity += increase ? 1 : -1;
       if (quantity <= 1) {
-        quantityDecrease.src = `/public/input/minus-disabled.svg`;
+        quantityDecrease.src = `/input/minus-disabled.svg`;
         quantityDecrease.alt = `수량 감소 비활성화`;
       } else if (quantity > 1) {
-        quantityDecrease.src = `/public/input/minus.svg`;
+        quantityDecrease.src = `/input/minus.svg`;
         quantityDecrease.alt = `수량 감소`;
       }
       calculateTotalPrice();
@@ -257,8 +266,8 @@ async function displayProductDetails() {
 
     reviewButton.addEventListener('click', () => {
       if (!userId) {
-        alert('로그인을 해주세요');
-        location.href = '/src/pages/login/';
+        messageBox.classList.remove('hidden');
+        closeMessageModal('로그인을 해주세요');
       } else {
         clickedShowModal();
         updateTextUI();
@@ -367,7 +376,6 @@ async function displayProductDetails() {
           if (title === '후기 작성하기') {
             async function modalFetch() {
               try {
-                const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
                 const reviewResponse = await fetch(REVIEW_URL, {
                   cache: 'no-cache',
                   method: 'POST',
@@ -399,8 +407,8 @@ async function displayProductDetails() {
 
     inquiryButton.addEventListener('click', () => {
       if (!userId) {
-        alert('로그인을 해주세요');
-        location.href = '/src/pages/login/';
+        messageBox.classList.remove('hidden');
+        closeMessageModal('로그인을 해주세요');
       } else {
         clickedShowModal();
         updateTextUI();
@@ -531,7 +539,6 @@ async function displayProductDetails() {
           if (title === '상품 문의하기') {
             async function modalFetch() {
               try {
-                const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
                 const inquiryResponse = await fetch(INQUIRY_URL, {
                   cache: 'no-cache',
                   method: 'POST',
@@ -642,55 +649,69 @@ tabList.addEventListener('click', moveScrollToTab);
 /* -------------------------------------------------------------------------- */
 
 const cartButton = getNode('.cart_button');
-const CART_URL = import.meta.env.VITE_PH_CART;
-
-const FILTER_URL = `${CART_URL}?filter=(userId%3D'${userId}'%26%26productId%3D'${productId}')`;
 
 cartButton.addEventListener('click', () => {
   async function updateCart() {
     try {
-      const response = await fetch(FILTER_URL, {
-        cache: 'no-cache',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      if (!response.ok) throw new Error('CART API 요청이 실패했습니다.');
-
-      const data = await response.json();
-      if (data.items.length > 0) {
-        const cartId = data.items[0].id;
-        const patchResponse = await fetch(`${CART_URL}/${cartId}`, {
-          cache: 'no-cache',
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            userId,
-            productId,
-            quantity: data.items[0].quantity + quantity,
-          }),
-        });
-
-        if (!patchResponse.ok)
-          throw new Error('Patch API 요청이 실패했습니다.');
-        await patchResponse.json();
+      if (!userId) {
+        messageBox.classList.remove('hidden');
+        closeMessageModal('로그인을 해주세요');
       } else {
-        const postResponse = await fetch(CART_URL, {
+        const response = await fetch(CART_FILTER_URL, {
           cache: 'no-cache',
-          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            userId,
-            productId,
-            quantity,
-          }),
         });
-        if (!postResponse.ok) throw new Error('POST API 요청이 실패했습니다.');
-        await postResponse.json();
+        if (!response.ok) throw new Error('CART API 요청이 실패했습니다.');
+
+        const data = await response.json();
+
+        if (data.items.length > 0) {
+          const cartId = data.items[0].id;
+          const patchResponse = await fetch(`${CART_URL}/${cartId}`, {
+            cache: 'no-cache',
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              userId,
+              productId,
+              quantity: data.items[0].quantity + quantity,
+            }),
+          });
+
+          if (!patchResponse.ok)
+            throw new Error('Patch API 요청이 실패했습니다.');
+          const patchdata = await patchResponse.json();
+          messageBox.classList.remove('hidden');
+
+          closeMessageModal(
+            `이미 담긴 상품입니다.
+            
+            추가로 ${quantity}개 담았습니다.`
+          );
+        } else {
+          const postResponse = await fetch(CART_URL, {
+            cache: 'no-cache',
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              userId,
+              productId,
+              quantity,
+            }),
+          });
+          if (!postResponse.ok)
+            throw new Error('POST API 요청이 실패했습니다.');
+          const postdata = await postResponse.json();
+          messageBox.classList.remove('hidden');
+
+          closeMessageModal(`물건을 ${quantity}개 담았습니다.`);
+        }
       }
     } catch (error) {
       console.error(error);
@@ -700,12 +721,13 @@ cartButton.addEventListener('click', () => {
 });
 
 async function reviewDataRender() {
-  const REVIEW_URL = import.meta.env.VITE_PH_REVIEW;
-  const USER_URL = import.meta.env.VITE_PH_USERS;
-  const REVIEW_FILTER_URL = `${REVIEW_URL}?filter=(productId%3D'${productId}')`;
   const tabReviews = getNode('#tab_reviews');
   const reviewCount = getNode('.review_count');
-  const reivewGetResponse = await fetch(REVIEW_FILTER_URL, {
+  const sort = getNodes('.sort button');
+
+  let reivewGetResponse;
+
+  reivewGetResponse = await fetch(`${REVIEW_FILTER_URL}&sort=+created`, {
     cache: 'no-cache',
     headers: {
       'Content-Type': 'application/json',
@@ -774,16 +796,15 @@ async function reviewDataRender() {
 reviewDataRender();
 
 async function inquiryDataRender() {
-  const INQUIRY_URL = import.meta.env.VITE_PH_INQUIRY;
-  const USER_URL = import.meta.env.VITE_PH_USERS;
-  const INQUIRY_FILTER_URL = `${INQUIRY_URL}?filter=(productId%3D'${productId}')`;
-
-  const inquiryGetResponse = await fetch(INQUIRY_FILTER_URL, {
-    cache: 'no-cache',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  const inquiryGetResponse = await fetch(
+    `${INQUIRY_FILTER_URL}&sort=+created`,
+    {
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 
   if (!inquiryGetResponse.ok)
     throw new Error('INQUIRY API 통신에 실패했습니다.');
