@@ -1,6 +1,6 @@
 <div class="w-full bg-white shadow-md z_index">
   <!-- Top Banner -->
-  <div class="flex hidden top_banner bg-primary">
+  <div class="flex top_banner bg-primary">
     <div class="text-white w-[1050px] mx-auto flex_center py-1">
       <span class="font-light w-[63rem] text-center"
         >지금 가입하고 인기상품 <strong class="font-medium">100원</strong>에
@@ -24,11 +24,11 @@
     <div class="flex items-center self-stretch justify-between my-7">
       <!-- Middle-left -->
       <div class="flex items-center gap-3">
-        <h2 class="w-82pxr h-42pxr">
+        <h1 class="w-82pxr h-42pxr">
           <a href="/">
             <img src="/jandi_logo.svg" alt="잔디마켓" />
           </a>
-        </h2>
+        </h1>
         <a class="font-semibold text-heading-large text-primary" href="/"
           >잔디마켓</a
         >
@@ -55,6 +55,7 @@
 
       <div class="relative">
         <div
+          id="searchBar"
           class="absolute flex items-center justify-between px-5 py-3 border rounded-md top-[-30px] right-[-100px] w-400pxr border-primary"
         >
           <label for="search" class="sr-only">검색어를 입력해주세요.</label>
@@ -64,7 +65,7 @@
             type="text"
             placeholder="검색어를 입력해주세요"
           />
-          <button type="button" aria-label="검색">
+          <button type="button" class="absolute right-4" aria-label="검색">
             <svg role="img" width="36" height="36" viewBox="0 0 36 36">
               <use href="/icon/_sprite.svg#Search" />
             </svg>
@@ -74,7 +75,10 @@
 
       <!-- Middle-Right -->
       <div class="relative">
-        <ul class="absolute right-[-5px] top-[-15px] flex items-center gap-5">
+        <ul
+          id="icons"
+          class="absolute right-[-5px] top-[-15px] flex items-center gap-5"
+        >
           <li>
             <button>
               <svg role="button" width="36" height="36" viewBox="0 0 36 36">
@@ -99,54 +103,59 @@
         </ul>
       </div>
     </div>
+  </div>
+  <!-- Header-Bottom -->
 
-    <!-- Header-Bottom -->
-
-    <div id="header_scroll" class="z-50 flex justify-between w-full scroll">
-      <div class="flex items-center justify-center h-56pxr">
-        <!-- Bottom-left -->
-        <div id="menu_list_box" class="h-full">
-          <button
-            type="button"
-            id="menu_button"
-            class="flex items-center h-full gap-3 hover:text-primary"
-          >
-            <svg role="button" width="16" height="14" viewBox="0 0 16 14">
-              <use href="/icon/_sprite.svg#Hamburger" />
-            </svg>
-            카테고리
-          </button>
-          <ul
-            class="absolute bg-white border list_hidden w-247pxr"
-            id="menu_list"
-          ></ul>
-        </div>
-        <!-- Bottom-center -->
-        <ul class="flex ml-20">
-          <li class="product_nav">
-            <a href="/src/pages/productList/">신상품</a>
-          </li>
-          <li class="product_nav">
-            <a href="/src/pages/productList/">베스트</a>
-          </li>
-          <li class="product_nav">
-            <a href="/src/pages/productList/">알뜰쇼핑</a>
-          </li>
-          <li class="product_nav">
-            <a href="/src/pages/productList/">특가/혜택</a>
-          </li>
-        </ul>
-        <!-- Bottom-right -->
-
-        <a
-          id="delivery"
-          class="px-2 py-1 text-sm font-normal text-gray-500 border border-gray-300 rounded-xl"
-          href="#"
+  <div
+    id="header_scroll"
+    class="z-50 flex items-center justify-center w-full scroll"
+  >
+    <div
+      id="categoryBox"
+      class="flex items-center justify-between h-56pxr w-[1050px]"
+    >
+      <!-- Bottom-left -->
+      <div id="menu_list_box" class="h-full">
+        <button
+          type="button"
+          id="menu_button"
+          class="flex items-center h-full gap-3 hover:text-primary"
         >
-          <span class="text-primary">샛별·낮</span>
-          배송안내
-        </a>
+          <svg role="button" width="16" height="14" viewBox="0 0 16 14">
+            <use href="/icon/_sprite.svg#Hamburger" />
+          </svg>
+          카테고리
+        </button>
+        <ul
+          class="absolute bg-white border z_index list_hidden w-247pxr"
+          id="menu_list"
+        ></ul>
       </div>
+      <!-- Bottom-center -->
+      <ul class="flex ml-20">
+        <li class="product_nav nav_li">
+          <a href="/src/pages/productList/">신상품</a>
+        </li>
+        <li class="product_nav nav_li">
+          <a href="/src/pages/productList/">베스트</a>
+        </li>
+        <li class="product_nav nav_li">
+          <a href="/src/pages/productList/">알뜰쇼핑</a>
+        </li>
+        <li class="product_nav nav_li">
+          <a href="/src/pages/productList/">특가/혜택</a>
+        </li>
+      </ul>
+      <!-- Bottom-right -->
+
+      <a
+        id="delivery"
+        class="px-2 py-1 text-sm font-normal text-gray-500 border border-gray-300 rounded-xl"
+        href="#"
+      >
+        <span class="text-primary">샛별·낮</span>
+        배송안내
+      </a>
     </div>
   </div>
 </div>

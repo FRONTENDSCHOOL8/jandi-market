@@ -16,13 +16,17 @@
 
 .scroll {
   width: 100%;
-  z-index: 99;
+  z-index: 80;
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 4px 0px;
 }
 
 .product_nav {
   @apply flex justify-center leading-5 text-center w-150pxr hover:cursor-pointer hover:underline hover:text-primary;
+}
+
+.product_nav_scroll {
+  @apply flex justify-center leading-5 text-center w-100pxr hover:cursor-pointer hover:underline hover:text-primary;
 }
 
 .list_hidden {
@@ -38,7 +42,7 @@
 }
 
 .z_index {
-  z-index: 999;
+  z-index: 90;
 }
 
 .drop_down::after {
@@ -47,4 +51,22 @@
   height: 0.3125rem;
   margin-left: 0.3125rem;
   margin-bottom: 0.3125rem;
+}
+
+.scroll_search {
+  width: 242px;
+  height: 36px;
+  position: fixed;
+  z-index: 90;
+  top: 10px;
+  left: calc(50% + 100px);
+  border: none;
+  background-color: #f9f9f9;
+}
+
+.scroll_icon {
+  position: fixed;
+  z-index: 90;
+  top: 10px;
+  left: calc(50% + 380px);
 }

@@ -10,7 +10,7 @@ fetch('/src/components/header/header.html')
     console.error(error);
   });
 
-fetch('/src/components/header/headerCategory/headerCategory.html')
+fetch('/src/components/header/headerCategory.html')
   .then((response) => response.text())
   .then((html) => {
     const headerCategoryElement = document.querySelector('#menu_list');
@@ -52,6 +52,18 @@ fetch('/src/components/detailModal/detailModal.html')
     if (!detailModalElement) return;
     detailModalElement.innerHTML = html;
     return import('/src/components/detailModal/detailModal.js');
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+fetch('/src/components/modal/modal.html')
+  .then((response) => response.text())
+  .then(async (html) => {
+    const loginModalElement = document.querySelector('#modal_box');
+    if (!loginModalElement) return;
+    loginModalElement.innerHTML = html;
+    return import('/src/components/modal/modal.js');
   })
   .catch((error) => {
     console.error(error);

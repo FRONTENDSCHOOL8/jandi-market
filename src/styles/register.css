@@ -1,9 +1,9 @@
 .inline_flex {
-  @apply inline-flex items-center w-full px-5 py-5;
+  @apply inline-flex w-full px-5 py-5;
 }
 
 .input_style {
-  @apply w-333pxr h-11 px-4 py-0.5 border rounded border-gray-300  leading-6 text-gray-400 outline-none;
+  @apply w-333pxr h-11 px-4 py-0.5 border rounded border-gray-300  leading-6 outline-none;
 }
 
 .button_style {
@@ -32,4 +32,14 @@
 
 .label_check {
   @apply pl-2 relative before:absolute before:left-[-24px] before:content-[''] before:inline-block before:w-6 before:h-6 before:bg-[url(/input/checkBox.svg)] peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)];
+}
+
+.error {
+  @apply mt-1 overflow-hidden text-xs font-medium text-info-error;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
