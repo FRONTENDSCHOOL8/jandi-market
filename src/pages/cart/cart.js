@@ -1,5 +1,3 @@
-
-
 /* -------------------------------------------------------------------------- */
 /*                       장바구니 리스트 카테고리 클릭 시 토글 버튼                        */
 /* -------------------------------------------------------------------------- */
@@ -15,27 +13,10 @@ productCategory.forEach(function (category) {
   });
 });
 
-
-
 /* -------------------------------------------------------------------------- */
 /*                            장바구니에 담긴 상품 데이터 바인딩                          */
 /* -------------------------------------------------------------------------- */
 
-/* 
-  0. userid 비교해서 해당 useid에 넣기  
-  1. cart에 담긴 상품의 id, quatity 값 받아오기
-  2. cart에서 가져온 id로 product에서 데이터 받아오기
-  3. 상품 분류, packaging 값
-  4. 상품 정보 main_image, brand, name 값
-  5. 상품의 가격 price, discount 값
-  
-  로그인한 유저 정보
-  로그인 -> 로컬 스토리지에 담김 -> 
-  
-  users, pl, cart, img 
-*/
-
-// sessionStorage.setItem('userId', userId);
 const userId = sessionStorage.getItem('userId');
 const CART_URL = `${import.meta.env.VITE_PH_CART}`;
 const imgURL = `https://jandi-market.pockethost.io/api/files/`;
@@ -45,80 +26,81 @@ const categoryNormal = document.querySelector('.category_normal');
 const productRefrigerator = document.querySelector('.product_refrigerated');
 const productFrozen = document.querySelector('.product_frozen');
 const productNormal = document.querySelector('.product_normal');
-
+const cartNoneList = document.querySelector('.cart_nonelist');
 
 function comma(number) {
   number=(Math.floor(number/10) * 10);
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-console.log(comma(333333));
+function beforeComma(text){
+  const words = text.split(",");
+  let result = "";
+  for(let i = 0; i < words.length; i++){
+    if(i === words.length - 1){
+      words[i] = words[i].slice(0, -1);
+    }
+    result = result + words[i];
+  }
+  return result
+}
+
 
 async function cartPage() {
-  try {const response = await fetch(CART_URL)
-    // .then((response) => {
-    if (!response.ok) {
-      // return response.json();
-      throw new Error ('REVIEW API 통신에 실패했습니다.');
+  try {
+    const reviewResponse = await fetch(CART_URL);
+    if (!reviewResponse.ok) {
+      throw new Error('REVIEW API 통신에 실패했습니다.');
     }
     const reviewData = await reviewResponse.json();
-    // })
-    // ((data) => { 
     const dataItem = reviewData.items;
     const userCartData = [];
-    
-    
+
     dataItem.forEach((items) => {
-      console.log(items.userId);
-      if(items.userId === userId){
-        userCartData.push({productId:items.productId, quantity:items.quantity});
+      if (items.userId === userId) {
+        userCartData.push({
+          productId: items.productId,
+          quantity: items.quantity,
+        });
       }
     });
     
-    // return userCartData;
+    let count = 0;
     
-    // })
-    // .then((datas)=>{
-    console.log(datas);
-    datas.forEach((data) => {
-      // data.productId;
-      // data.quantity;
-      
-      // const productURL = `/${data.productId}`;
+    for await (const data of userCartData){
       const productURL = `${import.meta.env.VITE_PH_PL}/${data.productId}`;
-      // const imgURL = `${import.meta.env.VITE_PH_IMG}/${COLLECTIONS_ID}/${productId}`;
-      console.log(productURL);
-      
-      let count = 1;
-      
-      const productDataList = fetch(productURL)
-      // .then((response) => {
-        if (!productDataList.ok) {
-              // console.log( response.json());
-          throw new Error ('REVIEW API 통신에 실패했습니다.');
-        }
-        const productDatas = productDataList.json();
-        console.log(productDatas);
-      // })
-      (({packaging, discount, price, brand, name, collectionId, id, main_image }) => {
-        
-        console.log(packaging);
-        
-        // discount, price, brand, name, collectionId, id, main_image
-        const discountPrice = price - (price * discount) / 100;
-        
-        const template = /* html */ `
+
+      const productDataList = await fetch(productURL);
+      if (!productDataList.ok) {
+        throw new Error("REVIEW API 통신에 실패했습니다.");
+      }
+      const productDatas = await productDataList.json();
+
+      let {
+        id,
+        packaging,
+        discount,
+        price,
+        brand,
+        name,
+        collectionId,
+        main_image,
+      } = productDatas;
+
+      const discountPrice = price - (price * discount) / 100;
+
+      const template = /* html */ `
         <li class="flex items-center py-5 item">
                       <fieldset class="item_select">
                         <input
                           type="checkbox"
                           name="cartList"
-                          id="itemSelect${count++}"
-                          class="input_checkbox_nonlabel peer top-17pxr"
+                          id="itemSelect${++count}"
+                          class="input_checkbox_nonlabel peer top-17pxr relative z-1"
                         />
                         <label
-                          for="itemSelect${count++}"
-                          class="checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
+                          for="itemSelect${count}"
+                          class="check_label checkbox_before_nonlabel peer-checked:before:bg-[url(/input/checkBox-isChecked.svg)]"
                         >
                           <span class="sr-only">목록 선택</span>
                         </label>
@@ -130,8 +112,8 @@ async function cartPage() {
                           class="w-60pxr h-78pxr"
                         />
                       </a>
-                      <a href="/src/pages/productDetail/index.html" class="product_name">
-                        <span class="block mr-5 w-345pxr"
+                      <a href="/src/pages/productDetail/index.html" class="product_name mr-5">
+                        <span class="block w-345pxr"
                           >${brand}${name}</span
                         >
                       </a>
@@ -157,9 +139,11 @@ async function cartPage() {
                       <div
                         class="flex flex-col items-end font-bold product_price w-130pxr"
                       >
-                        <span class="after_discount">${comma(discountPrice*data.quantity)}원</span>
+                        <span class="after_discount">${comma(
+                          discountPrice * data.quantity
+                        )}원</span>
                         <span class="before_discount price_delete"
-                          >${price*data.quantity}원</span
+                          >${price * data.quantity}원</span
                         >
                       </div>
                       <button class="product_delete ml-10pxr">
@@ -175,39 +159,53 @@ async function cartPage() {
                         </svg>
                       </button>
                     </li>`;
-        
-                    if(packaging === "냉동"){
-                      categoryFrozen.classList.remove('hidden');
-                      categoryFrozen.classList.add('block');
-                      productFrozen.insertAdjacentHTML('beforeend', template);
-                    } else if (packaging === "냉장"){
-                      categoryRefrigerated.classList.remove('hidden');
-                      categoryRefrigerated.classList.add('block');
-                      productRefrigerator.insertAdjacentHTML('beforeend', template);
-                    } else if(packaging === "상온") {
-                      categoryNormal.classList.remove('hidden');
-                      categoryNormal.classList.add('block');
-                      productNormal.insertAdjacentHTML('beforeend', template);
-                    }
-      
-      })
-      
-    });
-        
-    /* -------------------------------------------------------------------------- */
-    /*                               상품 수량 증가, 감소 버튼                              */
-    /* -------------------------------------------------------------------------- */
-    const itemCounts = document.querySelectorAll('.item_count');
-    // const minusButtons = document.querySelectorAll('.minus');
-    // const plusButtons = document.querySelectorAll('.plus');
 
-    itemCounts.forEach(function (itemCount) {
-      itemCount.innerText = '1';
+      if (packaging === "냉동") {
+        cartNoneList.classList.add("hidden");
+        categoryFrozen.classList.remove("hidden");
+        categoryFrozen.classList.add("block");
+        productFrozen.insertAdjacentHTML("beforeend", template);
+      } else if (packaging === "냉장") {
+        cartNoneList.classList.add("hidden");
+        categoryRefrigerated.classList.remove("hidden");
+        categoryRefrigerated.classList.add("block");
+        productRefrigerator.insertAdjacentHTML("beforeend", template);
+      } else if (packaging === "상온") {
+        cartNoneList.classList.add("hidden");
+        categoryNormal.classList.remove("hidden");
+        categoryNormal.classList.add("block");
+        productNormal.insertAdjacentHTML("beforeend", template);
+      }
+    }
+
+    const itemCounts = document.querySelectorAll(".item_count");
+    const afterDiscount = document.querySelectorAll(".after_discount");
+    const beforeDiscount = document.querySelectorAll(".before_discount");
+    
+    let value = 0;
+
+    for(let value = 0; value < itemCounts.length; value++){
+      const itemCount = itemCounts[value];
       let quantity = Number(itemCount.innerText);
 
       const minusButton = itemCount.previousElementSibling;
       const plusButton = itemCount.nextElementSibling;
 
+      const discountPrice = Number(beforeComma(afterDiscount[value].innerText) / quantity);
+      const beforeDiscountPrice = Number(beforeComma(beforeDiscount[value].innerText) / quantity);  
+     
+      const nextPrice = minusButton.parentElement.nextElementSibling;
+      const changeminusPrice = nextPrice.querySelector('.after_discount');
+      const reMinusPrice = nextPrice.querySelector('.before_discount');
+      
+      if(discountPrice === beforeDiscountPrice){
+        reMinusPrice.classList.add('hidden');
+      }
+      
+      if(quantity > 1){
+        minusButton.style.backgroundImage = 'url(/input/minus.svg)';
+        minusButton.disabled = false;
+      }
       // 마이너스 버튼 클릭 이벤트
       function clickMinusButton() {
         // 1이상일 때 감소
@@ -217,37 +215,42 @@ async function cartPage() {
         }
         // 1일 때 disabled
         if (quantity === 1) {
-          minusButton.style.backgroundImage = 'url(/input/minus-disabled.svg)';
+          minusButton.style.backgroundImage = "url(/input/minus-disabled.svg)";
           minusButton.disabled = true;
         }
+          changeminusPrice.innerText = `${comma(discountPrice * quantity)}원`;
+          reMinusPrice.innerText = `${comma(beforeDiscountPrice * quantity)}원`;
+        
       }
 
       // 플러스 버튼 클릭 이벤트
       function clickPlusButton() {
-        quantity++;
+        ++quantity;
         itemCount.innerText = quantity;
-        minusButton.style.backgroundImage = 'url(/input/minus.svg)';
+        minusButton.style.backgroundImage = "url(/input/minus.svg)";
         minusButton.disabled = false;
+        
+        changeminusPrice.innerText = `${comma(discountPrice * quantity)}원`;
+        
+        reMinusPrice.innerText = `${comma(beforeDiscountPrice * quantity)}원`;
       }
-
-      minusButton.addEventListener('click', clickMinusButton);
-      plusButton.addEventListener('click', clickPlusButton);
-    });
-    
+      
+      minusButton.addEventListener("click", clickMinusButton);
+      plusButton.addEventListener("click", clickPlusButton);
+      
+    };
     /* -------------------------------------------------------------------------- */
     /*                            cart list 전체선택 구현                            */
     /* -------------------------------------------------------------------------- */
 
-    const checkBoxes = document.querySelectorAll('input[name="cartList"]');  // 전체 체크박스
-    const itemSelectAll = document.querySelector('input[id="itemAllSelect"]');   // select all 체크박스
-    const itemSelectAll2 = document.querySelector('input[id="itemAllSelect2"]');  // select all 하단 체크박스
-
-    console.log(checkBoxes);
+    const checkBoxes = document.querySelectorAll('input[name="cartList"]'); // 전체 체크박스
+    const itemSelectAll = document.querySelector('input[id="itemAllSelect"]'); // select all 체크박스
+    const itemSelectAll2 = document.querySelector('input[id="itemAllSelect2"]'); // select all 하단 체크박스
 
     // 전체선택 옆 상품 갯수, 체크된 상품 갯수 표시
-    const cartProduct = document.querySelectorAll('.item');
-    const checkedCount = document.querySelectorAll('.checked_count');
-    const allCheckCount = document.querySelectorAll('.all_check_count');
+    const cartProduct = document.querySelectorAll(".item");
+    const checkedCount = document.querySelectorAll(".checked_count");
+    const allCheckCount = document.querySelectorAll(".all_check_count");
 
     allCheckCount.forEach((items) => {
       items.innerText = cartProduct.length;
@@ -291,9 +294,9 @@ async function cartPage() {
         itemSelectAll2.checked = true;
 
         // 카테고리가 hidden 상태일 때 전체선택 클릭 시 이벤트
-        const cartProductList = document.querySelectorAll('.product_list');
+        const cartProductList = document.querySelectorAll(".product_list");
         cartProductList.forEach((check) => {
-          check.classList.remove('hidden');
+          check.classList.remove("hidden");
         });
       }
       if (!e.target.checked) {
@@ -319,44 +322,14 @@ async function cartPage() {
     }
 
     checkBoxes.forEach((checkbox) => {
-      checkbox.addEventListener('click', unSelectAll);
+      checkbox.addEventListener("click", unSelectAll);
     });
 
-    itemSelectAll.addEventListener('click', selectAll);
-    itemSelectAll2.addEventListener('click', selectAll);
+    itemSelectAll.addEventListener("click", selectAll);
+    itemSelectAll2.addEventListener("click", selectAll);
+  } catch {
+    (error) => console.log(error);
+  }
+}
 
-  } 
-  // })
-  catch{(error) => console.log(error)};
-
-};
-console.log(comma(333333));
-
-cartPage()
-  
-  
-  
-  
-  
-  
-
-/* -------------------------------------------------------------------------- */
-/*                             상품 수량 증감에 따른 가격 변동                             */
-/* -------------------------------------------------------------------------- */
-
-/* 가격 수량 증가, 감소하면
-  1. 상품의 price에 수량 곱하기
-
-*/
-
-
-/* -------------------------------------------------------------------------- */
-/*                                  장바구니 삭제하기                                 */
-/* -------------------------------------------------------------------------- */
-
-/*
-  1. 선택삭제하면 cart에서 삭제되기
-  2. list 우측 x버튼으로 삭제하기
-*/
-
-
+cartPage();
