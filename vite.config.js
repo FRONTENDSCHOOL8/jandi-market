@@ -20,6 +20,12 @@ export default defineConfig({
           __dirname,
           'src/components/detailModal/detailModal.html'
         ),
+        headerCategory: resolve(
+          __dirname,
+          'src/components/header/headerCategory.html'
+        ),
+        modal: resolve(__dirname, 'src/components/modal/modal.html'),
+        bubble: resolve(__dirname, 'src/components/bubble/index.html'),
       },
     },
   },

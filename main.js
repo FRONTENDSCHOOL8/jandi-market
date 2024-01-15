@@ -127,7 +127,7 @@ swiperContainer.addEventListener('mouseleave', function () {
 });
 
 /* -------------------------------------------------------------------------- */
-/*    ////////////////////////////////////////////////////////////////////    */
+/*    ///////////////////pb에서 상품 데이터동적 랜더링/////////////////////    */
 /* -------------------------------------------------------------------------- */
 const URL = `https://jandi-market.pockethost.io/api/collections/products/records`;
 const imgURL = `https://jandi-market.pockethost.io/api/files/n9omag8299xjizq`;
@@ -159,9 +159,10 @@ fetch(`${URL}/?filter=(price>=15000)`)
             item.name
           }" />
         </a>
-        <button class="mt-6pxr" type="button">
-          <img src="/banner/add cart button.png" alt="" />
+        <button class="add_cart mt-6pxr" type="button">
+          <img src="/banner/add_cart_button.png" alt="" />
         </button>
+        
         <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
           >${item.desc}</span
         >
@@ -183,8 +184,15 @@ fetch(`${URL}/?filter=(price>=15000)`)
     `;
 
       recommendedProductList.insertAdjacentHTML('beforeend', template);
+      const addCart = document.querySelector('.add_cart');
+      const addCartModal = document.querySelector('#addCart');
+      addCart.addEventListener('click', (e) => {
+        console.log(addCartModal);
+        addCartModal.classList.remove('hidden');
+      });
     });
   })
+
   .catch((error) => console.log(error));
 
 /* 놓치면 후회할 가격 */
