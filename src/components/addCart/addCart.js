@@ -56,4 +56,3 @@ itemCounts.forEach(function (itemCount) {
   minusButton.addEventListener('click', clickMinusButton);
   plusButton.addEventListener('click', clickPlusButton);
 });
-

@@ -39,9 +39,12 @@
     <header id="header"></header>
     <main class="flex flex-col items-center justify-center size-full">
       <!-- 최상단 Slider Main Container -->
+      <!-- 최상단 Slider Main Container -->
       <div class="swiper max-w-[1920px] min-w-[1050px] w-screen min-h-370pxr">
         <!-- Swiper Wrapper, Swiper라이브러리가 slide를 제어하고 관리하기 위한 필수 -->
+        <!-- Swiper Wrapper, Swiper라이브러리가 slide를 제어하고 관리하기 위한 필수 -->
         <div class="swiper-wrapper">
+          <!-- Swiper 각 슬라이드 -->
           <!-- Swiper 각 슬라이드 -->
           <div
             class="flex items-center justify-center overflow-hidden swiper-slide"
@@ -84,13 +87,10 @@
         <div
           class="text-white swiper-pagination w-55pxr h-23pxr bg-black bg-opacity-15 flex justify-center items-center z-10 rounded-full font-normal absolute bottom-25pxr left-[70%] text-16pxr"
         ></div>
-
-        <!-- Swiper PREV & NEXT 버튼  -->
-        <div
-          class="absolute hidden transition-opacity duration-500 left-300pxr botton-800pxr swiper-button-prev"
-        >
+        <!-- Swiper Prev & Next 버튼  -->
+        <div class="relative z-10 hidden swiper-button-prev">
           <svg
-            class="rotate-180"
+            class="absolute bottom-150pxr left-[20%]"
             role="img"
             width="60"
             height="60"
@@ -99,9 +99,17 @@
             <use href="/icon/_sprite.svg#Arrow_slide" />
           </svg>
         </div>
-        <div
-          class="absolute hidden transition-opacity duration-500 swiper-button-next right-300pxr"
-        ></div>
+        <div class="relative z-10 hidden swiper-button-next">
+          <svg
+            class="absolute rotate-180 bottom-150pxr right-[20%]"
+            role="img"
+            width="60"
+            height="60"
+            viewBox="0 0 52 52"
+          >
+            <use href="/icon/_sprite.svg#Arrow_slide" />
+          </svg>
+        </div>
       </div>
       <section
         class="w-[1050px] h-608pxr flex flex-col items-start py-40pxr gap-28pxr box-content overflow-hidden"
@@ -117,7 +125,7 @@
           <ul
             class="flex items-start justify-between w-full list-none recommended_product_list swiper-wrapper"
           >
-            <!-- 동적 pb 데이터 랜더링 부분 -->
+            <!-- 동적 pb 데이터 랜더링 삽입부 -->
           </ul>
           <!-- Swiper 페이지 표시 -->
           <div class="swiper2-pagination"></div>
