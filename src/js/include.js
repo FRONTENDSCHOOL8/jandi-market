@@ -81,27 +81,3 @@ fetch('/src/components/bubble/index.html')
   .catch((error) => {
     console.error(error);
   });
-
-fetch('/src/components/bubble/index.html')
-  .then((response) => response.text())
-  .then(async (html) => {
-    const bubbleElement = document.querySelector('#addBubble');
-    if (!bubbleElement) return;
-    bubbleElement.innerHTML = html;
-    return import('/src/components/bubble/bubble.js');
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
-fetch('/src/components/bubble/index.html')
-  .then((response) => response.text())
-  .then(async (html) => {
-    const bubbleElement = document.querySelector('#addBubble');
-    if (!bubbleElement) return;
-    bubbleElement.innerHTML = html;
-    return import('/src/components/bubble/bubble.js');
-  })
-  .catch((error) => {
-    console.error(error);
-  });
