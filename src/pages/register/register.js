@@ -1,3 +1,7 @@
+import { closeModal } from '/src/components/modal/modal.js';
+
+const messageBox = document.querySelector('#modal_box');
+
 function setDocumentTitle(title) {
   document.title = title;
 }
@@ -101,7 +105,8 @@ const phoneButton = document.querySelector('#is_duplicated_phone');
 const checkValue = (value) => {
   let userValue = userData[value];
   if (!userValue) {
-    alert(`${value}를 입력해주세요.`);
+    messageBox.classList.remove('hidden');
+    closeModal(`${value}를 입력해주세요.`);
     return false; // userValue가 없는 경우 false를 반환
   }
   return true; // userValue가 있는 경우 true를 반환
@@ -113,9 +118,11 @@ const checkDuplication = (value) => {
   let isDuplicated = usersData.some((user) => user[value] === userValue);
 
   if (isDuplicated) {
-    alert(`이미 사용중인 ${value}입니다.`);
+    messageBox.classList.remove('hidden');
+    closeModal(`이미 사용중인 ${value}입니다.`);
   } else {
-    alert(`사용 가능한 ${value}입니다.`);
+    messageBox.classList.remove('hidden');
+    closeModal(`사용 가능한 ${value}입니다.`);
   }
 };
 
@@ -297,7 +304,8 @@ const handleSignup = (e) => {
   const confirmAllInput = requiredInput.every((input) => input !== '');
 
   if (!confirmAllInput) {
-    alert('모든 필수 입력 사항을 채워주세요.');
+    messageBox.classList.remove('hidden');
+    closeModal('모든 필수 입력 사항을 채워주세요.');
     return;
   }
 
@@ -321,7 +329,8 @@ const handleSignup = (e) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      alert(`${name}님 잔디 마켓에 가입하신 걸 환영합니다!`);
+      messageBox.classList.remove('hidden');
+      closeModal(`${name}님 잔디 마켓에 가입하신 걸 환영합니다!`);
       console.log(data);
       window.location.href = '/src/pages/login/';
     })

@@ -60,7 +60,7 @@ fetch('/src/components/detailModal/detailModal.html')
 fetch('/src/components/modal/modal.html')
   .then((response) => response.text())
   .then(async (html) => {
-    const loginModalElement = document.querySelector('#login_error');
+    const loginModalElement = document.querySelector('#modal_box');
     if (!loginModalElement) return;
     loginModalElement.innerHTML = html;
     return import('/src/components/modal/modal.js');
