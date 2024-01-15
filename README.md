@@ -1,19 +1,22 @@
 ![header](https://capsule-render.vercel.app/api?&section=header&color=random&type=waving&height=200&,100:5F0080&)
 
-## 목차
-
-<ul>
-  <li><a href='#역할-분담-speaking_head'>역할 분담</a></li>
-  <li><a href="#기술-스택-gear">기술 스택</a></li>
-  <li><a href="#cowork-tools-">Cowork Tools</a></li>
-  <li><a href="#프로젝트-초기-세팅-hammer">프로젝트 초기 세팅</a> </li>
-  <li><a href="#컨벤션-bookmark_tabs">컨벤션</a></li>
-  <li><a href="#git-branch-전략-busts_in_silhouette">git branch 전략</a></li>
-  <li><a href="#디렉터리-구조-open_file_folder">디렉터리 구조</a></li>
-  <li><a href="#페이지별-기능-소개-sparkles">페이지별 기능 소개</a></li>
-  <li><a href="#프로젝트-사용법-question">프로젝트 사용법</a></li>
-  <li><a href="#배포-링크-tada">배포 링크</a></li>
-</ul>
+<details>
+  <summary>목차 🐾</summary>
+  <ul>
+    <li><a href='#프로젝트-소개-'>프로젝트 소개 😃</a></li>
+    <li><a href='#팀원-소개-'>팀원 소개 🌸</a></li>
+    <li><a href='#프로젝트-일정-'>프로젝트 일정 😦</a></li>
+    <li><a href='#역할-분담-speaking_head'>역할 분담 🗣️</a></li>
+    <li><a href="#기술-스택-gear">기술 스택 ⚙️</a></li>
+    <li><a href="#cowork-tools-">Cowork Tools 🦁</a></li>
+    <li><a href="#컨벤션-bookmark_tabs">컨벤션 📑</a></li>
+    <li><a href="#git-branch-전략-busts_in_silhouette">git branch 전략 👥</a></li>
+    <li><a href="#디렉터리-구조-open_file_folder">디렉터리 구조 📂</a></li>
+    <li><a href="#페이지별-기능-소개-sparkles">페이지별 기능 소개 ✨</a></li>
+    <li><a href="#프로젝트-사용법-question">프로젝트 사용법 ❓</a></li>
+    <li><a href="#배포-링크-tada">배포 링크 🎉</a></li>
+  </ul>
+</details>
 
 ## 프로젝트 소개 :)
 
@@ -24,7 +27,7 @@
 
  <br/>
 
-## 팀원소개 🌸
+## 팀원 소개 🌸
 
 #### :loudspeaker: 팀명: F4
 
@@ -78,7 +81,7 @@
 
 #### :white_check_mark: 황승준
 
-- `Main(메인페이지)`
+<!-- - `Main(메인페이지)`
   - Swiper 키보드 조작 구현
   - swiper 에 마우스 접근시 auto play 정지
   - swiper 슬라이드 첫번째 요소와 마지막 요소에 각각 Prev , Next button 보이지 않도록 설정
@@ -87,11 +90,12 @@
 - `ProductList`
   - 사이드 필터 목록 구현 (아코디언 사용, 필터 기능구현은 X)
   - 상품List 개수
-  - 상품List pb 에서 동적으로 연동
+  - 상품List pb 에서 동적으로 연동 -->
 
- <br/>
- 
-## 기술 스택 :gear: 
+---
+
+## 기술 스택 :gear:
+
 <!--
 <img src="https://img.shields.io/badge/텍스트-컬러코드?style=for-the-badge&logo=아이콘이름&logoColor=white"/>
 -->
@@ -280,7 +284,7 @@
 
 ## git branch 전략 :busts_in_silhouette:
 
-저희팀은 git branch 전략으로, 각 레포지토리로 `fork` 하는 방식을 선택했습니다.
+`git branch` 전략으로, 각 레포지토리로 `fork` 하는 방식을 선택했습니다.
 
 - `main`
   - 제품을 배포하는 브랜치 입니다.<br />
@@ -297,161 +301,16 @@
 feature/담당페이지#이슈번호
 ```
 
+<!-- 이거 구할 수 있으면 넣어주세요 -->
+
 ## 디렉터리 구조 :open_file_folder:
 
 <details>
 <summary>디렉터리 구조 보기</summary>
 <pre><code>
-```
-📦 
-├─ .eslintrc.cjs
-├─ .github
-│  └─ PULL_REQUEST_TEMPLATE.md
-├─ .gitignore
-├─ .gitmessage.txt
-├─ .prettierrc.cjs
-├─ README.md
-├─ index.html
-├─ main.js
-├─ package-lock.json
-├─ package.json
-├─ pocketbase
-│  ├─ CHANGELOG.md
-│  ├─ CHANGELOG_8_15.md
-│  ├─ LICENSE.md
-│  ├─ pb_data
-│  │  ├─ data.db
-│  │  ├─ logs.db
-│  │  └─ types.d.ts
-│  └─ pocketbase.exe
-├─ postcss.config.js
-├─ public
-│  ├─ banner
-│  │  ├─ add cart button.png
-│  │  ├─ banner01.png
-│  │  ├─ banner02.png
-│  │  ├─ banner03.png
-│  │  ├─ banner05.png
-│  │  ├─ image-sample-for-test.jpg
-│  │  └─ line-banner 1.png
-│  ├─ favicon.svg
-│  ├─ icon
-│  │  ├─ Search_gray.svg
-│  │  ├─ _sprite.svg
-│  │  ├─ close_banner.png
-│  │  ├─ down_header.png
-│  │  ├─ isms.png
-│  │  ├─ new.svg
-│  │  ├─ privacy.png
-│  │  ├─ sns_icon.png
-│  │  ├─ tosspayments.png
-│  │  └─ wooriBank.png
-│  ├─ input
-│  │  ├─ checkBox-isChecked.svg
-│  │  ├─ checkBox.svg
-│  │  ├─ minus-disabled.svg
-│  │  ├─ minus.svg
-│  │  ├─ plus-disabled.svg
-│  │  ├─ plus.svg
-│  │  ├─ radio-isSelected.svg
-│  │  ├─ radio.svg
-│  │  ├─ wish-disabled.svg
-│  │  └─ wish.svg
-│  ├─ jandi_logo.svg
-│  └─ menu
-│     ├─ Baby.png
-│     ├─ Bread.png
-│     ├─ Coffee.png
-│     ├─ Cook.png
-│     ├─ Cosmetics.png
-│     ├─ Detergent.png
-│     ├─ Dog.png
-│     ├─ Food.png
-│     ├─ Fruit.png
-│     ├─ Gift.png
-│     ├─ Health.png
-│     ├─ HomeAppliances.png
-│     ├─ Meet.png
-│     ├─ Oil.png
-│     ├─ Salad.png
-│     ├─ SeaFood.png
-│     ├─ Snack.png
-│     ├─ Traditional_Liquor.png
-│     ├─ Travel.png
-│     ├─ Vegetable.png
-│     ├─ Wine.png
-│     └─ shampoo.png
-├─ src
-│  ├─ assets
-│  │  ├─ banner01.png
-│  │  ├─ banner02.png
-│  │  ├─ banner03.png
-│  │  └─ banner05.png
-│  ├─ components
-│  │  ├─ addCart
-│  │  │  ├─ addCart.html
-│  │  │  └─ addCart.js
-│  │  ├─ bubble
-│  │  │  ├─ bubble.js
-│  │  │  └─ index.html
-│  │  ├─ detailModal
-│  │  │  ├─ detailModal.html
-│  │  │  └─ detailModal.js
-│  │  ├─ footer
-│  │  │  ├─ footer.html
-│  │  │  └─ footer.js
-│  │  ├─ header
-│  │  │  ├─ header.html
-│  │  │  ├─ header.js
-│  │  │  └─ headerCategory.html
-│  │  └─ modal
-│  │     ├─ modal.html
-│  │     └─ modal.js
-│  ├─ js
-│  │  └─ include.js
-│  ├─ lib
-│  │  ├─ detail
-│  │  │  ├─ activeTab.js
-│  │  │  ├─ generateInfoSection.js
-│  │  │  ├─ getNode.js
-│  │  │  ├─ index.js
-│  │  │  ├─ insert.js
-│  │  │  └─ updateHeartIcon.js
-│  │  └─ index.js
-│  ├─ pages
-│  │  ├─ cart
-│  │  │  ├─ cart.js
-│  │  │  └─ index.html
-│  │  ├─ login
-│  │  │  ├─ index.html
-│  │  │  └─ login.js
-│  │  ├─ productDetail
-│  │  │  ├─ accordionToggle.js
-│  │  │  ├─ index.html
-│  │  │  └─ productDetail.js
-│  │  ├─ productList
-│  │  │  ├─ index.html
-│  │  │  └─ productList.js
-│  │  └─ register
-│  │     ├─ index.html
-│  │     └─ register.js
-│  └─ styles
-│     ├─ addCart.css
-│     ├─ cart.css
-│     ├─ common.css
-│     ├─ detail.css
-│     ├─ detailModal.css
-│     ├─ font.css
-│     ├─ footer.css
-│     ├─ header.css
-│     ├─ login.css
-│     ├─ register.css
-│     └─ tailwind.css
-├─ tailwind.config.js
-├─ template.html
-└─ vite.config.js
-```
+
 </code></pre>
+
 </details>
 
 <!-- 수정해야됨 -->
@@ -459,190 +318,25 @@ feature/담당페이지#이슈번호
 ## 페이지별 기능 소개 :sparkles:
 
 <details>
-  <summary>:white_check_mark: Home (메인 페이지)</summary>
+  <summary> Home (메인 페이지)</summary>
   <table>
     <tr>
       <td width="300">
-        <h4>:round_pushpin:메인페이지 모달창</h4>
+        <h4>메인페이지 모달창</h4>
         <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 오늘 하루 안보기를 쿠키를 이용해서 구현했습니다. 사용자가 오늘 하루 안보기 버튼을 클릭하면, 쿠키가 생성되고, 만료시간으로 설정한 하루 뒤에, 쿠키는 사라집니다.
-</p>
+        <p></p>
       </td>
       <td width="700">
         <img src="https://user-images.githubusercontent.com/73629761/234293310-a902203e-c059-438b-a322-63914408986f.gif"/>
       </td>        
     </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:상단 헤더</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 로그인 상태에 따라 버튼이 달라짐</p>
-        <p>2) 스크롤을 일정 위치 만큼 내릴 시, 헤더가 상단에 고정됩니다.</p>
-        <p>3) 카테고리 영역 hover 시, 리스트가 나타납니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234286874-b71fa6ad-10c6-4bf9-90ae-fdb94932b692.gif"/>
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:메인 캐로셀</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 메인 배너를 확인할 수 있습니다.</p>
-        <p>2) 자동으로 슬라이더가 넘어가며, 정지 버튼을 눌러 멈출 수 있습니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234286984-e73c4e17-f339-4db8-be50-df5c7bb10b92.gif"/>
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:상품 캐로셀과 상품 UI</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 상품이 4개씩 보여집니다.</p>
-        <p>2) 상품 카드를 누를시 상품 디테일 페이지로 넘어갑니다.</p>
-        <p>3) 장바구니 버튼을 누를 시 장바구니 모달이 나타납니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234287323-d662eb4e-298c-42d6-a9e2-72a2cbdb2315.gif"/>
-      </td>
-    </tr>
   </table>
 </details>
 <details>
-  <summary>:white_check_mark: SignIn (로그인 페이지)</summary>
+  <summary>SignIn (로그인 페이지)</summary>
   <table>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:로그인하기</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 이메일 비밀번호를 입력하고, 로그인 버튼을 누르면 로그인 된 후 메인페이지로 이동합니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234283008-0fb9c951-2153-467a-ac72-10b735267c03.gif"/>    
-      </td>        
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:회원가입 페이지로 이동</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 회원가입 버튼을 누르면 회원가입 페이지로 이동합니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234283234-6682c934-d766-465e-bff3-14041314dda4.gif"/>
-      </td>        
-    </tr>
-  </table>
-</details>
-<details>
-  <summary>:white_check_mark: SignUp (회원가입 페이지) </summary>
-  <table>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:이메일 유효성 검사 및 중복 확인</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 이메일 폼 입력 형식을 체크합니다.</p>
-        <p>2) 회원가입을 하려면 반드시 중복 확인 버튼을 눌러 중복 검사를 해야합니다.</p>
-        <p>3) 이메일 폼 우측 중복 확인 버튼을 눌러 이미 가입한 이메일인지 확인합니다.</p>
-        <p>4) 중복된 이메일이 없으면 '사용가능한 이메일입니다.' 라고 알려주며 중복 확인 버튼이 비활성화 됩니다.</p>
-        <p>5) 다시 이메일을 입력하면 중복 확인 버튼이 재활성화 되며 다시 중복 검사를 해야 회원가입 할 수 있습니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234276612-0092bf26-f3e9-41fb-a6ac-53ef272e1c82.gif"/>
-      </td>        
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:비밀번호 유효성 검사</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 비밀번호 폼 입력 형식을 체크합니다. (영문/숫자/특수문자(공백 제외)만 허용하며, 2개 이상 조합, 최소 10자리)</p>
-        <p>2) 비밀번호를 입력하면 비밀번호 확인도 검사가 진행됩니다. </p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234276692-4a22acdb-cbb0-4837-9025-37bc6dbc8464.gif"/>
-      </td>        
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:비밀번호 확인 유효성 검사</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 비밀번호 확인이 비밀번호와 동일한지 검사합니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234277671-38355e57-87b0-4745-93d8-5869b3bcf8b9.gif"/>
-      </td>        
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:이름 유효성 검사</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 이름 폼 입력 형식을 체크합니다. (최소 2글자 이상)</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234277552-71d60060-f085-47ed-af0e-56449de32f2f.gif"/>
-      </td>        
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:휴대폰 유효성 검사</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 휴대폰 폼 입력 형식을 체크합니다. (숫자 11자)</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234279659-8cb74691-193d-407d-8253-8e0bfd80bbba.gif"/>
-      </td>        
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:주소 검색</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 주소를 검색합니다.</p>
-        <p>2) 카카오 주소 api를 사용합니다.</p>
-        <p>3) 검색에 성공하면 검색된 주소를 보여줍니다.</p>
-        <p>4) 재검색 버튼을 눌러 다서 검색 가능합니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234279731-d673592a-9968-4673-b630-c652ed905874.gif"/>
-      </td>        
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:성별 선택</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 성별을 선택합니다. 기본 값은 '선택안함' 입니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234279810-e5f07e11-82f7-45db-9c2e-6663fb8817eb.gif"/>
-      </td>        
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:생년월일 입력</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 년도는 1900 ~ 2099 사이의 숫자만 입력가능합니다.</p>
-        <p>1) 태어난 월은 1~12 사이의 숫자만 입력가능합니다.</p>
-        <p>1) 태어난 일은 1~31 사이의 숫자만 입력가능합니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234279910-ac5b0024-5dac-4794-a7b5-25b9085f78e3.gif"/>
-      </td>        
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:이용약관동의</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 회원가입을 하려면 필수 이용약관에 모두 동의해야합니다.</p>
-        <p>1) "전체 동의합니다." 체크박스를 체크하면 모든 약관을 체크합니다.</p>
-      </td>
-      <td width="700">
-         <img src="https://user-images.githubusercontent.com/73629761/234280076-89c32e2b-b33c-4768-a1a0-705982594eed.gif"/>
-      </td>       
-    </tr>
-   </table>
-</details>
-<details>
-  <summary>:white_check_mark: ProductDetail (제품 상세 페이지)</summary>
-  <table>
+   <!-- 
+    예시코드
     <tr>
       <td width="300">
         <h4>:round_pushpin:장바구니에 상품 담기</h4>
@@ -654,244 +348,83 @@ feature/담당페이지#이슈번호
       <td width="700">
         <img src="https://user-images.githubusercontent.com/112063987/233832485-05d91ecd-2128-4272-9ed5-66c4722fa709.gif"/>
       </td>        
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:네비게이션바</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 네비게이션 탭을 클릭하면 해당 영역으로 스크롤해서 이동합니다.</p>
-        <p>2) 후기탭의 경우, 후기의 개수가 중괄호안에 표시됩니다.</p>
-        <p>3) 스크롤 위치를 감지해서 탭의 스타일이 변합니다.</p>
-        <p>4) 네비게이션바는 스크롤 할 때, 작은헤더 밑에 고정됩니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234244321-b10b36c8-f985-403f-8c4a-9a39d6d46118.gif"/>
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:상품후기 작성</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>※ 상품후기/문의 작성 팝업창은 공용컴포넌트를 사용합니다.</p>
-        <p>1) 후기가 한개도 없다면, `따뜻한 첫 후기를 기다리고 있어요`라고 뜹니다.</p>
-        <p>2) 상품후기 작성하기의 경우, 보고 있는 상품의 상품명이 자동으로 제목에 설정됩니다.</p>
-        <p>3) 공지글의 경우, 아코디언으로 펼쳐볼 수 있습니다.</p>
-        <p>4) 후기글들은 최신순으로 정렬됩니다.</p>
-        <p>5) 후기글 작성자는 이름의 일부가 *로 가려져서 표시됩니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234200667-9b6520b5-1edb-46b3-9d91-431b396a2171.gif"/>     
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:상품문의 작성</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>※ 상품후기/문의 작성 팝업창은 공용컴포넌트를 사용합니다.</p>
-        <p>1) 상품문의 작성하기의 경우, 상품후기 작성하기와 다르게 비밀글로 설정할 수 있습니다.</p>
-        <p>2) 자신이 작성한 비밀글은 확인할 수 있습니다.(오른쪽 gif에서, 자신이 쓴 비밀글은 접근가능하나, 로그아웃한 순간 비밀글에 접근하지 못하는 걸 확인할 수 있습니다)</p>
-        <p>3) (다른사람이 작성한)비밀글에 접근하려고 했을때는 "비밀글입니다."라고 경고창이 뜹니다.</p>
-        <p>4) 상품문의의 경우, 모든 글들을 아코디언으로 펼쳐볼 수 있습니다.</p>
-        <p>5) 문의글들은 최신순으로 정렬됩니다.</p>
-        <p>6) 문의글 작성자는 이름의 일부가 *로 가려져서 표시됩니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234207067-ba5ce8e6-4ffb-4e29-97d7-84c31477a744.gif"/>
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:상품후기/문의 페이지네이션 버튼</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 후기의 경우 3개씩, 문의의 경우 6개씩 한 페이지에 보여집니다.</p>
-        <p>2) 첫 페이지일때는 이전페이지로 이동하는 버튼이 비활성화됩니다.</p>
-        <p>3) 마지막 페이지일때는 다음페이지로 이동하는 버튼이 비활성화됩니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234201782-4b1e27b8-9ff2-4d7b-9fa4-5ce3cb38dc66.gif"/>   
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:로그인한 사용자만 상품후기/문의 작성 가능</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 로그인하지 않은 사용자가 상품후기/문의 작성을 하려는 경우, "로그인하셔야 본 서비스를 이용하실 수 있습니다."라는 경고창이 뜨고, 확인버튼을 누르면, 로그인 페이지로 이동합니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234202639-f9e51840-87ad-4212-b5d4-7ffb0923116e.gif"/>
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin: 특정 상품에만 해당하는 문의/리뷰글 보이기</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 사용자가 특정 상품 페이지에서 리뷰나 문의 글을 등록할 때, 현재 보고 있는 상품의 product id가 파이어스토어에 함께 저장되게 하였고, 저장된 product id를 이용해, 선택한 상품에 대한 후기나 문의글들만 나열되게 구현하였습니다.</p>
-        <p>2) 오른쪽 gif에서, '소금빵'제품페이지에서 작성한 후기글들은 '브라우니'제품페이지에서는 볼 수 없는 걸 확인할 수 있습니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234249542-b26497b9-b06e-4c14-b465-94789c3b9545.gif"/>      
-      </td>
-    </tr>
+    </tr> -->
   </table>
 </details>
 <details>
-  <summary>:white_check_mark: ProductList (제품 나열 페이지)</summary>
+  <summary>SignUp (회원가입 페이지) </summary>
   <table>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin: 스크롤위치에 반응하는 레이아웃</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 스크롤을 일정 위치 만큼 내릴 시, 레이아웃이 고정됩니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234263066-0c70283a-e7b2-4a83-9855-137e2bf19fa9.gif"/>      
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin: 필터 기능 구현</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 체크박스 클릭시 조건에 맞는 상품들을 렌더링 및 필터 유형별 클릭 시, 중복적으로 조건에 맞는 상품들을 렌더링합니다.</p>
-        <p>2) 카테고리별로 필터링 가능합니다.</p>
-        <p>3) 브랜드별로 필터링 가능합니다.</p>
-        <p>4) 가격별로 필터링 가능합니다.</p>
-        <p>5) 혜택별로 필터링 가능합니다.</p>
-        <p>6) 유형별로 필터링 가능합니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234264909-858f4746-18ac-48c0-aad8-849783e5c7ac.gif"/>   
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin: 필터링 초기화 기능 구현</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 초기화 버튼을 클릭하면, 필터링된 상태가 초기화됩니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234267155-de0e762d-58d5-4191-b694-e8769c659990.gif"/>      
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin: 특정 조건 시, 텍스트를 띄우는 레이아웃</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 조건에 맞는 상품이 없다면, '선택하신 필터와 일치하는 상품이 없습니다.'텍스트가 있는 레이아웃을 띄웁니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234268187-76670879-bbcc-41cb-bcf4-24892e01d880.gif"/> 
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin: 가격순 정렬기능 구현</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 높은가격 또는 낮은가격순으로 정렬 가능합니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234268813-440a8811-ffa6-40d1-90ae-5e2eda250ec1.gif"/> 
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin: 페이지네이션 구현</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 한 페이지당 15개의 상품을 보여줍니다.</p>
-        <p>2) 최대 10페이지까지 늘어납니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234291652-69704732-6018-416a-a983-31f065fa8acb.gif"/> 
-      </td>
-    </tr>
-  </table>
-</details>
-<details>
-  <summary>:white_check_mark: Cart (장바구니 페이지)</summary>
-  <table>
+    <!-- 
+    예시코드
     <tr>
       <td width="300">
         <h4>:round_pushpin:장바구니에 상품 담기</h4>
         <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 장바구니 모달 또는 상품 페이지에서 상품을 수량과 함꼐 저장할 수 있습니다.</p>
-        <p>2) 수량은 1개 이상 상품의 재고 수량 이하 만큼 선택 할 수 있습니다. </p>
+        <p>1) -/+버튼을 통해 상품 수량을 선택하고, 장바구니에 담기 버튼을 누르면 해당 상품이 장바구니(Cart)에 담깁니다.</p>
+        <p>2) count값이 1일때는 마이너스 버튼이 비활성화됩니다.</p>
+        <p>3) count값은 재고량을 초과할 수 없습니다. (오른쪽 gif속, 탱탱쫄면의 재고량은 11개입니다)</p>
       </td>
       <td width="700">
-      <img src="https://user-images.githubusercontent.com/73629761/234274911-7e6f78ec-2260-4e4b-b634-540c94b90ee7.gif"/>
+        <img src="https://user-images.githubusercontent.com/112063987/233832485-05d91ecd-2128-4272-9ed5-66c4722fa709.gif"/>
       </td>        
-    </tr>
+    </tr> -->
+   </table>
+</details>
+<details>
+  <summary>ProductDetail (제품 상세 페이지)</summary>
+  <table>
+    <!-- 
+    예시코드
     <tr>
       <td width="300">
-        <h4>:round_pushpin:장바구니 아코디언</h4>
+        <h4>:round_pushpin:장바구니에 상품 담기</h4>
         <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 장바구니 아코디언은 (냉장 식품, 냉동 식품, 상온 식품)으로 나누어져 있습니다.</p>
-        <p>2) 전체 선택 체크 박스로 상품 전체를 선택 할 수 있습니다. </p>
-        <p>3) 선택 삭제 버튼을 통해 선택된 상품들을 삭제 할 수 있습니다.</p>
+        <p>1) -/+버튼을 통해 상품 수량을 선택하고, 장바구니에 담기 버튼을 누르면 해당 상품이 장바구니(Cart)에 담깁니다.</p>
+        <p>2) count값이 1일때는 마이너스 버튼이 비활성화됩니다.</p>
+        <p>3) count값은 재고량을 초과할 수 없습니다. (오른쪽 gif속, 탱탱쫄면의 재고량은 11개입니다)</p>
       </td>
       <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234275375-c1f4ecc8-c2e4-400c-a921-9c3a023dd16c.gif"/>
+        <img src="https://user-images.githubusercontent.com/112063987/233832485-05d91ecd-2128-4272-9ed5-66c4722fa709.gif"/>
       </td>        
-    </tr>
-     <tr>
-      <td width="300">
-        <h4>:round_pushpin:장바구니 상품</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 아코디언 내부에서 장바구니에 저장된 상품을 확인 할 수 있습니다.</p>
-        <p>2) 상품의 체크 여부에 따라 계산이 변경됩니다.</p>
-        <p>3) 체크 박스 체크후 아코디언의 선택 삭제 버튼을 누르거나, 상품 우측의 x 버튼을 눌러 상품을 삭제 할 수 있습니다. </p>
-        <p>4) Counter를 통해 상품의 수량을 조정할 수 있습니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234274693-fbdf5180-ba58-4d04-9538-8c09d33ec497.gif"/>
-      </td>
-    </tr>
-     <tr>
-      <td width="300">
-        <h4>:round_pushpin:배송지 선택</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 주소 검색을 통해 배송지를 검색 할 수 있습니다.</p>
-        <p>2) 회원가입의 주소검색과 동일 방식으로 검색이 이루어집니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234274661-65eda766-17c3-400f-93fd-775225fa6b7c.gif"/>
-      </td>
-    </tr>
-    <tr>
-      <td width="300">
-        <h4>:round_pushpin:결제 하기</h4>
-        <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 장바구니 상품 상태를 반영하여 결제 금액을 보여줍니다.</p>
-        <p>2) 로그인 상태에서 주문하기 버튼을 누를 수 있습니다</p>
-        <p>3) 주문하기 버튼을 누르면 결제한 정보와 금액을 알려줍니다.</p>
-      </td>
-      <td width="700">
-        <img src="https://user-images.githubusercontent.com/73629761/234274614-d7bb5ca9-6bdb-4049-bac1-a9a6fdad158a.gif"/>   
-      </td>
-    </tr>
+    </tr> -->
   </table>
 </details>
 <details>
-  <summary>:white_check_mark: Common(모든 페이지에 공통적으로 들어가는 부분)</summary>
+  <summary>ProductList (제품 나열 페이지)</summary>
   <table>
+    <!-- 
+    예시코드
     <tr>
       <td width="300">
-        <h4>:round_pushpin: Header: 스크롤위치에 반응하는 레이아웃</h4>
+        <h4>:round_pushpin:장바구니에 상품 담기</h4>
         <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 스크롤을 일정 위치 만큼 내릴 시,  상단 고정되는 반응형 헤더 레이아웃을 확인할 수 있습니다. </p>
+        <p>1) -/+버튼을 통해 상품 수량을 선택하고, 장바구니에 담기 버튼을 누르면 해당 상품이 장바구니(Cart)에 담깁니다.</p>
+        <p>2) count값이 1일때는 마이너스 버튼이 비활성화됩니다.</p>
+        <p>3) count값은 재고량을 초과할 수 없습니다. (오른쪽 gif속, 탱탱쫄면의 재고량은 11개입니다)</p>
       </td>
       <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234309849-d18ddc38-0667-4fba-a4d3-92cc2bf737c1.gif"/>          
-      </td>
-    </tr>
+        <img src="https://user-images.githubusercontent.com/112063987/233832485-05d91ecd-2128-4272-9ed5-66c4722fa709.gif"/>
+      </td>        
+    </tr> -->
+  </table>
+</details>
+<details>
+  <summary>Cart (장바구니 페이지)</summary>
+  <table>
+    <!-- 
+    예시코드
     <tr>
       <td width="300">
-        <h4>:round_pushpin: Header: 카테고리 영역 hover 시, 리스트 렌더링</h4>
+        <h4>:round_pushpin:장바구니에 상품 담기</h4>
         <h4>:round_pushpin:기능 설명</h4>
-        <p>1) 카테고리 영역을 HOVER 시, 카테고리 리스트들이 나옵니다. </p>
+        <p>1) -/+버튼을 통해 상품 수량을 선택하고, 장바구니에 담기 버튼을 누르면 해당 상품이 장바구니(Cart)에 담깁니다.</p>
+        <p>2) count값이 1일때는 마이너스 버튼이 비활성화됩니다.</p>
+        <p>3) count값은 재고량을 초과할 수 없습니다. (오른쪽 gif속, 탱탱쫄면의 재고량은 11개입니다)</p>
       </td>
       <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/234311920-58841b57-0ede-4f71-ab92-b299f5b116cc.gif"/>       
-      </td>
-    </tr>
+        <img src="https://user-images.githubusercontent.com/112063987/233832485-05d91ecd-2128-4272-9ed5-66c4722fa709.gif"/>
+      </td>        
+    </tr> -->
    </table>
 </details>
 
@@ -909,14 +442,14 @@ npm run dev
 데이터들을 파이어베이스로 관리하기 위해서는 `.env`파일이 필요합니다.<br/> `jandi-market`폴더 최상단에 `.env`파일을 만들어주세요.<br/> `.env`의 내용은 다음과 같이 구성하면 됩니다. 쌍따옴표안에 개인의 코드를 넣어주세요.<br/>
 
 ```
-VITE_PH_URL = https://jandi-market.pockethost.io
-VITE_PH_API = $VITE_PH_URL/api
-VITE_PH_USERS = $VITE_PH_API/collections/users/records
-VITE_PH_PL = $VITE_PH_API/collections/products/records
-VITE_PH_REVIEW = $VITE_PH_API/collections/review/records
-VITE_PH_CART = $VITE_PH_API/collections/cart/records
-VITE_PH_INQUIRY = $VITE_PH_API/collections/inquiry/records
-VITE_PH_IMG = $VITE_PH_API/files
+VITE_PH_URL = ""
+VITE_PH_API  ""
+VITE_PH_USERS = ""
+VITE_PH_PL = ""
+VITE_PH_REVIEW = ""
+VITE_PH_CART = ""
+VITE_PH_INQUIRY =  ""
+VITE_PH_IMG  ""
 ```
 
 - 사용하실 때에는 `import.meta.env.VITE_PH_URL` 형식으로 변수에 담아 사용하시면 됩니다.
