@@ -1,4 +1,4 @@
-import { closeModal } from '/src/components/modal/modal.js';
+import { closeMessageModal } from '/src/components/modal/modal.js';
 
 const messageBox = document.querySelector('#modal_box');
 
@@ -48,7 +48,6 @@ const isValidField = (validator, errorMessageEl, valueKey) => {
     errorElement.classList.toggle('error', isError);
     errorElement.classList.toggle('hidden', !isError);
     userData[valueKey] = isError ? '' : value;
-    console.log('Updated userData:', userData); // 디버깅 코드
   };
 };
 
@@ -106,7 +105,7 @@ const checkValue = (value) => {
   let userValue = userData[value];
   if (!userValue) {
     messageBox.classList.remove('hidden');
-    closeModal(`${value}를 입력해주세요.`);
+    closeMessageModal(`${value}를 입력해주세요.`);
     return false; // userValue가 없는 경우 false를 반환
   }
   return true; // userValue가 있는 경우 true를 반환
@@ -119,10 +118,10 @@ const checkDuplication = (value) => {
 
   if (isDuplicated) {
     messageBox.classList.remove('hidden');
-    closeModal(`이미 사용중인 ${value}입니다.`);
+    closeMessageModal(`이미 사용중인 ${value}입니다.`);
   } else {
     messageBox.classList.remove('hidden');
-    closeModal(`사용 가능한 ${value}입니다.`);
+    closeMessageModal(`사용 가능한 ${value}입니다.`);
   }
 };
 
@@ -305,7 +304,7 @@ const handleSignup = (e) => {
 
   if (!confirmAllInput) {
     messageBox.classList.remove('hidden');
-    closeModal('모든 필수 입력 사항을 채워주세요.');
+    closeMessageModal('모든 필수 입력 사항을 채워주세요.');
     return;
   }
 
@@ -330,7 +329,7 @@ const handleSignup = (e) => {
     .then((response) => response.json())
     .then((data) => {
       messageBox.classList.remove('hidden');
-      closeModal(`${name}님 잔디 마켓에 가입하신 걸 환영합니다!`);
+      closeMessageModal(`${name}님 잔디 마켓에 가입하신 걸 환영합니다!`);
       console.log(data);
       window.location.href = '/src/pages/login/';
     })
