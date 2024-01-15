@@ -1,4 +1,4 @@
-import { closeModal } from '/src/components/modal/modal.js';
+import { closeMessageModal } from '/src/components/modal/modal.js';
 
 function setDocumentTitle(title) {
   document.title = title;
@@ -35,24 +35,14 @@ const handleCheckPassword = (e) => {
 
 const messageBox = document.querySelector('#modal_box');
 
-// const closeModal = () => {
-//   const closeButton = document.querySelector('#close_modal');
-//   const errorModal = document.querySelector('dialog');
-
-//   closeModal('아이디, 비밀번호를 확인해주세요.');
-
-//   closeButton.addEventListener('click', (e) => {
-//     console.log(e.target);
-//     errorModal.close();
-//     errorMessage.classList.add('hidden');
-//   });
-// };
-
 // 데이터베이스의유저 이메일과 비밀번호를 입력 값과 비교해 로그인 시도
 const handleLogin = () => {
   // 사용자 데이터가 아직 로드되지 않았으면 로그인을 시도하지 않음
   if (!usersData) {
-    alert('데이터가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요.');
+    messageBox.classList.remove('hidden');
+    closeMessageModal(
+      '데이터가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요.'
+    );
     return;
   }
 
@@ -65,7 +55,7 @@ const handleLogin = () => {
     window.location.href = '/';
   } else {
     messageBox.classList.remove('hidden');
-    closeModal('아이디, 비밀번호를 확인해주세요.');
+    closeMessageModal('아이디, 비밀번호를 확인해주세요.');
   }
 };
 

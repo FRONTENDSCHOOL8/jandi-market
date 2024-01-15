@@ -1,5 +1,9 @@
 const addCartModal = document.querySelector('#addCartModal');
 const closeModalBtn = document.querySelector('#closeModal');
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 const addBtn = document.querySelector('#addBtn');
 
 // 클릭했을 때 모달 열리기
@@ -55,3 +59,7 @@ itemCounts.forEach(function (itemCount) {
   minusButton.addEventListener('click', clickMinusButton);
   plusButton.addEventListener('click', clickPlusButton);
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
