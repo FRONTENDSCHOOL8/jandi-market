@@ -393,6 +393,8 @@ async function displayProductDetails() {
                   throw new Error('REVIEW API 통신에 실패했습니다.');
                 closeModal();
                 const reviewData = await reviewResponse.json();
+                messageBox.classList.remove('hidden');
+                closeMessageModal('등록되었습니다.');
                 reviewList.textContent = '';
                 reviewDataRender(reviewData);
               } catch (error) {
@@ -550,7 +552,7 @@ async function displayProductDetails() {
                     userId,
                     title: inquiryTitleId.value,
                     question: desc.value,
-                    answerStatus: '답변대기',
+                    answerStatus: '답변 대기',
                     secret: secretCheckedStatus.checked,
                   }),
                 });
@@ -558,6 +560,8 @@ async function displayProductDetails() {
                   throw new Error('INQUIRY API 통신에 실패했습니다.');
                 closeModal();
                 const inquiryData = await inquiryResponse.json();
+                messageBox.classList.remove('hidden');
+                closeMessageModal('등록되었습니다.');
                 inquiryList.textContent = '';
                 inquiryDataRender(inquiryData);
               } catch (error) {
