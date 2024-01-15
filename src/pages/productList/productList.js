@@ -16,7 +16,7 @@ const categoryDetail = document.querySelectorAll('.categoryDetail');
 arcodianButton.forEach((button, index) => {
   button.addEventListener('click', () => {
     categoryDetail[index].classList.toggle('hidden');
-    // categoryDetail[index].classList.toggle('flex');
+    categoryDetail[index].classList.toggle('flex');
   });
 });
 
