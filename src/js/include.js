@@ -14,6 +14,7 @@ fetch('/src/components/header/headerCategory.html')
   .then((response) => response.text())
   .then((html) => {
     const headerCategoryElement = document.querySelector('#menu_list');
+    if (!headerCategoryElement) return;
     headerCategoryElement.innerHTML = html;
   })
   .catch((error) => {
@@ -60,10 +61,22 @@ fetch('/src/components/detailModal/detailModal.html')
 fetch('/src/components/modal/modal.html')
   .then((response) => response.text())
   .then(async (html) => {
-    const loginModalElement = document.querySelector('#modal_box');
-    if (!loginModalElement) return;
-    loginModalElement.innerHTML = html;
+    const ModalElement = document.querySelector('#modal_box');
+    if (!ModalElement) return;
+    ModalElement.innerHTML = html;
     return import('/src/components/modal/modal.js');
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+fetch('/src/components/bubble/index.html')
+  .then((response) => response.text())
+  .then(async (html) => {
+    const bubbleElement = document.querySelector('#addBubble');
+    if (!bubbleElement) return;
+    bubbleElement.innerHTML = html;
+    return import('/src/components/bubble/bubble.js');
   })
   .catch((error) => {
     console.error(error);
