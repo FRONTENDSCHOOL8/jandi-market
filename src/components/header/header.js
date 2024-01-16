@@ -139,8 +139,8 @@ const showUserName = async () => {
           class="flex flex-col gap-1 px-2 py-1 mt-1 font-normal leading-5 border text-13pxr"
         >
           <li class="logout"><a href="/">로그아웃</a></li>
-          <li ><a href="#">찜한 상품</a></li>
-          <li  ><buttom  class="withdrawal" type='submit' class="cursor-pointer">탈퇴하기</buttom></li>
+          <li><a href="#">찜한 상품</a></li>
+          <li class="cursor-pointer"><buttom class="withdrawal" type='submit'>탈퇴하기</buttom></li>
         </ul>
       </li>
     `;
@@ -162,19 +162,8 @@ const showUserName = async () => {
           modalBox.classList.remove('hidden');
           closeMessageModal('그 동안 잔디 마켓을 이용해 주셔서 감사합니다. ');
         });
-        withdrawal.addEventListener('click', withdrawMembership);
       };
-
-      menuBox.addEventListener('mouseover', () => {
-        menuList.classList.remove('list_hidden');
-      });
-
-      menuBox.addEventListener('mouseout', (e) => {
-        const isInside = menuButton.contains(e.currentTarget);
-        if (!isInside) {
-          menuList.classList.add('list_hidden');
-        }
-      });
+      withdrawal.addEventListener('click', withdrawMembership);
 
       // 로그인이 아닌 상태일 때 UI 출력
     } else {
@@ -203,7 +192,16 @@ const menuList = document.getElementById('menu_list');
 const cartBtn = document.querySelector('.cart');
 const modalBox = document.querySelector('#modal_box');
 
-//탈퇴하기
+menuBox.addEventListener('mouseover', () => {
+  menuList.classList.remove('list_hidden');
+});
+
+menuBox.addEventListener('mouseout', (e) => {
+  const isInside = menuButton.contains(e.currentTarget);
+  if (!isInside) {
+    menuList.classList.add('list_hidden');
+  }
+});
 
 cartBtn.addEventListener('click', () => {
   window.location.href = '/src/pages/cart/';
