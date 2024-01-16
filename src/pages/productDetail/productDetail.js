@@ -1,4 +1,4 @@
-import { closeBubbleMessageModal } from '../../components/bubble/bubble';
+import { closeBubbleMessageModal } from '/src/components/bubble/bubble.js';
 import { closeMessageModal } from '/src/components/modal/modal.js';
 import {
   getNode,
@@ -848,14 +848,17 @@ inquiryDataRender();
 /*--------------------------------------------------------------------------*/
 
 const wishList = getNode('.wish_list');
-let productWish = JSON.parse(localStorage.getItem(productId) || 'false');
+let productWish = JSON.parse(localStorage.getItem(productId));
 
 updateHeartIcon(productWish);
 
 function setWishList() {
   productWish = !productWish;
   wishList.dataset.wish = String(productWish);
-  localStorage.setItem(productId, JSON.stringify(productWish));
+  localStorage.setItem(productId, 'true');
+  if (!productWish) {
+    localStorage.removeItem(productId);
+  }
   updateHeartIcon(productWish);
 }
 wishList.addEventListener('click', setWishList);

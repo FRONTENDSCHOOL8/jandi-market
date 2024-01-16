@@ -37,9 +37,9 @@ liItems.forEach((li) => {
 
     // 이미지의 src를 변경한다.
     if (button.classList.contains('active')) {
-      image.src = '/public/input/checkBox-isChecked.svg';
+      image.src = '/input/checkBox-isChecked.svg';
     } else {
-      image.src = '/public/input/checkBox.svg';
+      image.src = '/input/checkBox.svg';
     }
   });
 });
@@ -72,7 +72,7 @@ fetch(`${URL}/?filter=(price>=15000)`)
           }" />
         </a>
         <button class="mt-6pxr" type="button">
-          <img src="/banner/add cart button.png" alt="" />
+          <img src="/banner/add_cart_button.png" alt="" />
         </button>
         <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
           >${item.desc}</span

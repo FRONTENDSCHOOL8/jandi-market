@@ -1,10 +1,15 @@
-
 // 클릭했을 때 모달 열리기
+export const openModal = (element, className) => {
+  element.classList.remove(className);
+};
 export const openModal = (element, className) => {
   element.classList.remove(className);
 };
 
 // 취소 버튼 클릭하여 모달 닫기
+export const closeModal = (element, className) => {
+  element.classList.add(className);
+};
 export const closeModal = (element, className) => {
   element.classList.add(className);
 };
@@ -48,4 +53,3 @@ itemCounts.forEach(function (itemCount) {
   minusButton.addEventListener('click', clickMinusButton);
   plusButton.addEventListener('click', clickPlusButton);
 });
-
