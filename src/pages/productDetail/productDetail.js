@@ -1,3 +1,4 @@
+import { closeBubbleMessageModal } from '../../components/bubble/bubble';
 import { closeMessageModal } from '/src/components/modal/modal.js';
 import {
   getNode,
@@ -396,8 +397,8 @@ async function displayProductDetails() {
                 const reviewData = await reviewResponse.json();
                 messageBox.classList.remove('hidden');
                 closeMessageModal('등록되었습니다.');
-                reviewList.textContent = '';
-                reviewDataRender(reviewData);
+
+                reviewDataRender();
               } catch (error) {
                 console.error(error);
               }
@@ -563,8 +564,7 @@ async function displayProductDetails() {
                 const inquiryData = await inquiryResponse.json();
                 messageBox.classList.remove('hidden');
                 closeMessageModal('등록되었습니다.');
-                inquiryList.textContent = '';
-                inquiryDataRender(inquiryData);
+                inquiryDataRender();
               } catch (error) {
                 console.error(error);
               }
@@ -579,150 +579,6 @@ async function displayProductDetails() {
   }
 }
 displayProductDetails();
-
-/*--------------------------------------------------------------------------*/
-/*    하트 클릭 시, localStorage에 상태( true, false ) 저장하여 .active 구현하기 */
-/*--------------------------------------------------------------------------*/
-
-const wishList = getNode('.wish_list');
-let productWish = JSON.parse(localStorage.getItem(productId) || 'false');
-
-updateHeartIcon(productWish);
-
-function setWishList() {
-  productWish = !productWish;
-  wishList.dataset.wish = String(productWish);
-  localStorage.setItem(productId, JSON.stringify(productWish));
-  updateHeartIcon(productWish);
-}
-wishList.addEventListener('click', setWishList);
-
-/* -------------------------------------------------------------------------- */
-/*                                     탭기능                                  */
-/* -------------------------------------------------------------------------- */
-
-const tabList = getNode('[role="tablist"]');
-const tabs = getNodes('[role="tab"]', tabList);
-const tabPanel = getNodes('[role="tabpanel"]');
-
-const tabListPostions = 1320;
-const tabPositions = [1400, 3040, 4380, 5100];
-
-function scrollingChanged() {
-  const scroll = window.scrollY;
-  if (scroll >= tabListPostions) {
-    tabList.style.top = '56px';
-
-    if (scroll >= tabPositions[0]) {
-      removeIsActiveTab(tabs);
-      setActiveTab(tabs[0]);
-    }
-    if (scroll >= tabPositions[1]) {
-      removeIsActiveTab(tabs);
-      setActiveTab(tabs[1]);
-    }
-    if (scroll >= tabPositions[2]) {
-      removeIsActiveTab(tabs);
-      setActiveTab(tabs[2]);
-    }
-    if (scroll >= tabPositions[3]) {
-      removeIsActiveTab(tabs);
-      setActiveTab(tabs[3]);
-    }
-  } else {
-    removeIsActiveTab(tabs);
-  }
-}
-function moveScrollToTab(e) {
-  const tabButton = e.target;
-  const controlledPanelId = tabButton.getAttribute('aria-controls');
-
-  removeIsActiveTab(tabs);
-  tabPanel.forEach((panel, index) => {
-    if (panel.getAttribute('id') === controlledPanelId) {
-      setActiveTab(tabButton);
-      window.scrollTo(0, tabPositions[index]);
-    }
-  });
-}
-window.addEventListener('scroll', scrollingChanged);
-tabList.addEventListener('click', moveScrollToTab);
-
-/* -------------------------------------------------------------------------- */
-/*                                   장바구니 담기                              */
-/* -------------------------------------------------------------------------- */
-
-const cartButton = getNode('.cart_button');
-
-cartButton.addEventListener('click', () => {
-  async function updateCart() {
-    try {
-      if (!userId) {
-        messageBox.classList.remove('hidden');
-        closeMessageModal('로그인을 해주세요');
-      } else {
-        const response = await fetch(CART_FILTER_URL, {
-          cache: 'no-cache',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        if (!response.ok) throw new Error('CART API 요청이 실패했습니다.');
-
-        const data = await response.json();
-
-        if (data.items.length > 0) {
-          const cartId = data.items[0].id;
-          const patchResponse = await fetch(`${CART_URL}/${cartId}`, {
-            cache: 'no-cache',
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              userId,
-              productId,
-              quantity: data.items[0].quantity + quantity,
-            }),
-          });
-
-          if (!patchResponse.ok)
-            throw new Error('Patch API 요청이 실패했습니다.');
-          const patchdata = await patchResponse.json();
-          messageBox.classList.remove('hidden');
-
-          closeMessageModal(
-            `이미 담긴 상품입니다.
-            
-            추가로 ${quantity}개 담았습니다.`
-          );
-        } else {
-          const postResponse = await fetch(CART_URL, {
-            cache: 'no-cache',
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              userId,
-              productId,
-              quantity,
-            }),
-          });
-          if (!postResponse.ok)
-            throw new Error('POST API 요청이 실패했습니다.');
-          const postdata = await postResponse.json();
-          messageBox.classList.remove('hidden');
-
-          closeMessageModal(`물건을 ${quantity}개 담았습니다.`);
-        }
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  updateCart();
-});
 
 async function reviewDataRender() {
   const tabReviews = getNode('#tab_reviews');
@@ -992,14 +848,17 @@ inquiryDataRender();
 /*--------------------------------------------------------------------------*/
 
 const wishList = getNode('.wish_list');
-let productWish = JSON.parse(localStorage.getItem(productId) || 'false');
+let productWish = JSON.parse(localStorage.getItem(productId));
 
 updateHeartIcon(productWish);
 
 function setWishList() {
   productWish = !productWish;
   wishList.dataset.wish = String(productWish);
-  localStorage.setItem(productId, JSON.stringify(productWish));
+  localStorage.setItem(productId, 'true');
+  if (!productWish) {
+    localStorage.removeItem(productId);
+  }
   updateHeartIcon(productWish);
 }
 wishList.addEventListener('click', setWishList);
