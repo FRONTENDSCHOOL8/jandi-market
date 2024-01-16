@@ -148,6 +148,7 @@ const showUserName = async () => {
       showUserInfo();
       logOut();
       const withdrawal = document.querySelector('.withdrawal');
+      const modalBox = document.querySelector('#modal_box');
       const withdrawMembership = async () => {
         const userId = sessionStorage.getItem('userId');
         modalBox.classList.remove('hidden');
@@ -190,7 +191,6 @@ const menuBox = document.getElementById('menu_list_box');
 const menuButton = document.getElementById('menu_button');
 const menuList = document.getElementById('menu_list');
 const cartBtn = document.querySelector('.cart');
-const modalBox = document.querySelector('#modal_box');
 
 menuBox.addEventListener('mouseover', () => {
   menuList.classList.remove('list_hidden');
