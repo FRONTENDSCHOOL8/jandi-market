@@ -1,4 +1,4 @@
-import { closeBubbleMessageModal } from '../../components/bubble/bubble';
+import { closeBubbleMessageModal } from '/src/components/bubble/bubble.js';
 import { closeMessageModal } from '/src/components/modal/modal.js';
 import {
   getNode,

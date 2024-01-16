@@ -194,6 +194,7 @@ fetch(`${URL}/?filter=(price>=15000)`)
       });
     });
   })
+
   .catch((error) => console.log(error));
 
 /* 놓치면 후회할 가격 */
