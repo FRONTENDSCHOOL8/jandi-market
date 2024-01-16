@@ -4,6 +4,6 @@ export function updateHeartIcon(productWish) {
 
   iconHeart.setAttribute(
     'href',
-    `/public/icon/_sprite.svg#Heart${productWish ? '-active' : ''}`
+    `/icon/_sprite.svg#Heart${productWish ? '-active' : ''}`
   );
 }

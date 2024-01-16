@@ -217,7 +217,7 @@ async function displayProductDetails() {
     const submitButton = getNode('[type="submit"]');
 
     function clickedShowModal() {
-      const dialog = detailModal.children[1];
+      const dialog = detailModal.children[0];
       dialog.showModal();
       dialog.classList.remove('modal_hidden');
     }
