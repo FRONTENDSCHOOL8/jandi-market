@@ -148,11 +148,9 @@ const showUserName = async () => {
       showUserInfo();
       logOut();
       const withdrawal = document.querySelector('.withdrawal');
-      const modalBox = document.querySelector('#modal_box');
       const withdrawMembership = async () => {
         const userId = sessionStorage.getItem('userId');
-        modalBox.classList.remove('hidden');
-        closeMessageModal('저희 F4의 잔디 마켓에서 떠나실 작정이신가요?');
+        confirm('저희 F4의 잔디 마켓에서 떠나실 작정이신가요?');
 
         // 서버에서 유저 데이터를 삭제
         await fetch(`${users}/${userId}`, {
@@ -160,8 +158,7 @@ const showUserName = async () => {
         }).then(() => {
           sessionStorage.removeItem('userId');
           location.href = '/';
-          modalBox.classList.remove('hidden');
-          closeMessageModal('그 동안 잔디 마켓을 이용해 주셔서 감사합니다. ');
+          alert('그 동안 잔디 마켓을 이용해 주셔서 감사합니다. ');
         });
       };
       withdrawal.addEventListener('click', withdrawMembership);
