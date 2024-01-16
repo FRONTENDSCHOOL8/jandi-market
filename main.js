@@ -184,11 +184,11 @@ fetch(`${URL}/?filter=(price>=15000)`)
 
       recommendedProductList.insertAdjacentHTML('beforeend', template);
       const addCart = document.querySelector('.add_cart');
-      const addCartModal = document.querySelector('#addCartModal');
+      const addCartModal = document.querySelector('#add_cart_modal');
       addCart.addEventListener('click', () => {
         openModal(addCartModal, 'modal_hidden');
       });
-      const closeBtn = document.querySelector('#closeModal');
+      const closeBtn = document.querySelector('#close_modal');
       closeBtn.addEventListener('click', () => {
         closeModal(addCartModal, 'modal_hidden');
       });
