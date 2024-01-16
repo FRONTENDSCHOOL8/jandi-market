@@ -1,7 +1,9 @@
-import { gsap } from 'gsap';
+import { closeMessageModal } from '/src/components/modal/modal.js';
 
 //쿠폰 이벤트 배너 닫기
 const topBanner = document.querySelector('.top_banner');
+
+const users = import.meta.env.VITE_PH_USERS;
 
 const closeBanner = (e) => {
   e.preventDefault();
@@ -19,11 +21,11 @@ const closeBanner = (e) => {
 };
 
 const saveBannerStatus = () => {
-  localStorage.setItem('bannerClosed', 'true');
+  sessionStorage.setItem('bannerClosed', 'true');
 };
 
 const setBannerOnLoad = () => {
-  const bannerClosed = localStorage.getItem('bannerClosed');
+  const bannerClosed = sessionStorage.getItem('bannerClosed');
 
   if (bannerClosed === 'true') {
     topBanner.style.display = 'none';
@@ -31,7 +33,7 @@ const setBannerOnLoad = () => {
 };
 
 topBanner.addEventListener('click', closeBanner);
-window.addEventListener('DOMContentLoaded', setBannerOnLoad);
+setBannerOnLoad();
 
 //스크롤 이벤트 적용
 const scroll = document.querySelector('#header_scroll');
@@ -65,8 +67,6 @@ const signList = document.querySelector('#sign');
 const userId = sessionStorage.getItem('userId');
 
 const bringUserInfo = async () => {
-  const users = import.meta.env.VITE_PH_USERS;
-
   try {
     const response = await fetch(`${users}/${userId ? userId : ''}`);
     if (response.ok) {
@@ -116,16 +116,15 @@ const showUserInfo = () => {
     }
   });
 };
-// gsap.from('#user_list', { duration: 1, y: '10%', ease: 'power2.inOut' });
 
 // 로그인한 유저 header에 UI 출력
 const showUserName = async () => {
   try {
     const userData = await bringUserInfo(); // 데이터 받아온 후에 변수에 할당
     // userData가 있는 경우 조건문 처리
-    if (userData.id) {
+    if (userData) {
       const jandiUser = /*html*/ `
-          <li id="user_name" class="">
+          <li id="user_name">
         <a class="text-sm drop_down" href="#">${userData.name} 님</a>
       </li>
             <li class="line_before">
@@ -139,14 +138,43 @@ const showUserName = async () => {
           class="flex flex-col gap-1 px-2 py-1 mt-1 font-normal leading-5 border text-13pxr"
         >
           <li class="logout"><a href="/">로그아웃</a></li>
-          <li class=""><a href="#">찜한 상품</a></li>
-          <li class="withdrawal"><a href="#">탈퇴하기</a></li>
+          <li ><a href="#">찜한 상품</a></li>
+          <li  ><buttom  class="withdrawal" type='submit' class="cursor-pointer">탈퇴하기</buttom></li>
         </ul>
       </li>
     `;
       signList.insertAdjacentHTML('afterbegin', jandiUser);
       showUserInfo();
       logOut();
+      const withdrawal = document.querySelector('.withdrawal');
+      const withdrawMembership = async () => {
+        const userId = sessionStorage.getItem('userId');
+        modalBox.classList.remove('hidden');
+        closeMessageModal('저희 F4의 잔디 마켓에서 떠나실 작정이신가요?');
+
+        // 서버에서 유저 데이터를 삭제
+        await fetch(`${users}/${userId}`, {
+          method: 'DELETE',
+        }).then(() => {
+          sessionStorage.removeItem('userId');
+          location.href = '/';
+          modalBox.classList.remove('hidden');
+          closeMessageModal('그 동안 잔디 마켓을 이용해 주셔서 감사합니다. ');
+        });
+        withdrawal.addEventListener('click', withdrawMembership);
+      };
+
+      menuBox.addEventListener('mouseover', () => {
+        menuList.classList.remove('list_hidden');
+      });
+
+      menuBox.addEventListener('mouseout', (e) => {
+        const isInside = menuButton.contains(e.currentTarget);
+        if (!isInside) {
+          menuList.classList.add('list_hidden');
+        }
+      });
+
       // 로그인이 아닌 상태일 때 UI 출력
     } else {
       const nonJandiUser = /*html*/ `
@@ -171,27 +199,10 @@ showUserName();
 const menuBox = document.getElementById('menu_list_box');
 const menuButton = document.getElementById('menu_button');
 const menuList = document.getElementById('menu_list');
-const listItems = document.querySelectorAll('#menu_list > li');
 const cartBtn = document.querySelector('.cart');
+const modalBox = document.querySelector('#modal_box');
 
-menuBox.addEventListener('mouseover', () => {
-  menuList.classList.remove('list_hidden');
-  // listItems.forEach((item, index) => {
-  //   gsap.from(item, {
-  //     y: -20,
-  //     opacity: 0,
-  //     duration: 0.2,
-  //     delay: index * 0.1,
-  //   });
-  // });
-});
-
-menuBox.addEventListener('mouseout', (e) => {
-  const isInside = menuButton.contains(e.currentTarget);
-  if (!isInside) {
-    menuList.classList.add('list_hidden');
-  }
-});
+//탈퇴하기
 
 cartBtn.addEventListener('click', () => {
   window.location.href = '/src/pages/cart/';
