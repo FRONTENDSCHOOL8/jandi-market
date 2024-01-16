@@ -72,7 +72,7 @@ fetch(`${URL}/?filter=(price>=15000)`)
           }" />
         </a>
         <button class="mt-6pxr" type="button">
-          <img src="/banner/add cart button.png" alt="" />
+          <img src="/banner/add_cart_button.png" alt="" />
         </button>
         <span class="font-semibold text-gray-200 text-14pxr mt-16pxr"
           >${item.desc}</span
