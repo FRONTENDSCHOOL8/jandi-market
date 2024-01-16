@@ -67,7 +67,8 @@
 
 #### :white_check_mark: 장효진(팀장)
 
-- `데일리 스크럼` 회의 진행
+- `데일리 스크럼 회의 진행`
+- `문서 작업`
 - `Product Detail Page`
 - `Footer Component`
 
@@ -81,7 +82,7 @@
 
 #### :white_check_mark: 황승준
 
-- `Main(메인페이지)` 
+- `Main(메인페이지)`
 - `ProductList`
 
 ---
@@ -121,158 +122,149 @@
 
 ## 컨벤션 :bookmark_tabs:
 
-<details>
-  <summary>:white_check_mark: Gitmoji</summary>
   <table>
   <thead>
     <tr>
+      <th>커밋 컨벤션</th>
       <td align="center">✨</td>
       <td align="center">[Feat]</td>
       <td align="center">기능 (새로운 기능)</td>
     </tr>
      <tr>
+      <td align="center">(Gitmoji)</td>
       <td align="center">🐛</td>
       <td align="center">[Fix]</td>
       <td align="center">버그 (버그 수정)</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">🔧</td>
       <td align="center">[Add]</td>
       <td align="center">구성 파일 추가 및 삭제</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">💄</td>
       <td align="center">[Design]</td>
       <td align="center">CSS 등 사용자 UI 디자인 변경</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">🎨</td>
       <td align="center">[Modify]</td>
       <td align="center">코드 변경</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">📝</td>
       <td align="center">[Comment]</td>
       <td align="center">필요한 주석 추가 및 변경</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">♻️</td>
       <td align="center">[Refactoring]</td>
       <td align="center">리팩토링</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">📝</td>
       <td align="center">[docs]</td>
       <td align="center">문서 (문서 추가, 수정, 삭제)</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">✅</td>
       <td align="center">[Test]</td>
       <td align="center">테스트(테스트 코드 추가, 수정, 삭제)</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">📦</td>
       <td align="center">[Chore]</td>
       <td align="center">기타 변경사항 (빌드 스크립트 수정 등)</td>
     </tr>  
     <tr>
+      <td></td>
       <td align="center">📘</td>
       <td align="center">[Post]</td>
       <td align="center">블로그 포스트 추가</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">🚚</td>
       <td align="center">[Rename]</td>
       <td align="center">파일 혹은 폴더명을 수정하거나 옮기는 작업만 하는 경우</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">🔥</td>
       <td align="center">[Remove]</td>
       <td align="center">파일을 삭제</td>
     </tr>
     <tr>
+    <td></td>
       <td align="center">⏪</td>
       <td align="center">[Revert]</td>
       <td align="center">변경 내용 되돌리기</td>
     </tr>
     <tr>
+    <td></td>
       <td align="center">🏛️</td>
       <td align="center">[Build]</td>
       <td align="center">새로운 라이브러리 or 패키지 설치</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">🔀</td>
       <td align="center">[Merge]</td>
       <td align="center">pull 과정 중 현재 commit과 자동 병합이 일어날 때</td>
     </tr>
     <tr>
+      <td></td>
       <td align="center">🗃️</td>
       <td align="center">[Database]</td>
       <td align="center">데이터베이스 관련 수정</td>
     </tr>
   </tbody>
 </table>
-</details>
 
-<details>
-  <summary>:white_check_mark: 네이밍 컨벤션</summary>
-  - 이름을 통해 쓰임새를 알 수 있도록 한다. (20자 미만, 직관적으로)<br />
-  - 이름의 맨 앞이나 맨 뒤에 언더바(_)를 사용하지 않는다.<br />
   <table>
     <tr>
-      <td align="center">컴포넌트</td>
-      <td>Pascal Case(파스칼 케이스)</td>
+      <th>네이밍 컨벤션</th>
+      <td colspan="2">이름을 통해 쓰임새를 알 수 있도록 한다. (20자 미만, 직관적으로)</td>
     </tr>
     <tr>
-      <td align="center">image, svg</td>
-      <td>단어 사이 -를 사용해 네이밍(ex. erase-check.svg)</td>
+      <td></td>
+      <td colspan="2">이름의 맨 앞이나 맨 뒤에 언더바(_)를 사용하지 않는다.</td>
     </tr>
     <tr>
+      <td></td>
+      <td align="center">클래스</td>
+      <td>snake_case</td>
+    </tr>
+    <tr>
+      <td></td>
       <td align="center">이벤트 핸들러</td>
-      <td>on + 메소드명 + Handler</td>
+      <td>lowerCamelCase</td>
     </tr>
     <tr>
-      <td align="center">변수, 함수, 인스턴스</td>
-      <td>Camel Case(카멜 케이스)</td>
+      <td></td>
+      <td align="center">변수, 함수</td>
+      <td>lowerCamelCase</td>
     </tr>
     <tr>
-      <td align="center">함수 이름</td>
-      <td>'동사+명사' 구조로 네이밍(ex. makingItem(x) / makeItem, getItem, changeItem (o))</td>
+      <td></td>
+      <td align="center">함수 이름<br>(이벤트핸들러 포함)</td>
+      <td>'동사+명사' 구조로 네이밍<br>(ex. makingItem(x) / makeItem, getItem, changeItem (o))</td>
     </tr>
     <tr>
-      <td align="center">Class, Constructor</td>
-      <td>Camel Case(카멜 케이스)</td>
-    </tr>
-    <tr>
-      <td align="center">상수</td>
-      <td>Scream Snake Case (스크림 스네이크 케이스)</td>
+      <th>코드 컨벤션</th>
+      <td colspan="2">`airBnB`의 코드 컨벤션을 따랐습니다</td>
     </tr>
   </table>
-</details>
 
-<details>
-  <summary>:white_check_mark: 코드 컨벤션</summary>
-  <table>
-    <tr>
-      <td align="center">Tab Depth<br/>(들여쓰기)</td>
-      <td>
-        기본 tab depth: 4 (유동적으로)
-        <br />
-        <img src="https://user-images.githubusercontent.com/112063987/233770688-c4c1c6b0-1eb7-4a2f-8229-de419c19e1bd.png" width="250">
-      </td>
-    </tr>
-    <tr>
-      <td align="center">Comment<br/>(주석)</td>
-      <td>
-        1) // : 기본 주석입니다. <br />
-        2) //? : 의견을 묻는 주석 예시입니다. → 의견을 구해야하거나, 피드백을 구하려할때 사용해주세요. <br />
-        3) //! : 주의해주세요 → 신경쓸 부분이나 중요한 이야기가 있을 때 사용해주세요. <br />
-        4) 분류 주석 : 분류가 될만한 부분은 줄 주석으로 나눠주세요. (다음 확장 프로그램을 설치해주세요) <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;- 확장프로그램: https://marketplace.visualstudio.com/items?itemName=stackbreak.comment-divider<br />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/112063987/233770939-995b52c9-be62-49ec-80a4-cc24555a8649.png" width="450">
-      </td>
-    </tr>
-  </table>
-</details>
+---
 
 ## git branch 전략 :busts_in_silhouette:
 
@@ -305,6 +297,7 @@ feature/담당페이지#이슈번호
 </pre>
 
 세부 폴더별(Src)
+
 <pre>
 <img src=https://cdn.discordapp.com/attachments/1159345472624930840/1196502053183299594/image.png?ex=65b7dc5f&is=65a5675f&hm=62665f96d8565e9a217ed392cea876900b522024080cec9c28d5c24023ff0fac&/>
 </pre>
@@ -371,20 +364,81 @@ feature/담당페이지#이슈번호
 <details>
   <summary>ProductDetail (제품 상세 페이지)</summary>
   <table>
-    <!-- 
-    예시코드
     <tr>
-      <td width="300">
-        <h4>:round_pushpin:장바구니에 상품 담기</h4>
-        <h4>:round_pushpin:기능 설명</h4>
+      <td width="400">
+        <h4>기능 설명</h4>
+      </td>
+      <td width="700"></td>
+    </tr>
+      <tr>
+      <td width="400">
+        <h4>장바구니에 상품 담기</h4>
         <p>1) -/+버튼을 통해 상품 수량을 선택하고, 장바구니에 담기 버튼을 누르면 해당 상품이 장바구니(Cart)에 담깁니다.</p>
-        <p>2) count값이 1일때는 마이너스 버튼이 비활성화됩니다.</p>
-        <p>3) count값은 재고량을 초과할 수 없습니다. (오른쪽 gif속, 탱탱쫄면의 재고량은 11개입니다)</p>
+        <p>2) 담기를 누르면  bubble창이 같이 뜹니다.</p>
+        <p>
+          3) user의 cart에 상품이 없는 경우, 새로 추가되며,
+             상품이 있는 경우, 기존의 상품에 추가로 담깁니다.
+        </p>
+        <p>
+          4) 로그인이 안된 경우, 로그인 페이지로 넘어갑니다.
+        </p>
       </td>
       <td width="700">
-        <img src="https://user-images.githubusercontent.com/112063987/233832485-05d91ecd-2128-4272-9ed5-66c4722fa709.gif"/>
+        <img src="https://github.com/FRONTENDSCHOOL8/jandi-market/assets/116716953/379ce510-db2f-42b3-869a-deaee23768ce"/>
       </td>        
-    </tr> -->
+    </tr>
+     <tr>
+      <td width="400">
+        <h4>WISH LIST</h4>
+        <p>1) 하트 아이콘을 누르면 색이 변경되며 localStorage에 담깁니다.</p>
+        <p>2) 각 상품마다 wish를 저장할 수 있으며, 다시 한 번 누르면 localStorage에서 삭제됩니다.</p>
+      </td>
+      <td width="700">
+        <img src="wishList.gif"/>
+      </td>
+    </tr>
+    <tr>
+      <td width="400">
+        <h4>TAB 메뉴</h4>
+        <p>1) 하트 아이콘을 누르면 색이 변경되며 localStorage에 담깁니다.</p>
+        <p>2) 각 상품마다 wish를 저장할 수 있으며, 다시 한 번 누르면 localStorage에서 삭제됩니다.</p>
+      </td>
+      <td width="700">
+        <img src="https://github.com/FRONTENDSCHOOL8/jandi-market/assets/116716953/9f072868-9c36-407a-ae78-875967f872fc"/>
+      </td>
+    </tr>
+    <tr>
+      <td width="400">
+        <h4>REVIEW</h4>
+        <p>1) 리뷰 작성 시, 실시간으로 적용됩니다.</p>
+        <p>2) 각 상품마다 리뷰를 작성할 수 있습니다.</p>
+      </td>
+      <td width="700">
+        <img src="https://github.com/FRONTENDSCHOOL8/jandi-market/assets/116716953/a95ffced-bda5-484f-b95f-0272cb0bf72f"/>
+      </td>
+    </tr>
+ <tr>
+      <td width="400">
+        <h4>문의 글</h4>
+        <p>1) 글자수 5000자 제한이 적용됩니다.</p>
+        <p>2) 글자가 입력될 경우 가상 placeholder가 사라지며, 글자수가 0이되면 다시 나타납니다.</p>
+        <p>2) 비밀글을 선택할 수 있습니다. 이 경우 제목이 `비밀글입니다`로 변경됩니다.</p>
+      </td>
+      <td width="700">
+        <img src="https://github.com/FRONTENDSCHOOL8/jandi-market/assets/116716953/cccd3759-5439-4b5d-93fd-722af12af98"/>
+      </td>
+    </tr>
+     <tr>
+      <td width="400">
+        <h4>아코디언 토글</h4>
+        <p>1) 해당 제목버튼을 클릭 시 내용이 나타납니다.</p>
+        <p>2) 다시 한 번 클릭 시 내용이 사라집니다.</p>
+        <p>3) 다른 제목을 클릭 시 내용이 사라집니다.</p>
+      </td>
+      <td width="700">
+        <img src="https://github.com/FRONTENDSCHOOL8/jandi-market/assets/116716953/6c14cec6-cdbc-404b-accd-c8e62f49862f"/>
+      </td>
+    </tr>
   </table>
 </details>
 <details>
