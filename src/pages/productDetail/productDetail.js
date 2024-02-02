@@ -34,6 +34,26 @@ const CART_FILTER_URL = `${CART_URL}?filter=(userId%3D'${userId}'%26%26productId
 /* -------------------------------------------------------------------------- */
 /*                                   데이터바인딩                               */
 /* -------------------------------------------------------------------------- */
+
+const renderProduct = ({ main_image, name }) => {
+  insertAfterBegin(
+      '.product',
+      `
+      <img src="${`${imgURL}/${main_image}`}" alt="${name}" width="400" height="514" />
+    `
+  );
+}
+
+const renderProductHeader = ({ brand, name, desc }) => {
+    insertAfterBegin(
+        '.product_header',
+        `
+      <h2 class="font-semibold text-label-xl">${ brand !== '' ? `${brand} ` : '' }${name}</h2>
+      <p class="text-gray-400 text-paragraph-medium">${desc}</p>
+    `
+    );
+}
+
 async function displayProductDetails() {
   try {
     const response = await fetch(URL, {
@@ -42,28 +62,15 @@ async function displayProductDetails() {
         'Content-Type': 'application/json',
       },
     });
+    // TODO: 그렇죠. 예외 처리는 잘 하셨구요.
     if (!response.ok) throw new Error('API 호출에 실패했습니다.');
     const data = await response.json();
     const discountPrice = data.price - (data.price * data.discount) / 100;
     const floorDiscountPrice = Math.floor(discountPrice / 10) * 10;
     document.title = `${data.name} | 잔디마켓`;
-    insertAfterBegin(
-      '.product',
-      `
-      <img src="${`${imgURL}/${data.main_image}`}" alt="${
-        data.name
-      }" width="400" height="514" />
-    `
-    );
-    insertAfterBegin(
-      '.product_header',
-      `
-      <h2 class="font-semibold text-label-xl">${
-        data.brand !== '' ? `${data.brand} ` : ''
-      }${data.name}</h2>
-      <p class="text-gray-400 text-paragraph-medium">${data.desc}</p>
-    `
-    );
+    renderProduct(data);
+    renderProductHeader(data);
+    // 이 아래의 렌더링 로직도 함수로 만들어 보세요(이하생략).
     insertAfterBegin(
       '.product_price',
       `
@@ -192,6 +199,7 @@ async function displayProductDetails() {
     function updateQuantity(increase) {
       quantity += increase ? 1 : -1;
       if (quantity <= 1) {
+        // TODO: 이런 처리는 마크업 단계에서 하는 것이 좋습니다.
         quantityDecrease.src = `/input/minus-disabled.svg`;
         quantityDecrease.alt = `수량 감소 비활성화`;
       } else if (quantity > 1) {
@@ -373,6 +381,7 @@ async function displayProductDetails() {
 
         closeButton();
 
+        // TODO: 리액트로 구현할때는 form 의 submit 이벤트를 이용하세요.
         submitButton.addEventListener('click', () => {
           const title = ModalTitle.children[0].textContent;
           if (title === '후기 작성하기') {
@@ -409,6 +418,10 @@ async function displayProductDetails() {
       }
     });
 
+  /**
+   * TODO: 이 페이지를 통틀어서 가장 아쉬운 부분이네요.
+   * 고생은 많이 하셨겠지만, 높은 평가를 받기는 어려운 코드입니다.
+   */
     inquiryButton.addEventListener('click', () => {
       if (!userId) {
         messageBox.classList.remove('hidden');
