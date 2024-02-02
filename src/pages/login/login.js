@@ -61,6 +61,9 @@ const handleLogin = () => {
   }
 };
 
+/**
+ * TODO: form 의 자체 기능을 사용하면 이 코드가 필요없게 됩니다.
+ */
 // password 입력 창에서 enter key를 사용해 로그인 시도 가능
 password.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {

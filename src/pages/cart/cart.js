@@ -64,9 +64,9 @@ async function cartPage() {
         });
       }
     });
-    
+
     let count = 0;
-    
+
     for await (const data of userCartData){
       const productURL = `${import.meta.env.VITE_PH_PL}/${data.productId}`;
 
@@ -181,7 +181,7 @@ async function cartPage() {
     const itemCounts = document.querySelectorAll(".item_count");
     const afterDiscount = document.querySelectorAll(".after_discount");
     const beforeDiscount = document.querySelectorAll(".before_discount");
-    
+
     let value = 0;
 
     for(let value = 0; value < itemCounts.length; value++){
@@ -192,20 +192,25 @@ async function cartPage() {
       const plusButton = itemCount.nextElementSibling;
 
       const discountPrice = Number(beforeComma(afterDiscount[value].innerText) / quantity);
-      const beforeDiscountPrice = Number(beforeComma(beforeDiscount[value].innerText) / quantity);  
-     
+      const beforeDiscountPrice = Number(beforeComma(beforeDiscount[value].innerText) / quantity);
+
       const nextPrice = minusButton.parentElement.nextElementSibling;
       const changeminusPrice = nextPrice.querySelector('.after_discount');
       const reMinusPrice = nextPrice.querySelector('.before_discount');
-      
+
       if(discountPrice === beforeDiscountPrice){
         reMinusPrice.classList.add('hidden');
       }
-      
+
       if(quantity > 1){
         minusButton.style.backgroundImage = 'url(/input/minus.svg)';
         minusButton.disabled = false;
       }
+
+      /**
+       * TODO: form 은 지금 만드신 코드 대부분의 역활을 대신해 줍니다.
+       * form 의 change 이벤트와 submit 이벤트를 사용했으면 좋았겠습니다.
+       */
       // 마이너스 버튼 클릭 이벤트
       function clickMinusButton() {
         // 1이상일 때 감소
@@ -220,7 +225,7 @@ async function cartPage() {
         }
           changeminusPrice.innerText = `${comma(discountPrice * quantity)}원`;
           reMinusPrice.innerText = `${comma(beforeDiscountPrice * quantity)}원`;
-        
+
       }
 
       // 플러스 버튼 클릭 이벤트
@@ -229,15 +234,15 @@ async function cartPage() {
         itemCount.innerText = quantity;
         minusButton.style.backgroundImage = "url(/input/minus.svg)";
         minusButton.disabled = false;
-        
+
         changeminusPrice.innerText = `${comma(discountPrice * quantity)}원`;
-        
+
         reMinusPrice.innerText = `${comma(beforeDiscountPrice * quantity)}원`;
       }
-      
+
       minusButton.addEventListener("click", clickMinusButton);
       plusButton.addEventListener("click", clickPlusButton);
-      
+
     };
     /* -------------------------------------------------------------------------- */
     /*                            cart list 전체선택 구현                            */

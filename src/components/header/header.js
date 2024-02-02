@@ -99,6 +99,7 @@ const showUserInfo = () => {
   });
 
   userName.addEventListener('mouseout', (e) => {
+    const menuButton = document.getElementById('menu_button');
     const isInside = menuButton.contains(e.currentTarget);
     if (!isInside) {
       userList.classList.add('list_hidden');
@@ -110,6 +111,7 @@ const showUserInfo = () => {
   });
 
   userList.addEventListener('mouseout', (e) => {
+    const menuButton = document.getElementById('menu_button');
     const isInside = menuButton.contains(e.currentTarget);
     if (!isInside) {
       userList.classList.add('list_hidden');
@@ -117,14 +119,9 @@ const showUserInfo = () => {
   });
 };
 
-// 로그인한 유저 header에 UI 출력
-const showUserName = async () => {
-  try {
-    const userData = await bringUserInfo(); // 데이터 받아온 후에 변수에 할당
-    const storage = sessionStorage.getItem('userId');
-    // userData가 있는 경우 조건문 처리
-    if (storage) {
-      const jandiUser = /*html*/ `
+const 로그인_한_상태_그리기 = async () => {
+  const userData = await bringUserInfo(); // 데이터 받아온 후에 변수에 할당
+  const jandiUser = /*html*/ `
           <li id="user_name">
         <a class="text-sm drop_down" href="#">${userData.name} 님</a>
       </li>
@@ -144,41 +141,11 @@ const showUserName = async () => {
         </ul>
       </li>
     `;
-      signList.insertAdjacentHTML('afterbegin', jandiUser);
-      showUserInfo();
-      logOut();
-      const withdrawal = document.querySelector('.withdrawal');
-      const withdrawMembership = async () => {
-        const userId = sessionStorage.getItem('userId');
-        modalBox.classList.remove('hidden');
-        closeMessageModal('저희 F4의 잔디 마켓에서 떠나실 작정이신가요?');
+  signList.insertAdjacentHTML('afterbegin', jandiUser);
+}
 
-        // 서버에서 유저 데이터를 삭제
-        await fetch(`${users}/${userId}`, {
-          method: 'DELETE',
-        }).then(() => {
-          sessionStorage.removeItem('userId');
-          location.href = '/';
-          modalBox.classList.remove('hidden');
-          closeMessageModal('그 동안 잔디 마켓을 이용해 주셔서 감사합니다. ');
-        });
-        withdrawal.addEventListener('click', withdrawMembership);
-      };
-
-      menuBox.addEventListener('mouseover', () => {
-        menuList.classList.remove('list_hidden');
-      });
-
-      menuBox.addEventListener('mouseout', (e) => {
-        const isInside = menuButton.contains(e.currentTarget);
-        if (!isInside) {
-          menuList.classList.add('list_hidden');
-        }
-      });
-
-      // 로그인이 아닌 상태일 때 UI 출력
-    } else {
-      const nonJandiUser = /*html*/ `
+const 로그인_안한_상태_그리기 = () => {
+  const nonJandiUser = /*html*/ `
     <li id="register" class="line_after">
         <a class="text-sm" href="/src/pages/register/">회원가입</a>
       </li>
@@ -189,22 +156,79 @@ const showUserName = async () => {
         <a class="text-sm drop_down" href="#">고객센터</a>
       </li>
     `;
-      signList.insertAdjacentHTML('afterbegin', nonJandiUser);
+  signList.insertAdjacentHTML('afterbegin', nonJandiUser);
+}
+
+const 메뉴에_이벤트핸들러_붙이기 = () => {
+  const menuBox = document.getElementById('menu_list_box');
+  const menuList = document.getElementById('menu_list');
+  menuBox.addEventListener('mouseover', () => {
+    menuList.classList.remove('list_hidden');
+  });
+
+  menuBox.addEventListener('mouseout', (e) => {
+    const menuButton = document.getElementById('menu_button');
+    const isInside = menuButton.contains(e.currentTarget);
+    if (!isInside) {
+      menuList.classList.add('list_hidden');
     }
+  });
+}
+
+const 탈퇴버튼_초기화 = () => {
+  const modalBox = document.querySelector('#modal_box');
+  const withdrawal = document.querySelector('.withdrawal');
+  const withdrawMembership = async () => {
+    const userId = sessionStorage.getItem('userId');
+    modalBox.classList.remove('hidden');
+    closeMessageModal('저희 F4의 잔디 마켓에서 떠나실 작정이신가요?');
+
+    // 서버에서 유저 데이터를 삭제
+    await fetch(`${users}/${userId}`, {
+      method: 'DELETE',
+    }).then(() => {
+      sessionStorage.removeItem('userId');
+      location.href = '/';
+      modalBox.classList.remove('hidden');
+      closeMessageModal('그 동안 잔디 마켓을 이용해 주셔서 감사합니다. ');
+    });
+  };
+  withdrawal.addEventListener('click', withdrawMembership);
+}
+
+// 로그인한 유저 header에 UI 출력
+const showUserName = async () => {
+  try {
+    /**
+     * TODO: 변수 이름으로 userId를 사용하고 싶었는데 겹쳐서 사용하지 못한 경우군요!
+     * 일단 이럴 때는 뭔가 잘못 돌아가고 있다는 신호로 보시면 됩니다.
+     * Falsy 를 그대로 사용하기보다는 !!를 사용해서 명시적으로 boolean 으로 변환해 보세요.
+     * 2번 이상 사용하지 않더라도, 업무 단위별로 함수를 분리해서 코드를 자연어처럼 연출해보세요.
+     */
+    const isLoggedIn = !!sessionStorage.getItem('userId');
+    // userData가 있는 경우 조건문 처리
+    if (isLoggedIn) {
+      await 로그인_한_상태_그리기();
+      showUserInfo();
+      logOut();
+      await 탈퇴버튼_초기화();
+      // 논리도구는 눈에 잘 띄일수록 좋으므로 함수 이름을 한글로 지어도 좋다고 봅니다.
+      // 핵심은 추상화입니다.
+      // https://tosspayments-dev.oopy.io/chapters/frontend/posts/hangul-coding-convention
+      메뉴에_이벤트핸들러_붙이기();
+      return
+    }
+    // 로그인이 아닌 상태일 때 UI 출력
+    로그인_안한_상태_그리기();
+
   } catch (error) {
     console.error('데이터 처리 중에 오류가 발생했습니다.', error);
   }
 };
 showUserName();
 
-const menuBox = document.getElementById('menu_list_box');
-const menuButton = document.getElementById('menu_button');
-const menuList = document.getElementById('menu_list');
-const cartBtn = document.querySelector('.cart');
-const modalBox = document.querySelector('#modal_box');
-
 //탈퇴하기
-
+const cartBtn = document.querySelector('.cart');
 cartBtn.addEventListener('click', () => {
   window.location.href = '/src/pages/cart/';
 });

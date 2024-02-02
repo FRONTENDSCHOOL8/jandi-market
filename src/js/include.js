@@ -1,3 +1,7 @@
+/**
+ * TODO: 일종의 서버사이드 렌더링을 시도하셨군요!
+ * 이 방법은 vite 에서만 동작한다는 것만 알고 계시면 좋겠습니다.
+ */
 // header.html 파일을 가져와서 header 요소에 삽입
 fetch('/src/components/header/header.html')
   .then((response) => response.text())

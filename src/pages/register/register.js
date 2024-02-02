@@ -347,6 +347,9 @@ allCheckbox.addEventListener('click', (e) => {
   });
 });
 
+/**
+ * TODO: 수고하셨습니다. 파이널 프로젝트에서는 폼의 자체기능을 꼭 활용하시길 바랍니다.
+ */
 // 나머지 체크박스들에 클릭 이벤트 리스너 추가
 checkboxes.forEach((checkbox) => {
   if (checkbox !== allCheckbox) {
